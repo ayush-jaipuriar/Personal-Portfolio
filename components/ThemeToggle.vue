@@ -21,8 +21,6 @@
 </template>
 
 <script setup lang="ts">
-import { useColorMode } from '@nuxtjs/color-mode';
-
 // Get the current color mode from the composable
 const colorMode = useColorMode();
 

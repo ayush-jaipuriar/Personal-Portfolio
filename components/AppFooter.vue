@@ -48,22 +48,25 @@
           <span role="img" aria-label="love">❤️</span> 
           using Vue.js and Nuxt 3
         </p>
-        <!-- Console Easter Egg -->
-        <script>
-          console.info(
-            "%c👋 Hello fellow developer!",
-            "font-size: 1.5em; font-weight: bold; color: #0c8ee9;"
-          );
-          console.info(
-            "%cThanks for checking out my portfolio. Feel free to explore the code and get in touch if you have any questions!",
-            "font-size: 1em; color: #064a86;"
-          );
-        </script>
+        <!-- Console Easter Egg Script removed from here -->
       </div>
     </div>
   </footer>
 </template>
 
 <script setup lang="ts">
+import { onMounted } from 'vue';
+
 // Component logic can go here if needed
+
+onMounted(() => {
+  console.info(
+    "%c👋 Hello fellow developer!",
+    "font-size: 1.5em; font-weight: bold; color: #0c8ee9;"
+  );
+  console.info(
+    "%cThanks for checking out my portfolio. Feel free to explore the code and get in touch if you have any questions!",
+    "font-size: 1em; color: #064a86;"
+  );
+});
 </script> 

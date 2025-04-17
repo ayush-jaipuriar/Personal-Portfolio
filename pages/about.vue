@@ -2,7 +2,10 @@
   <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
     <div class="max-w-4xl mx-auto">
       <!-- Page Header -->
-      <div class="text-center mb-16 animate-fade-in">
+      <div 
+        v-motion-fade-visible-once
+        class="text-center mb-16"
+      >
         <h1 class="text-4xl md:text-5xl font-bold mb-6">About Me</h1>
         <p class="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
           Get to know more about my background, journey, and what drives me as a developer.
@@ -12,7 +15,10 @@
       <!-- About Content with Responsive Layout -->
       <div class="flex flex-col lg:flex-row gap-12">
         <!-- Left Column: Personal Info -->
-        <div class="lg:w-2/5 animate-slide-up" style="animation-delay: 0.2s;">
+        <div 
+          v-motion-fade-visible-once
+          class="lg:w-2/5"
+        >
           <!-- Profile Photo -->
           <div class="mb-8 rounded-2xl overflow-hidden shadow-lg">
             <img 
@@ -77,9 +83,14 @@
         </div>
 
         <!-- Right Column: Story/Journey -->
-        <div class="lg:w-3/5 animate-slide-up" style="animation-delay: 0.4s;">
+        <div 
+          class="lg:w-3/5"
+        >
           <!-- My Story -->
-          <div class="prose dark:prose-invert prose-lg max-w-none mb-12">
+          <div 
+            v-motion-fade-visible-once
+            class="prose dark:prose-invert prose-lg max-w-none mb-12"
+          >
             <h2 class="text-3xl font-semibold mb-6">My Story</h2>
             
             <p>
@@ -107,7 +118,7 @@
           <!-- Education & Work History -->
           <div class="space-y-12">
             <!-- Education -->
-            <div>
+            <div v-motion-fade-visible-once>
               <h2 class="text-3xl font-semibold mb-6">Education</h2>
               
               <div class="space-y-6">
@@ -125,7 +136,7 @@
             </div>
             
             <!-- Work Experience -->
-            <div>
+            <div v-motion-fade-visible-once>
               <h2 class="text-3xl font-semibold mb-6">Work Experience</h2>
               
               <div class="space-y-6">

@@ -16,7 +16,7 @@
             v-for="item in navigationItems" 
             :key="item.name" 
             :to="item.href" 
-            class="px-3 py-2 rounded-md text-sm font-medium text-gray-800 dark:text-gray-200 hover:text-apple-blue-600 dark:hover:text-apple-blue-400 transition-colors duration-200"
+            class="px-3 py-2 rounded-md text-sm font-medium text-gray-800 dark:text-gray-200 hover:text-apple-blue-600 dark:hover:text-apple-blue-400 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-200"
             active-class="text-apple-blue-600 dark:text-apple-blue-400"
           >
             {{ item.name }}

@@ -1,7 +1,10 @@
 <template>
   <div class="space-y-24">
     <!-- Hero Section -->
-    <section class="relative py-24 md:py-32 overflow-hidden">
+    <section 
+      v-motion-fade-visible-once
+      class="relative py-24 md:py-32 overflow-hidden"
+    >
       <!-- Container -->
       <div class="container mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex flex-col md:flex-row items-center md:space-x-12">
@@ -59,7 +62,10 @@
     </section>
     
     <!-- Featured Projects Section Preview -->
-    <section class="py-12 bg-gray-50 dark:bg-gray-900/50">
+    <section 
+      v-motion-fade-visible-once
+      class="py-12 bg-gray-50 dark:bg-gray-900/50"
+    >
       <div class="container mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-12">
           <h2 class="text-3xl font-bold">Featured Projects</h2>
@@ -84,6 +90,8 @@
 </template>
 
 <script setup lang="ts">
+// Import { useMotions } from '@vueuse/motion' // REMOVE this import
+
 // Define metadata for the page
 useHead({
   title: 'Your Name | Full Stack Software Developer',
@@ -94,6 +102,9 @@ useHead({
     }
   ]
 });
+
+// // If auto-import isn't working, you might need this: // REMOVE this comment block
+// // const motions = useMotions()
 </script>
 
 <style>

@@ -2,7 +2,10 @@
   <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
     <div class="max-w-4xl mx-auto">
       <!-- Page Header -->
-      <div class="text-center mb-16 animate-fade-in">
+      <div 
+        v-motion-fade-visible-once
+        class="text-center mb-16"
+      >
         <h1 class="text-4xl md:text-5xl font-bold mb-6">Skills & Expertise</h1>
         <p class="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
           A comprehensive overview of my technical skills, tools, and areas of expertise.
@@ -10,7 +13,10 @@
       </div>
 
       <!-- Skills Categories -->
-      <div class="space-y-16 animate-slide-up">
+      <div 
+        v-motion-fade-visible-once
+        class="space-y-16"
+      >
         <!-- Programming Languages -->
         <div>
           <h2 class="text-2xl font-bold mb-6 pb-2 border-b border-gray-200 dark:border-gray-800">
