@@ -7,7 +7,7 @@
           to="/" 
           class="text-xl font-bold tracking-tight hover:text-apple-blue-600 dark:hover:text-apple-blue-400 transition-colors duration-200"
         >
-          Your Name
+          Ayush Jaipuriar
         </NuxtLink>
 
         <!-- Desktop Navigation -->

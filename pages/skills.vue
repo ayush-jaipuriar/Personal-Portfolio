@@ -23,12 +23,14 @@
             Programming Languages
           </h2>
           <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+            <SkillItem name="Java (8-17)" icon="logos:java" />
             <SkillItem name="JavaScript" icon="logos:javascript" />
-            <SkillItem name="TypeScript" icon="logos:typescript-icon" />
+            <SkillItem name="SQL" icon="devicon:sqldeveloper" /> 
+            <SkillItem name="BASH Scripting" icon="logos:bash-icon" />
+            <SkillItem name="Python" icon="logos:python" />
             <SkillItem name="HTML5" icon="logos:html-5" />
             <SkillItem name="CSS3" icon="logos:css-3" />
-            <SkillItem name="Python" icon="logos:python" />
-            <!-- Add more programming languages as needed -->
+            <SkillItem name="TypeScript" icon="logos:typescript-icon" />
           </div>
         </div>
 
@@ -38,14 +40,25 @@
             Frameworks & Libraries
           </h2>
           <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-            <SkillItem name="Vue.js" icon="logos:vue" />
-            <SkillItem name="Nuxt.js" icon="logos:nuxt-icon" />
+            <SkillItem name="Spring Framework" icon="logos:spring-icon" />
+            <SkillItem name="Spring Boot" icon="logos:spring-icon" />
+            <SkillItem name="Hibernate" icon="logos:hibernate" />
+            <SkillItem name="Struts" />  
             <SkillItem name="React" icon="logos:react" />
-            <SkillItem name="Next.js" icon="logos:nextjs-icon" />
-            <SkillItem name="Tailwind CSS" icon="logos:tailwindcss-icon" />
+            <SkillItem name="React Native" icon="logos:react" />
+            <SkillItem name="Expo" icon="logos:expo-icon" />
+            <SkillItem name="Redux" icon="logos:redux" />
+            <SkillItem name="ExtJS 6" /> 
+            <SkillItem name="VueJS" icon="logos:vue" />
             <SkillItem name="Node.js" icon="logos:nodejs-icon" />
-            <SkillItem name="Express" icon="logos:express" />
-            <!-- Add more frameworks & libraries as needed -->
+            <SkillItem name="JUnit" /> 
+            <SkillItem name="JMeter" />
+            <SkillItem name="Pandas" icon="simple-icons:pandas" />
+            <SkillItem name="NumPy" icon="logos:numpy" />
+            <SkillItem name="Matplotlib" icon="logos:matplotlib-icon" />
+            <SkillItem name="Crossfilter" />
+            <SkillItem name="Highcharts" icon="logos:highcharts" />
+            <SkillItem name="Langchain" /> 
           </div>
         </div>
 
@@ -55,11 +68,11 @@
             Databases
           </h2>
           <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-            <SkillItem name="MongoDB" icon="logos:mongodb-icon" />
-            <SkillItem name="PostgreSQL" icon="logos:postgresql" />
             <SkillItem name="MySQL" icon="logos:mysql-icon" />
+            <SkillItem name="PostgreSQL" icon="logos:postgresql" />
+            <SkillItem name="MongoDB" icon="logos:mongodb-icon" />
             <SkillItem name="Redis" icon="logos:redis" />
-            <!-- Add more databases as needed -->
+            <SkillItem name="Firebase" icon="logos:firebase" />
           </div>
         </div>
 
@@ -69,12 +82,16 @@
             Cloud & DevOps
           </h2>
           <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-            <SkillItem name="AWS" icon="logos:aws" />
+            <SkillItem name="Google Cloud (GCP)" icon="logos:google-cloud" />
+            <SkillItem name="AWS (inc. EKS)" icon="logos:aws" />
             <SkillItem name="Docker" icon="logos:docker-icon" />
-            <SkillItem name="GitHub Actions" icon="logos:github-actions" />
-            <SkillItem name="Netlify" icon="logos:netlify" />
-            <SkillItem name="Vercel" icon="logos:vercel-icon" />
-            <!-- Add more cloud & DevOps skills as needed -->
+            <SkillItem name="Docker Swarm" icon="logos:docker-icon" />
+            <SkillItem name="Kubernetes" icon="logos:kubernetes" />
+            <SkillItem name="Jenkins" icon="logos:jenkins" />
+            <SkillItem name="Git" icon="logos:git-icon" />
+            <SkillItem name="GitHub" icon="mdi:github" />
+            <SkillItem name="GitLab" icon="logos:gitlab" />
+            <SkillItem name="Linux" icon="logos:linux-tux" />
           </div>
         </div>
 
@@ -84,11 +101,36 @@
             Tools & Software
           </h2>
           <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-            <SkillItem name="Git" icon="logos:git-icon" />
             <SkillItem name="VS Code" icon="logos:visual-studio-code" />
-            <SkillItem name="Figma" icon="logos:figma" />
+            <SkillItem name="Eclipse" icon="logos:eclipse-icon" />
+            <SkillItem name="IntelliJ IDEA" icon="logos:intellij-idea" />
             <SkillItem name="Postman" icon="logos:postman-icon" />
-            <!-- Add more tools & software as needed -->
+            <SkillItem name="JIRA" icon="logos:jira" />
+            <SkillItem name="Confluence" icon="logos:confluence" />
+            <SkillItem name="DialogFlow" icon="logos:google-dialogflow" />
+            <SkillItem name="Cursor AI" />
+            <SkillItem name="Windsurf" /> 
+            <SkillItem name="Claude" />
+          </div>
+        </div>
+
+        <!-- Concepts & Methodologies -->
+        <div>
+          <h2 class="text-2xl font-bold mb-6 pb-2 border-b border-gray-200 dark:border-gray-800">
+            Concepts & Methodologies
+          </h2>
+          <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+            <SkillItem name="MVC Architecture" />
+            <SkillItem name="Dependency Injection" />
+            <SkillItem name="Microservices" />
+            <SkillItem name="RESTful APIs" />
+            <SkillItem name="CI/CD" />
+            <SkillItem name="Agile Development" />
+            <SkillItem name="Clean Code Principles" />
+            <SkillItem name="ORM" /> 
+            <SkillItem name="Web Scraping" />
+            <SkillItem name="NLP" />
+            <SkillItem name="Machine Learning" />
           </div>
         </div>
 
@@ -127,11 +169,11 @@
 <script setup lang="ts">
 // Define metadata for the page
 useHead({
-  title: 'Skills & Expertise | Your Name',
+  title: 'Skills & Expertise | Ayush Jaipuriar',
   meta: [
     {
       name: 'description',
-      content: 'Explore my technical skills, programming languages, frameworks, and tools I use as a software developer.'
+      content: 'Explore the technical skills, frameworks, tools, and expertise of Ayush Jaipuriar, Software Engineer.'
     }
   ]
 });

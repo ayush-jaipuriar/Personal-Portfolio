@@ -5,14 +5,14 @@
         <!-- Copyright -->
         <div class="mb-4 md:mb-0">
           <p class="text-sm text-gray-600 dark:text-gray-400">
-            &copy; {{ new Date().getFullYear() }} Your Name. All rights reserved.
+            &copy; {{ new Date().getFullYear() }} Ayush Jaipuriar. All rights reserved.
           </p>
         </div>
 
         <!-- Social Links -->
         <div class="flex space-x-6">
           <a 
-            href="https://github.com/yourusername" 
+            href="https://github.com/ayush-jaipuriar"
             target="_blank" 
             rel="noopener noreferrer" 
             class="text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white transition-colors duration-200"
@@ -21,22 +21,13 @@
             <Icon name="mdi:github" class="h-6 w-6" aria-hidden="true" />
           </a>
           <a 
-            href="https://linkedin.com/in/yourusername" 
+            href="https://www.linkedin.com/in/ayush-jaipuriar"
             target="_blank" 
             rel="noopener noreferrer" 
             class="text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white transition-colors duration-200"
             aria-label="LinkedIn"
           >
             <Icon name="mdi:linkedin" class="h-6 w-6" aria-hidden="true" />
-          </a>
-          <a 
-            href="https://twitter.com/yourusername" 
-            target="_blank" 
-            rel="noopener noreferrer" 
-            class="text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white transition-colors duration-200"
-            aria-label="Twitter"
-          >
-            <Icon name="mdi:twitter" class="h-6 w-6" aria-hidden="true" />
           </a>
         </div>
       </div>

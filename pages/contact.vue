@@ -118,12 +118,27 @@
               <div class="ml-4">
                 <h3 class="text-lg font-medium text-gray-900 dark:text-white">Email</h3>
                 <p class="mt-1">
-                  <a href="mailto:your.email@example.com" class="text-apple-blue-600 dark:text-apple-blue-400 hover:underline">
-                    your.email@example.com
+                  <a href="mailto:jaipuriar.ayush@gmail.com" class="text-apple-blue-600 dark:text-apple-blue-400 hover:underline">
+                    jaipuriar.ayush@gmail.com
                   </a>
                 </p>
                 <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
-                  I typically respond within 24 hours.
+                  Preferred channel for professional correspondence.
+                </p>
+              </div>
+            </div>
+
+            <div class="flex items-center">
+              <div class="flex-shrink-0 h-10 w-10 rounded-full bg-apple-blue-100 dark:bg-apple-blue-900/30 flex items-center justify-center">
+                <Icon name="heroicons:phone" class="h-5 w-5 text-apple-blue-600 dark:text-apple-blue-400" aria-hidden="true" />
+              </div>
+              <div class="ml-4">
+                <h3 class="text-lg font-medium text-gray-900 dark:text-white">Mobile</h3>
+                <p class="mt-1 text-gray-600 dark:text-gray-400">
+                   <a href="tel:9835333016" class="text-apple-blue-600 dark:text-apple-blue-400 hover:underline">9835333016</a>
+                </p>
+                 <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
+                  Available for direct communication.
                 </p>
               </div>
             </div>
@@ -135,10 +150,10 @@
               <div class="ml-4">
                 <h3 class="text-lg font-medium text-gray-900 dark:text-white">Location</h3>
                 <p class="mt-1 text-gray-600 dark:text-gray-400">
-                  City, Country
+                  Hyderabad, India
                 </p>
                 <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
-                  Available for remote work worldwide.
+                  Strategically based in a major tech hub.
                 </p>
               </div>
             </div>
@@ -146,10 +161,10 @@
           
           <!-- Social Links -->
           <div>
-            <h3 class="text-lg font-medium text-gray-900 dark:text-white mb-4">Connect on Social Media</h3>
+            <h3 class="text-lg font-medium text-gray-900 dark:text-white mb-4">Connect Online</h3>
             <div class="grid grid-cols-2 gap-4">
               <a 
-                href="https://github.com/yourusername" 
+                href="https://github.com/ayush-jaipuriar"
                 target="_blank" 
                 rel="noopener noreferrer" 
                 class="flex items-center p-4 rounded-lg border border-gray-300 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors duration-200"
@@ -158,31 +173,13 @@
                 <span class="text-gray-700 dark:text-gray-300">GitHub</span>
               </a>
               <a 
-                href="https://linkedin.com/in/yourusername" 
+                href="https://www.linkedin.com/in/ayush-jaipuriar"
                 target="_blank" 
                 rel="noopener noreferrer" 
                 class="flex items-center p-4 rounded-lg border border-gray-300 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors duration-200"
               >
                 <Icon name="mdi:linkedin" class="h-6 w-6 text-linkedin mr-3" aria-hidden="true" />
                 <span class="text-gray-700 dark:text-gray-300">LinkedIn</span>
-              </a>
-              <a 
-                href="https://twitter.com/yourusername" 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                class="flex items-center p-4 rounded-lg border border-gray-300 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors duration-200"
-              >
-                <Icon name="mdi:twitter" class="h-6 w-6 text-twitter mr-3" aria-hidden="true" />
-                <span class="text-gray-700 dark:text-gray-300">Twitter</span>
-              </a>
-              <a 
-                href="https://instagram.com/yourusername" 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                class="flex items-center p-4 rounded-lg border border-gray-300 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors duration-200"
-              >
-                <Icon name="mdi:instagram" class="h-6 w-6 text-instagram mr-3" aria-hidden="true" />
-                <span class="text-gray-700 dark:text-gray-300">Instagram</span>
               </a>
             </div>
           </div>
@@ -197,11 +194,11 @@ import { ref } from 'vue';
 
 // Define metadata for the page
 useHead({
-  title: 'Contact | Your Name',
+  title: 'Contact | Ayush Jaipuriar',
   meta: [
     {
       name: 'description',
-      content: 'Get in touch with [Your Name]. Contact me for job opportunities, collaborations, or any questions about my work.'
+      content: 'Get in touch with Ayush Jaipuriar. Contact me for job opportunities, collaborations, or any questions about my work.'
     }
   ]
 });
