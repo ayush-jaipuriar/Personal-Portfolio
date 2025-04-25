@@ -98,7 +98,7 @@ useHead({
   meta: [
     {
       name: 'description',
-      content: 'Personal portfolio of [Your Name], a full stack software developer specializing in building exceptional digital experiences.'
+      content: 'Personal portfolio of Ayush Jaipuriar, a full stack software developer currently working at TransUnion.'
     }
   ]
 });
