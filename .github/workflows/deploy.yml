@@ -32,6 +32,12 @@ jobs:
           cache: 'npm' # or 'yarn' if you use Yarn
       - name: Install Dependencies
         run: npm install # or yarn install
+      # Add these steps to ensure correct dependencies for the build environment
+      - name: Clean Install for Build Environment
+        run: |
+          rm -rf node_modules
+          rm -f package-lock.json
+          npm install
       - name: Static Generation
         run: npm run generate # or yarn generate
         env:
