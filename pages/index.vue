@@ -13,12 +13,12 @@
             <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6">
               <span class="block mb-2">Hello, I'm</span>
               <span class="bg-gradient-to-r from-apple-blue-600 to-purple-600 bg-clip-text text-transparent">
-                Your Name
+                Ayush Jaipuriar
               </span>
             </h1>
             
             <p class="text-2xl md:text-3xl font-light text-gray-600 dark:text-gray-300 mb-8">
-              Full Stack Software Developer
+              Full Stack Developer at TransUnion
             </p>
             
             <p class="text-lg text-gray-600 dark:text-gray-400 max-w-xl mb-10">
@@ -47,7 +47,7 @@
           <div class="md:w-2/5 animate-slide-in-right">
             <div class="relative w-64 h-64 md:w-80 md:h-80 mx-auto rounded-full overflow-hidden shadow-2xl border-4 border-white dark:border-gray-800">
               <img 
-                src="/placeholder-headshot.jpg" 
+                src="/ayush-jaipuriar.jpeg" 
                 alt="Your Name" 
                 class="w-full h-full object-cover"
               />
@@ -90,7 +90,7 @@
 </template>
 
 <script setup lang="ts">
-// Import { useMotions } from '@vueuse/motion' // REMOVE this import
+import { useHead } from '@unhead/vue';
 
 // Define metadata for the page
 useHead({

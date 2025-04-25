@@ -37,13 +37,18 @@
       <!-- Links and More Info - Push to Bottom -->
       <div class="mt-auto flex justify-between items-center pt-4">
         <!-- View Project Button -->
-        <NuxtLink 
-          :to="project.detailsLink || `/projects/${project.slug}`" 
+        <a 
+          v-if="project.githubLink" 
+          :href="project.githubLink" 
+          target="_blank" 
+          rel="noopener noreferrer"
           class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-apple-blue-600 hover:bg-apple-blue-700 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-apple-blue-500"
         >
           View Project
-          <Icon name="heroicons:arrow-right" class="ml-1 h-4 w-4" aria-hidden="true" />
-        </NuxtLink>
+          <Icon name="heroicons:arrow-up-right" class="ml-1 h-4 w-4" aria-hidden="true" />
+        </a>
+        <!-- Fallback if no GitHub link -->
+        <span v-else class="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-400 dark:text-gray-600">No Link</span>
         
         <!-- External Links -->
         <div class="flex space-x-2">

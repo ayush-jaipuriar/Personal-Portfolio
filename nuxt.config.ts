@@ -53,6 +53,7 @@ export default defineNuxtConfig({
 
   // Head metadata
   app: {
+    baseURL: process.env.NODE_ENV === 'production' ? '/Personal-Portfolio/' : '/',
     head: {
       title: 'Ayush Jaipuriar | Software Engineer',
       meta: [

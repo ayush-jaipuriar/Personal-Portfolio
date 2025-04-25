@@ -19,7 +19,7 @@
       </div>
 
       <!-- Error State -->
-      <div v-else-if="error" class="text-center py-20">
+      <div v-else-if="error || !data" class="text-center py-20">
         <Icon name="heroicons:exclamation-triangle" class="h-16 w-16 text-red-500 mb-4 mx-auto" aria-hidden="true" />
         <h1 class="text-2xl font-bold mb-2">Post Not Found</h1>
         <p class="text-gray-600 dark:text-gray-400 mb-8">
@@ -33,156 +33,180 @@
         </NuxtLink>
       </div>
 
-      <!-- Blog Post Content -->
+      <!-- Blog Post Content (only if data exists and no error) -->
       <article v-else class="animate-fade-in">
-        <!-- Post Header -->
-        <header class="mb-12">
-          <!-- Post Title -->
-          <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-6">{{ data.title }}</h1>
-          
-          <!-- Post Metadata -->
-          <div class="flex items-center text-sm text-gray-500 dark:text-gray-400 mb-8">
-            <!-- Date -->
-            <time :datetime="data.date">{{ formatDate(data.date) }}</time>
-            
-            <!-- Reading Time -->
-            <span class="mx-2">·</span>
-            <span>{{ data.readingTime || '8 min read' }}</span>
-            
-            <!-- Categories -->
-            <span v-if="data.categories && data.categories.length" class="mx-2">·</span>
-            <div v-if="data.categories && data.categories.length" class="flex gap-2">
-              <NuxtLink 
-                v-for="(category, index) in data.categories" 
-                :key="index" 
-                :to="`/blog?category=${category}`" 
-                class="text-apple-blue-600 dark:text-apple-blue-400 hover:underline"
-              >
-                #{{ category }}
-              </NuxtLink>
-            </div>
-          </div>
-          
-          <!-- Featured Image -->
-          <div v-if="data.image" class="rounded-2xl overflow-hidden mb-10">
-            <img 
-              :src="data.image" 
-              :alt="data.title" 
-              class="w-full h-auto"
-            />
-          </div>
-        </header>
+         <!-- Post Title -->
+         <header class="mb-12">
+           <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-6">{{ data.title }}</h1>
+           
+           <!-- Post Metadata -->
+           <div class="flex items-center text-sm text-gray-500 dark:text-gray-400 mb-8">
+             <!-- Date -->
+             <time :datetime="data.date">{{ formatDate(data.date) }}</time>
+             
+             <!-- Reading Time -->
+             <span class="mx-2">·</span>
+             <span>{{ data.readingTime || '8 min read' }}</span>
 
-        <!-- Post Content -->
-        <div class="prose prose-lg dark:prose-invert mx-auto">
-          <ContentRenderer :value="data" />
-        </div>
+             <!-- Categories -->
+             <span v-if="data.categories && data.categories.length" class="mx-2">·</span>
+             <div v-if="data.categories && data.categories.length" class="flex gap-2">
+               <NuxtLink 
+                 v-for="(category, index) in data.categories" 
+                 :key="index" 
+                 :to="`/blog?category=${category}`" 
+                 class="text-apple-blue-600 dark:text-apple-blue-400 hover:underline"
+               >
+                 #{{ category }}
+               </NuxtLink>
+             </div>
+           </div>
+           
+           <!-- Featured Image -->
+           <div v-if="data.image" class="rounded-2xl overflow-hidden mb-10">
+             <img 
+               :src="data.image" 
+               :alt="data.title" 
+               class="w-full h-auto"
+             />
+           </div>
+         </header>
 
-        <!-- Author Section -->
-        <div class="mt-16 pt-8 border-t border-gray-200 dark:border-gray-800">
-          <div class="flex items-center">
-            <img 
-              src="/placeholder-headshot.jpg" 
-              alt="Author" 
-              class="h-12 w-12 rounded-full mr-4"
-            />
-            <div>
-              <h3 class="text-lg font-medium text-gray-900 dark:text-white">Your Name</h3>
-              <p class="text-gray-600 dark:text-gray-400">
-                Software Developer specializing in modern web technologies and user experience.
-              </p>
-            </div>
-          </div>
-        </div>
+         <!-- Post Content -->
+         <div class="prose prose-lg dark:prose-invert mx-auto">
+           <ContentRenderer :value="data" />
+         </div>
 
-        <!-- Share Post -->
-        <div class="mt-12">
-          <h3 class="text-lg font-medium text-gray-900 dark:text-white mb-4">Share this post</h3>
-          <div class="flex space-x-4">
-            <a 
-              :href="`https://twitter.com/intent/tweet?text=${encodeURIComponent(data.title)}&url=${encodeURIComponent(window.location.href)}`" 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              class="text-gray-600 hover:text-twitter dark:text-gray-400 dark:hover:text-twitter transition-colors duration-200"
-              aria-label="Share on Twitter"
-            >
-              <Icon name="mdi:twitter" class="h-6 w-6" aria-hidden="true" />
-            </a>
-            <a 
-              :href="`https://www.linkedin.com/shareArticle?mini=true&url=${encodeURIComponent(window.location.href)}&title=${encodeURIComponent(data.title)}`" 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              class="text-gray-600 hover:text-linkedin dark:text-gray-400 dark:hover:text-linkedin transition-colors duration-200"
-              aria-label="Share on LinkedIn"
-            >
-              <Icon name="mdi:linkedin" class="h-6 w-6" aria-hidden="true" />
-            </a>
-            <a 
-              :href="`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(window.location.href)}`" 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              class="text-gray-600 hover:text-facebook dark:text-gray-400 dark:hover:text-facebook transition-colors duration-200"
-              aria-label="Share on Facebook"
-            >
-              <Icon name="mdi:facebook" class="h-6 w-6" aria-hidden="true" />
-            </a>
-          </div>
-        </div>
+         <!-- Author Section -->
+         <div class="mt-16 pt-8 border-t border-gray-200 dark:border-gray-800">
+           <div class="flex items-center">
+             <img 
+               src="/ayush-jaipuriar.jpeg" 
+               alt="Author" 
+               class="h-12 w-12 rounded-full mr-4"
+             />
+             <div>
+               <h3 class="text-lg font-medium text-gray-900 dark:text-white">Your Name</h3>
+               <p class="text-gray-600 dark:text-gray-400">
+                 Software Developer specializing in modern web technologies and user experience.
+               </p>
+             </div>
+           </div>
+         </div>
+
+         <!-- Share Post -->
+         <div class="mt-12">
+           <h3 class="text-lg font-medium text-gray-900 dark:text-white mb-4">Share this post</h3>
+           <div class="flex space-x-4">
+             <a 
+               :href="`https://twitter.com/intent/tweet?text=${encodeURIComponent(data.title)}&url=${encodeURIComponent(shareUrl)}`" 
+               target="_blank" 
+               rel="noopener noreferrer" 
+               class="text-gray-600 hover:text-twitter dark:text-gray-400 dark:hover:text-twitter transition-colors duration-200"
+               aria-label="Share on Twitter"
+             >
+               <Icon name="mdi:twitter" class="h-6 w-6" aria-hidden="true" />
+             </a>
+             <a 
+               :href="`https://www.linkedin.com/shareArticle?mini=true&url=${encodeURIComponent(shareUrl)}&title=${encodeURIComponent(data.title)}`" 
+               target="_blank" 
+               rel="noopener noreferrer" 
+               class="text-gray-600 hover:text-linkedin dark:text-gray-400 dark:hover:text-linkedin transition-colors duration-200"
+               aria-label="Share on LinkedIn"
+             >
+               <Icon name="mdi:linkedin" class="h-6 w-6" aria-hidden="true" />
+             </a>
+             <a 
+               :href="`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`" 
+               target="_blank" 
+               rel="noopener noreferrer" 
+               class="text-gray-600 hover:text-facebook dark:text-gray-400 dark:hover:text-facebook transition-colors duration-200"
+               aria-label="Share on Facebook"
+             >
+               <Icon name="mdi:facebook" class="h-6 w-6" aria-hidden="true" />
+             </a>
+           </div>
+         </div>
+
+         <!-- Related Posts -->
+         <div class="mt-24">
+           <h2 class="text-2xl font-bold mb-6 text-gray-900 dark:text-white">Related Posts</h2>
+           <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+             <div v-for="relatedPost in relatedPosts" :key="relatedPost._path" class="group">
+               <NuxtLink :to="relatedPost._path">
+                 <div class="mb-2 rounded-lg overflow-hidden">
+                   <img 
+                     :src="relatedPost.image" 
+                     :alt="relatedPost.title" 
+                     class="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-105"
+                   />
+                 </div>
+                 <h3 class="font-medium text-gray-900 dark:text-white group-hover:text-apple-blue-600 dark:group-hover:text-apple-blue-400 transition-colors duration-200">
+                   {{ relatedPost.title }}
+                 </h3>
+               </NuxtLink>
+             </div>
+           </div>
+         </div>
       </article>
-
-      <!-- Related Posts -->
-      <div v-if="!pending && !error" class="mt-24">
-        <h2 class="text-2xl font-bold mb-6 text-gray-900 dark:text-white">Related Posts</h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div v-for="relatedPost in relatedPosts" :key="relatedPost._path" class="group">
-            <NuxtLink :to="relatedPost._path">
-              <div class="mb-2 rounded-lg overflow-hidden">
-                <img 
-                  :src="relatedPost.image" 
-                  :alt="relatedPost.title" 
-                  class="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-105"
-                />
-              </div>
-              <h3 class="font-medium text-gray-900 dark:text-white group-hover:text-apple-blue-600 dark:group-hover:text-apple-blue-400 transition-colors duration-200">
-                {{ relatedPost.title }}
-              </h3>
-            </NuxtLink>
-          </div>
-        </div>
-      </div>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-// Get the current route params to fetch the correct blog post
+import { useRoute, useAsyncData, useHead } from 'nuxt/app';
+import { computed } from 'vue';
+
+// Define an interface for the blog post data structure
+interface BlogPost {
+  title: string;
+  date: string;
+  readingTime: string;
+  categories: string[];
+  image: string;
+  description?: string; // Optional description
+  // Add other fields from your actual content structure if needed
+}
+
+// Get the current route params
 const route = useRoute();
+const fullPath = route.fullPath; // Get the full path including query params
 
 // Fetch the blog post content using Nuxt Content
-// In a real application, this would use Nuxt Content to fetch the markdown file
-// For now, we're using sample data
-const { data, pending, error } = await useAsyncData(
-  `blog-${route.params.slug.join('/')}`,
+const { data, pending, error } = await useAsyncData<BlogPost>(
+  `blog-${Array.isArray(route.params.slug) ? route.params.slug.join('/') : route.params.slug}`,
   () => {
     // Simulate content fetch with delay
     return new Promise((resolve) => {
       setTimeout(() => {
-        // Sample blog post content
+        // Sample blog post content - REPLACE WITH ACTUAL CONTENT FETCH
         resolve({
           title: 'Building a Personal Portfolio with Nuxt 3',
           date: '2023-09-15',
           readingTime: '8 min read',
           categories: ['web-development', 'vue', 'nuxt'],
           image: 'https://images.unsplash.com/photo-1587440871875-191322ee64b0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-          content: 'This is the main content of the blog post. In a real application, this would be Markdown content rendered by Nuxt Content.'
+          // Assuming 'content' is handled by ContentRenderer, not needed in interface
         });
       }, 500);
     });
   }
 );
 
-// Format the date to a readable format
-const formatDate = (dateStr: string) => {
+// Check for errors after fetching
+if (error.value) {
+  console.error("Error fetching blog post:", error.value);
+  // Optionally, navigate to an error page or show an error message
+  // Example: await navigateTo('/404');
+}
+
+// Base URL for constructing absolute URLs for sharing
+// In a real app, get this from runtime config or environment variables
+const baseUrl = 'http://localhost:3000'; // Replace with your actual domain
+const shareUrl = computed(() => `${baseUrl}${fullPath}`);
+
+// Format the date
+const formatDate = (dateStr: string | undefined) => {
   if (!dateStr) return '';
   
   const date = new Date(dateStr);

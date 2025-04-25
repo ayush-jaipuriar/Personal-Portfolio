@@ -22,7 +22,7 @@
           <!-- Profile Photo -->
           <div class="mb-8 rounded-2xl overflow-hidden shadow-lg">
             <img 
-              src="/placeholder-headshot.jpg" 
+              src="/ayush-jaipuriar.jpeg" 
               alt="Ayush Jaipuriar"
               class="w-full h-auto"
             />
@@ -83,11 +83,11 @@
             class="prose dark:prose-invert prose-lg max-w-none mb-12"
           >
             <h2 class="text-3xl font-semibold mb-6">Summary</h2>
-            <p>
+            <p class="dark:text-gray-300">
               A highly motivated and results-oriented Software Engineer currently contributing to key platform development at TransUnion. My experience is built upon a significant and progressive 4+ year tenure at Highradius, where I honed a comprehensive skill set across the entire software development lifecycle, from conception to deployment and maintenance. Based in the tech hub of Hyderabad, Telangana, India, I excel at tackling complex technical challenges and delivering high-quality software solutions.
             </p>
             <h3 class="text-2xl font-semibold mt-8 mb-4">Technical Expertise</h3>
-            <ul class="list-disc pl-5 space-y-2">
+            <ul class="list-disc pl-5 space-y-2 dark:text-gray-300">
               <li><strong>Backend:</strong> Extensive hands-on experience with Spring Framework (inc. Boot), Hibernate, Java (up to 17), Microservices, RESTful APIs, and Struts.</li>
               <li><strong>Frontend:</strong> Skilled in React, React Native + Expo, Redux, ExtJS 6, and VueJS, focusing on responsive and user-centric UIs.</li>
               <li><strong>Databases:</strong> Well-versed in MySQL, PostgreSQL (via Hibernate), and MongoDB, including data modeling and query optimization.</li>
@@ -234,6 +234,8 @@
 </template>
 
 <script setup lang="ts">
+import { useHead } from '@unhead/vue';
+
 // Define metadata for the page
 useHead({
   title: 'About Me | Ayush Jaipuriar',
