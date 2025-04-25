@@ -64,7 +64,7 @@ declare global {
 
 // Define metadata for the page
 useHead({
-  title: 'Projects | Your Name',
+  title: 'Projects | Ayush Jaipuriar',
   meta: [
     {
       name: 'description',

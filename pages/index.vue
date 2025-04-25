@@ -94,7 +94,7 @@ import { useHead } from '@unhead/vue';
 
 // Define metadata for the page
 useHead({
-  title: 'Your Name | Full Stack Software Developer',
+  title: 'Ayush Jaipuriar | Full Stack Software Developer',
   meta: [
     {
       name: 'description',
