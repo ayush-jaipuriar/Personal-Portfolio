@@ -1,0 +1,13 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# Styling with Tailwind CSS
+
+This project uses [Tailwind CSS](mdc:https:/tailwindcss.com) for styling.
+
+*   Configuration is managed in [tailwind.config.js](mdc:tailwind.config.js).
+*   Global styles or base layer customizations might be found in the `assets/` directory (e.g., `assets/css/tailwind.css`).
+*   Utility classes are applied directly in the Vue components within the `components/`, `pages/`, and `layouts/` directories.
+

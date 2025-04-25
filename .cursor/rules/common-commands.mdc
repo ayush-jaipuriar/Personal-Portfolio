@@ -1,0 +1,16 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# Common Nuxt Commands
+
+Common development and build commands are defined in [package.json](mdc:package.json):
+
+*   `yarn dev` or `npm run dev`: Starts the development server with hot reloading.
+*   `yarn build` or `npm run build`: Builds the application for production.
+*   `yarn generate` or `npm run generate`: Builds the application and pre-renders routes for static hosting.
+*   `yarn preview` or `npm run preview`: Previews the production build locally.
+
+These commands use the Nuxt CLI and should work on Windows, macOS, and Linux.
+

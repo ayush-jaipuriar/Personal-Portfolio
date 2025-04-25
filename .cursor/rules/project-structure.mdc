@@ -1,0 +1,19 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# Nuxt.js Project Structure Guide
+
+This is a [Nuxt.js](mdc:https:/nuxt.com) project. Here's a breakdown of the key directories:
+
+*   **`components/`**: Contains reusable Vue components like [AppHeader.vue](mdc:components/AppHeader.vue) and [AppFooter.vue](mdc:components/AppFooter.vue).
+*   **`pages/`**: Defines the application's routes. Each `.vue` file in this directory corresponds to a page route.
+*   **`layouts/`**: Holds layout components that define the structure around pages (e.g., default header/footer). Check [app.vue](mdc:app.vue) for the main application template which might use these layouts.
+*   **`assets/`**: Stores uncompiled assets like stylesheets (CSS, SCSS), fonts, or images that need processing by build tools.
+*   **`public/`**: Contains static assets that are served directly from the root URL (e.g., `favicon.ico`, `robots.txt`).
+*   **`content/`**: Likely used by `@nuxt/content` for Markdown-based content (e.g., blog posts).
+*   **`nuxt.config.ts`**: The main configuration file for the Nuxt application ([nuxt.config.ts](mdc:nuxt.config.ts)).
+*   **`package.json`**: Lists project dependencies and scripts ([package.json](mdc:package.json)).
+*   **`tailwind.config.js`**: Configuration for Tailwind CSS ([tailwind.config.js](mdc:tailwind.config.js)).
+
