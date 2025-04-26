@@ -30,10 +30,17 @@
                 to="/projects" 
                 class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-apple-blue-600 hover:bg-apple-blue-700 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-apple-blue-500"
               >
-                View My Work
+                View My Projects
                 <Icon name="heroicons:arrow-right" class="ml-2 h-5 w-5" aria-hidden="true" />
               </NuxtLink>
               
+              <NuxtLink 
+                to="/about" 
+                class="inline-flex items-center px-6 py-3 border border-gray-300 dark:border-gray-700 text-base font-medium rounded-md text-gray-700 dark:text-gray-200 bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-apple-blue-500"
+              >
+                About Me
+              </NuxtLink>
+
               <NuxtLink 
                 to="/contact" 
                 class="inline-flex items-center px-6 py-3 border border-gray-300 dark:border-gray-700 text-base font-medium rounded-md text-gray-700 dark:text-gray-200 bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-apple-blue-500"
@@ -61,31 +68,7 @@
       <div class="absolute -bottom-40 -left-40 w-96 h-96 bg-purple-100 dark:bg-purple-900/20 rounded-full filter blur-3xl opacity-30 dark:opacity-20 animate-pulse" style="animation-delay: 2s;"></div>
     </section>
     
-    <!-- Featured Projects Section Preview -->
-    <section 
-      v-motion-fade-visible-once
-      class="py-12 bg-gray-50 dark:bg-gray-900/50"
-    >
-      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-12">
-          <h2 class="text-3xl font-bold">Featured Projects</h2>
-          <p class="mt-4 text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-            Some of my recent work that showcases my skills and passion for building exceptional digital experiences.
-          </p>
-        </div>
-        
-        <!-- Just a preview - will link to full projects page -->
-        <div class="flex flex-col items-center">
-          <NuxtLink 
-            to="/projects" 
-            class="inline-flex items-center px-6 py-3 text-base font-medium text-apple-blue-600 dark:text-apple-blue-400 hover:text-apple-blue-700 dark:hover:text-apple-blue-300 transition-colors duration-200"
-          >
-            View All Projects
-            <Icon name="heroicons:arrow-right" class="ml-2 h-5 w-5" aria-hidden="true" />
-          </NuxtLink>
-        </div>
-      </div>
-    </section>
+    <!-- Removed Featured Projects Section -->
   </div>
 </template>
 
