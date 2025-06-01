@@ -46,7 +46,7 @@
              
              <!-- Reading Time -->
              <span class="mx-2">·</span>
-             <span>{{ data.readingTime || '8 min read' }}</span>
+             <span>{{ data.readingTime || '5 min read' }}</span>
 
              <!-- Categories -->
              <span v-if="data.categories && data.categories.length" class="mx-2">·</span>
@@ -82,13 +82,13 @@
            <div class="flex items-center">
              <img 
                src="/ayush-jaipuriar.jpeg" 
-               alt="Author" 
+               alt="Ayush Jaipuriar" 
                class="h-12 w-12 rounded-full mr-4"
              />
              <div>
-               <h3 class="text-lg font-medium text-gray-900 dark:text-white">Your Name</h3>
+               <h3 class="text-lg font-medium text-gray-900 dark:text-white">Ayush Jaipuriar</h3>
                <p class="text-gray-600 dark:text-gray-400">
-                 Software Developer specializing in modern web technologies and user experience.
+                 Full Stack Software Engineer at TransUnion, specializing in modern web technologies and cloud solutions.
                </p>
              </div>
            </div>
@@ -129,12 +129,12 @@
          </div>
 
          <!-- Related Posts -->
-         <div class="mt-24">
+         <div v-if="relatedPosts && relatedPosts.length > 0" class="mt-24">
            <h2 class="text-2xl font-bold mb-6 text-gray-900 dark:text-white">Related Posts</h2>
            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
              <div v-for="relatedPost in relatedPosts" :key="relatedPost._path" class="group">
                <NuxtLink :to="relatedPost._path">
-                 <div class="mb-2 rounded-lg overflow-hidden">
+                 <div v-if="relatedPost.image" class="mb-2 rounded-lg overflow-hidden">
                    <img 
                      :src="relatedPost.image" 
                      :alt="relatedPost.title" 
@@ -144,6 +144,9 @@
                  <h3 class="font-medium text-gray-900 dark:text-white group-hover:text-apple-blue-600 dark:group-hover:text-apple-blue-400 transition-colors duration-200">
                    {{ relatedPost.title }}
                  </h3>
+                 <p v-if="relatedPost.description" class="text-sm text-gray-600 dark:text-gray-400 mt-1">
+                   {{ relatedPost.description.substring(0, 100) }}...
+                 </p>
                </NuxtLink>
              </div>
            </div>
@@ -154,55 +157,65 @@
 </template>
 
 <script setup lang="ts">
-import { useRoute, useAsyncData, useHead } from 'nuxt/app';
+import { useRoute, useAsyncData, useHead, queryContent } from 'nuxt/app';
 import { computed } from 'vue';
 
 // Define an interface for the blog post data structure
 interface BlogPost {
+  _path: string;
   title: string;
   date: string;
-  readingTime: string;
-  categories: string[];
-  image: string;
-  description?: string; // Optional description
-  // Add other fields from your actual content structure if needed
+  readingTime?: string;
+  categories?: string[];
+  image?: string;
+  description?: string;
+  body?: any; // For content body
 }
 
 // Get the current route params
 const route = useRoute();
-const fullPath = route.fullPath; // Get the full path including query params
+const fullPath = route.fullPath;
+
+// Construct the blog post path from route params
+const blogPath = computed(() => {
+  const slug = Array.isArray(route.params.slug) ? route.params.slug.join('/') : route.params.slug;
+  return `/blog/${slug}`;
+});
 
 // Fetch the blog post content using Nuxt Content
 const { data, pending, error } = await useAsyncData<BlogPost>(
-  `blog-${Array.isArray(route.params.slug) ? route.params.slug.join('/') : route.params.slug}`,
-  () => {
-    // Simulate content fetch with delay
-    return new Promise((resolve) => {
-      setTimeout(() => {
-        // Sample blog post content - REPLACE WITH ACTUAL CONTENT FETCH
-        resolve({
-          title: 'Building a Personal Portfolio with Nuxt 3',
-          date: '2023-09-15',
-          readingTime: '8 min read',
-          categories: ['web-development', 'vue', 'nuxt'],
-          image: 'https://images.unsplash.com/photo-1587440871875-191322ee64b0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-          // Assuming 'content' is handled by ContentRenderer, not needed in interface
-        });
-      }, 500);
-    });
+  `blog-${blogPath.value}`,
+  () => queryContent<BlogPost>(blogPath.value).findOne()
+);
+
+// Fetch related posts
+const { data: relatedPosts } = await useAsyncData(
+  `related-posts-${blogPath.value}`,
+  async () => {
+    if (!data.value?.categories?.length) return [];
+    
+    // Find posts that share at least one category
+    const related = await queryContent<BlogPost>('/blog')
+      .where({ _path: { $ne: blogPath.value } })
+      .sort({ date: -1 })
+      .limit(4)
+      .find();
+    
+    // Filter posts that share categories and limit to 2
+    return related.filter(post => 
+      post.categories?.some(cat => data.value?.categories?.includes(cat))
+    ).slice(0, 2);
+  },
+  {
+    default: () => []
   }
 );
 
-// Check for errors after fetching
-if (error.value) {
-  console.error("Error fetching blog post:", error.value);
-  // Optionally, navigate to an error page or show an error message
-  // Example: await navigateTo('/404');
-}
-
 // Base URL for constructing absolute URLs for sharing
-// In a real app, get this from runtime config or environment variables
-const baseUrl = 'http://localhost:3000'; // Replace with your actual domain
+const baseUrl = process.env.NODE_ENV === 'production' 
+  ? 'https://ayush-jaipuriar.github.io/Personal-Portfolio'
+  : 'http://localhost:3000';
+
 const shareUrl = computed(() => `${baseUrl}${fullPath}`);
 
 // Format the date
@@ -218,27 +231,29 @@ const formatDate = (dateStr: string | undefined) => {
   });
 };
 
-// Sample related posts
-const relatedPosts = [
-  {
-    _path: '/blog/optimizing-website-performance',
-    title: 'Optimizing Website Performance: A Comprehensive Guide',
-    image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-  },
-  {
-    _path: '/blog/modern-javascript-features',
-    title: 'Modern JavaScript Features Every Developer Should Know',
-    image: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-  }
-];
-
 // Define metadata for the page
 useHead({
-  title: computed(() => data.value ? `${data.value.title} | Your Name` : 'Blog Post | Your Name'),
+  title: computed(() => data.value ? `${data.value.title} | Ayush Jaipuriar` : 'Blog Post | Ayush Jaipuriar'),
   meta: [
     {
       name: 'description',
-      content: computed(() => data.value ? data.value.description || `Read ${data.value.title} by Your Name` : 'Blog post by Your Name')
+      content: computed(() => data.value ? data.value.description || `Read ${data.value.title} by Ayush Jaipuriar` : 'Blog post by Ayush Jaipuriar')
+    },
+    {
+      property: 'og:title',
+      content: computed(() => data.value?.title || 'Blog Post')
+    },
+    {
+      property: 'og:description',
+      content: computed(() => data.value?.description || 'Blog post by Ayush Jaipuriar')
+    },
+    {
+      property: 'og:image',
+      content: computed(() => data.value?.image || '/ayush-jaipuriar.jpeg')
+    },
+    {
+      property: 'og:url',
+      content: computed(() => shareUrl.value)
     }
   ]
 });
