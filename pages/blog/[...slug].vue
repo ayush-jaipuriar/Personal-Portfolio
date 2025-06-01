@@ -157,7 +157,7 @@
 </template>
 
 <script setup lang="ts">
-import { useRoute, useAsyncData, useHead, queryContent } from 'nuxt/app';
+import { useRoute, useAsyncData, useHead } from 'nuxt/app';
 import { computed } from 'vue';
 
 // Define an interface for the blog post data structure
@@ -200,7 +200,7 @@ const { data: relatedPosts } = await useAsyncData(
       .sort({ date: -1 })
       .limit(4)
       .find();
-    
+
     // Filter posts that share categories and limit to 2
     return related.filter(post => 
       post.categories?.some(cat => data.value?.categories?.includes(cat))
