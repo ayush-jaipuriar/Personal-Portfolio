@@ -6,7 +6,7 @@
         v-motion-fade-visible-once
         class="text-center mb-16"
       >
-        <h1 class="text-4xl md:text-5xl font-bold mb-6">Skills & Expertise</h1>
+        <h1 class="text-4xl md:text-5xl font-bold mb-6 text-gray-900 dark:text-white">Skills & Expertise</h1>
         <p class="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
           A comprehensive overview of my technical skills, tools, and areas of expertise.
         </p>
@@ -19,7 +19,7 @@
       >
         <!-- Programming Languages -->
         <div>
-          <h2 class="text-2xl font-bold mb-6 pb-2 border-b border-gray-200 dark:border-gray-800">
+          <h2 class="text-2xl font-bold mb-6 pb-2 border-b border-gray-200 dark:border-gray-800 text-gray-900 dark:text-white">
             Programming Languages
           </h2>
           <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
@@ -36,7 +36,7 @@
 
         <!-- Frameworks & Libraries -->
         <div>
-          <h2 class="text-2xl font-bold mb-6 pb-2 border-b border-gray-200 dark:border-gray-800">
+          <h2 class="text-2xl font-bold mb-6 pb-2 border-b border-gray-200 dark:border-gray-800 text-gray-900 dark:text-white">
             Frameworks & Libraries
           </h2>
           <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
@@ -64,7 +64,7 @@
 
         <!-- Databases -->
         <div>
-          <h2 class="text-2xl font-bold mb-6 pb-2 border-b border-gray-200 dark:border-gray-800">
+          <h2 class="text-2xl font-bold mb-6 pb-2 border-b border-gray-200 dark:border-gray-800 text-gray-900 dark:text-white">
             Databases
           </h2>
           <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
@@ -78,7 +78,7 @@
 
         <!-- Cloud & DevOps -->
         <div>
-          <h2 class="text-2xl font-bold mb-6 pb-2 border-b border-gray-200 dark:border-gray-800">
+          <h2 class="text-2xl font-bold mb-6 pb-2 border-b border-gray-200 dark:border-gray-800 text-gray-900 dark:text-white">
             Cloud & DevOps
           </h2>
           <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
@@ -97,7 +97,7 @@
 
         <!-- Tools & Software -->
         <div>
-          <h2 class="text-2xl font-bold mb-6 pb-2 border-b border-gray-200 dark:border-gray-800">
+          <h2 class="text-2xl font-bold mb-6 pb-2 border-b border-gray-200 dark:border-gray-800 text-gray-900 dark:text-white">
             Tools & Software
           </h2>
           <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
@@ -116,7 +116,7 @@
 
         <!-- Concepts & Methodologies -->
         <div>
-          <h2 class="text-2xl font-bold mb-6 pb-2 border-b border-gray-200 dark:border-gray-800">
+          <h2 class="text-2xl font-bold mb-6 pb-2 border-b border-gray-200 dark:border-gray-800 text-gray-900 dark:text-white">
             Concepts & Methodologies
           </h2>
           <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
@@ -136,7 +136,7 @@
 
         <!-- Soft Skills -->
         <div>
-          <h2 class="text-2xl font-bold mb-6 pb-2 border-b border-gray-200 dark:border-gray-800">
+          <h2 class="text-2xl font-bold mb-6 pb-2 border-b border-gray-200 dark:border-gray-800 text-gray-900 dark:text-white">
             Soft Skills
           </h2>
           <div class="grid grid-cols-2 md:grid-cols-3 gap-4">

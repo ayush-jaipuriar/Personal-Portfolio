@@ -21,7 +21,7 @@
       <!-- Error State -->
       <div v-else-if="error || !data" class="text-center py-20">
         <Icon name="heroicons:exclamation-triangle" class="h-16 w-16 text-red-500 mb-4 mx-auto" aria-hidden="true" />
-        <h1 class="text-2xl font-bold mb-2">Post Not Found</h1>
+        <h1 class="text-2xl font-bold mb-2 text-gray-900 dark:text-white">Post Not Found</h1>
         <p class="text-gray-600 dark:text-gray-400 mb-8">
           The blog post you're looking for doesn't exist or has been removed.
         </p>
@@ -37,7 +37,7 @@
       <article v-else class="animate-fade-in">
          <!-- Post Title -->
          <header class="mb-12">
-           <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-6">{{ data.title }}</h1>
+           <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-gray-900 dark:text-white">{{ data.title }}</h1>
            
            <!-- Post Metadata -->
            <div class="flex items-center text-sm text-gray-500 dark:text-gray-400 mb-8">
@@ -171,6 +171,9 @@ interface BlogPost {
   description?: string;
   body?: any; // For content body
 }
+
+// Nuxt auto-imports queryContent at runtime, but local TS tooling may not always infer it.
+declare const queryContent: <T = BlogPost>(...args: any[]) => any;
 
 // Get the current route params
 const route = useRoute();

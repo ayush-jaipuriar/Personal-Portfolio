@@ -55,7 +55,7 @@
             <div class="relative w-64 h-64 md:w-80 md:h-80 mx-auto rounded-full overflow-hidden shadow-2xl border-4 border-white dark:border-gray-800">
               <img 
                 src="/ayush-jaipuriar.jpeg" 
-                alt="Your Name" 
+                alt="Ayush Jaipuriar - AI Agent Engineer" 
                 class="w-full h-full object-cover"
               />
             </div>
@@ -73,7 +73,7 @@
 </template>
 
 <script setup lang="ts">
-import { useHead } from '@unhead/vue';
+import { useHead } from '#imports';
 
 // Define metadata for the page
 useHead({

@@ -6,7 +6,7 @@
         v-motion-fade-visible-once
         class="text-center mb-16"
       >
-        <h1 class="text-4xl md:text-5xl font-bold mb-6">Blog</h1>
+        <h1 class="text-4xl md:text-5xl font-bold mb-6 text-gray-900 dark:text-white">Blog</h1>
         <p class="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
           My thoughts, tutorials, and insights about web development, technology, and software engineering.
         </p>
@@ -54,7 +54,7 @@
       <!-- Error State -->
       <div v-else-if="error" class="text-center py-20">
         <Icon name="heroicons:exclamation-triangle" class="h-16 w-16 text-red-500 mb-4 mx-auto" aria-hidden="true" />
-        <h2 class="text-2xl font-bold mb-2">Failed to Load Posts</h2>
+        <h2 class="text-2xl font-bold mb-2 text-gray-900 dark:text-white">Failed to Load Posts</h2>
         <p class="text-gray-600 dark:text-gray-400 mb-8">
           There was an error loading the blog posts. Please try again later.
         </p>
@@ -163,7 +163,7 @@
       <!-- Empty State -->
       <div v-else class="text-center py-20">
         <Icon name="heroicons:document-text" class="h-16 w-16 text-gray-400 mb-4 mx-auto" aria-hidden="true" />
-        <h2 class="text-2xl font-bold mb-2">No Posts Found</h2>
+        <h2 class="text-2xl font-bold mb-2 text-gray-900 dark:text-white">No Posts Found</h2>
         <p class="text-gray-600 dark:text-gray-400 mb-8">
           {{ selectedCategory ? `No posts found in the "${selectedCategory}" category.` : 'No blog posts have been published yet.' }}
         </p>
@@ -181,7 +181,7 @@
 
 <script setup lang="ts">
 import { ref, computed, watch } from 'vue';
-import { useHead } from '@unhead/vue';
+import { useHead, useAsyncData } from 'nuxt/app';
 
 // Define interface for blog post
 interface BlogPost {
@@ -193,6 +193,9 @@ interface BlogPost {
   readingTime?: string;
   categories?: string[];
 }
+
+// Nuxt auto-imports queryContent at runtime, but local TS tooling may not always infer it.
+declare const queryContent: <T = BlogPost>(...args: any[]) => any;
 
 // Page metadata
 useHead({
@@ -252,7 +255,7 @@ const paginatedPosts = computed(() => {
 });
 
 const visiblePages = computed(() => {
-  const pages = [];
+  const pages: number[] = [];
   const start = Math.max(1, currentPage.value - 2);
   const end = Math.min(totalPages.value, currentPage.value + 2);
   

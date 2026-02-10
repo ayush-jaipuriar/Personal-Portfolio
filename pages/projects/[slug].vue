@@ -14,7 +14,7 @@
 
       <!-- Project Header -->
       <div class="mb-12 animate-fade-in">
-        <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-6">{{ project.title }}</h1>
+        <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-gray-900 dark:text-white">{{ project.title }}</h1>
         
         <!-- Project Links -->
         <div class="flex flex-wrap gap-4 mb-8">
@@ -68,7 +68,7 @@
       <div class="space-y-12 animate-slide-up" style="animation-delay: 0.3s;">
         <!-- Overview Section -->
         <section>
-          <h2 class="text-2xl font-bold mb-4 pb-2 border-b border-gray-200 dark:border-gray-800">
+          <h2 class="text-2xl font-bold mb-4 pb-2 border-b border-gray-200 dark:border-gray-800 text-gray-900 dark:text-white">
             Project Overview
           </h2>
           <div class="prose prose-lg dark:prose-invert max-w-none">
@@ -82,7 +82,7 @@
         
         <!-- Problem/Challenge Section -->
         <section>
-          <h2 class="text-2xl font-bold mb-4 pb-2 border-b border-gray-200 dark:border-gray-800">
+          <h2 class="text-2xl font-bold mb-4 pb-2 border-b border-gray-200 dark:border-gray-800 text-gray-900 dark:text-white">
             Problem & Challenge
           </h2>
           <div class="prose prose-lg dark:prose-invert max-w-none">
@@ -95,7 +95,7 @@
         
         <!-- My Role & Contributions -->
         <section>
-          <h2 class="text-2xl font-bold mb-4 pb-2 border-b border-gray-200 dark:border-gray-800">
+          <h2 class="text-2xl font-bold mb-4 pb-2 border-b border-gray-200 dark:border-gray-800 text-gray-900 dark:text-white">
             My Role & Contributions
           </h2>
           <div class="prose prose-lg dark:prose-invert max-w-none">
@@ -108,7 +108,7 @@
         
         <!-- Process & Solution -->
         <section>
-          <h2 class="text-2xl font-bold mb-4 pb-2 border-b border-gray-200 dark:border-gray-800">
+          <h2 class="text-2xl font-bold mb-4 pb-2 border-b border-gray-200 dark:border-gray-800 text-gray-900 dark:text-white">
             Process & Solution
           </h2>
           <div class="prose prose-lg dark:prose-invert max-w-none">
@@ -134,7 +134,7 @@
         
         <!-- Project Outcome & Impact -->
         <section>
-          <h2 class="text-2xl font-bold mb-4 pb-2 border-b border-gray-200 dark:border-gray-800">
+          <h2 class="text-2xl font-bold mb-4 pb-2 border-b border-gray-200 dark:border-gray-800 text-gray-900 dark:text-white">
             Outcome & Impact
           </h2>
           <div class="prose prose-lg dark:prose-invert max-w-none">
@@ -154,7 +154,7 @@
         
         <!-- Lessons Learned -->
         <section>
-          <h2 class="text-2xl font-bold mb-4 pb-2 border-b border-gray-200 dark:border-gray-800">
+          <h2 class="text-2xl font-bold mb-4 pb-2 border-b border-gray-200 dark:border-gray-800 text-gray-900 dark:text-white">
             Lessons Learned
           </h2>
           <div class="prose prose-lg dark:prose-invert max-w-none">
@@ -167,7 +167,7 @@
         
         <!-- Additional Screenshots -->
         <section>
-          <h2 class="text-2xl font-bold mb-4 pb-2 border-b border-gray-200 dark:border-gray-800">
+          <h2 class="text-2xl font-bold mb-4 pb-2 border-b border-gray-200 dark:border-gray-800 text-gray-900 dark:text-white">
             Project Gallery
           </h2>
           <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
@@ -205,7 +205,7 @@
     
     <!-- Error State -->
     <div v-else class="max-w-4xl mx-auto text-center py-12">
-      <h1 class="text-3xl font-bold mb-4">Project Not Found</h1>
+      <h1 class="text-3xl font-bold mb-4 text-gray-900 dark:text-white">Project Not Found</h1>
       <p class="text-gray-600 dark:text-gray-400 mb-8">
         The project you're looking for doesn't exist or has been removed.
       </p>
@@ -265,7 +265,7 @@ const project = computed(() => {
 
 // Define metadata for the page
 useHead({
-  title: computed(() => project.value ? `${project.value.title} | Your Name` : 'Project Not Found | Your Name'),
+  title: computed(() => project.value ? `${project.value.title} | Ayush Jaipuriar` : 'Project Not Found | Ayush Jaipuriar'),
   meta: [
     {
       name: 'description',

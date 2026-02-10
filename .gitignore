@@ -29,4 +29,23 @@ yarn-error.log*
 !.env.example
 
 # TypeScript
-*.tsbuildinfo 
+*.tsbuildinfo
+
+# Backup files (created by sed, editors, etc.)
+*.bak
+*.backup
+*.orig
+*.swp
+*.swo
+*~
+
+# Root-level PDFs (resume lives in public/resume/)
+/*.pdf
+
+# Credentials & secrets
+*.key
+*.pem
+*.p12
+credentials.json
+serviceAccount*.json
+.credentials/

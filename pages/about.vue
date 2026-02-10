@@ -6,7 +6,7 @@
         v-motion-fade-visible-once
         class="text-center mb-16"
       >
-        <h1 class="text-4xl md:text-5xl font-bold mb-6">About Me</h1>
+        <h1 class="text-4xl md:text-5xl font-bold mb-6 text-gray-900 dark:text-white">About Me</h1>
         <p class="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
           Get to know more about my background, journey, and what drives me as a developer.
         </p>
@@ -82,7 +82,7 @@
             v-motion-fade-visible-once
             class="prose dark:prose-invert prose-lg max-w-none mb-12"
           >
-            <h2 class="text-3xl font-semibold mb-6">Summary</h2>
+            <h2 class="text-3xl font-semibold mb-6 text-gray-900 dark:text-white">Summary</h2>
             <p class="dark:text-gray-300">
               A highly motivated and results-oriented Software Engineer currently contributing to key platform development at TransUnion. My experience is built upon a significant and progressive 4+ year tenure at Highradius, where I honed a comprehensive skill set across the entire software development lifecycle, from conception to deployment and maintenance. Based in the tech hub of Hyderabad, Telangana, India, I excel at tackling complex technical challenges and delivering high-quality software solutions.
             </p>
@@ -102,7 +102,7 @@
           <div class="space-y-12">
             <!-- Work Experience -->
             <div v-motion-fade-visible-once>
-              <h2 class="text-3xl font-semibold mb-6">Work Experience</h2>
+              <h2 class="text-3xl font-semibold mb-6 text-gray-900 dark:text-white">Work Experience</h2>
               <div class="space-y-6">
                 <!-- TransUnion -->
                 <div class="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-sm">
@@ -171,7 +171,7 @@
 
             <!-- Education -->
             <div v-motion-fade-visible-once>
-              <h2 class="text-3xl font-semibold mb-6">Education</h2>
+              <h2 class="text-3xl font-semibold mb-6 text-gray-900 dark:text-white">Education</h2>
               <div class="space-y-6">
                 <div class="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-sm">
                   <h3 class="text-xl font-semibold text-gray-900 dark:text-white">BTech - Bachelor of Technology, Computer Science</h3>
@@ -186,7 +186,7 @@
 
             <!-- Certifications -->
             <div v-motion-fade-visible-once>
-              <h2 class="text-3xl font-semibold mb-6">Certifications</h2>
+              <h2 class="text-3xl font-semibold mb-6 text-gray-900 dark:text-white">Certifications</h2>
               <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div class="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-sm">
                   <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Modern Java - Functional Programming, Lambdas, Streams, Parallelism and Beyond</h3>
@@ -213,7 +213,7 @@
 
             <!-- Honors & Awards -->
             <div v-motion-fade-visible-once>
-              <h2 class="text-3xl font-semibold mb-6">Honors & Awards</h2>
+              <h2 class="text-3xl font-semibold mb-6 text-gray-900 dark:text-white">Honors & Awards</h2>
               <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div class="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-sm">
                   <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Star Team Award</h3>
@@ -234,7 +234,7 @@
 </template>
 
 <script setup lang="ts">
-import { useHead } from '@unhead/vue';
+import { useHead } from '#imports';
 
 // Define metadata for the page
 useHead({

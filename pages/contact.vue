@@ -6,7 +6,7 @@
         v-motion-fade-visible-once
         class="text-center mb-16"
       >
-        <h1 class="text-4xl md:text-5xl font-bold mb-6">Get In Touch</h1>
+        <h1 class="text-4xl md:text-5xl font-bold mb-6 text-gray-900 dark:text-white">Get In Touch</h1>
         <p class="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
           Have a question or want to work together? Feel free to reach out using the form below or through social media.
         </p>
@@ -241,7 +241,7 @@ const submitContactForm = async () => {
       submitStatus.value = '';
       submitMessage.value = '';
     }, 5000);
-  } catch (error) {
+  } catch {
     submitStatus.value = 'error';
     submitMessage.value = 'There was an error sending your message. Please try again or contact me directly via email.';
   } finally {
