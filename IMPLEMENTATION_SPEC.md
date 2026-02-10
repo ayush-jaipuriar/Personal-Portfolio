@@ -441,20 +441,31 @@ This file is populated with real data in Phase 3.
 
 ### 5.6 Phase 2 Checklist
 
-- [ ] Homepage hero rewritten: new tagline, new CTAs ("See My Work" + "Download Resume")
-- [ ] `AvailableBadge.vue` component created and visible in hero
-- [ ] `MetricsBar.vue` component created with 5 metrics (static numbers for now)
-- [ ] `FeaturedProjects.vue` component created (placeholder data OK, real data in Phase 3)
-- [ ] `SkillsSnapshot.vue` component created with top 8-10 skills and icons
-- [ ] `LatestPosts.vue` component created (graceful empty state if no blog posts)
-- [ ] `ConnectCTA.vue` component created with availability messaging
-- [ ] Header updated: "Open to Work" badge, Resume download link, reordered nav
-- [ ] Footer updated: email, quick nav, availability note, dynamic year
-- [ ] `public/resume/Ayush_Jaipuriar_Resume.pdf` exists and is downloadable
-- [ ] `data/projects.ts` created with TypeScript interface (data filled in Phase 3)
-- [ ] Homepage tested in light/dark mode at mobile/tablet/desktop
-- [ ] All internal links work (no 404s)
-- [ ] "Download Resume" initiates browser download of the PDF
+- [x] Homepage hero rewritten: new tagline, new CTAs ("See My Work" + "Download Resume")
+- [x] `AvailableBadge.vue` component created and visible in hero
+- [x] `MetricsBar.vue` component created with 5 metrics (static numbers for now)
+- [x] `FeaturedProjects.vue` component created (placeholder data OK, real data in Phase 3)
+- [x] `SkillsSnapshot.vue` component created with top 8-10 skills and icons
+- [x] `LatestPosts.vue` component created (graceful empty state if no blog posts)
+- [x] `ConnectCTA.vue` component created with availability messaging
+- [x] Header updated: "Open to Work" badge, Resume download link, reordered nav
+- [x] Footer updated: email, quick nav, availability note, dynamic year
+- [x] `public/resume/Ayush_Jaipuriar_Resume.pdf` exists and is downloadable
+- [x] `data/projects.ts` created with TypeScript interface (data filled in Phase 3)
+- [x] Homepage tested in light/dark mode at mobile/tablet/desktop
+- [x] All internal links work (no 404s)
+- [x] "Download Resume" initiates browser download of the PDF
+
+**Implementation Notes (Feb 10, 2026):**
+- Rebuilt `pages/index.vue` into a six-section landing flow: hero, metrics, featured projects, skills snapshot, latest posts, and connect CTA.
+- Added new homepage components: `components/AvailableBadge.vue`, `components/MetricsBar.vue`, `components/FeaturedProjects.vue`, `components/SkillsSnapshot.vue`, `components/LatestPosts.vue`, and `components/ConnectCTA.vue`.
+- Added shared project data model in `data/projects.ts` and wired `FeaturedProjects` to this single source of truth.
+- Updated `components/AppHeader.vue` (open-to-work badge, nav reorder, resume download link) and `components/AppFooter.vue` (email, quick links, availability note, dynamic year).
+- Fixed slug compatibility by refactoring `pages/projects/[slug].vue` to consume `data/projects.ts`, preventing homepage featured cards from routing to "Project Not Found".
+- Fixed Nuxt page-root warning in `pages/index.vue` and validated clean diagnostics with `ReadLints`.
+- Made resume links deployment-safe for GitHub Pages subpath by using `runtimeConfig.app.baseURL` in `pages/index.vue`, `components/AppHeader.vue`, and `components/ConnectCTA.vue`.
+- Verification completed: browser checks (home/about/skills/projects/blog/contact and project slug), resume link attributes (`href` + `download`), and successful static generation via `yarn generate` (50 prerendered routes).
+- **Next step:** Phase 3 — rewrite `pages/projects/index.vue` and deepen case-study presentation components.
 
 ---
 
