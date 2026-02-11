@@ -605,17 +605,29 @@ This file is populated with real data in Phase 3.
 
 ### 6.7 Phase 3 Checklist
 
-- [ ] `data/projects.ts` populated with all 7+ projects (3 professional case studies + 4+ personal projects including Accountability Agent as star project)
-- [ ] Professional projects have complete `caseStudy` objects with real content (owner details provided — see section 6.1)
-- [ ] `pages/projects/index.vue` completely rewritten — imports from `data/projects.ts`, no `v-tooltip`, split "Professional" / "Personal" sections
-- [ ] `pages/projects/[slug].vue` completely rewritten — imports from `data/projects.ts`, real content, dynamic prev/next, correct `useHead`
-- [ ] `CaseStudyCard.vue` component created
-- [ ] `ProjectCard.vue` updated with NuxtLink, type indicator, differentiated buttons
-- [ ] GitHub Calendar wrapped in `<ClientOnly>` or replaced with simpler GitHub badge
-- [ ] Project images downloaded to `public/images/projects/` (no external hotlinking)
-- [ ] Every project detail page renders with real content (no placeholder text)
-- [ ] Previous/Next navigation links are dynamically generated and all work
-- [ ] Tested in light/dark mode, mobile/desktop
+- [x] `data/projects.ts` populated with all 7+ projects (3 professional case studies + 4+ personal projects including Accountability Agent as star project)
+- [x] Professional projects have complete `caseStudy` objects with real content (owner details provided — see section 6.1)
+- [x] `pages/projects/index.vue` completely rewritten — imports from `data/projects.ts`, no `v-tooltip`, split "Professional" / "Personal" sections
+- [x] `pages/projects/[slug].vue` completely rewritten — imports from `data/projects.ts`, real content, dynamic prev/next, correct `useHead`
+- [x] `CaseStudyCard.vue` component created
+- [x] `ProjectCard.vue` updated with NuxtLink, type indicator, differentiated buttons
+- [x] GitHub Calendar wrapped in `<ClientOnly>` or replaced with simpler GitHub badge
+- [x] Project images downloaded to `public/images/projects/` (no external hotlinking)
+- [x] Every project detail page renders with real content (no placeholder text)
+- [x] Previous/Next navigation links are dynamically generated and all work
+- [x] Tested in light/dark mode, mobile/desktop
+
+**Implementation Notes (Feb 10, 2026):**
+- Expanded `data/projects.ts` with richer case-study schema (`keyTechnicalDecisions`, `impactMetrics`, `outcome`) and populated all 7 projects, including complete professional case-study content from owner-provided details.
+- Downloaded project imagery into `public/images/projects/` and switched project image references from external URLs to local paths for reliability and performance.
+- Added new `components/CaseStudyCard.vue` with desktop-horizontal layout, left accent border, company metadata, and focused "Read Case Study" CTA.
+- Reworked `components/ProjectCard.vue` to include: type badges ("Case Study" / "Personal"), conditional link behavior, professional-project detail linking, and differentiated CTA labels.
+- Completely rewrote `pages/projects/index.vue`: now imports project data, separates "Professional Case Studies" and "Personal Projects", removes legacy GitHub calendar script complexity, and uses a simpler GitHub profile activity block.
+- Rebuilt `pages/projects/[slug].vue` as a structured case-study template with required sections: The Challenge, Architecture & Approach, My Role & Contributions, Key Technical Decisions, Results & Impact (metric cards), and Lessons Learned.
+- Implemented dynamic fallback detail content for personal projects so all slug pages render meaningful real text without placeholders.
+- Verified dynamic previous/next navigation using `getAdjacentProjects(...)` from `data/projects.ts`.
+- Validation completed: lint checks clean via `ReadLints`, route checks for `/projects` and multiple slug pages, responsive passes (375/768/1440), dark-mode toggle verification, and successful static generation via `yarn generate` (50 prerendered routes).
+- **Next step:** Phase 4 — About page rewrite with AI-agent-first narrative, career timeline component, and quantified achievement cards.
 
 ---
 

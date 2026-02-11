@@ -1,76 +1,140 @@
 <template>
-  <article 
-    class="group flex flex-col overflow-hidden rounded-2xl border border-gray-200 dark:border-gray-800 hover:shadow-lg transition-all duration-300 bg-white dark:bg-gray-900"
+  <article
+    class="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 shadow-apple-sm hover:shadow-apple-lg hover:-translate-y-0.5 transition-all duration-300"
   >
-    <!-- Project Image with Aspect Ratio -->
-    <div class="relative w-full aspect-video overflow-hidden bg-gray-100 dark:bg-gray-800">
-      <img 
-        :src="project.image" 
-        :alt="project.title" 
-        class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+    <span
+      :class="[
+        'absolute right-3 top-3 z-10 inline-flex items-center rounded-full px-2.5 py-1 text-[11px] font-semibold',
+        isCaseStudy
+          ? 'bg-apple-blue-100 dark:bg-apple-blue-900/30 text-apple-blue-700 dark:text-apple-blue-300'
+          : 'bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300',
+      ]"
+    >
+      {{ isCaseStudy ? 'Case Study' : 'Personal' }}
+    </span>
+
+    <NuxtLink
+      v-if="isCaseStudy"
+      :to="detailPath"
+      class="relative block w-full aspect-video overflow-hidden bg-gray-100 dark:bg-gray-800"
+      :aria-label="`Open ${project.title} case study`"
+    >
+      <img
+        :src="project.image"
+        :alt="project.title"
+        class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+        loading="lazy"
+      />
+    </NuxtLink>
+
+    <a
+      v-else-if="project.githubLink"
+      :href="project.githubLink"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="relative block w-full aspect-video overflow-hidden bg-gray-100 dark:bg-gray-800"
+      :aria-label="`Open ${project.title} on GitHub`"
+    >
+      <img
+        :src="project.image"
+        :alt="project.title"
+        class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+        loading="lazy"
+      />
+    </a>
+
+    <div
+      v-else
+      class="relative block w-full aspect-video overflow-hidden bg-gray-100 dark:bg-gray-800"
+    >
+      <img
+        :src="project.image"
+        :alt="project.title"
+        class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+        loading="lazy"
       />
     </div>
-    
-    <!-- Project Info -->
-    <div class="flex-1 flex flex-col p-6">
-      <!-- Tags/Technologies -->
-      <div class="flex flex-wrap gap-2 mb-3">
-        <span 
-          v-for="(tech, index) in project.technologies" 
-          :key="index"
-          class="px-2 py-1 text-xs rounded-full bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300"
+
+    <div class="flex flex-1 flex-col p-6">
+      <div class="mb-3 flex flex-wrap gap-2">
+        <span
+          v-for="tech in project.technologies.slice(0, 4)"
+          :key="tech"
+          class="rounded-full bg-gray-100 dark:bg-gray-800 px-2.5 py-1 text-xs text-gray-700 dark:text-gray-300"
         >
           {{ tech }}
         </span>
       </div>
-      
-      <!-- Title -->
-      <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">
+
+      <NuxtLink
+        v-if="isCaseStudy"
+        :to="detailPath"
+        class="text-xl font-semibold text-gray-900 dark:text-white mb-2 group-hover:text-apple-blue-600 dark:group-hover:text-apple-blue-400 transition-colors"
+      >
+        {{ project.title }}
+      </NuxtLink>
+
+      <a
+        v-else-if="project.githubLink"
+        :href="project.githubLink"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="text-xl font-semibold text-gray-900 dark:text-white mb-2 group-hover:text-apple-blue-600 dark:group-hover:text-apple-blue-400 transition-colors"
+      >
+        {{ project.title }}
+      </a>
+
+      <h3 v-else class="text-xl font-semibold text-gray-900 dark:text-white mb-2">
         {{ project.title }}
       </h3>
-      
-      <!-- Description -->
-      <p class="text-gray-600 dark:text-gray-400 mb-4 line-clamp-3">
-        {{ project.description }}
+
+      <p class="text-gray-600 dark:text-gray-400 mb-6 line-clamp-3">
+        {{ project.shortDescription || project.description }}
       </p>
-      
-      <!-- Links and More Info - Push to Bottom -->
-      <div class="mt-auto flex justify-between items-center pt-4">
-        <!-- View Project Button -->
-        <a 
-          v-if="project.githubLink" 
-          :href="project.githubLink" 
-          target="_blank" 
-          rel="noopener noreferrer"
-          class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-apple-blue-600 hover:bg-apple-blue-700 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-apple-blue-500"
+
+      <div class="mt-auto flex items-center justify-between gap-3">
+        <NuxtLink
+          v-if="isCaseStudy"
+          :to="detailPath"
+          class="inline-flex items-center rounded-md bg-apple-blue-600 px-4 py-2 text-sm font-medium text-white hover:bg-apple-blue-700 transition-colors"
         >
-          View Project
-          <Icon name="heroicons:arrow-up-right" class="ml-1 h-4 w-4" aria-hidden="true" />
+          Read Case Study
+          <Icon name="heroicons:arrow-right" class="ml-1.5 h-4 w-4" aria-hidden="true" />
+        </NuxtLink>
+
+        <a
+          v-else-if="project.githubLink"
+          :href="project.githubLink"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center rounded-md bg-apple-blue-600 px-4 py-2 text-sm font-medium text-white hover:bg-apple-blue-700 transition-colors"
+        >
+          View on GitHub
+          <Icon name="heroicons:arrow-up-right" class="ml-1.5 h-4 w-4" aria-hidden="true" />
         </a>
-        <!-- Fallback if no GitHub link -->
-        <span v-else class="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-400 dark:text-gray-600">No Link</span>
-        
-        <!-- External Links -->
-        <div class="flex space-x-2">
-          <a 
-            v-if="project.githubLink" 
-            :href="project.githubLink" 
+
+        <span v-else class="text-sm text-gray-400 dark:text-gray-600">No external link</span>
+
+        <div class="flex items-center gap-2">
+          <a
+            v-if="project.githubLink"
+            :href="project.githubLink"
             target="_blank"
             rel="noopener noreferrer"
-            class="text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white transition-colors duration-200"
-            aria-label="View GitHub Repository"
+            class="text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white transition-colors"
+            aria-label="View GitHub repository"
           >
-            <Icon name="mdi:github" class="h-6 w-6" aria-hidden="true" />
+            <Icon name="mdi:github" class="h-5 w-5" aria-hidden="true" />
           </a>
-          <a 
-            v-if="project.liveLink" 
-            :href="project.liveLink" 
+          <a
+            v-if="project.liveLink"
+            :href="project.liveLink"
             target="_blank"
             rel="noopener noreferrer"
-            class="text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white transition-colors duration-200"
-            aria-label="View Live Demo"
+            class="text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white transition-colors"
+            aria-label="View live demo"
           >
-            <Icon name="heroicons:globe-alt" class="h-6 w-6" aria-hidden="true" />
+            <Icon name="heroicons:globe-alt" class="h-5 w-5" aria-hidden="true" />
           </a>
         </div>
       </div>
@@ -79,22 +143,13 @@
 </template>
 
 <script setup lang="ts">
-// Define props
-defineProps({
-  project: {
-    type: Object,
-    required: true,
-    // Expected project object structure
-    default: () => ({
-      title: '',
-      slug: '',
-      description: '',
-      image: '',
-      technologies: [],
-      detailsLink: '', // Optional: Will use /projects/{slug} if not provided
-      githubLink: '',  // Optional: GitHub repository URL
-      liveLink: ''     // Optional: Live demo URL
-    })
-  }
-});
-</script> 
+import { computed } from 'vue'
+import type { Project } from '~/data/projects'
+
+const props = defineProps<{
+  project: Project
+}>()
+
+const isCaseStudy = computed(() => props.project.type === 'professional')
+const detailPath = computed(() => `/projects/${props.project.slug}`)
+</script>
