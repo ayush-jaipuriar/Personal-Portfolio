@@ -818,15 +818,34 @@ Current component is minimal (32 lines). Needs:
 
 ### 8.5 Phase 5 Checklist
 
-- [ ] `data/skills.ts` created with all skills categorized into tiers
-- [ ] "AI & Machine Learning" section prominently featured at top of page
-- [ ] Core Expertise skills displayed with icons, context, and years
-- [ ] Proficient skills in medium grid
-- [ ] Familiar skills as small pills
-- [ ] `SkillItem.vue` updated to support tier-based rendering
-- [ ] Icons render correctly for each skill (test `nuxt-icon` with logo identifiers)
-- [ ] Page tested in light/dark mode, mobile/desktop
-- [ ] Staggered entrance animations work on scroll
+- [x] `data/skills.ts` created with all skills categorized into tiers
+- [x] "AI & Machine Learning" section prominently featured at top of page
+- [x] Core Expertise skills displayed with icons, context, and years
+- [x] Proficient skills in medium grid
+- [x] Familiar skills as small pills
+- [x] `SkillItem.vue` updated to support tier-based rendering
+- [x] Icons render correctly for each skill (test `nuxt-icon` with logo identifiers)
+- [x] Page tested in light/dark mode, mobile/desktop
+- [x] Staggered entrance animations work on scroll
+
+**Implementation Notes (Feb 11, 2026):**
+- Added new typed skill source at `data/skills.ts` with tier-based modeling (`core` / `proficient` / `familiar`), category grouping, contextual descriptions, years of experience, and production-usage markers.
+- Rebuilt `pages/skills.vue` into a data-driven architecture with explicit section hierarchy:
+  - **AI & Machine Learning** (accent-highlighted top section)
+  - **Core Expertise** (large cards with context + years + production badges)
+  - **Proficient** (medium grid cards)
+  - **Familiar & Exploring** (compact pill layout)
+  - **Concepts & Methodologies** and **Soft Skills** (tag/grid presentation)
+- Updated `components/SkillItem.vue` to support tier-based rendering in one reusable component, including conditional icon display, context text, years badge, and production indicator.
+- Added `components/SectionHeading.vue` to standardize section title/subtitle/icon structure and reduce repeated markup in the page.
+- Implemented staggered, scroll-triggered animations with `v-motion` using index-based delays across AI, core, proficient, and soft-skill sections.
+- Validation completed:
+  - Lint checks (`ReadLints`) are clean for `pages/skills.vue`, `components/SkillItem.vue`, `components/SectionHeading.vue`, and `data/skills.ts`.
+  - Runtime checks on `/skills` confirm section rendering, AI-first ordering, and responsive behavior.
+  - Theme toggle and mobile navigation behavior verified via browser automation.
+  - Browser console shows no skill-page-specific errors during rendering.
+  - Static generation succeeded via `yarn generate` with 50 prerendered routes including `/skills`.
+- **Next step:** Phase 6 - Blog system rebuild (content cleanup, empty state, and reusable post template).
 
 ---
 
