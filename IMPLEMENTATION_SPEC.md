@@ -687,18 +687,40 @@ Add a brief personal section (3-4 sentences) after the professional content. Con
 
 ### 7.5 Phase 4 Checklist
 
-- [ ] TransUnion role title updated to reflect AI Agent Engineering
-- [ ] TransUnion description completely rewritten with AI agent + search product details
-- [ ] Champ Award correctly attributed to TransUnion with description
-- [ ] Education section includes KIIT ECELL and KodeRunners activities
-- [ ] Summary paragraph rewritten to lead with AI narrative
-- [ ] Technical expertise reordered: AI/ML first
-- [ ] `CareerTimeline.vue` component created with all 7 career entries
-- [ ] Timeline animates on scroll
-- [ ] Achievement highlight cards added (92%, 30+, 50+, Production AI)
-- [ ] "What Drives Me" section added (content provided — see section 7.4)
-- [ ] Resume download button added to About page
-- [ ] Tested in light/dark mode, mobile/desktop
+- [x] TransUnion role title updated to reflect AI Agent Engineering
+- [x] TransUnion description completely rewritten with AI agent + search product details
+- [x] Champ Award correctly attributed to TransUnion with description
+- [x] Education section includes KIIT ECELL and KodeRunners activities
+- [x] Summary paragraph rewritten to lead with AI narrative
+- [x] Technical expertise reordered: AI/ML first
+- [x] `CareerTimeline.vue` component created with all 7 career entries
+- [x] Timeline animates on scroll
+- [x] Achievement highlight cards added (92%, 30+, 50+, Production AI)
+- [x] "What Drives Me" section added (content provided — see section 7.4)
+- [x] Resume download button added to About page
+- [x] Tested in light/dark mode, mobile/desktop
+
+**Implementation Notes (Feb 11, 2026):**
+- Rewrote `pages/about.vue` into a storytelling layout with stronger information hierarchy: profile + resume CTA, AI-first summary, explicit TransUnion split section, quantified impact cards, timeline section, education, certifications, and "What Drives Me".
+- Added explicit TransUnion narrative with two focused subsections:
+  - **AI Agent Engineering (Current):** NLP-to-SQL, NLP search, Neo4j knowledge graph workflows, Superset dashboard generation, RAG Q&A, anomaly and missing-pattern detection, plus LangGraph orchestration and MLFlow deployment.
+  - **Search Product Development (Previous):** TB-scale search architecture with sub-7-second latency using DuckDB, Google Cloud Dataproc, and Trino, including dynamic pod scaling and geofencing use cases.
+- Moved and clarified recognition inside the TransUnion context: "Champ Award (Jan 2025) for work on Research Perspective and CIBIL Dispute Resolution Platform".
+- Reordered technical expertise to match spec intent: **AI/ML -> Backend -> Frontend -> DevOps/Cloud -> Tools**.
+- Created new `components/CareerTimeline.vue` with all 7 entries, mobile-left/desktop-centered timeline structure, alternating desktop card alignment, active-role pulsing indicator, and per-entry `v-motion` fade + slide animation (`:initial` + `:visible-once`).
+- Added achievement cards in `pages/about.vue` with value + metric + supporting context copy:
+  - `92%` API Optimization
+  - `30+` Enterprise Clients
+  - `50+` Automated Tests
+  - `Active` Production AI Agents
+- Updated education content to include activities ("KIIT ECELL, KodeRunners") and preserved resume download with deployment-safe base URL via `useRuntimeConfig().app.baseURL`.
+- Validation completed:
+  - Lint checks (`ReadLints`) clean for `pages/about.vue` and `components/CareerTimeline.vue`.
+  - Runtime checks on `/about` confirm correct title/meta, content rendering, link presence, and responsive navigation behavior.
+  - Theme toggle and mobile/desktop viewport checks executed via browser automation.
+  - Static generation succeeded via `yarn generate` with 50 prerendered routes including `/about`.
+- Environment fix (non-source): removed accidental duplicated dependency artifacts in `node_modules` (files suffixed with ` 2`) that were causing Nuxt auto-import compilation failures. No tracked source code behavior was changed by this cleanup.
+- **Next step:** Phase 5 - Skills page overhaul (`data/skills.ts`, tiered skill modeling, and strategic skill presentation).
 
 ---
 
