@@ -1,5 +1,8 @@
 <template>
   <div class="min-h-screen flex flex-col">
+    <!-- Scroll-progress indicator — sits above the header at z-60 -->
+    <ScrollProgress />
+
     <!-- Header -->
     <AppHeader />
 
@@ -14,13 +17,8 @@
 </template>
 
 <script setup>
-import { onMounted } from 'vue'
-
-onMounted(() => {
-  console.log("%c👋 Hey developer! Thanks for checking out the code. Let's build something amazing! ✨", "color: #4F46E5; font-size: 14px; font-weight: bold;");
-})
-
-// Layout-specific logic can go here
+// Layout-specific logic can go here.
+// Console Easter egg is in app.vue (fires once, not per-layout mount).
 </script>
 
 <style scoped>

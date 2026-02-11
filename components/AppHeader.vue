@@ -45,7 +45,7 @@
             :key="item.name"
             :to="item.href"
             class="px-3 py-2 rounded-md text-sm font-medium text-gray-800 dark:text-gray-200 hover:text-apple-blue-600 dark:hover:text-apple-blue-400 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-200"
-            active-class="text-apple-blue-600 dark:text-apple-blue-400"
+            active-class="text-apple-blue-600 dark:text-apple-blue-400 nav-glow"
           >
             {{ item.name }}
           </NuxtLink>
@@ -112,7 +112,7 @@
           :key="item.name"
           :to="item.href"
           class="block px-3 py-2 rounded-md text-base font-medium text-gray-800 dark:text-gray-200 hover:text-apple-blue-600 dark:hover:text-apple-blue-400 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-200"
-          active-class="text-apple-blue-600 dark:text-apple-blue-400 bg-gray-100 dark:bg-gray-800"
+          active-class="text-apple-blue-600 dark:text-apple-blue-400 bg-gray-100 dark:bg-gray-800 nav-glow"
           @click="isOpen = false"
         >
           {{ item.name }}
@@ -132,7 +132,7 @@
         <NuxtLink
           to="/contact"
           class="block px-3 py-2 rounded-md text-base font-medium text-gray-800 dark:text-gray-200 hover:text-apple-blue-600 dark:hover:text-apple-blue-400 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-200"
-          active-class="text-apple-blue-600 dark:text-apple-blue-400 bg-gray-100 dark:bg-gray-800"
+          active-class="text-apple-blue-600 dark:text-apple-blue-400 bg-gray-100 dark:bg-gray-800 nav-glow"
           @click="isOpen = false"
         >
           Contact

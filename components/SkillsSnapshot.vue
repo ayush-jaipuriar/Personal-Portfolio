@@ -25,8 +25,10 @@
       <!-- Skills grid — pills layout -->
       <div class="flex flex-wrap justify-center gap-3 max-w-3xl mx-auto">
         <div
-          v-for="skill in skills"
+          v-for="(skill, index) in skills"
           :key="skill.name"
+          v-motion-fade-visible-once
+          :delay="index * 60"
           class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl
                  bg-white dark:bg-gray-800
                  border border-gray-200 dark:border-gray-700

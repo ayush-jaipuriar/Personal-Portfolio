@@ -1,10 +1,53 @@
-/* Page Transitions */
-.page-enter-active,
+/* ─── Page Transitions (Phase 8 — slide-fade upgrade) ────────────────
+ *
+ * Upgraded from a simple 300 ms opacity fade to a slide-fade:
+ *   - Enter: slides up 12 px + fades in over 400 ms
+ *   - Leave: slides down 12 px + fades out over 200 ms (faster so the
+ *     user perceives the incoming page sooner — a common UX trick)
+ *
+ * `cubic-bezier(0.22, 1, 0.36, 1)` is an ease-out curve from
+ * Apple's spring-like timing functions — it starts with velocity
+ * and decelerates smoothly.
+ */
+.page-enter-active {
+  transition: opacity 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
 .page-leave-active {
-  transition: opacity 0.3s ease;
+  transition: opacity 0.2s ease,
+              transform 0.2s ease;
 }
 
-.page-enter-from,
+.page-enter-from {
+  opacity: 0;
+  transform: translateY(12px);
+}
 .page-leave-to {
   opacity: 0;
+  transform: translateY(-8px);
+}
+
+/* ─── Dark-mode glow effects (Phase 8) ───────────────────────────────
+ *
+ * CSS `text-shadow` and `box-shadow` at low opacity create a subtle
+ * luminous halo against dark backgrounds. The glow uses the brand
+ * blue (rgba(0, 122, 255, ...)) which matches `apple-blue-600`.
+ *
+ * These utility classes are applied selectively:
+ *   .text-glow  → Hero name gradient text
+ *   .btn-glow   → Primary CTA buttons
+ *   .nav-glow   → Active navigation link
+ */
+.dark .text-glow {
+  text-shadow: 0 0 20px rgba(0, 122, 255, 0.3),
+               0 0 40px rgba(0, 122, 255, 0.1);
+}
+
+.dark .btn-glow {
+  box-shadow: 0 0 15px rgba(0, 122, 255, 0.25),
+              0 4px 12px rgba(0, 122, 255, 0.15);
+}
+
+.dark .nav-glow {
+  text-shadow: 0 0 10px rgba(0, 122, 255, 0.4);
 } 

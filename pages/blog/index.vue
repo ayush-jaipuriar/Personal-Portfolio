@@ -87,12 +87,20 @@
       <!-- Blog Posts Grid -->
       <div v-else-if="paginatedPosts.length > 0" class="space-y-8">
         <!-- Posts List -->
-        <div v-motion-fade-visible-once class="space-y-12">
-          <BlogPostItem
-            v-for="post in paginatedPosts"
+        <div class="space-y-12">
+          <div
+            v-for="(post, idx) in paginatedPosts"
             :key="post._path"
-            :post="post"
-          />
+            v-motion
+            :initial="{ opacity: 0, y: 20 }"
+            :visible-once="{
+              opacity: 1,
+              y: 0,
+              transition: { duration: 400, delay: idx * 100 },
+            }"
+          >
+            <BlogPostItem :post="post" />
+          </div>
         </div>
 
         <!-- Pagination -->

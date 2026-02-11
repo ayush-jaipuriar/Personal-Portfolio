@@ -1,6 +1,7 @@
 <template>
   <article
-    class="group overflow-hidden rounded-2xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 shadow-apple-sm hover:shadow-apple-lg hover:-translate-y-0.5 transition-all duration-300"
+    ref="cardRef"
+    class="group overflow-hidden rounded-2xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 shadow-apple-sm hover:shadow-apple-lg transition-all duration-300"
   >
     <div class="border-l-4 border-apple-blue-600 h-full">
       <div class="grid grid-cols-1 lg:grid-cols-12 h-full">
@@ -64,12 +65,18 @@
 </template>
 
 <script setup lang="ts">
+import { ref } from 'vue'
 import type { Project } from '~/data/projects'
 import { useAssetPath } from '~/composables/useAssetPath'
+import { useTilt } from '~/composables/useTilt'
 
 defineProps<{
   project: Project
 }>()
 
 const { toAssetPath } = useAssetPath()
+
+// 3D tilt hover — adds subtle perspective rotation following the cursor
+const cardRef = ref<HTMLElement | null>(null)
+useTilt(cardRef, { maxDeg: 4, transitionMs: 300 })
 </script>

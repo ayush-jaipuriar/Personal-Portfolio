@@ -25,8 +25,10 @@
       <!-- Posts grid — shown when posts exist -->
       <div v-if="posts && posts.length > 0" class="grid grid-cols-1 md:grid-cols-3 gap-8">
         <NuxtLink
-          v-for="post in posts"
+          v-for="(post, index) in posts"
           :key="post._path"
+          v-motion-fade-visible-once
+          :delay="index * 120"
           :to="post._path"
           class="group block rounded-2xl overflow-hidden
                  bg-white dark:bg-gray-800

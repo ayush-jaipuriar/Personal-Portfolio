@@ -24,8 +24,10 @@
       <!-- Project cards grid -->
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         <NuxtLink
-          v-for="project in featured"
+          v-for="(project, index) in featured"
           :key="project.id"
+          v-motion-fade-visible-once
+          :delay="index * 120"
           :to="`/projects/${project.slug}`"
           class="group block rounded-2xl overflow-hidden
                  bg-white dark:bg-gray-800

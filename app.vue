@@ -7,23 +7,34 @@
 </template>
 
 <script setup lang="ts">
-// Global application setup can go here if needed
+/**
+ * app.vue — Root Vue component.
+ *
+ * Nuxt wraps every page inside this component. Global layout logic,
+ * head defaults, and one-time side effects (like the console easter
+ * egg below) belong here.
+ *
+ * Tailwind directives (@tailwind base / components / utilities) are
+ * kept in the <style> block so PostCSS processes them correctly.
+ */
+import { onMounted } from 'vue'
 
-// Example of setting global SEO metadata (if using Nuxt SEO)
-// import { useHead } from '#imports'
-
-// useHead({
-//   htmlAttrs: {
-//     lang: 'en'
-//   },
-//   link: [
-//     {
-//       rel: 'icon',
-//       type: 'image/png',
-//       href: '/favicon.png'
-//     }
-//   ]
-// })
+onMounted(() => {
+  // ── Console Easter Egg ──────────────────────────────────────────
+  // Styled console.log messages that appear when a developer opens
+  // DevTools. `%c` enables CSS styling for the subsequent string.
+  // The font-size, color, and spacing mimic a mini "splash screen."
+  console.log(
+    '%c Hey there, curious developer! 👋',
+    'color: #007aff; font-size: 16px; font-weight: bold;'
+  )
+  console.log(
+    "%c I see you're inspecting my code. I like that.\n" +
+    "Let's connect: jaipuriar.ayush@gmail.com\n" +
+    'Or check out my GitHub: github.com/ayush-jaipuriar',
+    'color: #6b7280; font-size: 12px;'
+  )
+})
 </script>
 
 <style>
@@ -34,15 +45,14 @@
 
 body {
   @apply bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100;
-  /* Add any other global base styles here */
 }
 
-/* Example: Smooth scrolling */
+/* Smooth scrolling */
 html {
   scroll-behavior: smooth;
 }
 
-/* Example: Reduced motion preferences */
+/* Reduced-motion preferences — override all animations/transitions */
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -56,4 +66,4 @@ html {
     scroll-behavior: auto !important;
   }
 }
-</style> 
+</style>

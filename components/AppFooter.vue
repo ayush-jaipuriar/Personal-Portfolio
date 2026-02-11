@@ -108,24 +108,10 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted } from 'vue'
-
 const quickLinks = [
   { name: 'About', href: '/about' },
   { name: 'Projects', href: '/projects' },
   { name: 'Blog', href: '/blog' },
   { name: 'Contact', href: '/contact' },
 ]
-
-// Console easter egg for fellow developers
-onMounted(() => {
-  console.info(
-    '%c\uD83D\uDC4B Hello fellow developer!',
-    'font-size: 1.5em; font-weight: bold; color: #0c8ee9;'
-  )
-  console.info(
-    '%cThanks for checking out my portfolio. Feel free to explore the code and get in touch if you have any questions!',
-    'font-size: 1em; color: #064a86;'
-  )
-})
 </script>

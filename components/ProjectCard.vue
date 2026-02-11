@@ -1,6 +1,7 @@
 <template>
   <article
-    class="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 shadow-apple-sm hover:shadow-apple-lg hover:-translate-y-0.5 transition-all duration-300"
+    ref="cardRef"
+    class="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 shadow-apple-sm hover:shadow-apple-lg transition-all duration-300"
   >
     <span
       :class="[
@@ -143,9 +144,10 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue'
+import { computed, ref } from 'vue'
 import type { Project } from '~/data/projects'
 import { useAssetPath } from '~/composables/useAssetPath'
+import { useTilt } from '~/composables/useTilt'
 
 const props = defineProps<{
   project: Project
@@ -154,4 +156,8 @@ const props = defineProps<{
 const isCaseStudy = computed(() => props.project.type === 'professional')
 const detailPath = computed(() => `/projects/${props.project.slug}`)
 const { toAssetPath } = useAssetPath()
+
+// 3D tilt hover — adds subtle perspective rotation following the cursor
+const cardRef = ref<HTMLElement | null>(null)
+useTilt(cardRef, { maxDeg: 5, transitionMs: 300 })
 </script>

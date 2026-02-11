@@ -210,7 +210,7 @@
             <button
               type="submit"
               :disabled="isSubmitting"
-              class="w-full flex items-center justify-center gap-2 px-6 py-3 bg-apple-blue-600 text-white rounded-lg font-semibold hover:bg-apple-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-apple-blue-500 disabled:opacity-60 disabled:cursor-not-allowed transition-all duration-200"
+              class="w-full flex items-center justify-center gap-2 px-6 py-3 bg-apple-blue-600 text-white rounded-lg font-semibold hover:bg-apple-blue-700 btn-glow focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-apple-blue-500 disabled:opacity-60 disabled:cursor-not-allowed transition-all duration-200"
             >
               <span
                 v-if="isSubmitting"

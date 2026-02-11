@@ -24,8 +24,10 @@
 
       <div class="grid grid-cols-1 xl:grid-cols-2 gap-8">
         <CaseStudyCard
-          v-for="project in professionalProjects"
+          v-for="(project, index) in professionalProjects"
           :key="project.id"
+          v-motion-fade-visible-once
+          :delay="index * 120"
           :project="project"
         />
       </div>
@@ -43,8 +45,10 @@
 
       <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
         <ProjectCard
-          v-for="project in personalProjects"
+          v-for="(project, index) in personalProjects"
           :key="project.id"
+          v-motion-fade-visible-once
+          :delay="index * 120"
           :project="project"
         />
       </div>

@@ -30,7 +30,7 @@
           class="inline-flex items-center px-8 py-3.5 rounded-lg text-base font-medium
                  text-white bg-apple-blue-600 hover:bg-apple-blue-700
                  shadow-lg shadow-apple-blue-600/25 hover:shadow-apple-blue-600/40
-                 transition-all duration-200"
+                 transition-all duration-200 btn-glow"
         >
           Get In Touch
           <Icon name="heroicons:paper-airplane" class="ml-2 h-5 w-5" aria-hidden="true" />

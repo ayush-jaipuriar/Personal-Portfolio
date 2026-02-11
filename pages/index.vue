@@ -22,7 +22,7 @@
 
             <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight mb-4">
               <span class="block mb-1 text-gray-900 dark:text-white">Hi, I'm</span>
-              <span class="bg-gradient-to-r from-apple-blue-600 to-purple-600 bg-clip-text text-transparent">
+              <span class="bg-gradient-to-r from-apple-blue-600 to-purple-600 bg-clip-text text-transparent text-glow">
                 Ayush Jaipuriar
               </span>
             </h1>
@@ -46,7 +46,7 @@
                 class="inline-flex items-center px-6 py-3 rounded-lg text-base font-medium
                        text-white bg-apple-blue-600 hover:bg-apple-blue-700
                        shadow-lg shadow-apple-blue-600/25 hover:shadow-apple-blue-600/40
-                       transition-all duration-200
+                       transition-all duration-200 btn-glow
                        focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-apple-blue-500"
               >
                 See My Work
@@ -75,15 +75,15 @@
           <!-- Profile Photo -->
           <div class="md:w-2/5">
             <!--
-              The photo uses a gradient border ring effect:
-              - Outer div: `p-1` padding creates the ring width
-              - `bg-gradient-to-tr` creates the gradient colors
-              - `rounded-full` makes it circular
-              - Inner div clips the image to a circle
+              Phase 8 profile photo treatment:
+              - Rotating conic-gradient ring (4px)
+              - Soft glow halo layer behind the ring
+              - Subtle hover scale for tactile feedback
             -->
-            <div class="relative w-64 h-64 md:w-80 md:h-80 mx-auto">
-              <div class="absolute inset-0 rounded-full bg-gradient-to-tr from-apple-blue-500 to-purple-500 animate-spin-slow opacity-75 blur-sm"></div>
-              <div class="relative w-full h-full p-1 rounded-full bg-gradient-to-tr from-apple-blue-500 to-purple-500">
+            <div class="group/photo relative w-64 h-64 md:w-80 md:h-80 mx-auto transition-transform duration-300 hover:scale-[1.02]">
+              <div class="absolute inset-0 rounded-full profile-ring"></div>
+              <div class="absolute inset-0 rounded-full profile-ring-glow"></div>
+              <div class="relative w-full h-full p-[4px] rounded-full">
                 <div class="w-full h-full rounded-full overflow-hidden bg-white dark:bg-gray-900">
                   <img
                     :src="toAssetPath('/ayush-jaipuriar.jpeg')"
@@ -97,9 +97,8 @@
         </div>
       </div>
 
-      <!-- Background Design Elements (Phase 8 will replace with GradientMesh) -->
-      <div class="absolute -top-40 -right-40 w-96 h-96 bg-apple-blue-100 dark:bg-apple-blue-900/20 rounded-full filter blur-3xl opacity-30 dark:opacity-20 pointer-events-none"></div>
-      <div class="absolute -bottom-40 -left-40 w-96 h-96 bg-purple-100 dark:bg-purple-900/20 rounded-full filter blur-3xl opacity-30 dark:opacity-20 pointer-events-none"></div>
+      <!-- Animated gradient mesh — replaces static blur circles (Phase 8) -->
+      <GradientMesh />
     </section>
 
     <!-- ============================================================
@@ -158,16 +157,37 @@ useHead({
 </script>
 
 <style scoped>
-/*
- * Custom animation for the gradient ring around the profile photo.
- * `animate-spin-slow` is slower than Tailwind's default `animate-spin`
- * (which is 1 second). A 8-second rotation creates a subtle, elegant effect.
- */
-@keyframes spin-slow {
+@keyframes ring-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
-.animate-spin-slow {
-  animation: spin-slow 8s linear infinite;
+
+.profile-ring {
+  background: conic-gradient(
+    from 0deg,
+    rgba(0, 122, 255, 0.95) 0deg,
+    rgba(147, 51, 234, 0.95) 180deg,
+    rgba(0, 122, 255, 0.95) 360deg
+  );
+  animation: ring-spin 8s linear infinite;
+}
+
+.profile-ring-glow {
+  background: conic-gradient(
+    from 0deg,
+    rgba(0, 122, 255, 0.45) 0deg,
+    rgba(147, 51, 234, 0.45) 180deg,
+    rgba(0, 122, 255, 0.45) 360deg
+  );
+  filter: blur(10px);
+  opacity: 0.6;
+  animation: ring-spin 10s linear infinite reverse;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .profile-ring,
+  .profile-ring-glow {
+    animation: none !important;
+  }
 }
 </style>
