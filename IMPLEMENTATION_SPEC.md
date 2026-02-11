@@ -1044,16 +1044,40 @@ const submitForm = async () => {
 
 ### 10.3 Phase 7 Checklist
 
-- [ ] Formspree account created and form endpoint obtained
-- [ ] Contact form submits to Formspree via `fetch()` POST
-- [ ] Success state shows confirmation message
-- [ ] Error state shows fallback email link
-- [ ] Loading/submitting state disables button and shows indicator
-- [ ] Honeypot field added for spam protection
-- [ ] Test: submit form → message arrives in email inbox
-- [ ] Availability message added to contact page
-- [ ] Response time note added
-- [ ] Tested in light/dark mode
+- [x] Formspree account created and form endpoint obtained
+- [x] Contact form submits to Formspree via `fetch()` POST
+- [x] Success state shows confirmation message
+- [x] Error state shows fallback email link
+- [x] Loading/submitting state disables button and shows indicator
+- [x] Honeypot field added for spam protection
+- [ ] Test: submit form → message arrives in email inbox (owner-side inbox confirmation pending)
+- [x] Availability message added to contact page
+- [x] Response time note added
+- [x] Tested in light/dark mode
+
+**Implementation Notes (Feb 11, 2026):**
+- Reworked `pages/contact.vue` from a simulated demo form to a production-like Formspree integration:
+  - Replaced `setTimeout` submit simulation with real `fetch()` POST to `https://formspree.io/f/mojnjppk`
+  - Added `Accept: application/json` and structured JSON payload (`name`, `email`, `_replyto`, `subject`, `message`, `_gotcha`)
+  - Added built-in honeypot support via hidden `_gotcha` field for low-friction spam filtering
+- Improved submit UX/state handling:
+  - Loading state now disables submit and shows spinner (`Sending...`)
+  - Success state renders dedicated confirmation panel with check icon and "Send another message" reset action
+  - Error state renders clear fallback with direct email link (`mailto:jaipuriar.ayush@gmail.com`)
+  - Form values are reset after successful submission
+- Updated contact-page content and hierarchy to match portfolio positioning:
+  - Added explicit availability banner for Senior SWE/AI Engineering role exploration
+  - Added response-time commitment ("typically within 24-48 hours")
+  - Tightened copy for clarity and professional tone across form + sidebar
+- Validation completed:
+  - Lint checks (`ReadLints`) clean for `pages/contact.vue`
+  - Runtime checks completed on `/contact`:
+    - Desktop: form fields, loading state, and success confirmation behavior verified
+    - Dark mode: toggle state and readability verified
+    - Mobile viewport: responsive layout and menu interaction verified
+  - Live submission test to Formspree endpoint returned success UI state (`Message sent!`)
+  - Static generation succeeded via `yarn generate` with 42 prerendered routes including `/contact` and `/Personal-Portfolio/contact`
+- **Next step:** Phase 8 - Design "Wow Factor" pass (gradient mesh, scroll progress, counters, and interaction polish).
 
 ---
 
