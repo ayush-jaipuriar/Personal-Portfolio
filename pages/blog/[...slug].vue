@@ -166,7 +166,7 @@
 
 <script setup lang="ts">
 import { useRoute, useAsyncData, useHead, useRuntimeConfig } from 'nuxt/app';
-import { computed } from 'vue';
+import { computed, nextTick, onBeforeUnmount, onMounted, shallowRef, watch } from 'vue';
 
 // Define an interface for the blog post data structure
 interface BlogPost {
@@ -180,6 +180,8 @@ interface BlogPost {
   body?: any; // For content body
 }
 
+type MermaidApi = typeof import('mermaid').default;
+
 // Nuxt auto-imports queryContent at runtime, but local TS tooling may not always infer it.
 declare const queryContent: <T = BlogPost>(...args: any[]) => any;
 
@@ -187,6 +189,8 @@ declare const queryContent: <T = BlogPost>(...args: any[]) => any;
 const route = useRoute();
 const fullPath = route.fullPath;
 const runtimeConfig = useRuntimeConfig();
+const mermaidApi = shallowRef<MermaidApi | null>(null);
+let colorModeObserver: MutationObserver | null = null;
 
 const toAssetPath = (path?: string) => {
   if (!path) return '';
@@ -257,6 +261,121 @@ const formatDate = (dateStr: string | undefined) => {
     day: 'numeric'
   });
 };
+
+const getMermaidTheme = () =>
+  document.documentElement.classList.contains('dark') ? 'dark' : 'default';
+
+const ensureMermaidApi = async (): Promise<MermaidApi | null> => {
+  if (import.meta.server) return null;
+
+  if (!mermaidApi.value) {
+    const module = await import('mermaid');
+    mermaidApi.value = module.default;
+  }
+
+  return mermaidApi.value;
+};
+
+const replaceMermaidCodeBlocks = () => {
+  if (import.meta.server) return;
+
+  const mermaidBlocks = document.querySelectorAll<HTMLElement>(
+    '.prose pre code.language-mermaid, .prose pre code.lang-mermaid'
+  );
+
+  mermaidBlocks.forEach((codeBlock, index) => {
+    const pre = codeBlock.closest('pre');
+    const source = codeBlock.textContent?.trim();
+    if (!pre || !source) return;
+
+    const container = document.createElement('div');
+    container.className = 'mermaid-diagram';
+    container.dataset.mermaidSource = source;
+    container.dataset.diagramIndex = String(index);
+
+    pre.replaceWith(container);
+  });
+};
+
+const mountMermaidSvg = (container: HTMLElement, svgMarkup: string) => {
+  const parser = new DOMParser();
+  const svgDocument = parser.parseFromString(svgMarkup, 'image/svg+xml');
+  const svgElement = svgDocument.documentElement;
+
+  if (svgElement.nodeName.toLowerCase() !== 'svg') {
+    throw new Error('Mermaid output did not produce an SVG element');
+  }
+
+  container.replaceChildren(svgElement);
+};
+
+const renderMermaidDiagrams = async () => {
+  if (import.meta.server) return;
+
+  await nextTick();
+  replaceMermaidCodeBlocks();
+
+  const diagramContainers = document.querySelectorAll<HTMLElement>(
+    '.prose .mermaid-diagram[data-mermaid-source]'
+  );
+
+  // Skip loading Mermaid runtime when the post has no Mermaid fences.
+  if (diagramContainers.length === 0) return;
+
+  const mermaid = await ensureMermaidApi();
+  if (!mermaid) return;
+
+  mermaid.initialize({
+    startOnLoad: false,
+    securityLevel: 'strict',
+    theme: getMermaidTheme(),
+  });
+
+  for (const [index, container] of Array.from(diagramContainers).entries()) {
+    const source = container.dataset.mermaidSource;
+    if (!source) continue;
+
+    try {
+      const renderId = `mermaid-${blogPath.value.replaceAll(/[^a-zA-Z0-9-_]/g, '-')}-${index}-${Date.now()}`;
+      const { svg } = await mermaid.render(renderId, source);
+      mountMermaidSvg(container, svg);
+    } catch (renderError) {
+      console.error('Mermaid render failed:', renderError);
+      const fallbackPre = document.createElement('pre');
+      fallbackPre.className = 'mermaid-fallback';
+      fallbackPre.textContent = source;
+      container.replaceChildren(fallbackPre);
+    }
+  }
+};
+
+onMounted(() => {
+  void renderMermaidDiagrams();
+
+  colorModeObserver = new MutationObserver((mutations) => {
+    const classChanged = mutations.some((mutation) => mutation.attributeName === 'class');
+    if (classChanged) {
+      void renderMermaidDiagrams();
+    }
+  });
+
+  colorModeObserver.observe(document.documentElement, {
+    attributes: true,
+    attributeFilter: ['class'],
+  });
+});
+
+watch(
+  () => data.value?._path,
+  () => {
+    void renderMermaidDiagrams();
+  }
+);
+
+onBeforeUnmount(() => {
+  colorModeObserver?.disconnect();
+  colorModeObserver = null;
+});
 
 // Define metadata for the page
 useHead({
@@ -337,6 +456,22 @@ useHead({
    which can inherit low-contrast colors. This forces high-contrast text. */
 .prose pre code {
   @apply block text-gray-800 dark:text-gray-100;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+.prose .mermaid-diagram {
+  @apply my-6 p-4 bg-gray-50 dark:bg-gray-900/40 border border-gray-200 dark:border-gray-700 rounded-lg overflow-x-auto;
+}
+
+.prose .mermaid-diagram svg {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+.prose .mermaid-fallback {
+  @apply m-0 p-4 bg-gray-100 dark:bg-gray-800 rounded text-sm text-gray-800 dark:text-gray-100 overflow-x-auto;
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 }
 

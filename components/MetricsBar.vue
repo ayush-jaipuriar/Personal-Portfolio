@@ -14,7 +14,7 @@
   -->
   <section ref="sectionRef" class="py-12">
     <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
         <div
           v-for="(metric, index) in metrics"
           :key="metric.label"
@@ -60,11 +60,9 @@ import { useCounter } from '~/composables/useCounter'
  * and render their `value` string directly.
  */
 const metrics = [
-  { icon: 'heroicons:clock',           animated: true,  numericTarget: 6,   suffix: '+',  value: '6+',         label: 'Years Experience' },
-  { icon: 'heroicons:server-stack',    animated: false, numericTarget: 0,   suffix: '',   value: 'TB-Scale',   label: 'Scale of Systems' },
-  { icon: 'heroicons:building-office', animated: true,  numericTarget: 30,  suffix: '+',  value: '30+',        label: 'Enterprise Clients' },
-  { icon: 'heroicons:bolt',            animated: true,  numericTarget: 92,  suffix: '%',  value: '92%',        label: 'Performance Gains' },
-  { icon: 'heroicons:cpu-chip',        animated: false, numericTarget: 0,   suffix: '',   value: 'Production', label: 'AI Agents' },
+  { icon: 'heroicons:clock',        animated: true,  numericTarget: 6, suffix: '+', value: '6+',         label: 'Years Experience' },
+  { icon: 'heroicons:server-stack', animated: false, numericTarget: 0, suffix: '',  value: 'TB-Scale',   label: 'Scale of Systems' },
+  { icon: 'heroicons:cpu-chip',     animated: false, numericTarget: 0, suffix: '',  value: 'Production', label: 'AI Agents' },
 ]
 
 /**

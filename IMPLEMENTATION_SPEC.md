@@ -1503,6 +1503,64 @@ After visual QA feedback, the following production issues were fixed and revalid
    - Facebook Sharing Debugger
    - Twitter Card Validator
 
+### 12.9 Phase 9 UX Refinement Update (Mermaid + Signal Quality)
+
+**Date:** February 11, 2026
+
+This iteration focused on two high-impact UX refinements from post-deploy visual testing:
+
+#### A) True Mermaid Diagram Rendering in Blog Posts
+
+**Problem observed:** Architecture diagrams were hard to read as plain-text/ASCII code blocks.
+
+**Implemented solution (end-to-end):**
+
+1. **Content upgrade to Mermaid syntax** in `content/blog/1.building-production-ai-agents.md`
+   - Converted supervisor architecture block from ASCII to a Mermaid fenced flowchart (`mermaid`)
+   - Converted RAG pipeline line to Mermaid `flowchart LR`
+
+2. **Client-side Mermaid rendering pipeline** in `pages/blog/[...slug].vue`
+   - Detects Mermaid code fences emitted by Nuxt Content (`language-mermaid`)
+   - Replaces those code blocks with render containers
+   - Dynamically imports Mermaid only in browser runtime
+   - Renders SVG diagrams with `securityLevel: 'strict'`
+   - Re-renders on theme changes (light/dark) using a class observer on `document.documentElement`
+   - Falls back to readable `<pre>` content if Mermaid parsing/rendering fails
+
+3. **Styling improvements**
+   - Added dedicated `.mermaid-diagram` card styling (border, background, spacing)
+   - Enforced responsive SVG sizing for desktop/mobile readability
+
+4. **Dependency compatibility note**
+   - Latest Mermaid release chain required Node 20+ in this environment.
+   - Installed `mermaid@10.9.3` (Node 18 compatible) to preserve current project runtime constraints.
+
+#### B) Homepage Signal Quality Cleanup (Metrics Section)
+
+**Problem observed:** `30+ Enterprise Clients` and `92% Performance Gains` cards felt low-value/noisy.
+
+**Implemented solution:**
+
+- Updated `components/MetricsBar.vue` to remove both cards.
+- Kept only high-signal metrics:
+  - `6+ Years Experience`
+  - `TB-Scale Scale of Systems`
+  - `Production AI Agents`
+- Updated grid layout from 5-card desktop density to a cleaner 3-card layout (`sm:grid-cols-3`).
+
+#### Build + Validation
+
+- `yarn generate` completed successfully after the above changes.
+- Nitro prerender result remains **43 routes**.
+- Known non-blocking lint warnings remain for Tailwind `@apply` parsing in CSS tooling.
+
+#### Next Steps
+
+1. Deploy to GitHub Pages.
+2. Re-check blog diagrams on deployed dark/light mode.
+3. Evaluate bundle size impact of Mermaid:
+   - If blog pages grow significantly, consider lazy-activating Mermaid only when Mermaid fences are present (already partially implemented) and/or splitting heavier blog visualization code paths further.
+
 ---
 
 ## 13. Phase 10 — Final QA & Launch
