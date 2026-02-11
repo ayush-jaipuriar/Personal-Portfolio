@@ -720,6 +720,7 @@ Add a brief personal section (3-4 sentences) after the professional content. Con
   - Theme toggle and mobile/desktop viewport checks executed via browser automation.
   - Static generation succeeded via `yarn generate` with 50 prerendered routes including `/about`.
 - Environment fix (non-source): removed accidental duplicated dependency artifacts in `node_modules` (files suffixed with ` 2`) that were causing Nuxt auto-import compilation failures. No tracked source code behavior was changed by this cleanup.
+- Repository hygiene fix (non-source): removed invalid duplicate git refs (`refs/heads/main 2` and `refs/remotes/origin/main 2`) that caused `git push`/`git fsck` failures (`fatal: bad object ...`). Branch refs are now healthy.
 - **Next step:** Phase 5 - Skills page overhaul (`data/skills.ts`, tiered skill modeling, and strategic skill presentation).
 
 ---
