@@ -65,7 +65,7 @@
            <!-- Featured Image -->
            <div v-if="data.image" class="rounded-2xl overflow-hidden mb-10">
              <img 
-               :src="data.image" 
+               :src="toAssetPath(data.image)" 
                :alt="data.title" 
                class="w-full h-auto"
              />
@@ -81,7 +81,7 @@
          <div class="mt-16 pt-8 border-t border-gray-200 dark:border-gray-800">
            <div class="flex items-center">
              <img 
-               src="/ayush-jaipuriar.jpeg" 
+               :src="toAssetPath('/ayush-jaipuriar.jpeg')" 
                alt="Ayush Jaipuriar" 
                class="h-12 w-12 rounded-full mr-4"
              />
@@ -136,7 +136,7 @@
                <NuxtLink :to="relatedPost._path">
                  <div v-if="relatedPost.image" class="mb-2 rounded-lg overflow-hidden">
                    <img 
-                     :src="relatedPost.image" 
+                    :src="toAssetPath(relatedPost.image)" 
                      :alt="relatedPost.title" 
                      class="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-105"
                    />
@@ -157,7 +157,7 @@
 </template>
 
 <script setup lang="ts">
-import { useRoute, useAsyncData, useHead } from 'nuxt/app';
+import { useRoute, useAsyncData, useHead, useRuntimeConfig } from 'nuxt/app';
 import { computed } from 'vue';
 
 // Define an interface for the blog post data structure
@@ -178,6 +178,22 @@ declare const queryContent: <T = BlogPost>(...args: any[]) => any;
 // Get the current route params
 const route = useRoute();
 const fullPath = route.fullPath;
+const runtimeConfig = useRuntimeConfig();
+
+const toAssetPath = (path?: string) => {
+  if (!path) return '';
+
+  if (/^(?:[a-z]+:)?\/\//i.test(path) || path.startsWith('data:') || path.startsWith('blob:')) {
+    return path;
+  }
+
+  const baseURL = runtimeConfig.app.baseURL || '/';
+  if (baseURL !== '/' && path.startsWith(baseURL)) {
+    return path;
+  }
+
+  return `${baseURL}${path.replace(/^\/+/, '')}`;
+};
 
 // Construct the blog post path from route params
 const blogPath = computed(() => {

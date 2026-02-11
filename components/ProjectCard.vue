@@ -20,7 +20,7 @@
       :aria-label="`Open ${project.title} case study`"
     >
       <img
-        :src="project.image"
+        :src="toAssetPath(project.image)"
         :alt="project.title"
         class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
         loading="lazy"
@@ -36,7 +36,7 @@
       :aria-label="`Open ${project.title} on GitHub`"
     >
       <img
-        :src="project.image"
+        :src="toAssetPath(project.image)"
         :alt="project.title"
         class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
         loading="lazy"
@@ -48,7 +48,7 @@
       class="relative block w-full aspect-video overflow-hidden bg-gray-100 dark:bg-gray-800"
     >
       <img
-        :src="project.image"
+        :src="toAssetPath(project.image)"
         :alt="project.title"
         class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
         loading="lazy"
@@ -145,6 +145,7 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import type { Project } from '~/data/projects'
+import { useAssetPath } from '~/composables/useAssetPath'
 
 const props = defineProps<{
   project: Project
@@ -152,4 +153,5 @@ const props = defineProps<{
 
 const isCaseStudy = computed(() => props.project.type === 'professional')
 const detailPath = computed(() => `/projects/${props.project.slug}`)
+const { toAssetPath } = useAssetPath()
 </script>

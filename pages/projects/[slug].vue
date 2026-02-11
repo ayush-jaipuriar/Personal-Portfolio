@@ -70,7 +70,7 @@
       </header>
 
       <div class="mb-12 overflow-hidden rounded-2xl border border-gray-200 dark:border-gray-800">
-        <img :src="project.image" :alt="project.title" class="w-full h-auto object-cover" />
+        <img :src="toAssetPath(project.image)" :alt="project.title" class="w-full h-auto object-cover" />
       </div>
 
       <div class="space-y-12">
@@ -205,8 +205,10 @@
 import { computed } from 'vue'
 import type { CaseStudy } from '~/data/projects'
 import { getAdjacentProjects, getProjectBySlug } from '~/data/projects'
+import { useAssetPath } from '~/composables/useAssetPath'
 
 const route = useRoute()
+const { toAssetPath } = useAssetPath()
 
 const slug = computed(() => {
   const value = route.params.slug

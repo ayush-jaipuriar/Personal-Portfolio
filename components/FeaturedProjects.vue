@@ -36,7 +36,7 @@
           <!-- Card image — aspect-video maintains 16:9 ratio -->
           <div class="aspect-video overflow-hidden bg-gray-100 dark:bg-gray-700">
             <img
-              :src="project.image"
+              :src="toAssetPath(project.image)"
               :alt="project.title"
               class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
               loading="lazy"
@@ -120,6 +120,7 @@
 
 <script setup lang="ts">
 import { getFeaturedProjects } from '~/data/projects'
+import { useAssetPath } from '~/composables/useAssetPath'
 
 /**
  * getFeaturedProjects() returns projects where `featured: true`,
@@ -127,4 +128,5 @@ import { getFeaturedProjects } from '~/data/projects'
  * shows the most impressive work in a consistent order.
  */
 const featured = getFeaturedProjects()
+const { toAssetPath } = useAssetPath()
 </script>

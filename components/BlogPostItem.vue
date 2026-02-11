@@ -6,7 +6,7 @@
     <div v-if="post.image" class="md:w-1/3 rounded-lg overflow-hidden">
       <NuxtLink :to="post._path">
         <img
-          :src="post.image"
+          :src="toAssetPath(post.image)"
           :alt="post.title"
           class="w-full h-full object-cover aspect-video rounded-lg transition-transform duration-300 group-hover:scale-105"
         />
@@ -80,6 +80,10 @@
 </template>
 
 <script setup lang="ts">
+import { useAssetPath } from '~/composables/useAssetPath'
+
+const { toAssetPath } = useAssetPath()
+
 // Define the expected structure of a blog post
 defineProps({
   post: {

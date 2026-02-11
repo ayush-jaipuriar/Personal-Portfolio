@@ -17,7 +17,7 @@
         <div class="md:w-2/5 flex flex-col items-center md:items-start">
           <div class="w-56 h-56 md:w-64 md:h-64 rounded-2xl overflow-hidden shadow-apple-lg mb-6">
             <img
-              src="/ayush-jaipuriar.jpeg"
+              :src="toAssetPath('/ayush-jaipuriar.jpeg')"
               alt="Ayush Jaipuriar"
               class="w-full h-full object-cover"
             />
@@ -247,8 +247,11 @@
 </template>
 
 <script setup lang="ts">
+import { useAssetPath } from '~/composables/useAssetPath'
+
 const runtimeConfig = useRuntimeConfig()
 const resumeUrl = `${runtimeConfig.app.baseURL}resume/Ayush_Jaipuriar_Resume.pdf`
+const { toAssetPath } = useAssetPath()
 
 useHead({
   title: 'About Me | Ayush Jaipuriar',

@@ -86,7 +86,7 @@
               <div class="relative w-full h-full p-1 rounded-full bg-gradient-to-tr from-apple-blue-500 to-purple-500">
                 <div class="w-full h-full rounded-full overflow-hidden bg-white dark:bg-gray-900">
                   <img
-                    src="/ayush-jaipuriar.jpeg"
+                    :src="toAssetPath('/ayush-jaipuriar.jpeg')"
                     alt="Ayush Jaipuriar - AI Agent Engineer"
                     class="w-full h-full object-cover"
                   />
@@ -130,8 +130,11 @@
 </template>
 
 <script setup lang="ts">
+import { useAssetPath } from '~/composables/useAssetPath'
+
 const runtimeConfig = useRuntimeConfig()
 const resumeUrl = `${runtimeConfig.app.baseURL}resume/Ayush_Jaipuriar_Resume.pdf`
+const { toAssetPath } = useAssetPath()
 
 /**
  * Homepage metadata.

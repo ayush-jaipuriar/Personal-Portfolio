@@ -1079,6 +1079,18 @@ const submitForm = async () => {
   - Static generation succeeded via `yarn generate` with 42 prerendered routes including `/contact` and `/Personal-Portfolio/contact`
 - **Next step:** Phase 8 - Design "Wow Factor" pass (gradient mesh, scroll progress, counters, and interaction polish).
 
+**Post-deployment hotfix (Feb 11, 2026): GitHub Pages image path regression**
+- **Issue observed:** Project card and case-study images were broken on the deployed site (`ayush-jaipuriar.github.io/Personal-Portfolio`) even though files existed in `public/images/projects/`.
+- **Root cause:** Image URLs were stored/rendered as root-relative paths (for example, `/images/projects/ai-agents.jpg`). On GitHub Pages project hosting, assets must be resolved under the repo base path (`/Personal-Portfolio/...`), so root-relative paths pointed to the wrong origin path.
+- **Fix implemented:** Introduced baseURL-aware asset resolution and wired it across project and profile images:
+  - New composable: `composables/useAssetPath.ts` (`toAssetPath()`)
+  - Updated components/pages: `components/ProjectCard.vue`, `components/CaseStudyCard.vue`, `components/FeaturedProjects.vue`, `pages/projects/[slug].vue`, `pages/index.vue`, `pages/about.vue`, `components/BlogPostItem.vue`, `pages/blog/[...slug].vue`
+- **Validation:**
+  - Lint checks clean for all modified files.
+  - Static build succeeded (`yarn generate`).
+  - Generated HTML now contains baseURL-prefixed image sources (for example, `src="/Personal-Portfolio/images/projects/ai-agents.jpg"`) and no remaining unprefixed `src="/images/projects/..."`
+  - Profile image sources are also baseURL-safe (`/Personal-Portfolio/ayush-jaipuriar.jpeg`).
+
 ---
 
 ## 11. Phase 8 — Design "Wow Factor" Pass

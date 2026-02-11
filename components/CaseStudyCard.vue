@@ -10,7 +10,7 @@
           :aria-label="`Read case study: ${project.title}`"
         >
           <img
-            :src="project.image"
+            :src="toAssetPath(project.image)"
             :alt="project.title"
             class="h-full w-full object-cover min-h-[220px] lg:min-h-full group-hover:scale-105 transition-transform duration-500"
             loading="lazy"
@@ -65,8 +65,11 @@
 
 <script setup lang="ts">
 import type { Project } from '~/data/projects'
+import { useAssetPath } from '~/composables/useAssetPath'
 
 defineProps<{
   project: Project
 }>()
+
+const { toAssetPath } = useAssetPath()
 </script>
