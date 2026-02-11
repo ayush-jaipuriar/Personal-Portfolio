@@ -19,6 +19,9 @@
             <img
               :src="toAssetPath('/ayush-jaipuriar.jpeg')"
               alt="Ayush Jaipuriar"
+              width="800"
+              height="800"
+              loading="lazy"
               class="w-full h-full object-cover"
             />
           </div>
@@ -261,6 +264,11 @@ useHead({
       content:
         'AI Agent Engineer and Senior Full-Stack Developer with 6+ years building production systems at TransUnion and HighRadius. Specializing in LangChain, LangGraph, and enterprise-scale engineering.',
     },
+    { property: 'og:title', content: 'About Me | Ayush Jaipuriar' },
+    { property: 'og:description', content: 'AI Agent Engineer at TransUnion with 6+ years building enterprise AI systems, TB-scale search products, and fintech platforms at Fortune 500 companies.' },
+    { property: 'og:url', content: 'https://ayush-jaipuriar.github.io/Personal-Portfolio/about' },
+    { name: 'twitter:title', content: 'About Me | Ayush Jaipuriar' },
+    { name: 'twitter:description', content: 'AI Agent Engineer at TransUnion with 6+ years building enterprise AI systems and fintech platforms.' },
   ],
 })
 

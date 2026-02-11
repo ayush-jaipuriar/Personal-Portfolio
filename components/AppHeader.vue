@@ -8,14 +8,13 @@
     
     Structure:
     - Logo (name) on the left
-    - "Open to Work" badge (desktop only, between logo and nav)
     - Navigation links + ThemeToggle on the right (desktop)
     - Hamburger menu (mobile)
   -->
   <header class="sticky top-0 z-50 backdrop-blur bg-white/75 dark:bg-gray-900/75 border-b border-gray-200 dark:border-gray-800">
     <div class="container mx-auto px-4 sm:px-6 lg:px-8">
       <nav class="flex justify-between items-center h-16">
-        <!-- Left: Logo + Open to Work badge -->
+        <!-- Left: Logo -->
         <div class="flex items-center gap-3">
           <NuxtLink
             to="/"
@@ -23,19 +22,6 @@
           >
             Ayush Jaipuriar
           </NuxtLink>
-
-          <!--
-            "Open to Work" mini-badge — desktop only.
-            `hidden md:inline-flex` hides it below 768px to prevent
-            the header from feeling cramped on smaller screens.
-          -->
-          <span class="hidden md:inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full text-xs font-medium bg-green-50 dark:bg-green-900/20 text-green-700 dark:text-green-400 border border-green-200 dark:border-green-800">
-            <span class="relative flex h-1.5 w-1.5">
-              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-              <span class="relative inline-flex rounded-full h-1.5 w-1.5 bg-green-500"></span>
-            </span>
-            Open to Work
-          </span>
         </div>
 
         <!-- Desktop Navigation -->

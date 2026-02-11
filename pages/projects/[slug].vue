@@ -70,7 +70,7 @@
       </header>
 
       <div class="mb-12 overflow-hidden rounded-2xl border border-gray-200 dark:border-gray-800">
-        <img :src="toAssetPath(project.image)" :alt="project.title" class="w-full h-auto object-cover" />
+        <img :src="toAssetPath(project.image)" :alt="project.title" width="1200" height="675" class="w-full h-auto object-cover" />
       </div>
 
       <div class="space-y-12">
@@ -270,6 +270,45 @@ useHead({
           ? `Case study of ${project.value.title}: ${project.value.description}`
           : 'Project not found - check out my other projects.'
       ),
+    },
+    { property: 'og:type', content: 'article' },
+    {
+      property: 'og:title',
+      content: computed(() => project.value?.title || 'Project')
+    },
+    {
+      property: 'og:description',
+      content: computed(() => project.value?.description || 'Project case study by Ayush Jaipuriar')
+    },
+    {
+      property: 'og:image',
+      content: computed(() => {
+        if (!project.value?.image) return 'https://ayush-jaipuriar.github.io/Personal-Portfolio/og-default.png'
+        const img = project.value.image
+        if (img.startsWith('http')) return img
+        return `https://ayush-jaipuriar.github.io/Personal-Portfolio${img}`
+      })
+    },
+    {
+      property: 'og:url',
+      content: computed(() => `https://ayush-jaipuriar.github.io/Personal-Portfolio/projects/${route.params.slug}`)
+    },
+    {
+      name: 'twitter:title',
+      content: computed(() => project.value?.title || 'Project')
+    },
+    {
+      name: 'twitter:description',
+      content: computed(() => project.value?.shortDescription || project.value?.description || 'Project case study')
+    },
+    {
+      name: 'twitter:image',
+      content: computed(() => {
+        if (!project.value?.image) return 'https://ayush-jaipuriar.github.io/Personal-Portfolio/og-default.png'
+        const img = project.value.image
+        if (img.startsWith('http')) return img
+        return `https://ayush-jaipuriar.github.io/Personal-Portfolio${img}`
+      })
     },
   ],
 })

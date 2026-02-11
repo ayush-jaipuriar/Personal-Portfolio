@@ -19,6 +19,42 @@
  */
 import { onMounted } from 'vue'
 
+// JSON-LD Person schema for rich search engine understanding
+useHead({
+  script: [
+    {
+      type: 'application/ld+json',
+      children: JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'Person',
+        name: 'Ayush Jaipuriar',
+        jobTitle: 'AI Agent Engineer & Senior Full-Stack Developer',
+        worksFor: {
+          '@type': 'Organization',
+          name: 'TransUnion',
+        },
+        url: 'https://ayush-jaipuriar.github.io/Personal-Portfolio/',
+        sameAs: [
+          'https://github.com/ayush-jaipuriar',
+          'https://www.linkedin.com/in/ayush-jaipuriar/',
+        ],
+        email: 'jaipuriar.ayush@gmail.com',
+        knowsAbout: [
+          'AI Agent Engineering',
+          'LangChain',
+          'LangGraph',
+          'Python',
+          'Java',
+          'Spring Boot',
+          'AWS',
+          'Machine Learning',
+          'Full-Stack Development',
+        ],
+      }),
+    },
+  ],
+})
+
 onMounted(() => {
   // ── Console Easter Egg ──────────────────────────────────────────
   // Styled console.log messages that appear when a developer opens

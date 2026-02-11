@@ -238,6 +238,11 @@ useHead({
       content:
         'AI Agent Engineering, Java, Spring Boot, Python, LangChain — explore the full technology stack of Ayush Jaipuriar, ranked by depth and production impact.',
     },
+    { property: 'og:title', content: 'Skills & Expertise | Ayush Jaipuriar' },
+    { property: 'og:description', content: 'LangChain, LangGraph, Python, Java, Spring Boot, AWS — the full technology stack ranked by production depth and enterprise impact.' },
+    { property: 'og:url', content: 'https://ayush-jaipuriar.github.io/Personal-Portfolio/skills' },
+    { name: 'twitter:title', content: 'Skills & Expertise | Ayush Jaipuriar' },
+    { name: 'twitter:description', content: 'LangChain, LangGraph, Python, Java, Spring Boot — technology stack ranked by production depth.' },
   ],
 })
 

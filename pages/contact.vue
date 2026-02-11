@@ -371,6 +371,11 @@ useHead({
       content:
         'Get in touch with Ayush Jaipuriar — AI Agent Engineer exploring Senior SWE & AI Engineering roles. Based in Hyderabad, open to relocation.',
     },
+    { property: 'og:title', content: 'Contact | Ayush Jaipuriar' },
+    { property: 'og:description', content: 'Get in touch — currently exploring Senior SWE & AI Engineering roles. Based in Hyderabad, open to remote or relocation.' },
+    { property: 'og:url', content: 'https://ayush-jaipuriar.github.io/Personal-Portfolio/contact' },
+    { name: 'twitter:title', content: 'Contact | Ayush Jaipuriar' },
+    { name: 'twitter:description', content: 'Get in touch — exploring Senior SWE & AI Engineering roles.' },
   ],
 })
 

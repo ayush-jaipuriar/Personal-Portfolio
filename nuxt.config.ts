@@ -1,5 +1,7 @@
 import { defineNuxtConfig } from 'nuxt/config';
 
+const deployBasePath = process.env.NODE_ENV === 'production' ? '/Personal-Portfolio' : ''
+
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   devtools: { enabled: true },
@@ -53,34 +55,46 @@ export default defineNuxtConfig({
 
   // Head metadata
   app: {
-    baseURL: process.env.NODE_ENV === 'production' ? '/Personal-Portfolio/' : '/',
+    baseURL: `${deployBasePath}/`,
     head: {
-      title: 'Ayush Jaipuriar | Software Engineer',
+      title: 'Ayush Jaipuriar | AI Agent Engineer & Senior Full-Stack Developer',
       meta: [
         { charset: 'utf-8' },
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
         { 
           key: 'description',
           name: 'description', 
-          content: 'Personal portfolio website of Ayush Jaipuriar, a Software Engineer showcasing experience in backend, frontend, DevOps, and cloud technologies.' 
+          content: 'Portfolio of Ayush Jaipuriar — AI Agent Engineer and Senior Full-Stack Developer building production AI systems at Fortune 500 scale. 6+ years in enterprise fintech.' 
         },
         { name: 'format-detection', content: 'telephone=no' },
+        { name: 'author', content: 'Ayush Jaipuriar' },
+        
+        // Open Graph (global defaults)
+        { property: 'og:site_name', content: 'Ayush Jaipuriar - Portfolio' },
         { property: 'og:type', content: 'website' },
         { property: 'og:url', content: 'https://ayush-jaipuriar.github.io/Personal-Portfolio/' },
-        { property: 'og:title', content: 'Ayush Jaipuriar | Software Engineer' },
-        { property: 'og:description', content: 'Personal portfolio website of Ayush Jaipuriar, a Software Engineer.' },
-        { property: 'og:image', content: 'https://ayush-jaipuriar.github.io/Personal-Portfolio/ayush-jaipuriar.jpeg' },
-        { property: 'twitter:card', content: 'summary_large_image' },
-        { property: 'twitter:url', content: 'https://ayush-jaipuriar.github.io/Personal-Portfolio/' },
-        { property: 'twitter:title', content: 'Ayush Jaipuriar | Software Engineer' },
-        { property: 'twitter:description', content: 'Personal portfolio website of Ayush Jaipuriar, a Software Engineer.' },
-        { property: 'twitter:image', content: 'https://ayush-jaipuriar.github.io/Personal-Portfolio/ayush-jaipuriar.jpeg' },
+        { property: 'og:title', content: 'Ayush Jaipuriar | AI Agent Engineer & Senior Full-Stack Developer' },
+        { property: 'og:description', content: 'Building production AI systems at Fortune 500 scale. 6+ years shipping enterprise fintech at TransUnion and HighRadius.' },
+        { property: 'og:image', content: 'https://ayush-jaipuriar.github.io/Personal-Portfolio/og-default.png' },
+        { property: 'og:image:width', content: '1200' },
+        { property: 'og:image:height', content: '630' },
+        { property: 'og:image:alt', content: 'Ayush Jaipuriar — AI Agent Engineer & Senior Full-Stack Developer' },
+        
+        // Twitter Card (global defaults)
+        { name: 'twitter:card', content: 'summary_large_image' },
+        { name: 'twitter:title', content: 'Ayush Jaipuriar | AI Agent Engineer & Senior Full-Stack Developer' },
+        { name: 'twitter:description', content: 'Building production AI systems at Fortune 500 scale. 6+ years in enterprise fintech.' },
+        { name: 'twitter:image', content: 'https://ayush-jaipuriar.github.io/Personal-Portfolio/og-default.png' },
+        { name: 'twitter:image:alt', content: 'Ayush Jaipuriar — AI Agent Engineer & Senior Full-Stack Developer' },
       ],
       link: [
-        { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-        { rel: 'icon', type: 'image/png', sizes: '16x16', href: '/favicon-16x16.png' },
-        { rel: 'icon', type: 'image/png', sizes: '32x32', href: '/favicon-32x32.png' },
-        { rel: 'apple-touch-icon', sizes: '180x180', href: '/apple-touch-icon.png' },
+        // Icon paths include baseURL so GitHub Pages serves them correctly.
+        { rel: 'icon', type: 'image/svg+xml', href: `${deployBasePath}/favicon.svg` },
+        { rel: 'icon', type: 'image/x-icon', href: `${deployBasePath}/favicon.ico` },
+        { rel: 'icon', type: 'image/png', sizes: '16x16', href: `${deployBasePath}/favicon-16x16.png` },
+        { rel: 'icon', type: 'image/png', sizes: '32x32', href: `${deployBasePath}/favicon-32x32.png` },
+        { rel: 'apple-touch-icon', sizes: '180x180', href: `${deployBasePath}/apple-touch-icon.png` },
+        { rel: 'manifest', href: `${deployBasePath}/site.webmanifest` },
         { 
           rel: 'stylesheet', 
           href: 'https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap' 
@@ -92,7 +106,10 @@ export default defineNuxtConfig({
 
   // Caching and optimization
   nitro: {
-    compressPublicAssets: true
+    compressPublicAssets: true,
+    prerender: {
+      routes: ['/sitemap.xml']
+    }
   },
 
   // Global CSS

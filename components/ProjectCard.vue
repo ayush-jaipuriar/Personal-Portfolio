@@ -23,6 +23,8 @@
       <img
         :src="toAssetPath(project.image)"
         :alt="project.title"
+        width="800"
+        height="450"
         class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
         loading="lazy"
       />
@@ -39,6 +41,8 @@
       <img
         :src="toAssetPath(project.image)"
         :alt="project.title"
+        width="800"
+        height="450"
         class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
         loading="lazy"
       />
@@ -51,6 +55,8 @@
       <img
         :src="toAssetPath(project.image)"
         :alt="project.title"
+        width="800"
+        height="450"
         class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
         loading="lazy"
       />

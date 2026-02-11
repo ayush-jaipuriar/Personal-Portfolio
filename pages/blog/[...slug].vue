@@ -63,13 +63,15 @@
            </div>
            
            <!-- Featured Image -->
-           <div v-if="data.image" class="rounded-2xl overflow-hidden mb-10">
-             <img 
-               :src="toAssetPath(data.image)" 
-               :alt="data.title" 
-               class="w-full h-auto"
-             />
-           </div>
+          <div v-if="data.image" class="rounded-2xl overflow-hidden mb-10">
+            <img 
+              :src="toAssetPath(data.image)" 
+              :alt="data.title"
+              width="1200"
+              height="630"
+              class="w-full h-auto"
+            />
+          </div>
          </header>
 
          <!-- Post Content -->
@@ -82,7 +84,10 @@
            <div class="flex items-center">
              <img 
                :src="toAssetPath('/ayush-jaipuriar.jpeg')" 
-               alt="Ayush Jaipuriar" 
+               alt="Ayush Jaipuriar"
+               width="48"
+               height="48"
+               loading="lazy"
                class="h-12 w-12 rounded-full mr-4"
              />
              <div>
@@ -137,7 +142,10 @@
                  <div v-if="relatedPost.image" class="mb-2 rounded-lg overflow-hidden">
                    <img 
                     :src="toAssetPath(relatedPost.image)" 
-                     :alt="relatedPost.title" 
+                     :alt="relatedPost.title"
+                     width="400"
+                     height="192"
+                     loading="lazy"
                      class="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-105"
                    />
                  </div>
@@ -258,6 +266,7 @@ useHead({
       name: 'description',
       content: computed(() => data.value ? data.value.description || `Read ${data.value.title} by Ayush Jaipuriar` : 'Blog post by Ayush Jaipuriar')
     },
+    { property: 'og:type', content: 'article' },
     {
       property: 'og:title',
       content: computed(() => data.value?.title || 'Blog Post')
@@ -268,12 +277,36 @@ useHead({
     },
     {
       property: 'og:image',
-      content: computed(() => data.value?.image || '/ayush-jaipuriar.jpeg')
+      content: computed(() => {
+        const img = data.value?.image
+        if (!img) return 'https://ayush-jaipuriar.github.io/Personal-Portfolio/og-default.png'
+        if (img.startsWith('http')) return img
+        return `https://ayush-jaipuriar.github.io/Personal-Portfolio${img}`
+      })
     },
     {
       property: 'og:url',
       content: computed(() => shareUrl.value)
-    }
+    },
+    { property: 'article:published_time', content: computed(() => data.value?.date || '') },
+    { property: 'article:author', content: 'Ayush Jaipuriar' },
+    {
+      name: 'twitter:title',
+      content: computed(() => data.value?.title || 'Blog Post')
+    },
+    {
+      name: 'twitter:description',
+      content: computed(() => data.value?.description || 'Blog post by Ayush Jaipuriar')
+    },
+    {
+      name: 'twitter:image',
+      content: computed(() => {
+        const img = data.value?.image
+        if (!img) return 'https://ayush-jaipuriar.github.io/Personal-Portfolio/og-default.png'
+        if (img.startsWith('http')) return img
+        return `https://ayush-jaipuriar.github.io/Personal-Portfolio${img}`
+      })
+    },
   ]
 });
 </script>
@@ -296,7 +329,15 @@ useHead({
 }
 
 .prose pre {
-  @apply p-4 bg-gray-100 dark:bg-gray-800 rounded-lg overflow-auto text-sm mb-4;
+  @apply p-4 bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg overflow-auto text-sm mb-4;
+}
+
+/* Ensure plain-text / ASCII diagrams inside code blocks have strong contrast.
+   Without a language tag, Shiki/Nuxt Content renders code as plain text,
+   which can inherit low-contrast colors. This forces high-contrast text. */
+.prose pre code {
+  @apply block text-gray-800 dark:text-gray-100;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 }
 
 .prose ul, .prose ol {

@@ -90,6 +90,11 @@ useHead({
       content:
         'Professional case studies and personal projects by Ayush Jaipuriar, covering AI agent systems, TB-scale search, and enterprise application engineering.',
     },
+    { property: 'og:title', content: 'Projects | Ayush Jaipuriar' },
+    { property: 'og:description', content: 'Case studies and projects from AI agents to TB-scale search systems — real production work at Fortune 500 companies and personal experiments.' },
+    { property: 'og:url', content: 'https://ayush-jaipuriar.github.io/Personal-Portfolio/projects' },
+    { name: 'twitter:title', content: 'Projects | Ayush Jaipuriar' },
+    { name: 'twitter:description', content: 'Case studies from AI agents to TB-scale search systems at Fortune 500 companies.' },
   ],
 })
 </script>

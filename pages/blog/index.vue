@@ -303,6 +303,11 @@ useHead({
       content:
         'Thoughts on AI agent architectures, production LLMOps, system design, and lessons from 6 years of enterprise engineering — by Ayush Jaipuriar.',
     },
+    { property: 'og:title', content: 'Blog | Ayush Jaipuriar' },
+    { property: 'og:description', content: 'Insights on AI engineering, LangChain/LangGraph patterns, system design, and building at Fortune 500 scale.' },
+    { property: 'og:url', content: 'https://ayush-jaipuriar.github.io/Personal-Portfolio/blog' },
+    { name: 'twitter:title', content: 'Blog | Ayush Jaipuriar' },
+    { name: 'twitter:description', content: 'Insights on AI engineering, LangChain/LangGraph, and building at scale.' },
   ],
 })
 

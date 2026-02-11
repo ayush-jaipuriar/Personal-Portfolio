@@ -8,6 +8,9 @@
         <img
           :src="toAssetPath(post.image)"
           :alt="post.title"
+          width="600"
+          height="338"
+          loading="lazy"
           class="w-full h-full object-cover aspect-video rounded-lg transition-transform duration-300 group-hover:scale-105"
         />
       </NuxtLink>

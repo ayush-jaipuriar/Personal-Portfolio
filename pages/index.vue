@@ -85,11 +85,13 @@
               <div class="absolute inset-0 rounded-full profile-ring-glow"></div>
               <div class="relative w-full h-full p-[4px] rounded-full">
                 <div class="w-full h-full rounded-full overflow-hidden bg-white dark:bg-gray-900">
-                  <img
-                    :src="toAssetPath('/ayush-jaipuriar.jpeg')"
-                    alt="Ayush Jaipuriar - AI Agent Engineer"
-                    class="w-full h-full object-cover"
-                  />
+                <img
+                  :src="toAssetPath('/ayush-jaipuriar.jpeg')"
+                  alt="Ayush Jaipuriar - AI Agent Engineer"
+                  width="800"
+                  height="800"
+                  class="w-full h-full object-cover"
+                />
                 </div>
               </div>
             </div>
@@ -152,6 +154,11 @@ useHead({
       content:
         'Portfolio of Ayush Jaipuriar — AI Agent Engineer and Senior Full-Stack Developer building production AI systems at Fortune 500 scale. 6+ years in enterprise fintech.',
     },
+    { property: 'og:title', content: 'Ayush Jaipuriar | AI Agent Engineer & Senior Full-Stack Developer' },
+    { property: 'og:description', content: 'Building production AI systems at Fortune 500 scale. 6+ years shipping enterprise fintech at TransUnion and HighRadius.' },
+    { property: 'og:url', content: 'https://ayush-jaipuriar.github.io/Personal-Portfolio/' },
+    { name: 'twitter:title', content: 'Ayush Jaipuriar | AI Agent Engineer & Senior Full-Stack Developer' },
+    { name: 'twitter:description', content: 'Building production AI systems at Fortune 500 scale. 6+ years in enterprise fintech.' },
   ],
 })
 </script>

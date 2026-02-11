@@ -262,6 +262,9 @@ export const projects: Project[] = [
   },
 ]
 
+// Export projects array for sitemap generation
+export const allProjects = projects
+
 export const getFeaturedProjects = () =>
   projects.filter((project) => project.featured).sort((a, b) => a.order - b.order)
 

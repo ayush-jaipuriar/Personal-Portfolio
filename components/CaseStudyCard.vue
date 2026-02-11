@@ -13,6 +13,8 @@
           <img
             :src="toAssetPath(project.image)"
             :alt="project.title"
+            width="800"
+            height="600"
             class="h-full w-full object-cover min-h-[220px] lg:min-h-full group-hover:scale-105 transition-transform duration-500"
             loading="lazy"
           />
