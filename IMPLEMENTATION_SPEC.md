@@ -1801,6 +1801,56 @@ To fully close Phase 10 and mark **Ready to deploy** as complete, run the follow
 
 ---
 
+### 13.9 Post-Launch Feature 1: Google Analytics with Cookie Consent (COMPLETED)
+
+**Date:** February 17, 2026
+
+Added consent-gated Google Analytics (GA4) integration with custom event tracking.
+
+#### Architecture
+
+- **Consent-gated loading:** GA4 `gtag.js` is never loaded until the user explicitly clicks "Accept" on the cookie consent banner. This satisfies GDPR, CCPA, and India's DPDP Act requirements.
+- **Composable pattern:** All analytics logic is encapsulated in `composables/useAnalytics.ts`, which exposes `loadGA()`, `trackEvent()`, and `trackOutboundClick()`. Components import and call these — they safely no-op when GA isn't loaded.
+- **localStorage persistence:** The user's consent choice is stored in `localStorage` under the key `analytics-consent`. On subsequent visits, GA loads silently if previously accepted, or not at all if declined. The banner only appears once.
+
+#### Files created
+
+- `composables/useAnalytics.ts` — GA4 script loader + event tracking helpers
+- `components/CookieConsent.vue` — Minimal bottom-right consent banner with Accept/Decline buttons and slide-up animation
+
+#### Files modified
+
+- `nuxt.config.ts` — Added `runtimeConfig.public.gaId` for the GA4 Measurement ID (placeholder `G-XXXXXXXXXX`, to be replaced with real ID)
+- `layouts/default.vue` — Mounted `<CookieConsent />` globally after the footer
+- `pages/index.vue` — Added `resume_download` event tracking on the hero Resume Download button
+- `pages/contact.vue` — Added `contact_form_submit` event tracking on successful form submission
+- `components/CaseStudyCard.vue` — Added `project_click` event tracking on "Read Case Study" link
+- `components/AppFooter.vue` — Added `outbound_click` event tracking on GitHub and LinkedIn social links
+
+#### Custom events tracked
+
+| Event Name | Category | Trigger | Location |
+|---|---|---|---|
+| `resume_download` | engagement | Click on "Download Resume" | Homepage hero |
+| `contact_form_submit` | conversion | Successful form POST | Contact page |
+| `project_click` | engagement | Click "Read Case Study" | Case study cards |
+| `outbound_click` | engagement | Click GitHub/LinkedIn links | Footer |
+
+#### Setup required (owner action)
+
+1. Create a GA4 property at [analytics.google.com](https://analytics.google.com)
+2. Get the Measurement ID (format: `G-XXXXXXXXXX`)
+3. Either:
+   - Replace the placeholder in `nuxt.config.ts` → `runtimeConfig.public.gaId`
+   - Or set the environment variable `NUXT_PUBLIC_GA_ID=G-YOURID` in the deploy environment
+
+#### Build validation
+
+- `npm run generate` ✅ (445 modules, 43 routes prerendered)
+- Consent key (`analytics-consent`), GA loader (`googletagmanager`), and cookie banner all confirmed in build output
+
+---
+
 ## 14. Post-Launch Roadmap
 
 Items for after the main overhaul is deployed.
@@ -1809,7 +1859,7 @@ Items for after the main overhaul is deployed.
 |---|------|----------|--------|-------|
 | 1 | Write 1 blog post per week | High | 2-3 hrs/week | Maintains freshness and thought leadership |
 | 2 | Set up TinaCMS or Prose.io for web-based editing | Medium | 3 hrs | When you want a GUI for blog posts instead of Git |
-| 3 | Add Google Analytics or Plausible | Medium | 30 min | Track visitor behavior |
+| 3 | ~~Add Google Analytics or Plausible~~ | ~~Medium~~ | ~~30 min~~ | **DONE** — GA4 with cookie consent, see Section 13.9 |
 | 4 | Get custom domain (e.g., `ayushjaipuriar.dev`) | Medium | 1 hr | More professional URL |
 | 5 | Add testimonials section | Medium | 2 hrs | When you have quotes from colleagues/managers |
 | 6 | Add real architecture diagrams to case studies | Medium | 3-4 hrs | Requires creating diagrams (Excalidraw, Mermaid, etc.) |

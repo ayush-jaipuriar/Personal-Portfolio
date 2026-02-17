@@ -13,6 +13,9 @@
 
     <!-- Footer -->
     <AppFooter />
+
+    <!-- Cookie consent banner — renders once per visitor until they make a choice -->
+    <CookieConsent />
   </div>
 </template>
 

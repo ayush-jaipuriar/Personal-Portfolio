@@ -57,6 +57,7 @@
               <a
                 :href="resumeUrl"
                 download
+                @click="trackEvent('resume_download', { event_category: 'engagement', source: 'hero' })"
                 class="inline-flex items-center px-6 py-3 rounded-lg text-base font-medium
                        text-gray-700 dark:text-gray-200
                        bg-white dark:bg-gray-800
@@ -132,10 +133,12 @@
 
 <script setup lang="ts">
 import { useAssetPath } from '~/composables/useAssetPath'
+import { useAnalytics } from '~/composables/useAnalytics'
 
 const runtimeConfig = useRuntimeConfig()
 const resumeUrl = `${runtimeConfig.app.baseURL}resume/Ayush_Jaipuriar_Resume.pdf`
 const { toAssetPath } = useAssetPath()
+const { trackEvent } = useAnalytics()
 
 /**
  * Homepage metadata.

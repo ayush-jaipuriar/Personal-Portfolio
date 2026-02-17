@@ -69,6 +69,7 @@
               rel="noopener noreferrer"
               class="text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors"
               aria-label="GitHub"
+              @click="trackOutboundClick('https://github.com/ayush-jaipuriar')"
             >
               <Icon name="mdi:github" class="h-6 w-6" aria-hidden="true" />
             </a>
@@ -78,6 +79,7 @@
               rel="noopener noreferrer"
               class="text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors"
               aria-label="LinkedIn"
+              @click="trackOutboundClick('https://www.linkedin.com/in/ayush-jaipuriar')"
             >
               <Icon name="mdi:linkedin" class="h-6 w-6" aria-hidden="true" />
             </a>
@@ -108,6 +110,10 @@
 </template>
 
 <script setup lang="ts">
+import { useAnalytics } from '~/composables/useAnalytics'
+
+const { trackOutboundClick } = useAnalytics()
+
 const quickLinks = [
   { name: 'About', href: '/about' },
   { name: 'Projects', href: '/projects' },

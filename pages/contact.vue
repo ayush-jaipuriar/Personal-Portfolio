@@ -361,6 +361,9 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
+import { useAnalytics } from '~/composables/useAnalytics'
+
+const { trackEvent } = useAnalytics()
 
 // ── SEO ──────────────────────────────────────────────────────────────
 useHead({
@@ -427,6 +430,7 @@ const submitContactForm = async () => {
 
     if (response.ok) {
       submitStatus.value = 'success'
+      trackEvent('contact_form_submit', { event_category: 'conversion' })
       contactForm.value = {
         name: '',
         email: '',

@@ -55,6 +55,7 @@
             <NuxtLink
               :to="`/projects/${project.slug}`"
               class="inline-flex items-center text-sm font-semibold text-apple-blue-600 dark:text-apple-blue-400 group-hover:gap-2 transition-all"
+              @click="trackProjectClick"
             >
               Read Case Study
               <Icon name="heroicons:arrow-right" class="ml-1 h-4 w-4" aria-hidden="true" />
@@ -71,12 +72,21 @@ import { ref } from 'vue'
 import type { Project } from '~/data/projects'
 import { useAssetPath } from '~/composables/useAssetPath'
 import { useTilt } from '~/composables/useTilt'
+import { useAnalytics } from '~/composables/useAnalytics'
 
-defineProps<{
+const props = defineProps<{
   project: Project
 }>()
 
 const { toAssetPath } = useAssetPath()
+const { trackEvent } = useAnalytics()
+
+const trackProjectClick = () => {
+  trackEvent('project_click', {
+    event_category: 'engagement',
+    event_label: props.project.slug,
+  })
+}
 
 // 3D tilt hover — adds subtle perspective rotation following the cursor
 const cardRef = ref<HTMLElement | null>(null)
