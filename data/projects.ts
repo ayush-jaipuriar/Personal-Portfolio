@@ -11,6 +11,7 @@ export interface ImpactMetric {
 export interface CaseStudy {
   problem: string
   architecture: string
+  diagramUrl?: string          // Path to a static SVG architecture diagram in public/images/diagrams/
   role: string
   approach: string
   keyTechnicalDecisions: string[]
@@ -57,6 +58,7 @@ export const projects: Project[] = [
         'Research analysts needed to query massive datasets, build visualizations, and detect patterns without depending on specialist engineering teams for every request.',
       architecture:
         'LangGraph supervisor pattern orchestrating specialized agents for NLP-to-SQL, semantic search, knowledge graph construction, Superset dashboard generation, RAG Q&A, and anomaly detection.',
+      diagramUrl: '/images/diagrams/ai-agents-research-architecture.svg',
       role:
         'Lead AI Agent Engineer designing the multi-agent architecture, orchestration policies, and production deployment flow through MLFlow.',
       approach:
@@ -101,6 +103,7 @@ export const projects: Project[] = [
         'Users needed reliable search on multi-terabyte proprietary datasets with strict latency targets and region-sensitive data constraints.',
       architecture:
         'Hybrid query stack combining DuckDB for local analytical paths, Trino for federated distributed queries, and Dataproc for heavy workloads, orchestrated by a routing and scaling layer.',
+      diagramUrl: '/images/diagrams/tb-scale-search-architecture.svg',
       role:
         'Built core query-routing logic, implemented dynamic pod scaling strategy, and developed geofencing behavior for user and data locality constraints.',
       approach:
@@ -190,6 +193,7 @@ export const projects: Project[] = [
         'People struggle to stay consistent with personal goals because most habit tools do not adapt to emotional context, patterns, or accountability dynamics.',
       architecture:
         'Supervisor-driven multi-agent system with CheckIn, Query, Emotional, Pattern Detection, and Reporting agents backed by Firestore and Cloud Run.',
+      diagramUrl: '/images/diagrams/accountability-agent-architecture.svg',
       role:
         'Designed and implemented the end-to-end architecture including routing, agent contracts, gamification logic, and deployment pipeline.',
       approach:

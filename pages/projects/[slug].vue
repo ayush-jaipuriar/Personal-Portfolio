@@ -83,6 +83,28 @@
           </p>
         </section>
 
+        <!--
+          System Architecture Diagram — only rendered when the case study
+          includes a diagramUrl. This gives visual depth to the technical
+          narrative while keeping the section entirely absent for projects
+          that don't have a diagram yet.
+        -->
+        <section v-if="detail.diagramUrl">
+          <h2 class="text-2xl font-bold mb-3 pb-2 border-b border-gray-200 dark:border-gray-800 text-gray-900 dark:text-white">
+            System Architecture
+          </h2>
+          <div class="my-4 p-4 bg-gray-50 dark:bg-gray-900/40 border border-gray-200 dark:border-gray-700 rounded-lg overflow-x-auto">
+            <img
+              :src="toAssetPath(detail.diagramUrl)"
+              :alt="`${project.title} system architecture diagram`"
+              width="960"
+              height="500"
+              loading="lazy"
+              class="w-full h-auto block"
+            />
+          </div>
+        </section>
+
         <section>
           <h2 class="text-2xl font-bold mb-3 pb-2 border-b border-gray-200 dark:border-gray-800 text-gray-900 dark:text-white">
             Architecture &amp; Approach

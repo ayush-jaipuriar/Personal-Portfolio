@@ -1849,6 +1849,37 @@ Added consent-gated Google Analytics (GA4) integration with custom event trackin
 - `npm run generate` ✅ (445 modules, 43 routes prerendered)
 - Consent key (`analytics-consent`), GA loader (`googletagmanager`), and cookie banner all confirmed in build output
 
+### 13.10 Post-Launch Feature 2: Architecture Diagrams for Case Studies (COMPLETED)
+
+**Date:** February 17, 2026
+
+Added static SVG architecture diagrams to three project case studies, giving visual depth to the technical narrative.
+
+#### Architecture
+
+- **Optional per-project field:** Added `diagramUrl?: string` to the `CaseStudy` interface. Projects without a diagram URL simply skip the section (Vue `v-if`), so this is fully backward-compatible.
+- **Static SVG assets:** Diagrams are hand-authored SVG files stored in `public/images/diagrams/`. They use a shared visual style (Inter font, rounded boxes, color-coded layers, arrow connectors) for consistency across all case studies and the existing blog diagrams.
+- **Conditional UI section:** A new "System Architecture" heading + diagram container appears above the existing "Architecture & Approach" text section only when `diagramUrl` is present.
+
+#### Files created
+
+- `public/images/diagrams/ai-agents-research-architecture.svg` — Supervisor + 6 sub-agents, data layer (PostgreSQL, Neo4j, Superset, FAISS), MLFlow deployment
+- `public/images/diagrams/tb-scale-search-architecture.svg` — Query Router, Geofencing gate, 3 engine paths (DuckDB, Trino, Dataproc), Kubernetes infra
+- `public/images/diagrams/accountability-agent-architecture.svg` — Telegram Bot API, Supervisor Router, 5 agents (CheckIn, Query, Emotional, Pattern, Reporting), Firestore + Gemini + Cloud Run
+
+#### Files modified
+
+- `data/projects.ts` — Added `diagramUrl?: string` to `CaseStudy` interface; added `diagramUrl` values to AI Agents, TB-Scale Search, and Accountability Agent projects
+- `pages/projects/[slug].vue` — Added conditional "System Architecture" section with `<img>` rendering, lazy loading, proper alt text, and responsive container styling
+
+#### Verification
+
+- `npm run generate` succeeds with 43 prerendered routes
+- All 3 target project pages contain the "System Architecture" section in generated HTML
+- Enterprise Parsing Engine (no `diagramUrl`) correctly omits the section
+- All 3 SVG files are valid XML and render correctly in browser
+- Diagrams use pure ASCII to avoid encoding issues with XML parsers
+
 ---
 
 ## 14. Post-Launch Roadmap
@@ -1862,7 +1893,7 @@ Items for after the main overhaul is deployed.
 | 3 | ~~Add Google Analytics or Plausible~~ | ~~Medium~~ | ~~30 min~~ | **DONE** — GA4 with cookie consent, see Section 13.9 |
 | 4 | Get custom domain (e.g., `ayushjaipuriar.dev`) | Medium | 1 hr | More professional URL |
 | 5 | Add testimonials section | Medium | 2 hrs | When you have quotes from colleagues/managers |
-| 6 | Add real architecture diagrams to case studies | Medium | 3-4 hrs | Requires creating diagrams (Excalidraw, Mermaid, etc.) |
+| 6 | ~~Add real architecture diagrams to case studies~~ | ~~Medium~~ | ~~3-4 hrs~~ | **DONE** — Static SVG diagrams for 3 projects, see Section 13.10 |
 | 7 | Update LinkedIn profile to match portfolio | High | 30 min | Must be done right after portfolio launch |
 | 8 | Update resume PDF to match portfolio narrative | High | 1 hr | AI Agent Engineer positioning should be consistent |
 | 9 | Add Calendly/Cal.com scheduling link | Low | 30 min | "Schedule a Call" button on Contact page |
