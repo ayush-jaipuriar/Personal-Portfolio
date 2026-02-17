@@ -118,12 +118,11 @@ export default defineNuxtConfig({
   ],
 
   // Public runtime configuration — accessible via useRuntimeConfig().public
-  // GA Measurement ID: replace 'G-XXXXXXXXXX' with your real GA4 ID after
-  // creating the property at https://analytics.google.com.
+  // GA Measurement ID for the portfolio site.
   // This is NOT a secret — GA IDs are public by design (visible in page source).
   runtimeConfig: {
     public: {
-      gaId: process.env.NUXT_PUBLIC_GA_ID || 'G-151411160',
+      gaId: process.env.NUXT_PUBLIC_GA_ID || 'G-V9CNN08S3P',
     },
   },
 
