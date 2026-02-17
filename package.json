@@ -3,10 +3,10 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "build": "nuxt build",
-    "dev": "nuxt dev",
-    "generate": "nuxt generate",
-    "preview": "nuxt preview"
+    "build": "node node_modules/nuxt/bin/nuxt.mjs build",
+    "dev": "node node_modules/nuxt/bin/nuxt.mjs dev",
+    "generate": "node node_modules/nuxt/bin/nuxt.mjs generate",
+    "preview": "node node_modules/nuxt/bin/nuxt.mjs preview"
   },
   "devDependencies": {
     "@nuxt/content": "^2.8.5",
@@ -24,7 +24,6 @@
     "typescript": "^5.2.2"
   },
   "dependencies": {
-    "mermaid": "10.9.3",
     "vue": "^3.3.4",
     "vue-router": "^4.2.5"
   }

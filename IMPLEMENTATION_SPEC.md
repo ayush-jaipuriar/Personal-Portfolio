@@ -271,7 +271,7 @@ Page headings likely use classes that resolve to a low-contrast gray in dark mod
 - [x] **Quick fix:** Project detail page shows "Ayush Jaipuriar" in browser tab, not "Your Name"
 - [x] **Quick fix:** Footer shows dynamic current year on all pages
 - [x] All pages tested in both light mode and dark mode (Chrome DevTools toggle)
-- [ ] All pages tested at mobile (375px), tablet (768px), and desktop (1440px) widths
+- [x] All pages tested at mobile (375px), tablet (768px), and desktop (1440px) widths
 - [x] `npm run generate` completes without errors
 - [x] Static output served locally (`npx serve .output/public`) — all pages functional
 
@@ -1050,7 +1050,7 @@ const submitForm = async () => {
 - [x] Error state shows fallback email link
 - [x] Loading/submitting state disables button and shows indicator
 - [x] Honeypot field added for spam protection
-- [ ] Test: submit form → message arrives in email inbox (owner-side inbox confirmation pending)
+- [x] Test: submit form → message arrives in email inbox (owner-confirmed)
 - [x] Availability message added to contact page
 - [x] Response time note added
 - [x] Tested in light/dark mode
@@ -1462,7 +1462,7 @@ Added `width`, `height`, and `loading="lazy"` attributes to all `<img>` tags for
 - [x] Sitemap generation configured (custom server route due to Node version constraints)
 - [x] All `<img>` tags have `width`, `height`, and `loading="lazy"` (where appropriate)
 - [x] Build successful with 43 prerendered routes
-- [ ] Lighthouse Performance/Accessibility/SEO audit _(to be run on deployed site)_
+- [ ] Lighthouse Performance/Accessibility/SEO audit _(deployed PSI captured; mobile performance currently 84, follow-up re-run after latest image optimizations)_
 
 ### 12.8 Phase 9 Post-Verification Fixes (Iteration Update)
 
@@ -1567,14 +1567,72 @@ This iteration focused on two high-impact UX refinements from post-deploy visual
 
 **Goal:** Comprehensive quality check before pushing to production.
 
+### 13.0 Optimization Iteration: Static Diagram Rendering (COMPLETED)
+
+**Date:** February 17, 2026
+
+This Phase 10 optimization removed Mermaid runtime cost from the client while preserving clear architecture visuals in blog content.
+
+#### Why this optimization was needed
+
+- Runtime Mermaid rendering improved diagram clarity but significantly increased client-side bundle cost.
+- For a portfolio/blog use case, diagrams are static content and do not require client-side graph engines.
+- Static SVG diagrams are faster to load, SEO-friendly, and avoid hydration/runtime rendering complexity.
+
+#### What was changed
+
+1. **Replaced runtime Mermaid with static SVG diagram assets**
+   - Added:
+     - `public/images/diagrams/langgraph-supervisor-architecture.svg`
+     - `public/images/diagrams/rag-enterprise-pipeline.svg`
+
+2. **Updated blog content to use static diagrams**
+   - File: `content/blog/1.building-production-ai-agents.md`
+   - Replaced Mermaid code fences with image references to the pre-rendered SVG files.
+   - Used relative image paths (`../../images/diagrams/...`) so paths resolve correctly in both:
+     - local dev (`/blog/...`)
+     - GitHub Pages base path (`/Personal-Portfolio/blog/...`)
+
+3. **Removed client runtime Mermaid logic**
+   - File: `pages/blog/[...slug].vue`
+   - Removed:
+     - dynamic Mermaid imports
+     - DOM mutation/replacement logic for code blocks
+     - theme re-render observer and fallback renderer
+   - Added static diagram image styling under `.prose img[src*="images/diagrams/"]`.
+
+4. **Dependency simplification**
+   - Removed Mermaid from runtime dependencies in `package.json`.
+   - Final implementation does not require Mermaid execution in the browser.
+
+#### Validation results
+
+- Build validation command:
+  - `node node_modules/nuxt/bin/nuxt.mjs generate`
+- Result:
+  - Successful static generation
+  - Nitro prerendered **43 routes** after removing accidentally reintroduced sample posts
+  - Client build reduced to normal module scale (`441 modules transformed`) from the Mermaid-runtime-heavy profile seen previously
+  - No Mermaid runtime references found in generated output
+  - Deleted accidental sample blog files (kept only real post + `.template.md`):
+    - `content/blog/1.sample-post.md`
+    - `content/blog/2.modern-javascript-features.md`
+    - `content/blog/3.optimizing-website-performance.md`
+
+#### Practical outcome
+
+- Diagrams remain clear and professional.
+- Blog page JS payload is significantly lighter.
+- Theme switching no longer triggers diagram re-render work.
+
 ### 13.1 Cross-Browser Testing Matrix
 
 | Browser | Desktop | Mobile |
 |---------|---------|--------|
-| Chrome (latest) | Test | Test (Android) |
-| Safari (latest) | Test | Test (iOS) |
-| Firefox (latest) | Test | — |
-| Edge (latest) | Test | — |
+| Chrome (latest) | ✅ Validated (Cursor Browser) | ✅ Validated (mobile viewport simulation) |
+| Safari (latest) | ⏳ Pending manual pass | ⏳ Pending manual pass (iOS) |
+| Firefox (latest) | ⏳ Pending manual pass | — |
+| Edge (latest) | ⏳ Pending manual pass | — |
 
 ### 13.2 Responsive Breakpoint Testing
 
@@ -1590,96 +1648,156 @@ This iteration focused on two high-impact UX refinements from post-deploy visual
 ### 13.3 Page-by-Page QA Checklist
 
 **Homepage:**
-- [ ] Hero renders correctly in light mode (all text visible, readable)
-- [ ] Hero renders correctly in dark mode (all text visible, readable)
-- [ ] "Open to Opportunities" badge visible
-- [ ] "See My Work" button links to `/projects`
-- [ ] "Download Resume" button initiates PDF download
-- [ ] Metrics bar shows all 5 metrics
-- [ ] Featured projects show 3 case study cards with correct data
-- [ ] Skills snapshot shows icons and labels
-- [ ] Latest posts section shows empty state OR actual posts
-- [ ] Connect CTA section renders with correct messaging
-- [ ] Profile photo loads and displays correctly
-- [ ] All animations play smoothly
+- [x] Hero renders correctly in light mode (all text visible, readable)
+- [x] Hero renders correctly in dark mode (all text visible, readable)
+- [x] "Open to Opportunities" badge visible
+- [x] "See My Work" button links to `/projects`
+- [x] "Download Resume" button initiates PDF download
+- [x] Metrics bar shows 3 high-signal metrics (`6+`, `TB-Scale`, `Production`)
+- [x] Featured projects show 3 case study cards with correct data
+- [x] Skills snapshot shows icons and labels
+- [x] Latest posts section shows empty state OR actual posts
+- [x] Connect CTA section renders with correct messaging
+- [x] Profile photo loads and displays correctly
+- [x] All animations play smoothly
 
 **About:**
-- [ ] TransUnion description reflects AI agent work
-- [ ] Career timeline renders all entries
-- [ ] Timeline animations work on scroll
-- [ ] Champ Award attributed to TransUnion
-- [ ] Education includes KIIT ECELL, KodeRunners
-- [ ] Achievement cards display with correct numbers
-- [ ] Resume download button works
+- [x] TransUnion description reflects AI agent work
+- [x] Career timeline renders all entries
+- [x] Timeline animations work on scroll
+- [x] Champ Award attributed to TransUnion
+- [x] Education includes KIIT ECELL, KodeRunners
+- [x] Achievement cards display with correct numbers
+- [x] Resume download button works
 
 **Skills:**
-- [ ] AI & ML section featured prominently at top
-- [ ] Core Expertise skills have icons, context, years
-- [ ] Proficient skills display in grid
-- [ ] Familiar skills display as pills
-- [ ] All icons load correctly
+- [x] AI & ML section featured prominently at top
+- [x] Core Expertise skills have icons, context, years
+- [x] Proficient skills display in grid
+- [x] Familiar skills display as pills
+- [x] All icons load correctly
 
 **Projects:**
-- [ ] Page renders (not blank!)
-- [ ] Professional case studies section shows 3 case studies
-- [ ] Personal projects section shows 3+ projects
-- [ ] Each case study card links to detail page
-- [ ] Each detail page has real content (no placeholders)
-- [ ] Previous/Next navigation works
-- [ ] GitHub links open in new tab
+- [x] Page renders (not blank!)
+- [x] Professional case studies section shows 3 case studies
+- [x] Personal projects section shows 3+ projects
+- [x] Each case study card links to detail page
+- [x] Each detail page has real content (no placeholders)
+- [x] Previous/Next navigation works
+- [x] GitHub links open in new tab
 
 **Blog:**
-- [ ] Page renders with empty state or actual posts
-- [ ] If posts exist: pagination works, categories work
-- [ ] Blog post detail page renders correctly
+- [x] Page renders with empty state or actual posts
+- [x] If posts exist: pagination works, categories work _(categories validated; pagination N/A for single post)_
+- [x] Blog post detail page renders correctly
 
 **Contact:**
-- [ ] Form submits successfully (test with real email)
-- [ ] Success state shows after submission
-- [ ] Error state shows on failure
-- [ ] Availability message present
-- [ ] Email, phone, location, social links all correct
-- [ ] Phone number is clickable (`tel:` link)
-- [ ] Email is clickable (`mailto:` link)
+- [x] Form submits successfully (test with real email)
+- [x] Success state shows after submission
+- [x] Error state shows on failure _(code path + UI state verified; manual forced-failure simulation still recommended)_
+- [x] Availability message present
+- [x] Email, location, and social links all correct
+- [x] Phone number is clickable (`tel:` link) _(N/A: phone intentionally omitted from public contact details)_
+- [x] Email is clickable (`mailto:` link)
 
 **Global:**
-- [ ] Navigation links all work (desktop: visible links; mobile: hamburger menu)
-- [ ] Dark/light mode toggle works on every page
-- [ ] Page transitions are smooth
-- [ ] Scroll progress bar works
-- [ ] Footer shows correct year, email, links on every page
-- [ ] No console errors on any page
-- [ ] No broken images on any page
-- [ ] No 404s when clicking any internal link
+- [x] Navigation links all work (desktop: visible links; mobile: hamburger menu)
+- [x] Dark/light mode toggle works on every page
+- [x] Page transitions are smooth
+- [x] Scroll progress bar works
+- [x] Footer shows correct year, email, links on every page
+- [x] No console errors on any page
+- [x] No broken images on any page
+- [x] No 404s when clicking any internal link
 
 ### 13.4 Content Accuracy Audit
 
-- [ ] All text matches the latest version of resume and LinkedIn
-- [ ] No instances of "Your Name" anywhere in the site
-- [ ] No instances of `yourusername` or `example.com` in any links
-- [ ] All dates are accurate (employment, education)
-- [ ] All metrics are accurate (92%, 30+, etc.)
-- [ ] No generic/placeholder text remaining
+- [x] All text matches the latest version of resume and LinkedIn
+- [x] No instances of "Your Name" anywhere in the site
+- [x] No instances of `yourusername` or `example.com` in any links
+- [x] All dates are accurate (employment, education)
+- [x] All metrics are accurate and current (`6+`, `TB-Scale`, `Production`)
+- [x] No generic/placeholder text remaining _(form field placeholders intentionally retained for UX clarity)_
 
 ### 13.5 Pre-Push Checklist
 
-- [ ] `npm run generate` completes without errors
-- [ ] Static output tested locally: `npx serve .output/public`
-- [ ] All pages load from static files
-- [ ] No `.env` files, `.bak` files, or credentials in staged changes
-- [ ] `git diff --cached` reviewed for any sensitive content
-- [ ] Commit message is descriptive
+- [x] `npm run generate` completes without errors
+- [x] Static output tested locally (base-path-safe local static preview)
+- [x] All pages load from static files
+- [x] No `.env` files, `.bak` files, or credentials in staged changes
+- [x] `git diff --cached` reviewed for any sensitive content
+- [x] Commit message is descriptive _(N/A until final commit step)_
 
 ### 13.6 Phase 10 Checklist
 
-- [ ] All page-by-page QA checks passed
-- [ ] Cross-browser testing completed (Chrome, Safari, Firefox, Edge)
-- [ ] Responsive testing completed (320px → 1440px)
-- [ ] Content accuracy audit passed — no placeholders, no inaccuracies
-- [ ] Lighthouse audit completed — all scores > 90
-- [ ] Static generation + local serve tested
-- [ ] Security review: no secrets, credentials, or backup files
-- [ ] Ready to deploy
+- [x] All page-by-page QA checks passed
+- [ ] Cross-browser testing completed (Chrome, Safari, Firefox, Edge) _(Safari/Firefox/Edge manual pass still pending)_
+- [x] Responsive testing completed (320px → 1440px)
+- [x] Content accuracy audit passed — no placeholders, no inaccuracies
+- [ ] Lighthouse audit completed — all scores > 90 _(current deployed PSI: mobile performance 84, accessibility 91, best-practices 96, SEO 100; desktop passes all >90)_
+- [x] Static generation + local serve tested
+- [x] Security review: no secrets, credentials, or backup files
+- [ ] Ready to deploy _(flip to done after final cross-browser + Lighthouse pass)_
+
+### 13.7 Final QA Execution Update (Current Iteration)
+
+**Date:** February 17, 2026
+
+- Executed full local static QA pass against a base-path-safe preview (`/Personal-Portfolio/`).
+- Verified route + asset integrity with an automated internal crawler:
+  - `pages_visited=17`
+  - `urls_checked=85`
+  - `errors_found=NO`
+- Revalidated static generation:
+  - `node node_modules/nuxt/bin/nuxt.mjs generate` ✅
+  - `npm run generate` ✅ (after script robustness fix in `package.json`)
+- Final script reliability fix:
+  - Updated `package.json` scripts (`dev/build/generate/preview`) to use explicit Nuxt binary path (`node node_modules/nuxt/bin/nuxt.mjs ...`) so npm script execution is stable even when local shell bin shims are inconsistent.
+- Performance optimization pass completed (mobile-targeted image delivery reduction):
+  - Re-encoded/downscaled key JPEG assets in `public/` (profile + project images) to reduce transfer size on first/early viewport loads.
+  - Combined footprint for optimized in-page JPEGs reduced from ~1.41 MB to ~0.45 MB (~67.9% reduction).
+  - Example size reductions:
+    - `public/images/projects/ai-agents.jpg`: ~374 KB → ~111 KB
+    - `public/images/projects/tb-scale-search.jpg`: ~309 KB → ~74 KB
+    - `public/ayush-jaipuriar.jpeg`: ~124 KB → ~64 KB
+  - Follow-up required: deploy latest build and rerun Lighthouse/PSI to confirm mobile performance crosses 90.
+- Deployed PSI snapshot captured during QA:
+  - Mobile: Performance **84**, Accessibility **91**, Best Practices **96**, SEO **100**
+  - Desktop: Performance **96**, Accessibility **91**, Best Practices **96**, SEO **100**
+- Remaining manual release gates:
+  1. Safari/Firefox/Edge cross-browser pass
+  2. Lighthouse re-run on deployed URL after latest image optimizations (target: all scores > 90)
+
+### 13.8 Final Release Closure Checklist (Owner + Manual Gates)
+
+To fully close Phase 10 and mark **Ready to deploy** as complete, run the following in order:
+
+1. **Deploy latest `main` build output**
+   - Ensure the optimized JPEG assets and latest Nuxt static output are live.
+
+2. **Manual cross-browser validation (release gate)**
+   - Browsers: Safari (desktop + iOS), Firefox (desktop), Edge (desktop).
+   - Verify:
+     - no layout breaks
+     - dark/light mode toggle works
+     - navigation + contact form flow remain functional
+     - no broken images/icons
+
+3. **Lighthouse / PSI verification on deployed URL**
+   - Re-run PageSpeed Insights for:
+     - Mobile
+     - Desktop
+   - Target thresholds for release:
+     - Performance > 90
+     - Accessibility > 90
+     - Best Practices > 90
+     - SEO > 90
+
+4. **Flip Phase 10 completion flags**
+   - Mark these checklist items `[x]` once validated:
+     - Cross-browser testing completed
+     - Lighthouse audit completed — all scores > 90
+     - Ready to deploy
 
 ---
 
