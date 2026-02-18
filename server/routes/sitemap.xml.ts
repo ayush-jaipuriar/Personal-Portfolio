@@ -49,6 +49,7 @@ export default defineEventHandler((event) => {
   // Blog posts (currently only one, can be expanded with queryContent if needed)
   const blogPages = [
     { path: '/blog/building-production-ai-agents', changefreq: 'monthly', priority: 0.7 },
+    { path: '/blog/comprehensive-guide-to-git-worktrees', changefreq: 'monthly', priority: 0.7 },
   ]
 
   // Combine all URLs
