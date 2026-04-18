@@ -1,0 +1,107 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="80" y1="40" x2="1120" y2="590" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0F172A"/>
+      <stop offset="1" stop-color="#111827"/>
+    </linearGradient>
+    <linearGradient id="card" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#172554"/>
+      <stop offset="1" stop-color="#1E293B"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#38BDF8"/>
+      <stop offset="1" stop-color="#818CF8"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="10" stdDeviation="14" flood-color="#020617" flood-opacity="0.35"/>
+    </filter>
+  </defs>
+
+  <rect width="1200" height="630" rx="36" fill="url(#bg)"/>
+  <rect x="36" y="36" width="1128" height="558" rx="28" stroke="#334155" stroke-width="2"/>
+
+  <text x="72" y="98" fill="#E2E8F0" font-family="Arial, Helvetica, sans-serif" font-size="42" font-weight="700">
+    Gmail-Scale Email System Design
+  </text>
+  <text x="72" y="134" fill="#94A3B8" font-family="Arial, Helvetica, sans-serif" font-size="20">
+    Durable write path first. Search, spam, notifications, and scanning run off events.
+  </text>
+
+  <g filter="url(#shadow)">
+    <rect x="72" y="182" width="184" height="88" rx="20" fill="url(#card)" stroke="#475569"/>
+    <text x="102" y="218" fill="#F8FAFC" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700">Edge Plane</text>
+    <text x="102" y="246" fill="#CBD5E1" font-family="Arial, Helvetica, sans-serif" font-size="16">LB, Gateway, WAF, Auth</text>
+
+    <rect x="288" y="182" width="184" height="88" rx="20" fill="url(#card)" stroke="#475569"/>
+    <text x="320" y="218" fill="#F8FAFC" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700">Identity</text>
+    <text x="320" y="246" fill="#CBD5E1" font-family="Arial, Helvetica, sans-serif" font-size="16">Auth, MFA, Sessions, OTP</text>
+
+    <rect x="504" y="182" width="184" height="88" rx="20" fill="url(#accent)" stroke="#93C5FD"/>
+    <text x="532" y="214" fill="#F8FAFC" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700">Mail Write</text>
+    <text x="532" y="242" fill="#E0F2FE" font-family="Arial, Helvetica, sans-serif" font-size="16">Validate, persist, ACK</text>
+
+    <rect x="720" y="182" width="184" height="88" rx="20" fill="url(#card)" stroke="#475569"/>
+    <text x="747" y="218" fill="#F8FAFC" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700">Mailbox</text>
+    <text x="747" y="246" fill="#CBD5E1" font-family="Arial, Helvetica, sans-serif" font-size="16">Inbox, Sent, Spam, Labels</text>
+
+    <rect x="936" y="182" width="184" height="88" rx="20" fill="url(#card)" stroke="#475569"/>
+    <text x="960" y="218" fill="#F8FAFC" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700">Query Plane</text>
+    <text x="960" y="246" fill="#CBD5E1" font-family="Arial, Helvetica, sans-serif" font-size="16">Inbox, Search, Threads</text>
+  </g>
+
+  <g filter="url(#shadow)">
+    <rect x="140" y="382" width="256" height="96" rx="22" fill="#111827" stroke="#475569"/>
+    <text x="174" y="420" fill="#F8FAFC" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="700">Metadata Store</text>
+    <text x="174" y="450" fill="#CBD5E1" font-family="Arial, Helvetica, sans-serif" font-size="16">Users, Messages, MailboxEntry</text>
+
+    <rect x="472" y="382" width="256" height="96" rx="22" fill="#111827" stroke="#475569"/>
+    <text x="502" y="420" fill="#F8FAFC" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="700">Event Bus</text>
+    <text x="502" y="450" fill="#CBD5E1" font-family="Arial, Helvetica, sans-serif" font-size="16">MessageCreated, ScanCompleted</text>
+
+    <rect x="804" y="382" width="256" height="96" rx="22" fill="#111827" stroke="#475569"/>
+    <text x="834" y="420" fill="#F8FAFC" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="700">Object Storage</text>
+    <text x="834" y="450" fill="#CBD5E1" font-family="Arial, Helvetica, sans-serif" font-size="16">Attachments, Avatars, Blobs</text>
+  </g>
+
+  <g filter="url(#shadow)">
+    <rect x="150" y="510" width="180" height="62" rx="16" fill="#1E293B" stroke="#475569"/>
+    <text x="180" y="548" fill="#E2E8F0" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700">Search Indexer</text>
+
+    <rect x="364" y="510" width="180" height="62" rx="16" fill="#1E293B" stroke="#475569"/>
+    <text x="408" y="548" fill="#E2E8F0" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700">Spam ML</text>
+
+    <rect x="578" y="510" width="180" height="62" rx="16" fill="#1E293B" stroke="#475569"/>
+    <text x="612" y="548" fill="#E2E8F0" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700">Notifications</text>
+
+    <rect x="792" y="510" width="180" height="62" rx="16" fill="#1E293B" stroke="#475569"/>
+    <text x="840" y="548" fill="#E2E8F0" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700">Virus Scan</text>
+  </g>
+
+  <g stroke="#60A5FA" stroke-width="4" stroke-linecap="round">
+    <path d="M256 226H288"/>
+    <path d="M472 226H504"/>
+    <path d="M688 226H720"/>
+    <path d="M904 226H936"/>
+
+    <path d="M596 270V382"/>
+    <path d="M596 478V510"/>
+
+    <path d="M596 270C596 318 404 318 268 382"/>
+    <path d="M596 270C596 318 788 318 932 382"/>
+  </g>
+
+  <g fill="#60A5FA">
+    <polygon points="286,220 286,232 298,226"/>
+    <polygon points="502,220 502,232 514,226"/>
+    <polygon points="718,220 718,232 730,226"/>
+    <polygon points="934,220 934,232 946,226"/>
+    <polygon points="590,380 602,380 596,392"/>
+    <polygon points="590,508 602,508 596,520"/>
+    <polygon points="260,374 272,386 256,388"/>
+    <polygon points="944,374 928,388 940,386"/>
+  </g>
+
+  <text x="835" y="112" fill="#67E8F9" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700">
+    2B users | 50 emails/user/day | 5% with attachments
+  </text>
+</svg>
