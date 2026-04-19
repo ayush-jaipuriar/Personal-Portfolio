@@ -41,6 +41,7 @@ I also added a local SVG because blog cards render better with a dedicated visua
 ### What changed
 
 - Fixed dark-mode readability for blog articles globally instead of patching a single post.
+- Audited the rest of the portfolio for dark-mode contrast issues and applied a shared typography contrast lift for muted text tokens.
 
 ### Files touched
 
@@ -50,15 +51,20 @@ I also added a local SVG because blog cards render better with a dedicated visua
 - `tailwind.config.js`
   - Reworked the typography theme to use Tailwind Typography CSS variables instead of a hard-coded light-mode body color.
   - Replaced the unused `dark` typography override with the correct `invert` override so `dark:prose-invert` works as intended.
+- `app.vue`
+  - Added global dark-mode utility overrides for `dark:text-gray-400` and `dark:text-gray-500` so muted supporting copy renders one step brighter across the site.
+- `DEVELOPMENT_LOG.md`
+  - Logged the follow-up audit and the shared contrast tuning approach.
 
 ### Why this change was made
 
 The blog detail page already used `dark:prose-invert`, but the custom typography config set a fixed light-mode text color. That fought the typography plugin in dark mode and caused article body text to render too dark against the dark background.
 
-The fix was applied at the shared renderer level so it improves readability for all blog posts, including existing posts and new ones added later.
+After fixing the blog renderer, I reviewed the rest of the portfolio and found a softer version of the same issue: many pages and cards used muted dark-mode copy tokens that were technically styled, but still a bit too dim on the current dark surfaces. Moving the fix into a shared global override was the cleanest way to improve readability across the portfolio without hand-editing every component.
 
 ### Verification
 
-- `npm run generate` completed successfully after the typography fix.
+- `npm run generate` completed successfully after the typography fix for blog posts.
 - The blog routes still prerendered correctly, including the Gmail system design post.
 - Existing Nuxt timing-label warnings and the stale Browserslist warning are still present, but they did not block the build.
+- A full local browser audit was partially blocked by shell and browser-tooling permission issues, so the follow-up portfolio-wide pass was completed by reviewing the shared dark-mode token usage and lifting the muted dark utility values globally.
