@@ -75,7 +75,7 @@
          </header>
 
          <!-- Post Content -->
-         <div class="prose prose-lg dark:prose-invert mx-auto">
+         <div class="blog-prose prose prose-lg dark:prose-invert mx-auto">
            <ContentRenderer :value="data" />
          </div>
 
@@ -312,35 +312,55 @@ useHead({
 </script>
 
 <style>
-.prose h2 {
+.blog-prose {
+  @apply text-gray-700 dark:text-gray-300;
+}
+
+.blog-prose :where(h1, h2, h3, h4, strong, thead th) {
+  @apply text-gray-900 dark:text-gray-100;
+}
+
+.blog-prose :where(p, ul, ol, li, blockquote, figcaption, td, th) {
+  @apply text-gray-700 dark:text-gray-300;
+}
+
+.blog-prose :where(a) {
+  @apply text-apple-blue-600 dark:text-apple-blue-400;
+}
+
+.blog-prose :where(a:hover) {
+  @apply text-apple-blue-700 dark:text-apple-blue-300;
+}
+
+.blog-prose h2 {
   @apply text-2xl font-bold mt-8 mb-4;
 }
 
-.prose h3 {
+.blog-prose h3 {
   @apply text-xl font-semibold mt-6 mb-3;
 }
 
-.prose p {
+.blog-prose p {
   @apply mb-4;
 }
 
-.prose code {
-  @apply px-1 py-0.5 bg-gray-100 dark:bg-gray-800 rounded text-sm;
+.blog-prose code {
+  @apply px-1 py-0.5 bg-gray-100 dark:bg-gray-800 rounded text-sm text-gray-900 dark:text-gray-100;
 }
 
-.prose pre {
+.blog-prose pre {
   @apply p-4 bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg overflow-auto text-sm mb-4;
 }
 
 /* Ensure plain-text / ASCII diagrams inside code blocks have strong contrast.
    Without a language tag, Shiki/Nuxt Content renders code as plain text,
    which can inherit low-contrast colors. This forces high-contrast text. */
-.prose pre code {
+.blog-prose pre code {
   @apply block text-gray-800 dark:text-gray-100;
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 }
 
-.prose img[src*="images/diagrams/"] {
+.blog-prose img[src*="images/diagrams/"] {
   @apply my-6 p-4 bg-gray-50 dark:bg-gray-900/40 border border-gray-200 dark:border-gray-700 rounded-lg;
   max-width: 100%;
   width: 100%;
@@ -348,16 +368,16 @@ useHead({
   display: block;
 }
 
-.prose ul, .prose ol {
+.blog-prose ul, .blog-prose ol {
   @apply mb-4 pl-5;
 }
 
-.prose li {
+.blog-prose li {
   @apply mb-1;
 }
 
-.prose blockquote {
-  @apply pl-4 border-l-4 border-gray-300 dark:border-gray-700 italic my-4;
+.blog-prose blockquote {
+  @apply pl-4 border-l-4 border-gray-300 dark:border-gray-700 italic my-4 text-gray-700 dark:text-gray-300;
 }
 
 .text-twitter {

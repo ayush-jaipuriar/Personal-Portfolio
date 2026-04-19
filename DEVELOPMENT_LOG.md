@@ -35,3 +35,30 @@ I also added a local SVG because blog cards render better with a dedicated visua
 - Review the article copy for any wording you want to make more personal or more interview-focused.
 - If needed, add a second inline diagram or supporting screenshots from the source study material.
 - Confirm the GitHub Pages deployment is live after the main-branch update finishes.
+
+## 2026-04-19
+
+### What changed
+
+- Fixed dark-mode readability for blog articles globally instead of patching a single post.
+
+### Files touched
+
+- `pages/blog/[...slug].vue`
+  - Added a dedicated `blog-prose` wrapper class around article content.
+  - Applied explicit dark-mode-safe text styles for paragraphs, lists, blockquotes, headings, links, and inline code.
+- `tailwind.config.js`
+  - Reworked the typography theme to use Tailwind Typography CSS variables instead of a hard-coded light-mode body color.
+  - Replaced the unused `dark` typography override with the correct `invert` override so `dark:prose-invert` works as intended.
+
+### Why this change was made
+
+The blog detail page already used `dark:prose-invert`, but the custom typography config set a fixed light-mode text color. That fought the typography plugin in dark mode and caused article body text to render too dark against the dark background.
+
+The fix was applied at the shared renderer level so it improves readability for all blog posts, including existing posts and new ones added later.
+
+### Verification
+
+- `npm run generate` completed successfully after the typography fix.
+- The blog routes still prerendered correctly, including the Gmail system design post.
+- Existing Nuxt timing-label warnings and the stale Browserslist warning are still present, but they did not block the build.
