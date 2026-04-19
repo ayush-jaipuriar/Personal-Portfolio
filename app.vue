@@ -83,6 +83,23 @@ body {
   @apply bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100;
 }
 
+/*
+  Dark-mode readability pass.
+
+  The portfolio intentionally uses muted text tokens for supporting copy,
+  but `dark:text-gray-400` and `dark:text-gray-500` read a bit too dim on
+  the current dark surfaces. We remap those utilities one step brighter in
+  dark mode so secondary copy stays readable without flattening the whole
+  visual hierarchy.
+*/
+.dark .dark\:text-gray-400 {
+  color: rgb(209 213 219);
+}
+
+.dark .dark\:text-gray-500 {
+  color: rgb(156 163 175);
+}
+
 /* Smooth scrolling */
 html {
   scroll-behavior: smooth;
