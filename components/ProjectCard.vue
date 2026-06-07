@@ -15,7 +15,7 @@
     </span>
 
     <NuxtLink
-      v-if="isCaseStudy"
+      v-if="hasDetailPage"
       :to="detailPath"
       class="relative block w-full aspect-video overflow-hidden bg-gray-100 dark:bg-gray-800"
       :aria-label="`Open ${project.title} case study`"
@@ -74,7 +74,7 @@
       </div>
 
       <NuxtLink
-        v-if="isCaseStudy"
+        v-if="hasDetailPage"
         :to="detailPath"
         class="text-xl font-semibold text-gray-900 dark:text-white mb-2 group-hover:text-apple-blue-600 dark:group-hover:text-apple-blue-400 transition-colors"
       >
@@ -101,7 +101,7 @@
 
       <div class="mt-auto flex items-center justify-between gap-3">
         <NuxtLink
-          v-if="isCaseStudy"
+          v-if="hasDetailPage"
           :to="detailPath"
           class="inline-flex items-center rounded-md bg-apple-blue-600 px-4 py-2 text-sm font-medium text-white hover:bg-apple-blue-700 transition-colors"
         >
@@ -160,6 +160,7 @@ const props = defineProps<{
 }>()
 
 const isCaseStudy = computed(() => props.project.type === 'professional')
+const hasDetailPage = computed(() => props.project.type === 'professional' || Boolean(props.project.caseStudy))
 const detailPath = computed(() => `/projects/${props.project.slug}`)
 const { toAssetPath } = useAssetPath()
 

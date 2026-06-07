@@ -83,11 +83,10 @@
          <div class="mt-16 pt-8 border-t border-gray-200 dark:border-gray-800">
            <div class="flex items-center">
              <img 
-               :src="toAssetPath('/ayush-jaipuriar.jpeg')" 
+               :src="toAssetPath('/ayush-jaipuriar-profile.png')"
                alt="Ayush Jaipuriar"
                width="48"
                height="48"
-               loading="lazy"
                class="h-12 w-12 rounded-full mr-4"
              />
              <div>

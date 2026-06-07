@@ -34,6 +34,7 @@ export interface Project {
   githubLink?: string
   liveLink?: string
   featured: boolean
+  personalProduct?: boolean
   order: number
   caseStudy?: CaseStudy
 }
@@ -41,7 +42,7 @@ export interface Project {
 export const projects: Project[] = [
   {
     id: 1,
-    title: 'AI Agents for Research Perspective',
+    title: 'Production AI Agents for Research Analysts',
     slug: 'ai-agents-research-perspective',
     type: 'professional',
     company: 'TransUnion',
@@ -86,7 +87,7 @@ export const projects: Project[] = [
   },
   {
     id: 2,
-    title: 'TB-Scale Search Product',
+    title: 'Sub-7s Search Across TB-Scale Data',
     slug: 'tb-scale-search',
     type: 'professional',
     company: 'TransUnion',
@@ -131,7 +132,7 @@ export const projects: Project[] = [
   },
   {
     id: 3,
-    title: 'Enterprise Parsing Engine',
+    title: '92% Faster Enterprise Parsing APIs',
     slug: 'enterprise-parsing-engine',
     type: 'professional',
     company: 'HighRadius',
@@ -176,17 +177,18 @@ export const projects: Project[] = [
   },
   {
     id: 4,
-    title: 'Accountability Agent',
+    title: 'Multi-Agent Accountability Bot',
     slug: 'accountability-agent',
     type: 'personal',
     description:
       'Production-grade AI accountability Telegram bot with supervisor architecture, 5 specialized agents, pattern detection, gamification, and weekly AI reporting.',
     shortDescription:
       'Multi-agent AI Telegram bot with supervisor orchestration and gamification.',
-    image: '/images/projects/accountability-agent.jpg',
+    image: '/images/projects/accountability-agent-product.svg',
     technologies: ['Python', 'FastAPI', 'Google Gemini', 'Firestore', 'GCP Cloud Run', 'Docker'],
     githubLink: 'https://github.com/ayush-jaipuriar/accountability_agent',
-    featured: true,
+    featured: false,
+    personalProduct: true,
     order: 4,
     caseStudy: {
       problem:
@@ -221,21 +223,141 @@ export const projects: Project[] = [
   },
   {
     id: 5,
-    title: 'OnlyYours',
-    slug: 'only-yours',
+    title: 'Personal Execution PWA with Firebase Intelligence',
+    slug: 'forge',
     type: 'personal',
     description:
-      'Full-stack mobile application with React Native frontend and Spring Boot backend. Includes Google Auth, JWT authentication, and Flyway-driven database migrations.',
+      'Premium daily planner and personal execution PWA with Today, Plan, Insights, and Settings workspaces, backed by authenticated Firebase state, scheduled analytics, notifications, and backups.',
     shortDescription:
-      'Full-stack React Native + Spring Boot app with Google Auth and JWT.',
-    image: '/images/projects/only-yours.jpg',
-    technologies: ['React Native', 'Spring Boot', 'PostgreSQL', 'Google Auth', 'JWT', 'Flyway'],
-    githubLink: 'https://github.com/ayush-jaipuriar/only-yours',
+      'Personal execution PWA with Firebase-backed planning, insights, scheduled jobs, and PWA installability.',
+    image: '/images/projects/forge.png',
+    technologies: ['React 19', 'TypeScript', 'Firebase', 'Firestore', 'Cloud Functions', 'PWA'],
+    githubLink: 'https://github.com/ayush-jaipuriar/forge',
     featured: false,
+    personalProduct: true,
     order: 5,
+    caseStudy: {
+      problem:
+        'Generic productivity apps often become passive dashboards instead of helping a demanding user decide what matters today, what should happen next, and what needs adjustment before the day slips.',
+      architecture:
+        'React, TypeScript, Vite, Material UI, Zustand, and TanStack Query frontend with Firebase Auth, Firestore, Cloud Storage, Firebase Functions, Firebase Hosting, and PWA tooling for authenticated cloud-backed planning workflows.',
+      role:
+        'Defined the product direction, architecture boundaries, frontend information architecture, Firebase integration strategy, and implementation roadmap across planning, execution, insights, settings, sync, analytics, notifications, and backup services.',
+      approach:
+        'Built the product around four primary surfaces: Today for daily execution, Plan for week shaping, Insights for review and pattern interpretation, and Settings for account, integrations, backup, notifications, and platform controls.',
+      keyTechnicalDecisions: [
+        'Separated domain rules, route-level features, and application services so planning logic, analytics, notifications, backup, sync, and settings can evolve independently.',
+        'Moved authenticated usage toward Firebase-backed cloud state while keeping guest/demo exploration lightweight and disposable.',
+        'Implemented Firebase Functions for scheduled analytics snapshots, notification evaluation, and user backups instead of treating the app as a static frontend.',
+      ],
+      impactMetrics: [
+        { value: 'PWA', label: 'Installable App Shell' },
+        { value: '4', label: 'Core Product Surfaces' },
+        { value: '3', label: 'Scheduled Backend Pipelines' },
+      ],
+      results: [
+        'Created a premium planner experience spanning daily execution, weekly planning, insights, and settings.',
+        'Established Firebase-backed authenticated state, guest/demo mode, sync services, and platform workflows.',
+        'Added scheduled Cloud Functions for analytics snapshots, notification evaluation, and backup generation.',
+      ],
+      outcome:
+        'Forge demonstrates end-to-end product ownership: product strategy, information architecture, frontend systems, Firebase platform engineering, PWA delivery, and operational thinking.',
+      learnings:
+        'A useful personal operating system needs fewer surfaces with stronger intent. The hard product work is reducing friction while preserving enough structure to make daily decisions easier.',
+    },
   },
   {
     id: 6,
+    title: 'Sensor-Enforced Android Focus Timer',
+    slug: 'phone-down',
+    type: 'personal',
+    description:
+      'Native Android focus timer where sessions only progress while the phone is placed face down and stable, using sensors, foreground service orchestration, local-first persistence, and explicit session semantics.',
+    shortDescription:
+      'Native Android focus app where time only counts while the phone stays face down and stable.',
+    image: '/images/projects/phone-down.png',
+    technologies: ['Kotlin', 'Jetpack Compose', 'Hilt', 'Room', 'DataStore', 'Sensors'],
+    githubLink: 'https://github.com/ayush-jaipuriar/phone-down',
+    featured: false,
+    personalProduct: true,
+    order: 6,
+    caseStudy: {
+      problem:
+        'Most focus timers trust the user to ignore the phone, but the phone itself is the distraction. Phone Down turns focus into a physical ritual: place the phone face down and keep it stable.',
+      architecture:
+        'Multi-module native Android app with Compose feature modules, a pure domain session engine, Room session history, DataStore settings, sensor evaluation, foreground service runtime, notifications, and local-first privacy boundaries.',
+      role:
+        'Designed and implemented the product architecture, session semantics, module boundaries, focus UI, persistence model, release-readiness documentation, and verification workflow.',
+      approach:
+        'Separated strict timing and interruption rules from UI rendering. The app edge translates Android sensor, call, service, and notification signals into domain inputs, while the domain engine decides legal session transitions.',
+      keyTechnicalDecisions: [
+        'Made the focus mechanism sensor-enforced so elapsed focus time only accumulates when the device is face down and stable.',
+        'Kept core session rules in pure domain modules to make interruption handling and recovery testable without relying on UI state.',
+        'Chose local-first Room and DataStore persistence so the app works without login, cloud access, billing, or network connectivity.',
+      ],
+      impactMetrics: [
+        { value: 'Local-first', label: 'Privacy Model' },
+        { value: 'Multi-module', label: 'Android Architecture' },
+        { value: 'Internal Test', label: 'Release Readiness' },
+      ],
+      results: [
+        'Implemented focus states including waiting, arming, active, paused, completed, interruption, and recovery flows.',
+        'Built insights, streaks, clean-session tracking, settings, onboarding, privacy policy, and pro/paywall foundations.',
+        'Documented release readiness with lint, unit tests, Paparazzi screenshot checks, Compose UI-test coverage, and release build verification.',
+      ],
+      outcome:
+        'Phone Down demonstrates native Android systems thinking: sensors, foreground services, local persistence, domain state machines, privacy constraints, modular architecture, and release discipline.',
+      learnings:
+        'When behavior depends on real device signals, product correctness has to live below the UI. Explicit state machines and conservative recovery rules make the app more honest and trustworthy.',
+    },
+  },
+  {
+    id: 7,
+    title: 'Realtime Couples Game with Spring Boot + Expo',
+    slug: 'only-yours',
+    type: 'personal',
+    description:
+      'Full-stack realtime couples game where partners link, answer questions, guess each other\'s answers, and review scores, history, stats, badges, and notifications.',
+    shortDescription:
+      'Realtime couples game with Expo mobile client, Spring Boot backend, WebSocket gameplay, JWT auth, stats, and badges.',
+    image: '/images/projects/only-yours.jpg',
+    technologies: ['Expo', 'React Native', 'Spring Boot', 'PostgreSQL', 'WebSocket/STOMP', 'JWT'],
+    githubLink: 'https://github.com/ayush-jaipuriar/only-yours',
+    featured: false,
+    personalProduct: true,
+    order: 7,
+    caseStudy: {
+      problem:
+        'Couples games need more than static questions: partners have to link, play together in real time, recover interrupted sessions, and see meaningful results without the experience falling out of sync.',
+      architecture:
+        'Spring Boot 3.5 backend with Spring Security, JPA, PostgreSQL, Flyway, JWT, WebSocket/STOMP gameplay events, and an active Expo / React Native mobile client for auth, partner linking, gameplay, history, stats, settings, and notifications.',
+      role:
+        'Built the full-stack product architecture across backend business rules, mobile flows, realtime game state, auth/session handling, partner lifecycle, notification hooks, and testing/documentation.',
+      approach:
+        'Made the backend the durable source of truth for users, couples, sessions, answers, scores, stats, badges, history, unlink/recovery flows, and realtime events while the Expo client focuses on state presentation and mobile UX.',
+      keyTechnicalDecisions: [
+        'Used WebSocket/STOMP for invitation, gameplay, continuation, and results events so both partners stay synchronized.',
+        'Modeled couple lifecycle explicitly with pending, active, unlinked, cooldown, and recovery states instead of a simple join table.',
+        'Migrated current auth toward email/password with refresh-token rotation while keeping historical Google sign-in code disabled in the active backend path.',
+      ],
+      impactMetrics: [
+        { value: '2 Round', label: 'Gameplay Loop' },
+        { value: 'Realtime', label: 'WebSocket Sync' },
+        { value: 'Expo-first', label: 'Active Mobile Client' },
+      ],
+      results: [
+        'Implemented partner linking, category selection, invitations, two-round gameplay, scoring, and results.',
+        'Added active-session continuation, 7-day expiry, history, dashboard stats, badges, onboarding, themes, settings, profile, unlink, and recovery flows.',
+        'Maintained backend and Expo tests around auth, gameplay, state, notification, accessibility, and screen flows.',
+      ],
+      outcome:
+        'OnlyYours demonstrates full-stack mobile product engineering with realtime synchronization, durable backend rules, relational data modeling, auth, notifications, and polished client flows.',
+      learnings:
+        'Realtime product UX is only as stable as the backend state model. Recovery, expiry, duplicate prevention, and lifecycle rules need to be first-class, not afterthoughts.',
+    },
+  },
+  {
+    id: 8,
     title: 'Learning Camunda',
     slug: 'learning-camunda',
     type: 'personal',
@@ -247,10 +369,10 @@ export const projects: Project[] = [
     technologies: ['Java', 'Camunda BPM', 'Spring Boot', 'Gradle', 'PostgreSQL'],
     githubLink: 'https://github.com/ayush-jaipuriar/Learning-Camunda',
     featured: false,
-    order: 6,
+    order: 8,
   },
   {
-    id: 7,
+    id: 9,
     title: 'Learning LangChain',
     slug: 'learning-langchain',
     type: 'personal',
@@ -262,7 +384,7 @@ export const projects: Project[] = [
     technologies: ['Python', 'LangChain', 'OpenAI', 'FAISS', 'Jupyter Notebook'],
     githubLink: 'https://github.com/ayush-jaipuriar/Learning-Langchain',
     featured: false,
-    order: 7,
+    order: 9,
   },
 ]
 
@@ -271,6 +393,9 @@ export const allProjects = projects
 
 export const getFeaturedProjects = () =>
   projects.filter((project) => project.featured).sort((a, b) => a.order - b.order)
+
+export const getPersonalProductProjects = () =>
+  projects.filter((project) => project.personalProduct).sort((a, b) => a.order - b.order)
 
 export const getProjectsByType = (type: 'professional' | 'personal') =>
   projects.filter((project) => project.type === type).sort((a, b) => a.order - b.order)

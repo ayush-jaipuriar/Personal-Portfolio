@@ -33,7 +33,17 @@
           />
           <!-- Animated / static number -->
           <span class="text-2xl font-bold text-gray-900 dark:text-white">
-            {{ metric.animated ? `${animatedValues[index]?.current.value ?? 0}${metric.suffix}` : metric.value }}
+            <template v-if="metric.animated">
+              <ClientOnly>
+                {{ animatedValues[index]?.current.value ?? 0 }}{{ metric.suffix }}
+                <template #fallback>
+                  {{ metric.value }}
+                </template>
+              </ClientOnly>
+            </template>
+            <template v-else>
+              {{ metric.value }}
+            </template>
           </span>
           <!-- Small label below -->
           <span class="text-sm text-gray-500 dark:text-gray-400 text-center">

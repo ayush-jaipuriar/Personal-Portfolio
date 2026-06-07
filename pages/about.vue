@@ -17,7 +17,7 @@
         <div class="md:w-2/5 flex flex-col items-center md:items-start">
           <div class="w-56 h-56 md:w-64 md:h-64 rounded-2xl overflow-hidden shadow-apple-lg mb-6">
             <img
-              :src="toAssetPath('/ayush-jaipuriar.jpeg')"
+              :src="toAssetPath('/ayush-jaipuriar-profile.png')"
               alt="Ayush Jaipuriar"
               width="800"
               height="800"
@@ -87,6 +87,22 @@
           <h2 class="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-4">
             AI Agent Engineer &amp; Senior Full-Stack Developer
           </h2>
+
+          <!-- Recruiter Quick Summary Card -->
+          <div class="mb-6 rounded-xl border border-apple-blue-100 dark:border-apple-blue-900/30 bg-apple-blue-50/50 dark:bg-apple-blue-950/10 p-5 shadow-apple-sm">
+            <h3 class="text-xs font-bold uppercase tracking-wider text-apple-blue-600 dark:text-apple-blue-400 mb-2">
+              Recruiter Quick Summary
+            </h3>
+            <p class="text-sm text-gray-700 dark:text-gray-300 leading-relaxed mb-3">
+              Senior software engineer with 6+ years building enterprise fintech and AI systems.
+              Currently building production AI agents at TransUnion using LangGraph, MLFlow, RAG, and knowledge graphs.
+              Previously shipped TB-scale search and high-throughput parsing backends (Java, Spring Boot, Python, Cloud).
+            </p>
+            <div class="flex flex-wrap gap-x-4 gap-y-1 text-xs text-gray-600 dark:text-gray-400">
+              <span><strong>Target Roles:</strong> Senior SWE, AI Agent Engineer, Applied AI, Platform/Backend</span>
+            </div>
+          </div>
+
           <div class="space-y-4 text-gray-700 dark:text-gray-300 leading-relaxed">
             <p>
               I build production AI systems at Fortune 500 scale. My career arc runs from deep enterprise backend engineering at HighRadius (a unicorn fintech startup) to AI agent orchestration at TransUnion, where I currently lead the Insights AI Agent Team.

@@ -57,6 +57,9 @@ export default defineNuxtConfig({
   app: {
     baseURL: `${deployBasePath}/`,
     head: {
+      htmlAttrs: {
+        lang: 'en'
+      },
       title: 'Ayush Jaipuriar | AI Agent Engineer & Senior Full-Stack Developer',
       meta: [
         { charset: 'utf-8' },

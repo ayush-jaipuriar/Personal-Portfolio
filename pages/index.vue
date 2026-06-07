@@ -2,7 +2,7 @@
   <div>
     <!--
       Homepage — Full marketing landing page.
-      Structure: Hero → Metrics → Featured Projects → Skills → Latest Posts → CTA.
+      Structure: Hero → Metrics → Enterprise Case Studies → Personal Products → Skills → Latest Posts → CTA.
     -->
     <!-- ============================================================
          SECTION 1: HERO
@@ -33,10 +33,30 @@
             </p>
 
             <!-- Secondary tagline — communicates the "proof" -->
-            <p class="text-lg text-gray-500 dark:text-gray-400 max-w-xl mb-8">
+            <p class="text-lg text-gray-500 dark:text-gray-400 max-w-xl mb-6">
               Building production AI systems at Fortune 500 scale.
               6+ years shipping enterprise fintech at TransUnion and HighRadius.
             </p>
+
+            <!-- Proof Strip — compresses key claims for rapid scanning -->
+            <div class="flex flex-wrap gap-x-6 gap-y-3 mb-8 text-sm font-semibold text-gray-600 dark:text-gray-300 border-t border-b border-gray-200/80 dark:border-gray-800/80 py-3.5 max-w-xl">
+              <span class="flex items-center gap-1.5">
+                <Icon name="heroicons:clock" class="h-4.5 w-4.5 text-apple-blue-500" aria-hidden="true" />
+                6+ Years Exp
+              </span>
+              <span class="flex items-center gap-1.5">
+                <Icon name="heroicons:cpu-chip" class="h-4.5 w-4.5 text-apple-blue-500" aria-hidden="true" />
+                Production AI Agents
+              </span>
+              <span class="flex items-center gap-1.5">
+                <Icon name="heroicons:server-stack" class="h-4.5 w-4.5 text-apple-blue-500" aria-hidden="true" />
+                TB-Scale Search
+              </span>
+              <span class="flex items-center gap-1.5">
+                <Icon name="heroicons:bolt" class="h-4.5 w-4.5 text-apple-blue-500" aria-hidden="true" />
+                92% Latency Reduction
+              </span>
+            </div>
 
             <!-- CTA buttons -->
             <div class="flex flex-wrap gap-4">
@@ -87,7 +107,7 @@
               <div class="relative w-full h-full p-[4px] rounded-full">
                 <div class="w-full h-full rounded-full overflow-hidden bg-white dark:bg-gray-900">
                 <img
-                  :src="toAssetPath('/ayush-jaipuriar.jpeg')"
+                  :src="toAssetPath('/ayush-jaipuriar-profile.png')"
                   alt="Ayush Jaipuriar - AI Agent Engineer"
                   width="800"
                   height="800"
@@ -110,22 +130,27 @@
     <MetricsBar />
 
     <!-- ============================================================
-         SECTION 3: FEATURED PROJECTS
+         SECTION 3: ENTERPRISE CASE STUDIES
          ============================================================ -->
     <FeaturedProjects />
 
     <!-- ============================================================
-         SECTION 4: SKILLS SNAPSHOT
+         SECTION 4: PERSONAL PRODUCTS
+         ============================================================ -->
+    <PersonalProducts />
+
+    <!-- ============================================================
+         SECTION 5: SKILLS SNAPSHOT
          ============================================================ -->
     <SkillsSnapshot />
 
     <!-- ============================================================
-         SECTION 5: LATEST BLOG POSTS
+         SECTION 6: LATEST BLOG POSTS
          ============================================================ -->
     <LatestPosts />
 
     <!-- ============================================================
-         SECTION 6: CONNECT CTA
+         SECTION 7: CONNECT CTA
          ============================================================ -->
     <ConnectCTA />
   </div>

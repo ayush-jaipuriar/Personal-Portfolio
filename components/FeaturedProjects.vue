@@ -1,6 +1,6 @@
 <template>
   <!--
-    FeaturedProjects.vue — Showcases top 3-4 projects on the homepage.
+    FeaturedProjects.vue — Showcases professional case studies on the homepage.
     
     Design pattern: "Featured content" with progressive disclosure.
     Shows the strongest work first; "View All Projects" link lets
@@ -14,10 +14,10 @@
       <!-- Section header -->
       <div class="text-center mb-12">
         <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
-          Featured Work
+          Enterprise Case Studies
         </h2>
         <p class="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-          Selected case studies from my professional career and passion projects.
+          Production systems from TransUnion and HighRadius, focused on architecture, scale, trade-offs, and measurable business impact.
         </p>
       </div>
 

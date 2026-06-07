@@ -69,6 +69,19 @@
         </div>
       </header>
 
+      <!-- Confidentiality Note for Professional Case Studies -->
+      <div
+        v-if="project.type === 'professional'"
+        class="mb-8 rounded-xl border border-amber-200 dark:border-amber-900/40 bg-amber-50/50 dark:bg-amber-950/10 p-4"
+      >
+        <div class="flex items-start gap-3 text-sm text-amber-800 dark:text-amber-300">
+          <Icon name="heroicons:shield-exclamation" class="h-5 w-5 flex-shrink-0 mt-0.5 text-amber-600 dark:text-amber-400" aria-hidden="true" />
+          <p class="leading-relaxed">
+            <strong>Confidentiality Note:</strong> Details have been generalized to respect employer confidentiality and non-disclosure agreements, while preserving the core system architectures, trade-offs, and business impacts.
+          </p>
+        </div>
+      </div>
+
       <div class="mb-12 overflow-hidden rounded-2xl border border-gray-200 dark:border-gray-800">
         <img :src="toAssetPath(project.image)" :alt="project.title" width="1200" height="675" class="w-full h-auto object-cover" />
       </div>
@@ -183,6 +196,33 @@
         </section>
       </div>
 
+      <!-- End of Case Study CTA -->
+      <div class="mt-16 rounded-2xl bg-gradient-to-br from-apple-blue-50 via-white to-purple-50 dark:from-gray-800 dark:via-gray-900 dark:to-gray-800 p-8 text-center border border-gray-200 dark:border-gray-700">
+        <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">
+          Interested in similar engineering or AI agent work?
+        </h3>
+        <p class="text-sm text-gray-600 dark:text-gray-400 max-w-xl mx-auto mb-6">
+          I'm currently looking for Senior SWE and AI Engineering roles. Let's discuss how I can help your team ship systems that scale.
+        </p>
+        <div class="flex flex-wrap justify-center gap-3">
+          <NuxtLink
+            to="/contact"
+            class="inline-flex items-center px-5 py-2.5 rounded-lg text-sm font-semibold text-white bg-apple-blue-600 hover:bg-apple-blue-700 transition-colors shadow-sm"
+          >
+            Get In Touch
+            <Icon name="heroicons:paper-airplane" class="ml-2 h-4 w-4" aria-hidden="true" />
+          </NuxtLink>
+          <a
+            :href="resumeUrl"
+            download
+            class="inline-flex items-center px-5 py-2.5 rounded-lg text-sm font-semibold text-gray-700 dark:text-gray-200 bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors shadow-sm"
+          >
+            Download Resume
+            <Icon name="heroicons:document-arrow-down" class="ml-2 h-4 w-4" aria-hidden="true" />
+          </a>
+        </div>
+      </div>
+
       <div class="mt-16 border-t border-gray-200 dark:border-gray-800 pt-8">
         <div class="flex flex-col sm:flex-row justify-between items-center gap-4">
           <NuxtLink
@@ -228,9 +268,12 @@ import { computed } from 'vue'
 import type { CaseStudy } from '~/data/projects'
 import { getAdjacentProjects, getProjectBySlug } from '~/data/projects'
 import { useAssetPath } from '~/composables/useAssetPath'
+import { useRuntimeConfig } from 'nuxt/app'
 
 const route = useRoute()
 const { toAssetPath } = useAssetPath()
+const runtimeConfig = useRuntimeConfig()
+const resumeUrl = `${runtimeConfig.app.baseURL}resume/Ayush_Jaipuriar_Resume.pdf`
 
 const slug = computed(() => {
   const value = route.params.slug

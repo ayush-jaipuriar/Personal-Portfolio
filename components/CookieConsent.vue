@@ -28,7 +28,7 @@
       aria-label="Cookie consent"
     >
       <div
-        class="rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 shadow-lg p-5"
+        class="rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 shadow-lg p-4 sm:p-5"
       >
         <div class="flex items-start gap-3">
           <Icon
@@ -37,11 +37,10 @@
             aria-hidden="true"
           />
           <div>
-            <p class="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
-              This site uses cookies to understand visitor behavior.
-              No personal data is sold or shared.
+            <p class="text-xs sm:text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
+              This site uses cookies to analyze traffic. No personal data is shared.
             </p>
-            <div class="mt-4 flex items-center gap-3">
+            <div class="mt-3 sm:mt-4 flex items-center gap-3">
               <button
                 @click="acceptCookies"
                 class="px-4 py-2 text-sm font-medium text-white bg-apple-blue-600 hover:bg-apple-blue-700 rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-apple-blue-500 focus:ring-offset-2"
@@ -87,7 +86,10 @@ onMounted(() => {
   if (stored === 'true') {
     loadGA()
   } else if (stored === null) {
-    showBanner.value = true
+    // Delay displaying the banner to prevent blocking mobile hero CTAs on initial mount
+    setTimeout(() => {
+      showBanner.value = true
+    }, 2000)
   }
 })
 

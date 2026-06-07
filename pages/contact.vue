@@ -118,8 +118,10 @@
               <input
                 type="text"
                 id="name"
+                name="name"
                 v-model="contactForm.name"
                 required
+                autocomplete="name"
                 placeholder="Your name"
                 class="w-full px-4 py-2.5 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white shadow-sm focus:outline-none focus:ring-2 focus:ring-apple-blue-500 focus:border-apple-blue-500 transition-colors duration-200"
               />
@@ -136,8 +138,10 @@
               <input
                 type="email"
                 id="email"
+                name="email"
                 v-model="contactForm.email"
                 required
+                autocomplete="email"
                 placeholder="you@example.com"
                 class="w-full px-4 py-2.5 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white shadow-sm focus:outline-none focus:ring-2 focus:ring-apple-blue-500 focus:border-apple-blue-500 transition-colors duration-200"
               />
@@ -154,6 +158,7 @@
               <input
                 type="text"
                 id="subject"
+                name="subject"
                 v-model="contactForm.subject"
                 required
                 placeholder="What's this about?"
@@ -171,6 +176,7 @@
               </label>
               <textarea
                 id="message"
+                name="message"
                 v-model="contactForm.message"
                 rows="5"
                 required
