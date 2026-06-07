@@ -11,7 +11,7 @@
          ============================================================ -->
     <section
       v-motion-fade-visible-once
-      class="relative py-20 md:py-28 overflow-hidden"
+      class="relative py-20 md:py-28 overflow-hidden bg-grid-motif"
     >
       <div class="container mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex flex-col md:flex-row items-center md:space-x-12">
@@ -129,25 +129,35 @@
          ============================================================ -->
     <MetricsBar />
 
+    <div class="systems-divider" />
+
     <!-- ============================================================
          SECTION 3: ENTERPRISE CASE STUDIES
          ============================================================ -->
     <FeaturedProjects />
+
+    <div class="systems-divider" />
 
     <!-- ============================================================
          SECTION 4: PERSONAL PRODUCTS
          ============================================================ -->
     <PersonalProducts />
 
+    <div class="systems-divider" />
+
     <!-- ============================================================
          SECTION 5: SKILLS SNAPSHOT
          ============================================================ -->
     <SkillsSnapshot />
 
+    <div class="systems-divider" />
+
     <!-- ============================================================
          SECTION 6: LATEST BLOG POSTS
          ============================================================ -->
     <LatestPosts />
+
+    <div class="systems-divider" />
 
     <!-- ============================================================
          SECTION 7: CONNECT CTA

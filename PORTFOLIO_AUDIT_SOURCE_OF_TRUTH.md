@@ -732,3 +732,54 @@ Why it changed:
 Validation completed:
 
 - Verify the homepage hero photo, about page profile card, and at least one blog detail author block in Browser.
+
+### June 7, 2026: Phase 2 - Technical Dossier Enhancements (Case Study Summary Rail & Filter Tabs)
+
+What changed:
+- Added a 4-column responsive grid card "Executive Summary Rail" to the top of case study detail pages in `pages/projects/[slug].vue`.
+- Added interactive category filter tabs ("All Work", "AI & Agentic Systems", "Enterprise Scale", "Personal Products") on the Projects index page at `pages/projects/index.vue`.
+- Integrated a "Related Technical Writing" section at the bottom of case study detail pages to fetch and link relevant blog posts using Nuxt Content.
+
+Why it changed:
+- Enhances recruiter navigation by offering instant category filtering and giving them a summary of key metrics (duration, role, outcome, stack) at a glance before reading the full case study.
+- Connects written thought-leadership directly with hands-on projects.
+
+Validation completed:
+- `npm test` and `npm run generate` succeeded cleanly.
+- Verified that empty categories are dynamically hidden when filtering.
+
+---
+
+### June 7, 2026: Phase 3 - Upgrade Visual Taste (macOS Terminal Cards & Background Grids)
+
+What changed:
+- Implemented a clean systems-inspired background grid motif `.bg-grid-motif` in `assets/css/main.css` and applied it to the homepage hero and projects page header.
+- Generated a custom mobile game UI screenshot `only-yours-product.png` for the OnlyYours project card.
+- Redesigned `components/CaseStudyCard.vue`, `components/ProjectCard.vue`, and `components/PersonalProducts.vue` to wrap cards in a macOS-style terminal shell with custom simulated filenames (e.g., `agent_orchestrator.py`), control dots, and active/pulse status badges.
+
+Why it changed:
+- Standard card templates look generic. Introducing a macOS-style terminal dossier theme provides an authentic systems/platform engineering feel aligned with Ayush's skillset.
+- Provides a custom visual asset for OnlyYours instead of a generic placeholder.
+
+Validation completed:
+- `npm test` and `npm run generate` succeeded cleanly.
+- Verified visual alignment and responsiveness of terminal cards on mobile and desktop.
+
+---
+
+### June 7, 2026: Phase 4 - Make It Feel Premium (Dividers, Learning Table, & Recruiter Dossier)
+
+What changed:
+- Implemented the `.systems-divider` CSS rules in `assets/css/main.css` (thin linear-gradient divider line with a centered tech-node dot) and applied it between sections in `pages/index.vue`.
+- Refactored `pages/projects/index.vue` to display personal/learning builds (Camunda dispute resolution, LangChain QA) in a clean, high-density table list layout instead of cards, highlighting technology stack, GitHub links, and project scale.
+- Redesigned `pages/contact.vue` into a modern two-column recruiter conversion point. The left column presents a "Recruiter Dossier" fit-matrix (roles, domains, availability) and an interactive copy-to-clipboard email action button with instant visual micro-feedback. The right column styles the contact form with custom focus transitions and a response time promise.
+
+Why it changed:
+- Thin connecting lines create an architectural, blueprint-like visual structure.
+- Presenting small learning builds in a high-density table separates them visually from complete personal products, breaking card monotony and establishing varied rhythm.
+- Recruiter Dossier converts casual visitors into leads by explicitly addressing recruiter questions (role alignment, availability, easy contact).
+
+Validation completed:
+- Run Vitest tests (`npm test`) - all 6 tests passed successfully.
+- Run static generation build (`npm run generate`) - prerendered all 57 routes with zero compilation errors.
+- Visual inspection of dividers, table list, and recruiter contact page layout in local preview mode.

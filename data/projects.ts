@@ -36,6 +36,8 @@ export interface Project {
   featured: boolean
   personalProduct?: boolean
   order: number
+  roleTitle?: string
+  relatedPosts?: string[]
   caseStudy?: CaseStudy
 }
 
@@ -54,6 +56,8 @@ export const projects: Project[] = [
     technologies: ['LangChain', 'LangGraph', 'Python', 'MLFlow', 'Neo4j', 'Apache Superset'],
     featured: true,
     order: 1,
+    roleTitle: 'Lead AI Agent Engineer',
+    relatedPosts: ['building-production-ai-agents'],
     caseStudy: {
       problem:
         'Research analysts needed to query massive datasets, build visualizations, and detect patterns without depending on specialist engineering teams for every request.',
@@ -99,6 +103,8 @@ export const projects: Project[] = [
     technologies: ['DuckDB', 'Trino', 'Google Cloud Dataproc', 'Kubernetes', 'Java', 'Spring Boot'],
     featured: true,
     order: 2,
+    roleTitle: 'Query Routing & Scaling Lead',
+    relatedPosts: ['designing-a-gmail-scale-email-system'],
     caseStudy: {
       problem:
         'Users needed reliable search on multi-terabyte proprietary datasets with strict latency targets and region-sensitive data constraints.',
@@ -144,6 +150,7 @@ export const projects: Project[] = [
     technologies: ['Java 17', 'Spring Boot', 'Hibernate', 'SQL', 'AWS', 'Redis'],
     featured: true,
     order: 3,
+    roleTitle: 'Performance Engineer',
     caseStudy: {
       problem:
         'Enterprise financial workflows depended on parsing heterogeneous file formats at scale, but latency and parser throughput were blocking downstream reconciliation.',
@@ -190,6 +197,7 @@ export const projects: Project[] = [
     featured: false,
     personalProduct: true,
     order: 4,
+    roleTitle: 'Solo Product Builder',
     caseStudy: {
       problem:
         'People struggle to stay consistent with personal goals because most habit tools do not adapt to emotional context, patterns, or accountability dynamics.',
@@ -236,6 +244,7 @@ export const projects: Project[] = [
     featured: false,
     personalProduct: true,
     order: 5,
+    roleTitle: 'Solo Product Builder',
     caseStudy: {
       problem:
         'Generic productivity apps often become passive dashboards instead of helping a demanding user decide what matters today, what should happen next, and what needs adjustment before the day slips.',
@@ -281,6 +290,7 @@ export const projects: Project[] = [
     featured: false,
     personalProduct: true,
     order: 6,
+    roleTitle: 'Solo Product Builder',
     caseStudy: {
       problem:
         'Most focus timers trust the user to ignore the phone, but the phone itself is the distraction. Phone Down turns focus into a physical ritual: place the phone face down and keep it stable.',
@@ -320,12 +330,13 @@ export const projects: Project[] = [
       'Full-stack realtime couples game where partners link, answer questions, guess each other\'s answers, and review scores, history, stats, badges, and notifications.',
     shortDescription:
       'Realtime couples game with Expo mobile client, Spring Boot backend, WebSocket gameplay, JWT auth, stats, and badges.',
-    image: '/images/projects/only-yours.jpg',
+    image: '/images/projects/only-yours-product.png',
     technologies: ['Expo', 'React Native', 'Spring Boot', 'PostgreSQL', 'WebSocket/STOMP', 'JWT'],
     githubLink: 'https://github.com/ayush-jaipuriar/only-yours',
     featured: false,
     personalProduct: true,
     order: 7,
+    roleTitle: 'Solo Product Builder',
     caseStudy: {
       problem:
         'Couples games need more than static questions: partners have to link, play together in real time, recover interrupted sessions, and see meaningful results without the experience falling out of sync.',

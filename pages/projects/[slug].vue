@@ -69,6 +69,37 @@
         </div>
       </header>
 
+      <!-- Executive Summary Panel -->
+      <div class="mb-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 p-6 rounded-2xl border border-gray-200 dark:border-gray-800 bg-gray-50/50 dark:bg-gray-900/30 backdrop-blur-sm">
+        <div class="flex flex-col">
+          <span class="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">My Role</span>
+          <span class="mt-1.5 text-base font-bold text-gray-900 dark:text-white leading-tight">
+            {{ project.roleTitle || 'Solo Product Builder' }}
+          </span>
+        </div>
+        <div class="flex flex-col">
+          <span class="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Core Stack</span>
+          <span class="mt-1.5 text-base font-bold text-gray-900 dark:text-white leading-tight">
+            {{ project.technologies.slice(0, 3).join(', ') }}
+          </span>
+        </div>
+        <div class="flex flex-col">
+          <span class="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Scope</span>
+          <span class="mt-1.5 text-base font-bold text-gray-900 dark:text-white leading-tight">
+            {{ project.type === 'professional' ? 'Production Deployed' : 'Active Release' }}
+          </span>
+        </div>
+        <div class="flex flex-col">
+          <span class="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Primary Outcome</span>
+          <span class="mt-1.5 text-base font-bold text-apple-blue-600 dark:text-apple-blue-400 leading-tight">
+            {{ detail?.impactMetrics?.[0]?.value || 'N/A' }}
+            <span class="block text-xs font-normal text-gray-500 dark:text-gray-400 mt-0.5">
+              {{ detail?.impactMetrics?.[0]?.label || '' }}
+            </span>
+          </span>
+        </div>
+      </div>
+
       <!-- Confidentiality Note for Professional Case Studies -->
       <div
         v-if="project.type === 'professional'"
@@ -194,6 +225,37 @@
             {{ detail.learnings }}
           </p>
         </section>
+
+        <!-- Related Technical Writing -->
+        <section v-if="relatedArticles && relatedArticles.length > 0">
+          <h2 class="text-2xl font-bold mb-4 pb-2 border-b border-gray-200 dark:border-gray-800 text-gray-900 dark:text-white">
+            Related Technical Writing
+          </h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <NuxtLink
+              v-for="article in relatedArticles"
+              :key="article._path"
+              :to="article._path"
+              class="group block p-5 rounded-2xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 hover:border-apple-blue-500 dark:hover:border-apple-blue-500 hover:shadow-md transition-all duration-300"
+            >
+              <div class="flex flex-col h-full justify-between">
+                <div>
+                  <span class="text-xs font-semibold text-apple-blue-600 dark:text-apple-blue-400 uppercase tracking-wider">Article</span>
+                  <h3 class="mt-2 text-lg font-bold text-gray-900 dark:text-white group-hover:text-apple-blue-600 dark:group-hover:text-apple-blue-400 transition-colors">
+                    {{ article.title }}
+                  </h3>
+                  <p v-if="article.description" class="mt-2 text-sm text-gray-600 dark:text-gray-400 line-clamp-2 leading-relaxed">
+                    {{ article.description }}
+                  </p>
+                </div>
+                <div class="mt-4 flex items-center text-sm font-semibold text-apple-blue-600 dark:text-apple-blue-400 group-hover:underline">
+                  Read Article
+                  <Icon name="heroicons:arrow-right" class="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" aria-hidden="true" />
+                </div>
+              </div>
+            </NuxtLink>
+          </div>
+        </section>
       </div>
 
       <!-- End of Case Study CTA -->
@@ -268,7 +330,18 @@ import { computed } from 'vue'
 import type { CaseStudy } from '~/data/projects'
 import { getAdjacentProjects, getProjectBySlug } from '~/data/projects'
 import { useAssetPath } from '~/composables/useAssetPath'
-import { useRuntimeConfig } from 'nuxt/app'
+import { useRuntimeConfig, useAsyncData } from 'nuxt/app'
+
+interface BlogPost {
+  _path: string
+  title: string
+  description?: string
+  date: string
+  readingTime?: string
+  categories?: string[]
+}
+
+declare const queryContent: <T = BlogPost>(...args: any[]) => any
 
 const route = useRoute()
 const { toAssetPath } = useAssetPath()
@@ -282,6 +355,23 @@ const slug = computed(() => {
 
 const project = computed(() =>
   slug.value ? getProjectBySlug(slug.value) : undefined
+)
+
+// Fetch related articles using Nuxt Content
+const { data: relatedArticles } = await useAsyncData<BlogPost[]>(
+  `project-related-articles-${slug.value}`,
+  async () => {
+    if (!project.value?.relatedPosts || project.value.relatedPosts.length === 0) {
+      return []
+    }
+    const paths = project.value.relatedPosts.map(p => `/blog/${p}`)
+    return queryContent<BlogPost>('/blog')
+      .where({ _path: { $in: paths } })
+      .find()
+  },
+  {
+    watch: [slug]
+  }
 )
 
 const adjacent = computed(() =>

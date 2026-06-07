@@ -29,8 +29,24 @@
           :key="project.id"
           v-motion-fade-visible-once
           :delay="index * 120"
-          class="group overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-apple-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-apple-lg dark:border-gray-800 dark:bg-gray-900"
+          class="group overflow-hidden rounded-xl border border-gray-200 bg-white hover:border-apple-blue-500/50 hover:shadow-apple-md transition-all duration-300 dark:border-gray-800 dark:bg-gray-900"
         >
+          <!-- Terminal Header Bar -->
+          <div class="flex items-center justify-between h-8 px-4 bg-gray-50/80 dark:bg-gray-950/80 border-b border-gray-200 dark:border-gray-800 text-xs font-mono select-none">
+            <div class="flex items-center gap-1.5">
+              <span class="w-2.5 h-2.5 rounded-full bg-red-400/40 border border-red-500/20"></span>
+              <span class="w-2.5 h-2.5 rounded-full bg-yellow-400/40 border border-yellow-500/20"></span>
+              <span class="w-2.5 h-2.5 rounded-full bg-green-400/40 border border-green-500/20"></span>
+            </div>
+            <div class="font-semibold text-[11px] text-gray-500 dark:text-gray-400">
+              {{ cardFileName(project.slug) }}
+            </div>
+            <div class="flex items-center gap-1.5">
+              <span class="w-1.5 h-1.5 rounded-full bg-apple-blue-500 animate-pulse"></span>
+              <span class="text-[10px] font-bold text-apple-blue-600 dark:text-apple-blue-400 uppercase tracking-wider">{{ cardStatus(project.slug) }}</span>
+            </div>
+          </div>
+
           <div class="grid h-full grid-cols-1 md:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)]">
             <NuxtLink
               :to="`/projects/${project.slug}`"
@@ -46,9 +62,6 @@
                 class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
               />
               <div class="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-black/55 to-transparent" aria-hidden="true"></div>
-              <span class="absolute bottom-4 left-4 inline-flex items-center rounded-full bg-white/90 px-3 py-1 text-xs font-semibold text-gray-900 shadow-sm dark:bg-gray-950/90 dark:text-white">
-                {{ productLabel(project.slug) }}
-              </span>
             </NuxtLink>
 
             <div class="flex h-full flex-col p-6">
@@ -122,14 +135,23 @@ import { useAssetPath } from '~/composables/useAssetPath'
 const products = getPersonalProductProjects()
 const { toAssetPath } = useAssetPath()
 
-const productLabel = (slug: string) => {
-  const labels: Record<string, string> = {
-    'accountability-agent': 'AI product',
-    forge: 'PWA product',
-    'phone-down': 'Native Android',
-    'only-yours': 'Realtime mobile',
+const cardFileName = (slug: string) => {
+  const files: Record<string, string> = {
+    'accountability-agent': 'supervisor_agent.py',
+    forge: 'daily_planner.pwa',
+    'phone-down': 'focus_timer.kt',
+    'only-yours': 'websocket_sync.java',
   }
+  return files[slug] || 'module.conf'
+}
 
-  return labels[slug] ?? 'Personal product'
+const cardStatus = (slug: string) => {
+  const statuses: Record<string, string> = {
+    'accountability-agent': 'active',
+    forge: 'ready',
+    'phone-down': 'local',
+    'only-yours': 'realtime',
+  }
+  return statuses[slug] || 'stable'
 }
 </script>

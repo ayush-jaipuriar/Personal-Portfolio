@@ -1,8 +1,24 @@
 <template>
   <article
     ref="cardRef"
-    class="group overflow-hidden rounded-2xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 shadow-apple-sm hover:shadow-apple-lg transition-all duration-300"
+    class="group overflow-hidden rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 hover:border-apple-blue-500/50 dark:hover:border-apple-blue-500/50 hover:shadow-apple-md transition-all duration-300"
   >
+    <!-- Terminal Header Bar -->
+    <div class="flex items-center justify-between h-8 px-4 bg-gray-50/80 dark:bg-gray-950/80 border-b border-gray-200 dark:border-gray-800 text-xs font-mono select-none">
+      <div class="flex items-center gap-1.5">
+        <span class="w-2.5 h-2.5 rounded-full bg-red-400/40 border border-red-500/20"></span>
+        <span class="w-2.5 h-2.5 rounded-full bg-yellow-400/40 border border-yellow-500/20"></span>
+        <span class="w-2.5 h-2.5 rounded-full bg-green-400/40 border border-green-500/20"></span>
+      </div>
+      <div class="font-semibold text-[11px] text-gray-500 dark:text-gray-400">
+        {{ cardFileName }}
+      </div>
+      <div class="flex items-center gap-1.5">
+        <span class="w-1.5 h-1.5 rounded-full bg-apple-blue-500 animate-pulse"></span>
+        <span class="text-[10px] font-bold text-apple-blue-600 dark:text-apple-blue-400 uppercase tracking-wider">{{ cardStatus }}</span>
+      </div>
+    </div>
+
     <div class="border-l-4 border-apple-blue-600 h-full">
       <div class="grid grid-cols-1 lg:grid-cols-12 h-full">
         <NuxtLink
@@ -68,7 +84,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 import type { Project } from '~/data/projects'
 import { useAssetPath } from '~/composables/useAssetPath'
 import { useTilt } from '~/composables/useTilt'
@@ -87,6 +103,24 @@ const trackProjectClick = () => {
     event_label: props.project.slug,
   })
 }
+
+const cardFileName = computed(() => {
+  const files: Record<string, string> = {
+    'ai-agents-research-perspective': 'agent_orchestrator.py',
+    'tb-scale-search': 'query_router.trino',
+    'enterprise-parsing-engine': 'parsing_pipeline.java',
+  }
+  return files[props.project.slug] || 'module.conf'
+})
+
+const cardStatus = computed(() => {
+  const statuses: Record<string, string> = {
+    'ai-agents-research-perspective': 'active',
+    'tb-scale-search': 'stable',
+    'enterprise-parsing-engine': 'optimized',
+  }
+  return statuses[props.project.slug] || 'stable'
+})
 
 // 3D tilt hover — adds subtle perspective rotation following the cursor
 const cardRef = ref<HTMLElement | null>(null)

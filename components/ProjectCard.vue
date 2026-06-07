@@ -1,18 +1,23 @@
 <template>
   <article
     ref="cardRef"
-    class="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 shadow-apple-sm hover:shadow-apple-lg transition-all duration-300"
+    class="group relative flex h-full flex-col overflow-hidden rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 hover:border-apple-blue-500/50 dark:hover:border-apple-blue-500/50 hover:shadow-apple-md transition-all duration-300"
   >
-    <span
-      :class="[
-        'absolute right-3 top-3 z-10 inline-flex items-center rounded-full px-2.5 py-1 text-[11px] font-semibold',
-        isCaseStudy
-          ? 'bg-apple-blue-100 dark:bg-apple-blue-900/30 text-apple-blue-700 dark:text-apple-blue-300'
-          : 'bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300',
-      ]"
-    >
-      {{ isCaseStudy ? 'Case Study' : 'Personal' }}
-    </span>
+    <!-- Terminal Header Bar -->
+    <div class="flex items-center justify-between h-8 px-4 bg-gray-50/80 dark:bg-gray-950/80 border-b border-gray-200 dark:border-gray-800 text-xs font-mono select-none">
+      <div class="flex items-center gap-1.5">
+        <span class="w-2.5 h-2.5 rounded-full bg-red-400/40 border border-red-500/20"></span>
+        <span class="w-2.5 h-2.5 rounded-full bg-yellow-400/40 border border-yellow-500/20"></span>
+        <span class="w-2.5 h-2.5 rounded-full bg-green-400/40 border border-green-500/20"></span>
+      </div>
+      <div class="font-semibold text-[11px] text-gray-500 dark:text-gray-400">
+        {{ cardFileName }}
+      </div>
+      <div class="flex items-center gap-1.5">
+        <span class="w-1.5 h-1.5 rounded-full bg-apple-blue-500 animate-pulse"></span>
+        <span class="text-[10px] font-bold text-apple-blue-600 dark:text-apple-blue-400 uppercase tracking-wider">{{ cardStatus }}</span>
+      </div>
+    </div>
 
     <NuxtLink
       v-if="hasDetailPage"
@@ -163,6 +168,36 @@ const isCaseStudy = computed(() => props.project.type === 'professional')
 const hasDetailPage = computed(() => props.project.type === 'professional' || Boolean(props.project.caseStudy))
 const detailPath = computed(() => `/projects/${props.project.slug}`)
 const { toAssetPath } = useAssetPath()
+
+const cardFileName = computed(() => {
+  const files: Record<string, string> = {
+    'ai-agents-research-perspective': 'agent_orchestrator.py',
+    'tb-scale-search': 'query_router.trino',
+    'enterprise-parsing-engine': 'parsing_pipeline.java',
+    'accountability-agent': 'supervisor_agent.py',
+    'forge': 'daily_planner.pwa',
+    'phone-down': 'focus_timer.kt',
+    'only-yours': 'websocket_sync.java',
+    'learning-camunda': 'dispute_workflow.bpmn',
+    'learning-langchain': 'qa_retrieval.ipynb'
+  }
+  return files[props.project.slug] || 'module.conf'
+})
+
+const cardStatus = computed(() => {
+  const statuses: Record<string, string> = {
+    'ai-agents-research-perspective': 'active',
+    'tb-scale-search': 'stable',
+    'enterprise-parsing-engine': 'optimized',
+    'accountability-agent': 'active',
+    'forge': 'ready',
+    'phone-down': 'local',
+    'only-yours': 'realtime',
+    'learning-camunda': 'demo',
+    'learning-langchain': 'demo'
+  }
+  return statuses[props.project.slug] || 'stable'
+})
 
 // 3D tilt hover — adds subtle perspective rotation following the cursor
 const cardRef = ref<HTMLElement | null>(null)

@@ -1,0 +1,14 @@
+---
+description: Mandatory agent workflow rules to follow throughout all sprints, phases, and sections
+globs: *
+alwaysApply: true
+---
+# Mandatory Agent Workflow
+
+All AI coding agents working on this workspace MUST adhere to the following workflow for each phase, sprint, or section:
+
+0. **Clarification**: Ask any clarification questions first. Proceed to step 1 only after questions are resolved.
+1. **Planning**: Perform in-depth, comprehensive, and detailed planning of the phase/sprint. Write this into a new `.md` file, along with checkboxes to track implementation progress.
+2. **Approval**: Wait for explicit user approval of the plan before starting implementation.
+3. **Testing**: Once implementation is complete, run an in-depth suite of automated test cases, unit tests, regression tests, and integration tests.
+4. **Completion**: Once all tests pass and you are confident of implementation completeness, notify the user.
