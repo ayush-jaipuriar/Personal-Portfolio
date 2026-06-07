@@ -573,6 +573,92 @@ After implementation, verify:
 
 ## Iteration Notes
 
+### June 7, 2026: Product Design Audit
+
+What changed:
+
+- Added a dedicated product design audit report at `product-design-audit-2026-06-07/PRODUCT_DESIGN_AUDIT_REPORT.md`.
+- Captured 12 live-site audit screenshots in `product-design-audit-2026-06-07/screenshots/`.
+- Audited the deployed portfolio across homepage, about, projects, project detail pages, blog, contact, and mobile states.
+
+Key findings:
+
+- Fix production blog share URLs that still point to localhost.
+- Improve mobile cookie/banner/menu interaction.
+- Add case-study summary rails for faster recruiter evaluation.
+- Make the visual system feel more authored and less template-like.
+- Upgrade personal-product visuals and project cards into stronger evidence cards.
+
+Status:
+
+- Report written.
+- No implementation changes made in this audit pass.
+
+### June 7, 2026: Phase 1 Planning
+
+What changed:
+
+- Added Phase 1 implementation plan at `portfolio-improvement-plans/PHASE_1_PRODUCTION_TRUST_AND_MOBILE_FRICTION_PLAN.md`.
+- Scoped Phase 1 to production trust and mobile friction:
+  - Fix blog share URLs that point to localhost.
+  - Improve mobile cookie/banner/menu interaction.
+  - Add focused automated regression coverage.
+  - Validate with production generation and Browser checks.
+
+Status:
+
+- Plan written.
+- User approved the plan and Phase 1 implementation proceeded.
+
+### June 7, 2026: Phase 1 Implementation - Production Trust and Mobile Friction
+
+What changed:
+
+- Added a canonical site URL runtime config in `nuxt.config.ts`.
+- Added canonical URL utilities in `utils/canonicalUrl.ts`.
+- Added a Nuxt-facing canonical URL composable in `composables/useCanonicalUrl.ts`.
+- Updated `pages/blog/[...slug].vue` so share URLs use production canonical URLs instead of development localhost URLs.
+- Added shared mobile menu state in `composables/useMobileMenuState.ts`.
+- Updated `components/AppHeader.vue` with mobile menu state publishing, `aria-controls`, stable menu `id`, accurate open/close accessible labels, and Escape-to-close behavior.
+- Updated `components/CookieConsent.vue` so the cookie banner stays out of the way while the mobile menu is open and uses tighter mobile spacing.
+- Added `components/content/ProseImg.vue` so Markdown-rendered images are resolved through the app base URL and do not break under GitHub Pages.
+- Added Vitest coverage in `tests/canonicalUrl.test.ts`.
+- Added the `npm test` script and Vitest dependency in `package.json` and `package-lock.json`.
+
+Why it changed:
+
+- Blog share links previously risked publishing `localhost` URLs, which is a direct production trust issue for recruiters, hiring managers, and anyone sharing the content.
+- The mobile cookie banner could compete with the first impression and navigation, especially on smaller screens.
+- The mobile menu needed clearer accessibility contracts so the current state is understandable to assistive technology and keyboard users.
+- The production-shaped preview surfaced Markdown diagram image requests escaping the `/Personal-Portfolio/` base path; this needed to be fixed before calling the phase production-ready.
+- The repo needed a small regression-test foothold before more portfolio phases add broader UI behavior.
+
+Validation completed:
+
+- `npm test` passed: 1 test file, 6 tests.
+- `npm run generate` passed and generated 55 static routes.
+- Production-shaped local preview was served at `http://127.0.0.1:4174/Personal-Portfolio/`.
+- Browser mobile check at 390x844 verified:
+  - menu button starts closed with `aria-expanded="false"` and `aria-label="Open main menu"`;
+  - menu opens with `aria-expanded="true"` and `aria-label="Close main menu"`;
+  - Escape closes the menu and restores the closed accessible label;
+  - no console errors were reported on checked routes.
+- Static artifact check verified Twitter, LinkedIn, and Facebook share URLs all contain `https://ayush-jaipuriar.github.io/Personal-Portfolio/blog/building-production-ai-agents`.
+- Static artifact check verified generated HTML and JSON contain no `localhost:3000`, `http://localhost`, or `127.0.0.1`.
+- Static artifact check verified Markdown image URLs now render as `/Personal-Portfolio/images/...`.
+- HTTP smoke check returned 200 for the AI agent blog diagrams, Gmail-scale blog architecture image, and both checked blog routes.
+- Browser check verified no broken images on the AI agent blog and Gmail-scale system design blog.
+
+Known non-blocking notes:
+
+- Generation still reports stale Browserslist `caniuse-lite` data. This is dependency metadata maintenance, not a Phase 1 blocker.
+- Installing Vitest surfaced existing npm audit findings. They were not remediated during Phase 1 because automated audit fixes could create broad dependency churn outside the approved scope.
+
+Status:
+
+- Phase 1 implementation is complete.
+- Deployment is ready for explicit approval.
+
 ### June 7, 2026: Final Production Readiness Pass
 
 What changed:

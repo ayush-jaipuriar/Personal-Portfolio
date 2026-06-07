@@ -22,13 +22,13 @@
   -->
   <Transition name="consent-slide">
     <div
-      v-if="showBanner"
-      class="fixed bottom-4 left-4 right-4 sm:left-auto sm:right-6 sm:max-w-md z-50"
+      v-if="shouldShowBanner"
+      class="fixed bottom-3 left-3 right-3 sm:bottom-4 sm:left-auto sm:right-6 sm:max-w-md z-50"
       role="dialog"
       aria-label="Cookie consent"
     >
       <div
-        class="rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 shadow-lg p-4 sm:p-5"
+        class="rounded-lg sm:rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 shadow-lg p-3 sm:p-5"
       >
         <div class="flex items-start gap-3">
           <Icon
@@ -40,16 +40,16 @@
             <p class="text-xs sm:text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
               This site uses cookies to analyze traffic. No personal data is shared.
             </p>
-            <div class="mt-3 sm:mt-4 flex items-center gap-3">
+            <div class="mt-3 sm:mt-4 flex items-center gap-2 sm:gap-3">
               <button
                 @click="acceptCookies"
-                class="px-4 py-2 text-sm font-medium text-white bg-apple-blue-600 hover:bg-apple-blue-700 rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-apple-blue-500 focus:ring-offset-2"
+                class="px-3 sm:px-4 py-2 text-sm font-medium text-white bg-apple-blue-600 hover:bg-apple-blue-700 rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-apple-blue-500 focus:ring-offset-2"
               >
                 Accept
               </button>
               <button
                 @click="declineCookies"
-                class="px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 border border-gray-300 dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700 rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2"
+                class="px-3 sm:px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 border border-gray-300 dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700 rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2"
               >
                 Decline
               </button>
@@ -62,8 +62,9 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted } from 'vue'
+import { computed, ref, onMounted } from 'vue'
 import { useAnalytics } from '~/composables/useAnalytics'
+import { useMobileMenuState } from '~/composables/useMobileMenuState'
 
 /**
  * localStorage key for persisting the user's cookie consent choice.
@@ -73,6 +74,8 @@ const CONSENT_KEY = 'analytics-consent'
 
 const showBanner = ref(false)
 const { loadGA } = useAnalytics()
+const { isMobileMenuOpen } = useMobileMenuState()
+const shouldShowBanner = computed(() => showBanner.value && !isMobileMenuOpen.value)
 
 /**
  * On mount, check if the user has already made a choice:

@@ -166,6 +166,7 @@
 <script setup lang="ts">
 import { useRoute, useAsyncData, useHead, useRuntimeConfig } from 'nuxt/app';
 import { computed } from 'vue';
+import { useCanonicalUrl } from '~/composables/useCanonicalUrl';
 
 // Define an interface for the blog post data structure
 interface BlogPost {
@@ -186,6 +187,7 @@ declare const queryContent: <T = BlogPost>(...args: any[]) => any;
 const route = useRoute();
 const fullPath = route.fullPath;
 const runtimeConfig = useRuntimeConfig();
+const { toCanonicalUrl } = useCanonicalUrl();
 
 const toAssetPath = (path?: string) => {
   if (!path) return '';
@@ -237,12 +239,7 @@ const { data: relatedPosts } = await useAsyncData(
   }
 );
 
-// Base URL for constructing absolute URLs for sharing
-const baseUrl = process.env.NODE_ENV === 'production' 
-  ? 'https://ayush-jaipuriar.github.io/Personal-Portfolio'
-  : 'http://localhost:3000';
-
-const shareUrl = computed(() => `${baseUrl}${fullPath}`);
+const shareUrl = computed(() => toCanonicalUrl(fullPath));
 
 // Format the date
 const formatDate = (dateStr: string | undefined) => {

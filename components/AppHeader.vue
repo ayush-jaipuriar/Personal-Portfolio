@@ -66,11 +66,12 @@
         <div class="flex md:hidden">
           <ThemeToggle class="mr-2" />
           <button
-            @click="isOpen = !isOpen"
+            @click="toggleMobileMenu"
             type="button"
             class="inline-flex items-center justify-center p-2 rounded-md text-gray-700 dark:text-gray-300 hover:text-apple-blue-600 dark:hover:text-apple-blue-400 hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-apple-blue-500"
             :aria-expanded="isOpen"
-            aria-label="Main menu"
+            :aria-label="isOpen ? 'Close main menu' : 'Open main menu'"
+            aria-controls="mobile-navigation-menu"
           >
             <span class="sr-only">{{ isOpen ? 'Close main menu' : 'Open main menu' }}</span>
             <Icon
@@ -91,7 +92,7 @@
     </div>
 
     <!-- Mobile Navigation Menu -->
-    <div v-if="isOpen" class="md:hidden">
+    <div v-if="isOpen" id="mobile-navigation-menu" class="md:hidden">
       <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 border-t border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900">
         <NuxtLink
           v-for="item in internalNavItems"
@@ -99,7 +100,7 @@
           :to="item.href"
           class="block px-3 py-2 rounded-md text-base font-medium text-gray-800 dark:text-gray-200 hover:text-apple-blue-600 dark:hover:text-apple-blue-400 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-200"
           active-class="text-apple-blue-600 dark:text-apple-blue-400 bg-gray-100 dark:bg-gray-800 nav-glow"
-          @click="isOpen = false"
+          @click="closeMobileMenu"
         >
           {{ item.name }}
         </NuxtLink>
@@ -109,7 +110,7 @@
           :href="resumeUrl"
           download
           class="flex items-center px-3 py-2 rounded-md text-base font-medium text-gray-800 dark:text-gray-200 hover:text-apple-blue-600 dark:hover:text-apple-blue-400 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-200"
-          @click="isOpen = false"
+          @click="closeMobileMenu"
         >
           <Icon name="heroicons:document-arrow-down" class="mr-2 h-5 w-5" aria-hidden="true" />
           Resume
@@ -119,7 +120,7 @@
           to="/contact"
           class="block px-3 py-2 rounded-md text-base font-medium text-gray-800 dark:text-gray-200 hover:text-apple-blue-600 dark:hover:text-apple-blue-400 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-200"
           active-class="text-apple-blue-600 dark:text-apple-blue-400 bg-gray-100 dark:bg-gray-800 nav-glow"
-          @click="isOpen = false"
+          @click="closeMobileMenu"
         >
           Contact
         </NuxtLink>
@@ -129,13 +130,29 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
+import { onMounted, onUnmounted, ref, watch } from 'vue'
 import { useRouter, useRuntimeConfig } from 'nuxt/app'
+import { useMobileMenuState } from '~/composables/useMobileMenuState'
 
 // Mobile menu open state
 const isOpen = ref(false)
 const runtimeConfig = useRuntimeConfig()
 const resumeUrl = `${runtimeConfig.app.baseURL}resume/Ayush_Jaipuriar_Resume.pdf`
+const { setMobileMenuOpen } = useMobileMenuState()
+
+const closeMobileMenu = () => {
+  isOpen.value = false
+}
+
+const toggleMobileMenu = () => {
+  isOpen.value = !isOpen.value
+}
+
+const handleKeydown = (event: KeyboardEvent) => {
+  if (event.key === 'Escape' && isOpen.value) {
+    closeMobileMenu()
+  }
+}
 
 /**
  * Navigation items — internal links handled by Vue Router.
@@ -158,6 +175,19 @@ const internalNavItems = [
 
 // Close mobile menu on route change
 useRouter().afterEach(() => {
-  isOpen.value = false
+  closeMobileMenu()
+})
+
+watch(isOpen, (value) => {
+  setMobileMenuOpen(value)
+})
+
+onMounted(() => {
+  window.addEventListener('keydown', handleKeydown)
+})
+
+onUnmounted(() => {
+  window.removeEventListener('keydown', handleKeydown)
+  setMobileMenuOpen(false)
 })
 </script>

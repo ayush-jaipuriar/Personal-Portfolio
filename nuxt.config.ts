@@ -126,6 +126,7 @@ export default defineNuxtConfig({
   runtimeConfig: {
     public: {
       gaId: process.env.NUXT_PUBLIC_GA_ID || 'G-V9CNN08S3P',
+      siteUrl: process.env.NUXT_PUBLIC_SITE_URL || 'https://ayush-jaipuriar.github.io/Personal-Portfolio',
     },
   },
 
