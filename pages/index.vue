@@ -38,26 +38,6 @@
               6+ years shipping enterprise fintech at TransUnion and HighRadius.
             </p>
 
-            <!-- Proof Strip — compresses key claims for rapid scanning -->
-            <div class="flex flex-wrap gap-x-6 gap-y-3 mb-8 text-sm font-semibold text-gray-600 dark:text-gray-300 border-t border-b border-gray-200/80 dark:border-gray-800/80 py-3.5 max-w-xl">
-              <span class="flex items-center gap-1.5">
-                <Icon name="heroicons:clock" class="h-4.5 w-4.5 text-apple-blue-500" aria-hidden="true" />
-                6+ Years Exp
-              </span>
-              <span class="flex items-center gap-1.5">
-                <Icon name="heroicons:cpu-chip" class="h-4.5 w-4.5 text-apple-blue-500" aria-hidden="true" />
-                Production AI Agents
-              </span>
-              <span class="flex items-center gap-1.5">
-                <Icon name="heroicons:server-stack" class="h-4.5 w-4.5 text-apple-blue-500" aria-hidden="true" />
-                TB-Scale Search
-              </span>
-              <span class="flex items-center gap-1.5">
-                <Icon name="heroicons:bolt" class="h-4.5 w-4.5 text-apple-blue-500" aria-hidden="true" />
-                92% Latency Reduction
-              </span>
-            </div>
-
             <!-- CTA buttons -->
             <div class="flex flex-wrap gap-4">
               <!-- Primary CTA: See My Work -->
