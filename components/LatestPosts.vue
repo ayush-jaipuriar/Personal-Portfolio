@@ -31,8 +31,8 @@
           :delay="index * 120"
           :to="post._path"
           class="group block rounded-2xl overflow-hidden
-                 bg-white dark:bg-gray-800
-                 border border-gray-200 dark:border-gray-700
+                 bg-white dark:bg-graphite-900
+                 border border-gray-200 dark:border-graphite-700
                  shadow-apple-sm hover:shadow-apple-lg
                  transition-all duration-300 hover:-translate-y-1"
         >
@@ -47,7 +47,7 @@
             </time>
 
             <!-- Title -->
-            <h3 class="mt-2 text-lg font-semibold text-gray-900 dark:text-white group-hover:text-apple-blue-600 dark:group-hover:text-apple-blue-400 transition-colors line-clamp-2">
+            <h3 class="mt-2 text-lg font-semibold text-gray-900 dark:text-white group-hover:text-apple-blue-600 dark:group-hover:text-signal-400 transition-colors line-clamp-2">
               {{ post.title }}
             </h3>
 
@@ -57,7 +57,7 @@
             </p>
 
             <!-- Read more link -->
-            <span class="mt-4 inline-flex items-center text-sm font-medium text-apple-blue-600 dark:text-apple-blue-400">
+            <span class="mt-4 inline-flex items-center text-sm font-medium text-apple-blue-600 dark:text-signal-400">
               Read more
               <Icon name="heroicons:arrow-right" class="ml-1 h-4 w-4" aria-hidden="true" />
             </span>
@@ -67,7 +67,7 @@
 
       <!-- Empty state — shown when no posts exist yet -->
       <div v-else class="text-center py-12">
-        <div class="mx-auto w-16 h-16 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center mb-4">
+        <div class="mx-auto w-16 h-16 rounded-full bg-gray-100 dark:bg-graphite-900 flex items-center justify-center mb-4">
           <Icon name="heroicons:pencil-square" class="h-8 w-8 text-gray-400" aria-hidden="true" />
         </div>
         <p class="text-gray-600 dark:text-gray-400 mb-4">
@@ -76,8 +76,8 @@
         <NuxtLink
           to="/projects"
           class="inline-flex items-center text-sm font-medium
-                 text-apple-blue-600 dark:text-apple-blue-400
-                 hover:text-apple-blue-700 dark:hover:text-apple-blue-300
+                 text-apple-blue-600 dark:text-signal-400
+                 hover:text-apple-blue-700 dark:hover:text-signal-300
                  transition-colors"
         >
           View Projects
@@ -90,8 +90,8 @@
         <NuxtLink
           to="/blog"
           class="inline-flex items-center text-sm font-medium
-                 text-apple-blue-600 dark:text-apple-blue-400
-                 hover:text-apple-blue-700 dark:hover:text-apple-blue-300
+                 text-apple-blue-600 dark:text-signal-400
+                 hover:text-apple-blue-700 dark:hover:text-signal-300
                  transition-colors duration-200"
         >
           View All Posts

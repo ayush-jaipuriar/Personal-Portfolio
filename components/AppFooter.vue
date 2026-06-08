@@ -11,7 +11,7 @@
     The 3-column layout collapses to a single stacked column on mobile
     via `md:grid-cols-3`.
   -->
-  <footer class="mt-16 border-t border-gray-200 dark:border-gray-800 bg-gray-50/50 dark:bg-gray-900/50">
+  <footer class="mt-16 border-t border-gray-200 dark:border-graphite-800 bg-gray-50/50 dark:bg-graphite-950/50">
     <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
       <!-- 3-column grid -->
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -25,7 +25,7 @@
           </p>
           <a
             href="mailto:jaipuriar.ayush@gmail.com"
-            class="inline-flex items-center text-sm text-apple-blue-600 dark:text-apple-blue-400 hover:text-apple-blue-700 dark:hover:text-apple-blue-300 transition-colors"
+            class="inline-flex items-center text-sm text-apple-blue-600 dark:text-signal-400 hover:text-apple-blue-700 dark:hover:text-signal-300 transition-colors"
           >
             <Icon name="heroicons:envelope" class="mr-1.5 h-4 w-4" aria-hidden="true" />
             jaipuriar.ayush@gmail.com
@@ -49,7 +49,7 @@
             <li v-for="link in quickLinks" :key="link.name">
               <NuxtLink
                 :to="link.href"
-                class="text-sm text-gray-600 dark:text-gray-400 hover:text-apple-blue-600 dark:hover:text-apple-blue-400 transition-colors"
+                class="text-sm text-gray-600 dark:text-gray-400 hover:text-apple-blue-600 dark:hover:text-signal-400 transition-colors"
               >
                 {{ link.name }}
               </NuxtLink>
@@ -95,7 +95,7 @@
       </div>
 
       <!-- Bottom bar: copyright + easter egg -->
-      <div class="mt-10 pt-6 border-t border-gray-200 dark:border-gray-800">
+      <div class="mt-10 pt-6 border-t border-gray-200 dark:border-graphite-800">
         <div class="flex flex-col md:flex-row items-center justify-between gap-4">
           <p class="text-sm text-gray-500 dark:text-gray-500">
             &copy; {{ new Date().getFullYear() }} Ayush Jaipuriar. All rights reserved.

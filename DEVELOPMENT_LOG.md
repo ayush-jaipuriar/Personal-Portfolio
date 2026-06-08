@@ -1,5 +1,56 @@
 # Development Log
 
+## 2026-06-08
+
+### What changed
+
+- Replaced the portfolio's generic blue/purple accent direction with a split theme:
+  - Light mode: white/slate surfaces with vermilion accents.
+  - Dark mode: graphite surfaces with signal-green accents.
+- Added explicit `signal` and `graphite` Tailwind color families and retuned the existing `apple-blue` accent family to vermilion so most light-mode accent usage continues to work through the current class API.
+- Reworked hero accent treatment, profile photo ring, scroll progress, divider glow, dark-mode shadows, mesh background colors, primary CTAs, active tabs, focus states, cards, and dark surfaces to align with the new palette.
+- Removed the remaining explicit purple palette usage from the UI color system.
+
+### Files touched
+
+- `tailwind.config.js`
+  - Retuned `apple-blue` to vermilion.
+  - Added `signal` for dark-mode action states.
+  - Added `graphite` for dark-mode surfaces.
+  - Updated dark prose links from the old accent to signal green.
+- `app.vue`
+  - Switched the global dark background to `graphite-950`.
+  - Updated the console accent color to vermilion and removed the emoji from the console message.
+- `assets/css/main.css`
+  - Updated glow utilities and systems-divider accent colors for vermilion light mode and signal-green dark mode.
+- `pages/index.vue`, `components/GradientMesh.vue`, `components/ScrollProgress.vue`
+  - Rebuilt the highest-visibility hero, mesh, profile-ring, and progress treatments around the new palette.
+- `pages/**/*.vue` and `components/**/*.vue`
+  - Updated accent, hover, focus, badge, card, form, tab, and dark-surface classes from the old blue/purple direction to vermilion/signal/graphite.
+- `DEVELOPMENT_LOG.md`
+  - Logged the palette iteration and verification plan.
+
+### Why this change was made
+
+The original purple-tinted palette felt too close to common AI/SaaS defaults. The new split theme gives each mode a clearer identity while keeping shared layout and typography intact: light mode feels sharper and editorial with vermilion, while dark mode feels more technical and deliberate with graphite and signal green.
+
+### Verification
+
+- `npm test` passed with 1 test file and 6 tests.
+- `npm run build` completed successfully.
+- `npm run generate` completed successfully and generated `.output/public` for the GitHub Pages static deployment path.
+- `git diff --check` passed after removing one trailing whitespace in `assets/css/main.css`.
+- Build still reports the existing stale Browserslist/caniuse-lite warning; it does not block the build.
+- Inspected the homepage locally at `http://127.0.0.1:3000/` in the in-app browser.
+- Verified light mode renders white/slate with vermilion hero, CTA, progress, and ring accents.
+- Verified dark mode renders graphite with signal-green hero, CTA, mesh, profile ring, cookie banner, and header treatment.
+
+### Next steps
+
+- Review the visual balance in-browser, especially hero, project cards, contact form, and blog states.
+- If vermilion feels too assertive in light mode, reduce it to CTA/link moments and move more passive badges to slate.
+- If signal green feels too bright in dark mode, step active CTAs down from `signal-500` to `signal-600`.
+
 ## 2026-04-18
 
 ### What changed

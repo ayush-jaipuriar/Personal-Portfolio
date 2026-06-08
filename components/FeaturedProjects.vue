@@ -30,13 +30,13 @@
           :delay="index * 120"
           :to="`/projects/${project.slug}`"
           class="group block rounded-2xl overflow-hidden
-                 bg-white dark:bg-gray-800
-                 border border-gray-200 dark:border-gray-700
+                 bg-white dark:bg-graphite-900
+                 border border-gray-200 dark:border-graphite-700
                  shadow-apple-sm hover:shadow-apple-lg
                  transition-all duration-300 hover:-translate-y-1"
         >
           <!-- Card image — aspect-video maintains 16:9 ratio -->
-          <div class="aspect-video overflow-hidden bg-gray-100 dark:bg-gray-700">
+          <div class="aspect-video overflow-hidden bg-gray-100 dark:bg-graphite-800">
             <img
               :src="toAssetPath(project.image)"
               :alt="project.title"
@@ -55,8 +55,8 @@
                 :class="[
                   'inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium',
                   project.type === 'professional'
-                    ? 'bg-apple-blue-100 dark:bg-apple-blue-900/30 text-apple-blue-700 dark:text-apple-blue-300'
-                    : 'bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300'
+                    ? 'bg-apple-blue-100 dark:bg-signal-900/30 text-apple-blue-700 dark:text-signal-300'
+                    : 'bg-apple-blue-100 dark:bg-signal-900/30 text-apple-blue-700 dark:text-signal-300'
                 ]"
               >
                 {{ project.type === 'professional' ? 'Professional' : 'Personal' }}
@@ -67,7 +67,7 @@
             </div>
 
             <!-- Title -->
-            <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2 group-hover:text-apple-blue-600 dark:group-hover:text-apple-blue-400 transition-colors">
+            <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2 group-hover:text-apple-blue-600 dark:group-hover:text-signal-400 transition-colors">
               {{ project.title }}
             </h3>
 
@@ -82,21 +82,21 @@
                 v-for="tech in project.technologies.slice(0, 4)"
                 :key="tech"
                 class="inline-flex items-center px-2 py-1 rounded-md text-xs font-medium
-                       bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300"
+                       bg-gray-100 dark:bg-graphite-800 text-gray-700 dark:text-gray-300"
               >
                 {{ tech }}
               </span>
               <span
                 v-if="project.technologies.length > 4"
                 class="inline-flex items-center px-2 py-1 rounded-md text-xs font-medium
-                       bg-gray-100 dark:bg-gray-700 text-gray-500 dark:text-gray-400"
+                       bg-gray-100 dark:bg-graphite-800 text-gray-500 dark:text-gray-400"
               >
                 +{{ project.technologies.length - 4 }} more
               </span>
             </div>
 
             <!-- CTA link -->
-            <span class="inline-flex items-center text-sm font-medium text-apple-blue-600 dark:text-apple-blue-400 group-hover:gap-2 transition-all">
+            <span class="inline-flex items-center text-sm font-medium text-apple-blue-600 dark:text-signal-400 group-hover:gap-2 transition-all">
               {{ project.caseStudy ? 'Read Case Study' : 'View Project' }}
               <Icon name="heroicons:arrow-right" class="h-4 w-4 ml-1" aria-hidden="true" />
             </span>
@@ -109,9 +109,9 @@
         <NuxtLink
           to="/projects"
           class="inline-flex items-center px-6 py-3 rounded-lg text-sm font-medium
-                 text-apple-blue-600 dark:text-apple-blue-400
-                 border border-apple-blue-200 dark:border-apple-blue-800
-                 hover:bg-apple-blue-50 dark:hover:bg-apple-blue-900/20
+                 text-apple-blue-600 dark:text-signal-400
+                 border border-apple-blue-200 dark:border-signal-800
+                 hover:bg-apple-blue-50 dark:hover:bg-signal-900/20
                  transition-colors duration-200"
         >
           View All Projects

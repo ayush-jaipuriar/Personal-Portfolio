@@ -11,14 +11,14 @@
     - Navigation links + ThemeToggle on the right (desktop)
     - Hamburger menu (mobile)
   -->
-  <header class="sticky top-0 z-50 backdrop-blur bg-white/75 dark:bg-gray-900/75 border-b border-gray-200 dark:border-gray-800">
+  <header class="sticky top-0 z-50 backdrop-blur bg-white/75 dark:bg-graphite-950/80 border-b border-gray-200 dark:border-graphite-800">
     <div class="container mx-auto px-4 sm:px-6 lg:px-8">
       <nav class="flex justify-between items-center h-16">
         <!-- Left: Logo -->
         <div class="flex items-center gap-3">
           <NuxtLink
             to="/"
-            class="text-xl font-bold tracking-tight hover:text-apple-blue-600 dark:hover:text-apple-blue-400 transition-colors duration-200"
+            class="text-xl font-bold tracking-tight hover:text-apple-blue-600 dark:hover:text-signal-400 transition-colors duration-200"
           >
             Ayush Jaipuriar
           </NuxtLink>
@@ -30,8 +30,8 @@
             v-for="item in internalNavItems"
             :key="item.name"
             :to="item.href"
-            class="px-3 py-2 rounded-md text-sm font-medium text-gray-800 dark:text-gray-200 hover:text-apple-blue-600 dark:hover:text-apple-blue-400 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-200"
-            active-class="text-apple-blue-600 dark:text-apple-blue-400 nav-glow"
+            class="px-3 py-2 rounded-md text-sm font-medium text-gray-800 dark:text-gray-200 hover:text-apple-blue-600 dark:hover:text-signal-400 hover:bg-gray-100 dark:hover:bg-graphite-900 transition-colors duration-200"
+            active-class="text-apple-blue-600 dark:text-signal-400 nav-glow"
           >
             {{ item.name }}
           </NuxtLink>
@@ -45,7 +45,7 @@
           <a
             :href="resumeUrl"
             download
-            class="inline-flex items-center px-3 py-2 rounded-md text-sm font-medium text-gray-800 dark:text-gray-200 hover:text-apple-blue-600 dark:hover:text-apple-blue-400 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-200"
+            class="inline-flex items-center px-3 py-2 rounded-md text-sm font-medium text-gray-800 dark:text-gray-200 hover:text-apple-blue-600 dark:hover:text-signal-400 hover:bg-gray-100 dark:hover:bg-graphite-900 transition-colors duration-200"
           >
             <Icon name="heroicons:document-arrow-down" class="mr-1 h-4 w-4" aria-hidden="true" />
             Resume
@@ -53,8 +53,8 @@
 
           <NuxtLink
             to="/contact"
-            class="px-3 py-2 rounded-md text-sm font-medium text-gray-800 dark:text-gray-200 hover:text-apple-blue-600 dark:hover:text-apple-blue-400 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-200"
-            active-class="text-apple-blue-600 dark:text-apple-blue-400"
+            class="px-3 py-2 rounded-md text-sm font-medium text-gray-800 dark:text-gray-200 hover:text-apple-blue-600 dark:hover:text-signal-400 hover:bg-gray-100 dark:hover:bg-graphite-900 transition-colors duration-200"
+            active-class="text-apple-blue-600 dark:text-signal-400"
           >
             Contact
           </NuxtLink>
@@ -68,7 +68,7 @@
           <button
             @click="toggleMobileMenu"
             type="button"
-            class="inline-flex items-center justify-center p-2 rounded-md text-gray-700 dark:text-gray-300 hover:text-apple-blue-600 dark:hover:text-apple-blue-400 hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-apple-blue-500"
+            class="inline-flex items-center justify-center p-2 rounded-md text-gray-700 dark:text-gray-300 hover:text-apple-blue-600 dark:hover:text-signal-400 hover:bg-gray-100 dark:hover:bg-graphite-900 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-apple-blue-500 dark:focus:ring-signal-400"
             :aria-expanded="isOpen"
             :aria-label="isOpen ? 'Close main menu' : 'Open main menu'"
             aria-controls="mobile-navigation-menu"
@@ -93,13 +93,13 @@
 
     <!-- Mobile Navigation Menu -->
     <div v-if="isOpen" id="mobile-navigation-menu" class="md:hidden">
-      <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 border-t border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900">
+      <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 border-t border-gray-200 dark:border-graphite-800 bg-white dark:bg-graphite-950">
         <NuxtLink
           v-for="item in internalNavItems"
           :key="item.name"
           :to="item.href"
-          class="block px-3 py-2 rounded-md text-base font-medium text-gray-800 dark:text-gray-200 hover:text-apple-blue-600 dark:hover:text-apple-blue-400 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-200"
-          active-class="text-apple-blue-600 dark:text-apple-blue-400 bg-gray-100 dark:bg-gray-800 nav-glow"
+          class="block px-3 py-2 rounded-md text-base font-medium text-gray-800 dark:text-gray-200 hover:text-apple-blue-600 dark:hover:text-signal-400 hover:bg-gray-100 dark:hover:bg-graphite-900 transition-colors duration-200"
+          active-class="text-apple-blue-600 dark:text-signal-400 bg-gray-100 dark:bg-graphite-900 nav-glow"
           @click="closeMobileMenu"
         >
           {{ item.name }}
@@ -109,7 +109,7 @@
         <a
           :href="resumeUrl"
           download
-          class="flex items-center px-3 py-2 rounded-md text-base font-medium text-gray-800 dark:text-gray-200 hover:text-apple-blue-600 dark:hover:text-apple-blue-400 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-200"
+          class="flex items-center px-3 py-2 rounded-md text-base font-medium text-gray-800 dark:text-gray-200 hover:text-apple-blue-600 dark:hover:text-signal-400 hover:bg-gray-100 dark:hover:bg-graphite-900 transition-colors duration-200"
           @click="closeMobileMenu"
         >
           <Icon name="heroicons:document-arrow-down" class="mr-2 h-5 w-5" aria-hidden="true" />
@@ -118,8 +118,8 @@
 
         <NuxtLink
           to="/contact"
-          class="block px-3 py-2 rounded-md text-base font-medium text-gray-800 dark:text-gray-200 hover:text-apple-blue-600 dark:hover:text-apple-blue-400 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-200"
-          active-class="text-apple-blue-600 dark:text-apple-blue-400 bg-gray-100 dark:bg-gray-800 nav-glow"
+          class="block px-3 py-2 rounded-md text-base font-medium text-gray-800 dark:text-gray-200 hover:text-apple-blue-600 dark:hover:text-signal-400 hover:bg-gray-100 dark:hover:bg-graphite-900 transition-colors duration-200"
+          active-class="text-apple-blue-600 dark:text-signal-400 bg-gray-100 dark:bg-graphite-900 nav-glow"
           @click="closeMobileMenu"
         >
           Contact

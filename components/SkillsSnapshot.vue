@@ -10,7 +10,7 @@
     Some skills use Heroicons or Material Design Icons as fallback when
     a Simple Icons entry doesn't exist.
   -->
-  <section class="py-16 bg-gray-50/50 dark:bg-gray-800/30">
+  <section class="py-16 bg-gray-50/50 dark:bg-graphite-900/30">
     <div class="container mx-auto px-4 sm:px-6 lg:px-8">
       <!-- Section header -->
       <div class="text-center mb-10">
@@ -30,8 +30,8 @@
           v-motion-fade-visible-once
           :delay="index * 60"
           class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl
-                 bg-white dark:bg-gray-800
-                 border border-gray-200 dark:border-gray-700
+                 bg-white dark:bg-graphite-900
+                 border border-gray-200 dark:border-graphite-700
                  shadow-apple-sm hover:shadow-apple-md
                  hover:-translate-y-0.5
                  transition-all duration-200"
@@ -53,8 +53,8 @@
         <NuxtLink
           to="/skills"
           class="inline-flex items-center text-sm font-medium
-                 text-apple-blue-600 dark:text-apple-blue-400
-                 hover:text-apple-blue-700 dark:hover:text-apple-blue-300
+                 text-apple-blue-600 dark:text-signal-400
+                 hover:text-apple-blue-700 dark:hover:text-signal-300
                  transition-colors duration-200"
         >
           See All Skills

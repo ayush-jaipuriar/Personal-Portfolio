@@ -27,7 +27,7 @@
           </div>
 
           <!-- Quick profile card -->
-          <div class="w-full rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 p-5 shadow-apple-sm">
+          <div class="w-full rounded-xl border border-gray-200 dark:border-graphite-700 bg-white dark:bg-graphite-900 p-5 shadow-apple-sm">
             <div class="space-y-3 text-sm">
               <div class="flex items-center gap-3">
                 <Icon name="heroicons:map-pin" class="h-4 w-4 text-gray-400" aria-hidden="true" />
@@ -37,7 +37,7 @@
                 <Icon name="heroicons:envelope" class="h-4 w-4 text-gray-400" aria-hidden="true" />
                 <a
                   href="mailto:jaipuriar.ayush@gmail.com"
-                  class="text-apple-blue-600 dark:text-apple-blue-400 hover:underline"
+                  class="text-apple-blue-600 dark:text-signal-400 hover:underline"
                 >
                   jaipuriar.ayush@gmail.com
                 </a>
@@ -49,7 +49,7 @@
             </div>
 
             <!-- Social links -->
-            <div class="mt-4 pt-4 border-t border-gray-100 dark:border-gray-700 flex gap-4">
+            <div class="mt-4 pt-4 border-t border-gray-100 dark:border-graphite-700 flex gap-4">
               <a
                 href="https://github.com/ayush-jaipuriar"
                 target="_blank"
@@ -74,7 +74,7 @@
             <a
               :href="resumeUrl"
               download
-              class="mt-4 inline-flex w-full items-center justify-center gap-2 rounded-lg bg-apple-blue-600 px-4 py-2.5 text-sm font-medium text-white hover:bg-apple-blue-700 transition-colors"
+              class="mt-4 inline-flex w-full items-center justify-center gap-2 rounded-lg bg-apple-blue-600 dark:bg-signal-500 px-4 py-2.5 text-sm font-medium text-white hover:bg-apple-blue-700 dark:hover:bg-signal-400 transition-colors"
             >
               <Icon name="heroicons:document-arrow-down" class="h-4 w-4" aria-hidden="true" />
               Download Resume
@@ -101,9 +101,9 @@
           <div class="mt-6 space-y-4">
             <h3 class="text-lg font-semibold text-gray-900 dark:text-white">At TransUnion</h3>
 
-            <div class="rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 p-4">
+            <div class="rounded-xl border border-gray-200 dark:border-graphite-700 bg-white dark:bg-graphite-900 p-4">
               <div class="flex items-center gap-2 mb-2">
-                <Icon name="heroicons:cpu-chip" class="h-4 w-4 text-apple-blue-500" aria-hidden="true" />
+                <Icon name="heroicons:cpu-chip" class="h-4 w-4 text-apple-blue-500 dark:text-signal-400" aria-hidden="true" />
                 <h4 class="text-sm font-semibold text-gray-900 dark:text-white">
                   AI Agent Engineering (Current)
                 </h4>
@@ -113,9 +113,9 @@
               </p>
             </div>
 
-            <div class="rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 p-4">
+            <div class="rounded-xl border border-gray-200 dark:border-graphite-700 bg-white dark:bg-graphite-900 p-4">
               <div class="flex items-center gap-2 mb-2">
-                <Icon name="heroicons:magnifying-glass-circle" class="h-4 w-4 text-apple-blue-500" aria-hidden="true" />
+                <Icon name="heroicons:magnifying-glass-circle" class="h-4 w-4 text-apple-blue-500 dark:text-signal-400" aria-hidden="true" />
                 <h4 class="text-sm font-semibold text-gray-900 dark:text-white">
                   Search Product Development (Previous)
                 </h4>
@@ -137,23 +137,23 @@
             <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-3">Technical Expertise</h3>
             <ul class="space-y-2 text-sm text-gray-700 dark:text-gray-300">
               <li class="flex items-start gap-2">
-                <Icon name="heroicons:cpu-chip" class="mt-0.5 h-4 w-4 text-apple-blue-500 flex-shrink-0" aria-hidden="true" />
+                <Icon name="heroicons:cpu-chip" class="mt-0.5 h-4 w-4 text-apple-blue-500 dark:text-signal-400 flex-shrink-0" aria-hidden="true" />
                 <span><strong class="text-gray-900 dark:text-white">AI &amp; ML:</strong> LangChain, LangGraph, MLFlow, RAG pipelines, OpenAI API, FAISS, LLMOps, multi-agent orchestration</span>
               </li>
               <li class="flex items-start gap-2">
-                <Icon name="heroicons:server-stack" class="mt-0.5 h-4 w-4 text-apple-blue-500 flex-shrink-0" aria-hidden="true" />
+                <Icon name="heroicons:server-stack" class="mt-0.5 h-4 w-4 text-apple-blue-500 dark:text-signal-400 flex-shrink-0" aria-hidden="true" />
                 <span><strong class="text-gray-900 dark:text-white">Backend:</strong> Java (8–17), Spring Boot, Hibernate, Microservices, REST APIs, Python, FastAPI</span>
               </li>
               <li class="flex items-start gap-2">
-                <Icon name="heroicons:device-phone-mobile" class="mt-0.5 h-4 w-4 text-apple-blue-500 flex-shrink-0" aria-hidden="true" />
+                <Icon name="heroicons:device-phone-mobile" class="mt-0.5 h-4 w-4 text-apple-blue-500 dark:text-signal-400 flex-shrink-0" aria-hidden="true" />
                 <span><strong class="text-gray-900 dark:text-white">Frontend:</strong> React, React Native, Vue.js, TypeScript, Redux</span>
               </li>
               <li class="flex items-start gap-2">
-                <Icon name="heroicons:cloud" class="mt-0.5 h-4 w-4 text-apple-blue-500 flex-shrink-0" aria-hidden="true" />
+                <Icon name="heroicons:cloud" class="mt-0.5 h-4 w-4 text-apple-blue-500 dark:text-signal-400 flex-shrink-0" aria-hidden="true" />
                 <span><strong class="text-gray-900 dark:text-white">DevOps &amp; Cloud:</strong> AWS, GCP, Docker, Kubernetes, Jenkins CI/CD, Linux</span>
               </li>
               <li class="flex items-start gap-2">
-                <Icon name="heroicons:wrench-screwdriver" class="mt-0.5 h-4 w-4 text-apple-blue-500 flex-shrink-0" aria-hidden="true" />
+                <Icon name="heroicons:wrench-screwdriver" class="mt-0.5 h-4 w-4 text-apple-blue-500 dark:text-signal-400 flex-shrink-0" aria-hidden="true" />
                 <span><strong class="text-gray-900 dark:text-white">Tools:</strong> Git, GitHub, Postman, Jira, Confluence, VS Code, IntelliJ, Eclipse</span>
               </li>
             </ul>
@@ -170,9 +170,9 @@
           <div
             v-for="card in achievements"
             :key="card.label"
-            class="rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 p-5 shadow-apple-sm"
+            class="rounded-xl border border-gray-200 dark:border-graphite-700 bg-white dark:bg-graphite-900 p-5 shadow-apple-sm"
           >
-            <Icon :name="card.icon" class="h-6 w-6 text-apple-blue-600 dark:text-apple-blue-400 mb-2" aria-hidden="true" />
+            <Icon :name="card.icon" class="h-6 w-6 text-apple-blue-600 dark:text-signal-400 mb-2" aria-hidden="true" />
             <p class="text-2xl font-bold text-gray-900 dark:text-white">{{ card.value }}</p>
             <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">{{ card.label }}</p>
             <p class="mt-1 text-xs text-gray-500 dark:text-gray-500">{{ card.context }}</p>
@@ -193,11 +193,11 @@
         <h2 class="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-6">
           Education
         </h2>
-        <div class="rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 p-6 shadow-apple-sm">
+        <div class="rounded-xl border border-gray-200 dark:border-graphite-700 bg-white dark:bg-graphite-900 p-6 shadow-apple-sm">
           <h3 class="text-xl font-bold text-gray-900 dark:text-white">
             BTech — Computer Science
           </h3>
-          <p class="text-apple-blue-600 dark:text-apple-blue-400 font-medium">
+          <p class="text-apple-blue-600 dark:text-signal-400 font-medium">
             Kalinga Institute of Industrial Technology (KIIT), Bhubaneswar
           </p>
           <p class="text-sm text-gray-500 dark:text-gray-500 mt-1">June 2017 – June 2021</p>
@@ -219,9 +219,9 @@
           <div
             v-for="cert in certifications"
             :key="cert.title"
-            class="flex items-start gap-3 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 p-4 shadow-apple-sm"
+            class="flex items-start gap-3 rounded-xl border border-gray-200 dark:border-graphite-700 bg-white dark:bg-graphite-900 p-4 shadow-apple-sm"
           >
-            <Icon name="heroicons:academic-cap" class="mt-0.5 h-5 w-5 text-apple-blue-600 dark:text-apple-blue-400 flex-shrink-0" aria-hidden="true" />
+            <Icon name="heroicons:academic-cap" class="mt-0.5 h-5 w-5 text-apple-blue-600 dark:text-signal-400 flex-shrink-0" aria-hidden="true" />
             <div>
               <h3 class="text-sm font-semibold text-gray-900 dark:text-white">{{ cert.title }}</h3>
               <p class="text-xs text-gray-500 dark:text-gray-500 mt-0.5">{{ cert.note }}</p>
@@ -232,7 +232,7 @@
 
       <!-- What Drives Me -->
       <section v-motion-fade-visible-once class="mb-16">
-        <div class="rounded-2xl bg-gradient-to-br from-apple-blue-50 via-white to-purple-50 dark:from-gray-800 dark:via-gray-900 dark:to-gray-800 p-8 md:p-10 border border-gray-200 dark:border-gray-700">
+        <div class="rounded-2xl bg-gradient-to-br from-apple-blue-50 via-white to-apple-blue-50 dark:from-graphite-900 dark:via-graphite-950 dark:to-graphite-900 p-8 md:p-10 border border-gray-200 dark:border-graphite-700">
           <h2 class="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-4">
             What Drives Me
           </h2>

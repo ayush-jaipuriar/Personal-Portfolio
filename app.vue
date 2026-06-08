@@ -61,8 +61,8 @@ onMounted(() => {
   // DevTools. `%c` enables CSS styling for the subsequent string.
   // The font-size, color, and spacing mimic a mini "splash screen."
   console.log(
-    '%c Hey there, curious developer! 👋',
-    'color: #007aff; font-size: 16px; font-weight: bold;'
+    '%c Hey there, curious developer!',
+    'color: #e34234; font-size: 16px; font-weight: bold;'
   )
   console.log(
     "%c I see you're inspecting my code. I like that.\n" +
@@ -80,7 +80,7 @@ onMounted(() => {
 @tailwind utilities;
 
 body {
-  @apply bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100;
+  @apply bg-white dark:bg-graphite-950 text-slate-950 dark:text-gray-100;
 }
 
 /*

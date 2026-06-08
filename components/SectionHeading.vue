@@ -3,7 +3,7 @@
     <div class="flex items-center gap-3 mb-2">
       <div
         v-if="icon"
-        class="flex items-center justify-center w-9 h-9 rounded-lg bg-gray-100 dark:bg-gray-700"
+        class="flex items-center justify-center w-9 h-9 rounded-lg bg-gray-100 dark:bg-graphite-800"
       >
         <Icon
           :name="icon"

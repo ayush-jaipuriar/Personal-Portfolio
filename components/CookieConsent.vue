@@ -28,12 +28,12 @@
       aria-label="Cookie consent"
     >
       <div
-        class="rounded-lg sm:rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 shadow-lg p-3 sm:p-5"
+        class="rounded-lg sm:rounded-xl border border-gray-200 dark:border-graphite-700 bg-white dark:bg-graphite-900 shadow-lg p-3 sm:p-5"
       >
         <div class="flex items-start gap-3">
           <Icon
             name="heroicons:shield-check"
-            class="h-5 w-5 text-apple-blue-600 dark:text-apple-blue-400 flex-shrink-0 mt-0.5"
+            class="h-5 w-5 text-apple-blue-600 dark:text-signal-400 flex-shrink-0 mt-0.5"
             aria-hidden="true"
           />
           <div>
@@ -43,13 +43,13 @@
             <div class="mt-3 sm:mt-4 flex items-center gap-2 sm:gap-3">
               <button
                 @click="acceptCookies"
-                class="px-3 sm:px-4 py-2 text-sm font-medium text-white bg-apple-blue-600 hover:bg-apple-blue-700 rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-apple-blue-500 focus:ring-offset-2"
+                class="px-3 sm:px-4 py-2 text-sm font-medium text-white bg-apple-blue-600 dark:bg-signal-500 hover:bg-apple-blue-700 dark:hover:bg-signal-400 rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-apple-blue-500 dark:focus:ring-signal-400 focus:ring-offset-2"
               >
                 Accept
               </button>
               <button
                 @click="declineCookies"
-                class="px-3 sm:px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 border border-gray-300 dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700 rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2"
+                class="px-3 sm:px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 border border-gray-300 dark:border-graphite-600 hover:bg-gray-50 dark:hover:bg-graphite-800 rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2"
               >
                 Decline
               </button>

@@ -28,8 +28,8 @@
             :class="[
               'px-4 py-2 rounded-full text-sm font-medium transition-colors duration-200',
               selectedCategory === null
-                ? 'bg-apple-blue-600 text-white'
-                : 'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700',
+                ? 'bg-apple-blue-600 dark:bg-signal-500 text-white'
+                : 'bg-gray-100 dark:bg-graphite-900 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-graphite-800',
             ]"
           >
             All Posts
@@ -41,8 +41,8 @@
             :class="[
               'px-4 py-2 rounded-full text-sm font-medium transition-colors duration-200 capitalize',
               selectedCategory === category
-                ? 'bg-apple-blue-600 text-white'
-                : 'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700',
+                ? 'bg-apple-blue-600 dark:bg-signal-500 text-white'
+                : 'bg-gray-100 dark:bg-graphite-900 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-graphite-800',
             ]"
           >
             {{ category.replace('-', ' ') }}
@@ -53,7 +53,7 @@
       <!-- Loading State -->
       <div v-if="pending" class="text-center py-20">
         <div
-          class="inline-block animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-apple-blue-600"
+          class="inline-block animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-apple-blue-600 dark:border-signal-400"
         ></div>
         <p class="mt-4 text-gray-600 dark:text-gray-400">
           Loading posts...
@@ -78,7 +78,7 @@
         </p>
         <button
           @click="refresh()"
-          class="inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md text-white bg-apple-blue-600 hover:bg-apple-blue-700 transition-colors duration-200"
+          class="inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md text-white bg-apple-blue-600 dark:bg-signal-500 hover:bg-apple-blue-700 dark:hover:bg-signal-400 transition-colors duration-200"
         >
           Try Again
         </button>
@@ -117,7 +117,7 @@
               'flex items-center px-3 py-2 text-sm font-medium rounded-md transition-colors duration-200',
               currentPage === 1
                 ? 'text-gray-400 dark:text-gray-600 cursor-not-allowed'
-                : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800',
+                : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-graphite-900',
             ]"
           >
             <Icon
@@ -134,7 +134,7 @@
             <button
               v-if="currentPage > 3"
               @click="goToPage(1)"
-              class="px-3 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-md transition-colors duration-200"
+              class="px-3 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-graphite-900 rounded-md transition-colors duration-200"
             >
               1
             </button>
@@ -154,8 +154,8 @@
               :class="[
                 'px-3 py-2 text-sm font-medium rounded-md transition-colors duration-200',
                 page === currentPage
-                  ? 'bg-apple-blue-600 text-white'
-                  : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800',
+                  ? 'bg-apple-blue-600 dark:bg-signal-500 text-white'
+                  : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-graphite-900',
               ]"
             >
               {{ page }}
@@ -172,7 +172,7 @@
             <button
               v-if="currentPage < totalPages - 2"
               @click="goToPage(totalPages)"
-              class="px-3 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-md transition-colors duration-200"
+              class="px-3 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-graphite-900 rounded-md transition-colors duration-200"
             >
               {{ totalPages }}
             </button>
@@ -186,7 +186,7 @@
               'flex items-center px-3 py-2 text-sm font-medium rounded-md transition-colors duration-200',
               currentPage === totalPages
                 ? 'text-gray-400 dark:text-gray-600 cursor-not-allowed'
-                : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800',
+                : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-graphite-900',
             ]"
           >
             Next
@@ -210,15 +210,15 @@
         class="flex justify-center py-12"
       >
         <div
-          class="max-w-lg w-full text-center rounded-2xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 p-8 md:p-10 shadow-apple-sm"
+          class="max-w-lg w-full text-center rounded-2xl border border-gray-200 dark:border-graphite-700 bg-white dark:bg-graphite-900 p-8 md:p-10 shadow-apple-sm"
         >
           <!-- Icon -->
           <div
-            class="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-apple-blue-50 dark:bg-apple-blue-900/20"
+            class="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-apple-blue-50 dark:bg-signal-900/20"
           >
             <Icon
               name="heroicons:pencil-square"
-              class="h-8 w-8 text-apple-blue-600 dark:text-apple-blue-400"
+              class="h-8 w-8 text-apple-blue-600 dark:text-signal-400"
               aria-hidden="true"
             />
           </div>
@@ -254,13 +254,13 @@
             <button
               v-if="selectedCategory"
               @click="selectedCategory = null"
-              class="inline-flex items-center justify-center gap-2 rounded-lg bg-apple-blue-600 hover:bg-apple-blue-700 px-5 py-2.5 text-sm font-semibold text-white transition-colors duration-200"
+              class="inline-flex items-center justify-center gap-2 rounded-lg bg-apple-blue-600 dark:bg-signal-500 hover:bg-apple-blue-700 dark:hover:bg-signal-400 px-5 py-2.5 text-sm font-semibold text-white transition-colors duration-200"
             >
               View All Posts
             </button>
             <NuxtLink
               to="/projects"
-              class="inline-flex items-center justify-center gap-2 rounded-lg bg-apple-blue-600 hover:bg-apple-blue-700 px-5 py-2.5 text-sm font-semibold text-white transition-colors duration-200"
+              class="inline-flex items-center justify-center gap-2 rounded-lg bg-apple-blue-600 dark:bg-signal-500 hover:bg-apple-blue-700 dark:hover:bg-signal-400 px-5 py-2.5 text-sm font-semibold text-white transition-colors duration-200"
             >
               See My Projects Instead
               <Icon

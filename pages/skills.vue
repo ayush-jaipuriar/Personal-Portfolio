@@ -22,15 +22,15 @@
         <!-- ────────────────────────────────────────────────────────── -->
         <section>
           <div
-            class="rounded-2xl bg-gradient-to-br from-purple-50 to-apple-blue-50 dark:from-purple-900/20 dark:to-apple-blue-900/20 border border-purple-200/60 dark:border-purple-700/40 p-6 md:p-8"
+            class="rounded-2xl bg-gradient-to-br from-apple-blue-50 to-apple-blue-50 dark:from-signal-900/20 dark:to-signal-900/20 border border-apple-blue-200/60 dark:border-signal-700/40 p-6 md:p-8"
           >
             <div class="flex items-center gap-3 mb-6">
               <div
-                class="flex items-center justify-center w-10 h-10 rounded-lg bg-purple-100 dark:bg-purple-800/40"
+                class="flex items-center justify-center w-10 h-10 rounded-lg bg-apple-blue-100 dark:bg-signal-800/40"
               >
                 <Icon
                   name="heroicons:cpu-chip"
-                  class="h-6 w-6 text-purple-600 dark:text-purple-400"
+                  class="h-6 w-6 text-apple-blue-600 dark:text-signal-400"
                   aria-hidden="true"
                 />
               </div>
@@ -181,7 +181,7 @@
             <span
               v-for="skill in conceptSkills"
               :key="skill.name"
-              class="inline-flex items-center rounded-full border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 px-3.5 py-1.5 text-sm font-medium text-gray-700 dark:text-gray-300"
+              class="inline-flex items-center rounded-full border border-gray-200 dark:border-graphite-700 bg-white dark:bg-graphite-900 px-3.5 py-1.5 text-sm font-medium text-gray-700 dark:text-gray-300"
             >
               {{ skill.name }}
             </span>
@@ -208,11 +208,11 @@
                 scale: 1,
                 transition: { duration: 350, delay: idx * 60 },
               }"
-              class="flex items-center gap-2 rounded-lg bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 px-4 py-3 shadow-sm"
+              class="flex items-center gap-2 rounded-lg bg-white dark:bg-graphite-900 border border-gray-200 dark:border-graphite-700 px-4 py-3 shadow-sm"
             >
               <Icon
                 name="heroicons:check-badge"
-                class="h-5 w-5 text-apple-blue-500 flex-shrink-0"
+                class="h-5 w-5 text-apple-blue-500 dark:text-signal-400 flex-shrink-0"
                 aria-hidden="true"
               />
               <span class="text-sm font-semibold text-gray-900 dark:text-white">

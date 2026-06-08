@@ -1,7 +1,7 @@
 <template>
   <div>
     <!-- Header with Stats Rail and Grid Background Motif -->
-    <div class="relative overflow-hidden bg-grid-motif border-b border-gray-200 dark:border-gray-800">
+    <div class="relative overflow-hidden bg-grid-motif border-b border-gray-200 dark:border-graphite-800">
       <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
         <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6">
           <div class="max-w-2xl">
@@ -14,14 +14,14 @@
           </div>
           
           <!-- Stats Rail -->
-          <div class="flex flex-row gap-4 flex-wrap bg-white/60 dark:bg-gray-950/40 p-4 rounded-xl border border-gray-200 dark:border-gray-800/80 backdrop-blur-sm shadow-sm">
-            <div class="flex flex-col pr-4 border-r border-gray-200 dark:border-gray-750">
+          <div class="flex flex-row gap-4 flex-wrap bg-white/60 dark:bg-graphite-950/40 p-4 rounded-xl border border-gray-200 dark:border-graphite-800/80 backdrop-blur-sm shadow-sm">
+            <div class="flex flex-col pr-4 border-r border-gray-200 dark:border-graphite-700">
               <span class="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Enterprise</span>
-              <span class="text-xl font-bold text-apple-blue-600 dark:text-apple-blue-400 mt-1">{{ enterpriseCount }} Systems</span>
+              <span class="text-xl font-bold text-apple-blue-600 dark:text-signal-400 mt-1">{{ enterpriseCount }} Systems</span>
             </div>
-            <div class="flex flex-col pr-4 border-r border-gray-200 dark:border-gray-750 last:border-0 last:pr-0">
+            <div class="flex flex-col pr-4 border-r border-gray-200 dark:border-graphite-700 last:border-0 last:pr-0">
               <span class="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Personal</span>
-              <span class="text-xl font-bold text-purple-600 dark:text-purple-400 mt-1">{{ personalProductsCount }} Products</span>
+              <span class="text-xl font-bold text-apple-blue-600 dark:text-signal-400 mt-1">{{ personalProductsCount }} Products</span>
             </div>
             <div class="flex flex-col">
               <span class="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Total</span>
@@ -35,7 +35,7 @@
     <!-- Main Content Container -->
     <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
       <!-- Filter Tabs -->
-      <div class="mb-12 flex flex-wrap gap-2 border-b border-gray-200 dark:border-gray-850 pb-5">
+      <div class="mb-12 flex flex-wrap gap-2 border-b border-gray-200 dark:border-graphite-800 pb-5">
       <button
         v-for="tab in tabs"
         :key="tab.id"
@@ -43,8 +43,8 @@
         :class="[
           'px-4 py-2 text-sm font-semibold rounded-lg transition-all duration-200 cursor-pointer',
           activeTab === tab.id
-            ? 'bg-apple-blue-600 text-white shadow-sm'
-            : 'text-gray-650 dark:text-gray-450 hover:bg-gray-100 dark:hover:bg-gray-800/60 hover:text-gray-900 dark:hover:text-white'
+            ? 'bg-apple-blue-600 dark:bg-signal-500 text-white shadow-sm'
+            : 'text-gray-650 dark:text-gray-450 hover:bg-gray-100 dark:hover:bg-graphite-900/60 hover:text-gray-900 dark:hover:text-white'
         ]"
       >
         {{ tab.label }}
@@ -109,23 +109,23 @@
       </div>
 
       <!-- High-Density Dossier Table -->
-      <div class="overflow-x-auto rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 shadow-sm">
-        <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-850 text-left text-sm">
-          <thead class="bg-gray-50 dark:bg-gray-950/80 text-xs font-semibold text-gray-550 dark:text-gray-450 uppercase tracking-wider">
+      <div class="overflow-x-auto rounded-xl border border-gray-200 dark:border-graphite-800 bg-white dark:bg-graphite-950 shadow-sm">
+        <table class="min-w-full divide-y divide-gray-200 dark:divide-graphite-800 text-left text-sm">
+          <thead class="bg-gray-50 dark:bg-graphite-950/80 text-xs font-semibold text-gray-550 dark:text-gray-450 uppercase tracking-wider">
             <tr>
               <th scope="col" class="px-6 py-4">Lab Module</th>
               <th scope="col" class="px-6 py-4">Stack / Technologies</th>
               <th scope="col" class="px-6 py-4 text-right">Repository</th>
             </tr>
           </thead>
-          <tbody class="divide-y divide-gray-200 dark:divide-gray-800 text-gray-700 dark:text-gray-300">
+          <tbody class="divide-y divide-gray-200 dark:divide-graphite-800 text-gray-700 dark:text-gray-300">
             <tr
               v-for="project in learningBuilds"
               :key="project.id"
-              class="hover:bg-gray-50/50 dark:hover:bg-gray-850/20 transition-colors"
+              class="hover:bg-gray-50/50 dark:hover:bg-graphite-900/30 transition-colors"
             >
               <td class="px-6 py-5">
-                <div class="font-mono text-[11px] text-apple-blue-650 dark:text-apple-blue-400 font-semibold mb-1">
+                <div class="font-mono text-[11px] text-apple-blue-650 dark:text-signal-400 font-semibold mb-1">
                   {{ project.slug === 'learning-camunda' ? 'dispute_workflow.bpmn' : 'qa_retrieval.ipynb' }}
                 </div>
                 <div class="text-base font-bold text-gray-900 dark:text-white">
@@ -140,7 +140,7 @@
                   <span
                     v-for="tech in project.technologies"
                     :key="tech"
-                    class="rounded bg-gray-150 dark:bg-gray-800 px-2 py-0.5 text-xs font-semibold text-gray-700 dark:text-gray-300"
+                    class="rounded bg-gray-150 dark:bg-graphite-900 px-2 py-0.5 text-xs font-semibold text-gray-700 dark:text-gray-300"
                   >
                     {{ tech }}
                   </span>
@@ -152,7 +152,7 @@
                   :href="project.githubLink"
                   target="_blank"
                   rel="noopener noreferrer"
-                  class="inline-flex items-center gap-1 text-sm font-semibold text-apple-blue-600 dark:text-apple-blue-400 hover:underline"
+                  class="inline-flex items-center gap-1 text-sm font-semibold text-apple-blue-600 dark:text-signal-400 hover:underline"
                 >
                   Code Repo
                   <Icon name="heroicons:arrow-up-right" class="h-4 w-4" aria-hidden="true" />
@@ -166,7 +166,7 @@
     </section>
 
     <!-- GitHub Activity Banner -->
-    <section class="max-w-4xl mx-auto rounded-2xl border border-gray-200 dark:border-gray-800 bg-gray-50/50 dark:bg-gray-900/40 p-6 md:p-8">
+    <section class="max-w-4xl mx-auto rounded-2xl border border-gray-200 dark:border-graphite-800 bg-gray-50/50 dark:bg-graphite-950/40 p-6 md:p-8">
       <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
         <div>
           <h2 class="text-2xl font-bold text-gray-900 dark:text-white">GitHub Activity</h2>
@@ -178,7 +178,7 @@
           href="https://github.com/ayush-jaipuriar"
           target="_blank"
           rel="noopener noreferrer"
-          class="inline-flex items-center justify-center rounded-lg bg-apple-blue-600 px-5 py-3 text-sm font-medium text-white hover:bg-apple-blue-700 transition-colors"
+          class="inline-flex items-center justify-center rounded-lg bg-apple-blue-600 dark:bg-signal-500 px-5 py-3 text-sm font-medium text-white hover:bg-apple-blue-700 dark:hover:bg-signal-400 transition-colors"
         >
           <Icon name="mdi:github" class="mr-2 h-5 w-5" aria-hidden="true" />
           View GitHub Profile

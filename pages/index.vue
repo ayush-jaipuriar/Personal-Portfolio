@@ -22,7 +22,7 @@
 
             <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight mb-4">
               <span class="block mb-1 text-gray-900 dark:text-white">Hi, I'm</span>
-              <span class="bg-gradient-to-r from-apple-blue-600 to-purple-600 bg-clip-text text-transparent text-glow">
+              <span class="bg-gradient-to-r from-slate-950 via-apple-blue-700 to-apple-blue-600 dark:from-white dark:via-signal-300 dark:to-signal-500 bg-clip-text text-transparent text-glow">
                 Ayush Jaipuriar
               </span>
             </h1>
@@ -44,10 +44,10 @@
               <NuxtLink
                 to="/projects"
                 class="inline-flex items-center px-6 py-3 rounded-lg text-base font-medium
-                       text-white bg-apple-blue-600 hover:bg-apple-blue-700
-                       shadow-lg shadow-apple-blue-600/25 hover:shadow-apple-blue-600/40
+                       text-white bg-apple-blue-600 dark:bg-signal-500 hover:bg-apple-blue-700 dark:hover:bg-signal-400
+                       shadow-lg shadow-apple-blue-600/25 dark:shadow-signal-500/20 hover:shadow-apple-blue-600/40 dark:hover:shadow-signal-400/30
                        transition-all duration-200 btn-glow
-                       focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-apple-blue-500"
+                       focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-apple-blue-500 dark:focus:ring-signal-400"
               >
                 See My Work
                 <Icon name="heroicons:arrow-right" class="ml-2 h-5 w-5" aria-hidden="true" />
@@ -60,12 +60,12 @@
                 @click="trackEvent('resume_download', { event_category: 'engagement', source: 'hero' })"
                 class="inline-flex items-center px-6 py-3 rounded-lg text-base font-medium
                        text-gray-700 dark:text-gray-200
-                       bg-white dark:bg-gray-800
-                       border border-gray-300 dark:border-gray-600
-                       hover:bg-gray-50 dark:hover:bg-gray-700
+                       bg-white dark:bg-graphite-900
+                       border border-gray-300 dark:border-graphite-600
+                       hover:bg-gray-50 dark:hover:bg-graphite-800
                        shadow-sm hover:shadow-md
                        transition-all duration-200
-                       focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-apple-blue-500"
+                       focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-apple-blue-500 dark:focus:ring-signal-400"
               >
                 <Icon name="heroicons:document-arrow-down" class="mr-2 h-5 w-5" aria-hidden="true" />
                 Download Resume
@@ -85,7 +85,7 @@
               <div class="absolute inset-0 rounded-full profile-ring"></div>
               <div class="absolute inset-0 rounded-full profile-ring-glow"></div>
               <div class="relative w-full h-full p-[4px] rounded-full">
-                <div class="w-full h-full rounded-full overflow-hidden bg-white dark:bg-gray-900">
+                <div class="w-full h-full rounded-full overflow-hidden bg-white dark:bg-graphite-950">
                 <img
                   :src="toAssetPath('/ayush-jaipuriar-profile.png')"
                   alt="Ayush Jaipuriar - AI Agent Engineer"
@@ -190,9 +190,9 @@ useHead({
 .profile-ring {
   background: conic-gradient(
     from 0deg,
-    rgba(0, 122, 255, 0.95) 0deg,
-    rgba(147, 51, 234, 0.95) 180deg,
-    rgba(0, 122, 255, 0.95) 360deg
+    rgba(15, 23, 42, 0.95) 0deg,
+    rgba(227, 66, 52, 0.95) 180deg,
+    rgba(15, 23, 42, 0.95) 360deg
   );
   animation: ring-spin 8s linear infinite;
 }
@@ -200,13 +200,31 @@ useHead({
 .profile-ring-glow {
   background: conic-gradient(
     from 0deg,
-    rgba(0, 122, 255, 0.45) 0deg,
-    rgba(147, 51, 234, 0.45) 180deg,
-    rgba(0, 122, 255, 0.45) 360deg
+    rgba(15, 23, 42, 0.28) 0deg,
+    rgba(227, 66, 52, 0.38) 180deg,
+    rgba(15, 23, 42, 0.28) 360deg
   );
   filter: blur(10px);
   opacity: 0.6;
   animation: ring-spin 10s linear infinite reverse;
+}
+
+:global(.dark .profile-ring) {
+  background: conic-gradient(
+    from 0deg,
+    rgba(49, 223, 130, 0.95) 0deg,
+    rgba(11, 13, 12, 0.95) 180deg,
+    rgba(49, 223, 130, 0.95) 360deg
+  );
+}
+
+:global(.dark .profile-ring-glow) {
+  background: conic-gradient(
+    from 0deg,
+    rgba(49, 223, 130, 0.45) 0deg,
+    rgba(11, 13, 12, 0.3) 180deg,
+    rgba(49, 223, 130, 0.45) 360deg
+  );
 }
 
 @media (prefers-reduced-motion: reduce) {

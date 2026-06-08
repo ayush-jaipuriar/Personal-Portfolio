@@ -1,7 +1,7 @@
 <template>
   <button
     @click="toggleTheme"
-    class="flex items-center justify-center w-10 h-10 rounded-full transition-colors duration-200 hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-300 dark:focus:ring-gray-600"
+    class="flex items-center justify-center w-10 h-10 rounded-full transition-colors duration-200 hover:bg-gray-100 dark:hover:bg-graphite-900 focus:outline-none focus:ring-2 focus:ring-gray-300 dark:focus:ring-gray-600"
     title="Toggle dark/light mode"
     aria-label="Toggle dark/light mode"
   >

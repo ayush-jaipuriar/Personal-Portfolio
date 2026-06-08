@@ -38,8 +38,8 @@
       >
         <!-- ── Recruiter Dossier Left Column ────────────────────────── -->
         <div class="space-y-8">
-          <div class="rounded-2xl border border-gray-200 dark:border-gray-800 bg-gray-50/50 dark:bg-gray-900/30 p-6 md:p-8 backdrop-blur-sm shadow-sm">
-            <h2 class="text-2xl font-bold mb-6 text-gray-900 dark:text-white border-b border-gray-200 dark:border-gray-800 pb-3">
+          <div class="rounded-2xl border border-gray-200 dark:border-graphite-800 bg-gray-50/50 dark:bg-graphite-950/30 p-6 md:p-8 backdrop-blur-sm shadow-sm">
+            <h2 class="text-2xl font-bold mb-6 text-gray-900 dark:text-white border-b border-gray-200 dark:border-graphite-800 pb-3">
               Recruiter Dossier
             </h2>
             
@@ -47,16 +47,16 @@
             <div class="mb-6">
               <span class="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider block mb-2">Best-Fit Roles</span>
               <div class="flex flex-wrap gap-2">
-                <span class="inline-flex items-center px-2.5 py-1 rounded bg-apple-blue-100 dark:bg-apple-blue-900/30 text-[11px] font-semibold text-apple-blue-700 dark:text-apple-blue-300">
+                <span class="inline-flex items-center px-2.5 py-1 rounded bg-apple-blue-100 dark:bg-signal-900/30 text-[11px] font-semibold text-apple-blue-700 dark:text-signal-300">
                   Senior Software Engineer
                 </span>
-                <span class="inline-flex items-center px-2.5 py-1 rounded bg-apple-blue-100 dark:bg-apple-blue-900/30 text-[11px] font-semibold text-apple-blue-700 dark:text-apple-blue-300">
+                <span class="inline-flex items-center px-2.5 py-1 rounded bg-apple-blue-100 dark:bg-signal-900/30 text-[11px] font-semibold text-apple-blue-700 dark:text-signal-300">
                   AI Agent Engineer
                 </span>
-                <span class="inline-flex items-center px-2.5 py-1 rounded bg-apple-blue-100 dark:bg-apple-blue-900/30 text-[11px] font-semibold text-apple-blue-700 dark:text-apple-blue-300">
+                <span class="inline-flex items-center px-2.5 py-1 rounded bg-apple-blue-100 dark:bg-signal-900/30 text-[11px] font-semibold text-apple-blue-700 dark:text-signal-300">
                   Applied AI Engineer
                 </span>
-                <span class="inline-flex items-center px-2.5 py-1 rounded bg-apple-blue-100 dark:bg-apple-blue-900/30 text-[11px] font-semibold text-apple-blue-700 dark:text-apple-blue-300">
+                <span class="inline-flex items-center px-2.5 py-1 rounded bg-apple-blue-100 dark:bg-signal-900/30 text-[11px] font-semibold text-apple-blue-700 dark:text-signal-300">
                   Backend / Platform Engineer
                 </span>
               </div>
@@ -66,22 +66,22 @@
             <div class="mb-6">
               <span class="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider block mb-2">Target Domains</span>
               <div class="flex flex-wrap gap-x-3 gap-y-1.5 text-sm font-semibold text-gray-700 dark:text-gray-300">
-                <span class="flex items-center gap-1"><Icon name="heroicons:currency-dollar" class="text-apple-blue-500 w-4 h-4" /> Fintech</span>
+                <span class="flex items-center gap-1"><Icon name="heroicons:currency-dollar" class="text-apple-blue-500 dark:text-signal-400 w-4 h-4" /> Fintech</span>
                 <span class="text-gray-350 dark:text-gray-700 select-none">•</span>
-                <span class="flex items-center gap-1"><Icon name="heroicons:cpu-chip" class="text-apple-blue-500 w-4 h-4" /> AI Automation</span>
+                <span class="flex items-center gap-1"><Icon name="heroicons:cpu-chip" class="text-apple-blue-500 dark:text-signal-400 w-4 h-4" /> AI Automation</span>
                 <span class="text-gray-350 dark:text-gray-700 select-none">•</span>
-                <span class="flex items-center gap-1"><Icon name="heroicons:server-stack" class="text-apple-blue-500 w-4 h-4" /> Distributed Systems</span>
+                <span class="flex items-center gap-1"><Icon name="heroicons:server-stack" class="text-apple-blue-500 dark:text-signal-400 w-4 h-4" /> Distributed Systems</span>
               </div>
             </div>
 
             <!-- Copy-to-Clipboard Email Action -->
             <div>
               <span class="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider block mb-2">Direct Contact</span>
-              <div class="flex items-center justify-between p-3 rounded-lg border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 select-all font-mono text-sm text-gray-800 dark:text-gray-200">
+              <div class="flex items-center justify-between p-3 rounded-lg border border-gray-200 dark:border-graphite-800 bg-white dark:bg-graphite-950 select-all font-mono text-sm text-gray-800 dark:text-gray-200">
                 <span class="truncate">jaipuriar.ayush@gmail.com</span>
                 <button
                   @click="copyEmail"
-                  class="ml-3 p-1.5 rounded bg-gray-150 hover:bg-apple-blue-100 hover:text-apple-blue-600 dark:bg-gray-800 dark:hover:bg-apple-blue-900/40 dark:hover:text-apple-blue-450 text-gray-500 dark:text-gray-400 transition-all cursor-pointer relative group/btn"
+                  class="ml-3 p-1.5 rounded bg-gray-150 hover:bg-apple-blue-100 hover:text-apple-blue-600 dark:bg-graphite-900 dark:hover:bg-signal-900/40 dark:hover:text-signal-400 text-gray-500 dark:text-gray-400 transition-all cursor-pointer relative group/btn"
                   title="Copy email to clipboard"
                   aria-label="Copy email to clipboard"
                 >
@@ -97,8 +97,8 @@
           <!-- Contact Details (Location, Response Time) -->
           <div class="space-y-6 pl-4">
             <div class="flex items-start">
-              <div class="flex-shrink-0 h-10 w-10 rounded-full bg-apple-blue-100 dark:bg-apple-blue-900/30 flex items-center justify-center">
-                <Icon name="heroicons:map-pin" class="h-5 w-5 text-apple-blue-600 dark:text-apple-blue-400" aria-hidden="true" />
+              <div class="flex-shrink-0 h-10 w-10 rounded-full bg-apple-blue-100 dark:bg-signal-900/30 flex items-center justify-center">
+                <Icon name="heroicons:map-pin" class="h-5 w-5 text-apple-blue-600 dark:text-signal-400" aria-hidden="true" />
               </div>
               <div class="ml-4">
                 <h3 class="text-lg font-medium text-gray-900 dark:text-white">Location</h3>
@@ -108,8 +108,8 @@
             </div>
 
             <div class="flex items-start">
-              <div class="flex-shrink-0 h-10 w-10 rounded-full bg-apple-blue-100 dark:bg-apple-blue-900/30 flex items-center justify-center">
-                <Icon name="heroicons:clock" class="h-5 w-5 text-apple-blue-600 dark:text-apple-blue-400" aria-hidden="true" />
+              <div class="flex-shrink-0 h-10 w-10 rounded-full bg-apple-blue-100 dark:bg-signal-900/30 flex items-center justify-center">
+                <Icon name="heroicons:clock" class="h-5 w-5 text-apple-blue-600 dark:text-signal-400" aria-hidden="true" />
               </div>
               <div class="ml-4">
                 <h3 class="text-lg font-medium text-gray-900 dark:text-white">Response Time</h3>
@@ -126,7 +126,7 @@
                 href="https://github.com/ayush-jaipuriar"
                 target="_blank"
                 rel="noopener noreferrer"
-                class="flex items-center px-4 py-2.5 rounded-lg border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors duration-200 font-semibold text-sm text-gray-700 dark:text-gray-300"
+                class="flex items-center px-4 py-2.5 rounded-lg border border-gray-200 dark:border-graphite-800 bg-white dark:bg-graphite-950 hover:bg-gray-50 dark:hover:bg-graphite-900/50 transition-colors duration-200 font-semibold text-sm text-gray-700 dark:text-gray-300"
               >
                 <Icon name="mdi:github" class="h-5 w-5 mr-2" aria-hidden="true" />
                 GitHub
@@ -135,7 +135,7 @@
                 href="https://www.linkedin.com/in/ayush-jaipuriar"
                 target="_blank"
                 rel="noopener noreferrer"
-                class="flex items-center px-4 py-2.5 rounded-lg border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors duration-200 font-semibold text-sm text-gray-700 dark:text-gray-300"
+                class="flex items-center px-4 py-2.5 rounded-lg border border-gray-200 dark:border-graphite-800 bg-white dark:bg-graphite-950 hover:bg-gray-50 dark:hover:bg-graphite-900/50 transition-colors duration-200 font-semibold text-sm text-gray-700 dark:text-gray-300"
               >
                 <Icon name="mdi:linkedin" class="h-5 w-5 mr-2 text-[#0077B5]" aria-hidden="true" />
                 LinkedIn
@@ -145,8 +145,8 @@
         </div>
 
         <!-- ── Contact Message Form Right Column ───────────────────── -->
-        <div class="rounded-2xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 shadow-apple-sm p-6 md:p-8">
-          <h2 class="text-2xl font-bold mb-6 text-gray-900 dark:text-white border-b border-gray-200 dark:border-gray-800 pb-3">
+        <div class="rounded-2xl border border-gray-200 dark:border-graphite-800 bg-white dark:bg-graphite-950 shadow-apple-sm p-6 md:p-8">
+          <h2 class="text-2xl font-bold mb-6 text-gray-900 dark:text-white border-b border-gray-200 dark:border-graphite-800 pb-3">
             Send a Message
           </h2>
 
@@ -163,7 +163,7 @@
             </p>
             <button
               @click="resetForm"
-              class="text-sm font-medium text-apple-blue-600 dark:text-apple-blue-400 hover:underline cursor-pointer"
+              class="text-sm font-medium text-apple-blue-600 dark:text-signal-400 hover:underline cursor-pointer"
             >
               Send another message
             </button>
@@ -194,7 +194,7 @@
                 required
                 autocomplete="name"
                 placeholder="Your name"
-                class="w-full px-4 py-2.5 rounded-lg border border-gray-350 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white shadow-sm focus:outline-none focus:ring-2 focus:ring-apple-blue-500 focus:border-apple-blue-500 transition-colors duration-200"
+                class="w-full px-4 py-2.5 rounded-lg border border-gray-350 dark:border-graphite-700 bg-white dark:bg-graphite-900 text-gray-900 dark:text-white shadow-sm focus:outline-none focus:ring-2 focus:ring-apple-blue-500 dark:focus:ring-signal-400 focus:border-apple-blue-500 dark:focus:border-signal-400 transition-colors duration-200"
               />
             </div>
 
@@ -211,7 +211,7 @@
                 required
                 autocomplete="email"
                 placeholder="you@example.com"
-                class="w-full px-4 py-2.5 rounded-lg border border-gray-350 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white shadow-sm focus:outline-none focus:ring-2 focus:ring-apple-blue-500 focus:border-apple-blue-500 transition-colors duration-200"
+                class="w-full px-4 py-2.5 rounded-lg border border-gray-350 dark:border-graphite-700 bg-white dark:bg-graphite-900 text-gray-900 dark:text-white shadow-sm focus:outline-none focus:ring-2 focus:ring-apple-blue-500 dark:focus:ring-signal-400 focus:border-apple-blue-500 dark:focus:border-signal-400 transition-colors duration-200"
               />
             </div>
 
@@ -227,7 +227,7 @@
                 v-model="contactForm.subject"
                 required
                 placeholder="What's this about?"
-                class="w-full px-4 py-2.5 rounded-lg border border-gray-355 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white shadow-sm focus:outline-none focus:ring-2 focus:ring-apple-blue-500 focus:border-apple-blue-500 transition-colors duration-200"
+                class="w-full px-4 py-2.5 rounded-lg border border-gray-355 dark:border-graphite-700 bg-white dark:bg-graphite-900 text-gray-900 dark:text-white shadow-sm focus:outline-none focus:ring-2 focus:ring-apple-blue-500 dark:focus:ring-signal-400 focus:border-apple-blue-500 dark:focus:border-signal-400 transition-colors duration-200"
               />
             </div>
 
@@ -243,7 +243,7 @@
                 rows="5"
                 required
                 placeholder="Your message..."
-                class="w-full px-4 py-2.5 rounded-lg border border-gray-355 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white shadow-sm focus:outline-none focus:ring-2 focus:ring-apple-blue-500 focus:border-apple-blue-500 transition-colors duration-200 resize-y"
+                class="w-full px-4 py-2.5 rounded-lg border border-gray-355 dark:border-graphite-700 bg-white dark:bg-graphite-900 text-gray-900 dark:text-white shadow-sm focus:outline-none focus:ring-2 focus:ring-apple-blue-500 dark:focus:ring-signal-400 focus:border-apple-blue-500 dark:focus:border-signal-400 transition-colors duration-200 resize-y"
               ></textarea>
             </div>
 
@@ -267,7 +267,7 @@
             <button
               type="submit"
               :disabled="isSubmitting"
-              class="w-full flex items-center justify-center gap-2 px-6 py-3 bg-apple-blue-600 text-white rounded-lg font-semibold hover:bg-apple-blue-700 btn-glow focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-apple-blue-500 disabled:opacity-60 disabled:cursor-not-allowed transition-all duration-200 cursor-pointer"
+              class="w-full flex items-center justify-center gap-2 px-6 py-3 bg-apple-blue-600 dark:bg-signal-500 text-white rounded-lg font-semibold hover:bg-apple-blue-700 dark:hover:bg-signal-400 btn-glow focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-apple-blue-500 dark:focus:ring-signal-400 disabled:opacity-60 disabled:cursor-not-allowed transition-all duration-200 cursor-pointer"
             >
               <span
                 v-if="isSubmitting"

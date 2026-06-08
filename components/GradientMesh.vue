@@ -15,20 +15,17 @@
       blob to its own compositing layer for smooth 60 fps animation.
   -->
   <div aria-hidden="true" class="gradient-mesh absolute inset-0 overflow-hidden pointer-events-none -z-10">
-    <!-- Blob 1 — apple-blue, top-right drift -->
+    <!-- Blob 1: vermilion in light mode, signal green in dark mode -->
     <div
       class="blob blob-1 absolute -top-32 -right-32 w-[500px] h-[500px] rounded-full opacity-25 dark:opacity-15 blur-[80px] will-change-transform"
-      :style="{ background: 'radial-gradient(circle, rgba(0,122,255,0.6) 0%, rgba(0,122,255,0) 70%)' }"
     />
-    <!-- Blob 2 — purple, bottom-left drift -->
+    <!-- Blob 2: slate depth in light mode, graphite depth in dark mode -->
     <div
       class="blob blob-2 absolute -bottom-32 -left-32 w-[450px] h-[450px] rounded-full opacity-20 dark:opacity-10 blur-[80px] will-change-transform"
-      :style="{ background: 'radial-gradient(circle, rgba(147,51,234,0.5) 0%, rgba(147,51,234,0) 70%)' }"
     />
-    <!-- Blob 3 — teal, centre drift -->
+    <!-- Blob 3: quiet green bridge between both themes -->
     <div
       class="blob blob-3 absolute top-1/3 left-1/3 w-[400px] h-[400px] rounded-full opacity-20 dark:opacity-10 blur-[80px] will-change-transform"
-      :style="{ background: 'radial-gradient(circle, rgba(20,184,166,0.45) 0%, rgba(20,184,166,0) 70%)' }"
     />
   </div>
 </template>
@@ -40,13 +37,28 @@
  * 25s, 30s) so the pattern doesn't visibly repeat.
  */
 .blob-1 {
+  background: radial-gradient(circle, rgba(227, 66, 52, 0.5) 0%, rgba(227, 66, 52, 0) 70%);
   animation: drift-1 20s ease-in-out infinite alternate;
 }
 .blob-2 {
+  background: radial-gradient(circle, rgba(15, 23, 42, 0.2) 0%, rgba(15, 23, 42, 0) 70%);
   animation: drift-2 25s ease-in-out infinite alternate;
 }
 .blob-3 {
+  background: radial-gradient(circle, rgba(24, 160, 88, 0.24) 0%, rgba(24, 160, 88, 0) 70%);
   animation: drift-3 30s ease-in-out infinite alternate;
+}
+
+:global(.dark .blob-1) {
+  background: radial-gradient(circle, rgba(49, 223, 130, 0.36) 0%, rgba(49, 223, 130, 0) 70%);
+}
+
+:global(.dark .blob-2) {
+  background: radial-gradient(circle, rgba(11, 13, 12, 0.65) 0%, rgba(11, 13, 12, 0) 70%);
+}
+
+:global(.dark .blob-3) {
+  background: radial-gradient(circle, rgba(14, 107, 60, 0.3) 0%, rgba(14, 107, 60, 0) 70%);
 }
 
 @keyframes drift-1 {

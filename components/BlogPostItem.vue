@@ -1,6 +1,6 @@
 <template>
   <article
-    class="group flex flex-col md:flex-row gap-6 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 p-5 shadow-sm hover:shadow-md transition-all duration-300"
+    class="group flex flex-col md:flex-row gap-6 rounded-xl border border-gray-200 dark:border-graphite-700 bg-white dark:bg-graphite-900 p-5 shadow-sm hover:shadow-md transition-all duration-300"
   >
     <!-- Blog Post Image (Optional) -->
     <div v-if="post.image" class="md:w-1/3 rounded-lg overflow-hidden">
@@ -42,7 +42,7 @@
             <span
               v-for="(category, index) in post.categories"
               :key="index"
-              class="text-apple-blue-600 dark:text-apple-blue-400"
+              class="text-apple-blue-600 dark:text-signal-400"
             >
               #{{ category }}
             </span>
@@ -52,7 +52,7 @@
 
       <!-- Post Title -->
       <h2
-        class="text-xl md:text-2xl font-semibold mb-2 text-gray-900 dark:text-white group-hover:text-apple-blue-600 dark:group-hover:text-apple-blue-400 transition-colors duration-200"
+        class="text-xl md:text-2xl font-semibold mb-2 text-gray-900 dark:text-white group-hover:text-apple-blue-600 dark:group-hover:text-signal-400 transition-colors duration-200"
       >
         <NuxtLink :to="post._path">
           {{ post.title }}
@@ -68,7 +68,7 @@
       <div class="mt-auto">
         <NuxtLink
           :to="post._path"
-          class="inline-flex items-center text-apple-blue-600 dark:text-apple-blue-400 hover:text-apple-blue-700 dark:hover:text-apple-blue-300 font-medium transition-colors duration-200"
+          class="inline-flex items-center text-apple-blue-600 dark:text-signal-400 hover:text-apple-blue-700 dark:hover:text-signal-300 font-medium transition-colors duration-200"
         >
           Read more
           <Icon

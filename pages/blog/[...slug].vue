@@ -5,7 +5,7 @@
       <div class="mb-8 animate-fade-in">
         <NuxtLink 
           to="/blog" 
-          class="inline-flex items-center text-gray-600 dark:text-gray-400 hover:text-apple-blue-600 dark:hover:text-apple-blue-400 transition-colors duration-200"
+          class="inline-flex items-center text-gray-600 dark:text-gray-400 hover:text-apple-blue-600 dark:hover:text-signal-400 transition-colors duration-200"
         >
           <Icon name="heroicons:arrow-left" class="mr-2 h-5 w-5" aria-hidden="true" />
           Back to Blog
@@ -14,7 +14,7 @@
 
       <!-- Loading State -->
       <div v-if="pending" class="text-center py-20">
-        <div class="inline-block animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-apple-blue-600"></div>
+        <div class="inline-block animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-apple-blue-600 dark:border-signal-400"></div>
         <p class="mt-4 text-gray-600 dark:text-gray-400">Loading post...</p>
       </div>
 
@@ -27,7 +27,7 @@
         </p>
         <NuxtLink 
           to="/blog" 
-          class="inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md text-white bg-apple-blue-600 hover:bg-apple-blue-700 transition-colors duration-200"
+          class="inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md text-white bg-apple-blue-600 dark:bg-signal-500 hover:bg-apple-blue-700 dark:hover:bg-signal-400 transition-colors duration-200"
         >
           Browse All Posts
         </NuxtLink>
@@ -55,7 +55,7 @@
                  v-for="(category, index) in data.categories" 
                  :key="index" 
                  :to="`/blog?category=${category}`" 
-                 class="text-apple-blue-600 dark:text-apple-blue-400 hover:underline"
+                 class="text-apple-blue-600 dark:text-signal-400 hover:underline"
                >
                  #{{ category }}
                </NuxtLink>
@@ -80,7 +80,7 @@
          </div>
 
          <!-- Author Section -->
-         <div class="mt-16 pt-8 border-t border-gray-200 dark:border-gray-800">
+         <div class="mt-16 pt-8 border-t border-gray-200 dark:border-graphite-800">
            <div class="flex items-center">
              <img 
                :src="toAssetPath('/ayush-jaipuriar-profile.png')"
@@ -148,7 +148,7 @@
                      class="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-105"
                    />
                  </div>
-                 <h3 class="font-medium text-gray-900 dark:text-white group-hover:text-apple-blue-600 dark:group-hover:text-apple-blue-400 transition-colors duration-200">
+                 <h3 class="font-medium text-gray-900 dark:text-white group-hover:text-apple-blue-600 dark:group-hover:text-signal-400 transition-colors duration-200">
                    {{ relatedPost.title }}
                  </h3>
                  <p v-if="relatedPost.description" class="text-sm text-gray-600 dark:text-gray-400 mt-1">
@@ -321,11 +321,11 @@ useHead({
 }
 
 .blog-prose :where(a) {
-  @apply text-apple-blue-600 dark:text-apple-blue-400;
+  @apply text-apple-blue-600 dark:text-signal-400;
 }
 
 .blog-prose :where(a:hover) {
-  @apply text-apple-blue-700 dark:text-apple-blue-300;
+  @apply text-apple-blue-700 dark:text-signal-300;
 }
 
 .blog-prose h2 {
@@ -341,11 +341,11 @@ useHead({
 }
 
 .blog-prose code {
-  @apply px-1 py-0.5 bg-gray-100 dark:bg-gray-800 rounded text-sm text-gray-900 dark:text-gray-100;
+  @apply px-1 py-0.5 bg-gray-100 dark:bg-graphite-900 rounded text-sm text-gray-900 dark:text-gray-100;
 }
 
 .blog-prose pre {
-  @apply p-4 bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg overflow-auto text-sm mb-4;
+  @apply p-4 bg-gray-100 dark:bg-graphite-900 border border-gray-200 dark:border-graphite-700 rounded-lg overflow-auto text-sm mb-4;
 }
 
 /* Ensure plain-text / ASCII diagrams inside code blocks have strong contrast.
@@ -357,7 +357,7 @@ useHead({
 }
 
 .blog-prose img[src*="images/diagrams/"] {
-  @apply my-6 p-4 bg-gray-50 dark:bg-gray-900/40 border border-gray-200 dark:border-gray-700 rounded-lg;
+  @apply my-6 p-4 bg-gray-50 dark:bg-graphite-950/40 border border-gray-200 dark:border-graphite-700 rounded-lg;
   max-width: 100%;
   width: 100%;
   height: auto;
@@ -373,7 +373,7 @@ useHead({
 }
 
 .blog-prose blockquote {
-  @apply pl-4 border-l-4 border-gray-300 dark:border-gray-700 italic my-4 text-gray-700 dark:text-gray-300;
+  @apply pl-4 border-l-4 border-gray-300 dark:border-graphite-700 italic my-4 text-gray-700 dark:text-gray-300;
 }
 
 .text-twitter {

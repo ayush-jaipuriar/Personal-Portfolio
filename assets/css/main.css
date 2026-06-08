@@ -30,8 +30,8 @@
 /* ─── Dark-mode glow effects (Phase 8) ───────────────────────────────
  *
  * CSS `text-shadow` and `box-shadow` at low opacity create a subtle
- * luminous halo against dark backgrounds. The glow uses the brand
- * blue (rgba(0, 122, 255, ...)) which matches `apple-blue-600`.
+ * luminous halo against dark backgrounds. Dark mode uses signal green
+ * so the graphite theme feels technical without sliding back to blue.
  *
  * These utility classes are applied selectively:
  *   .text-glow  → Hero name gradient text
@@ -39,17 +39,17 @@
  *   .nav-glow   → Active navigation link
  */
 .dark .text-glow {
-  text-shadow: 0 0 20px rgba(0, 122, 255, 0.3),
-               0 0 40px rgba(0, 122, 255, 0.1);
+  text-shadow: 0 0 20px rgba(49, 223, 130, 0.28),
+               0 0 40px rgba(49, 223, 130, 0.1);
 }
 
 .dark .btn-glow {
-  box-shadow: 0 0 15px rgba(0, 122, 255, 0.25),
-              0 4px 12px rgba(0, 122, 255, 0.15);
+  box-shadow: 0 0 15px rgba(49, 223, 130, 0.22),
+              0 4px 12px rgba(49, 223, 130, 0.12);
 }
 
 .dark .nav-glow {
-  text-shadow: 0 0 10px rgba(0, 122, 255, 0.4);
+  text-shadow: 0 0 10px rgba(49, 223, 130, 0.36);
 }
 
 /* ─── Background Grid Motif (Phase 3) ────────────────────────────── */
@@ -84,7 +84,13 @@
   width: 6px;
   height: 6px;
   border-radius: 99px;
-  background: #007aff; /* apple-blue-600 */
-  border: 1px solid rgba(0, 122, 255, 0.4);
-  box-shadow: 0 0 8px rgba(0, 122, 255, 0.4);
-} 
+  background: #e34234;
+  border: 1px solid rgba(227, 66, 52, 0.35);
+  box-shadow: 0 0 8px rgba(227, 66, 52, 0.32);
+}
+
+.dark .systems-divider::after {
+  background: #18a058;
+  border-color: rgba(49, 223, 130, 0.35);
+  box-shadow: 0 0 8px rgba(49, 223, 130, 0.32);
+}

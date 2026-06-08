@@ -21,14 +21,14 @@
           v-motion-fade-visible-once
           :delay="index * 80"
           class="flex flex-col items-center p-4 rounded-xl
-                 bg-white/60 dark:bg-gray-800/60 backdrop-blur-sm
-                 border border-gray-200/60 dark:border-gray-700/60
+                 bg-white/60 dark:bg-graphite-900/60 backdrop-blur-sm
+                 border border-gray-200/60 dark:border-graphite-700/60
                  shadow-apple-sm hover:shadow-apple-md transition-shadow duration-300"
         >
           <!-- Icon — uses Nuxt Icon module (iconify under the hood) -->
           <Icon
             :name="metric.icon"
-            class="h-6 w-6 text-apple-blue-600 dark:text-apple-blue-400 mb-2"
+            class="h-6 w-6 text-apple-blue-600 dark:text-signal-400 mb-2"
             aria-hidden="true"
           />
           <!-- Animated / static number -->

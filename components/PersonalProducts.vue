@@ -1,9 +1,9 @@
 <template>
-  <section class="py-16 bg-gray-50/70 dark:bg-gray-950/30">
+  <section class="py-16 bg-gray-50/70 dark:bg-graphite-950/30">
     <div class="container mx-auto px-4 sm:px-6 lg:px-8">
       <div class="mb-12 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
         <div class="max-w-3xl">
-          <p class="mb-3 text-sm font-semibold uppercase tracking-[0.2em] text-apple-blue-600 dark:text-apple-blue-400">
+          <p class="mb-3 text-sm font-semibold uppercase tracking-[0.2em] text-apple-blue-600 dark:text-signal-400">
             Personal Products
           </p>
           <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white">
@@ -16,7 +16,7 @@
 
         <NuxtLink
           to="/projects"
-          class="inline-flex w-fit items-center rounded-lg border border-apple-blue-200 px-5 py-2.5 text-sm font-semibold text-apple-blue-600 transition-colors hover:bg-apple-blue-50 dark:border-apple-blue-800 dark:text-apple-blue-400 dark:hover:bg-apple-blue-900/20"
+          class="inline-flex w-fit items-center rounded-lg border border-apple-blue-200 px-5 py-2.5 text-sm font-semibold text-apple-blue-600 transition-colors hover:bg-apple-blue-50 dark:border-signal-800 dark:text-signal-400 dark:hover:bg-signal-900/20"
         >
           View all projects
           <Icon name="heroicons:arrow-right" class="ml-2 h-4 w-4" aria-hidden="true" />
@@ -29,10 +29,10 @@
           :key="project.id"
           v-motion-fade-visible-once
           :delay="index * 120"
-          class="group overflow-hidden rounded-xl border border-gray-200 bg-white hover:border-apple-blue-500/50 hover:shadow-apple-md transition-all duration-300 dark:border-gray-800 dark:bg-gray-900"
+          class="group overflow-hidden rounded-xl border border-gray-200 bg-white hover:border-apple-blue-500/50 hover:shadow-apple-md transition-all duration-300 dark:border-graphite-800 dark:bg-graphite-950"
         >
           <!-- Terminal Header Bar -->
-          <div class="flex items-center justify-between h-8 px-4 bg-gray-50/80 dark:bg-gray-950/80 border-b border-gray-200 dark:border-gray-800 text-xs font-mono select-none">
+          <div class="flex items-center justify-between h-8 px-4 bg-gray-50/80 dark:bg-graphite-950/80 border-b border-gray-200 dark:border-graphite-800 text-xs font-mono select-none">
             <div class="flex items-center gap-1.5">
               <span class="w-2.5 h-2.5 rounded-full bg-red-400/40 border border-red-500/20"></span>
               <span class="w-2.5 h-2.5 rounded-full bg-yellow-400/40 border border-yellow-500/20"></span>
@@ -42,15 +42,15 @@
               {{ cardFileName(project.slug) }}
             </div>
             <div class="flex items-center gap-1.5">
-              <span class="w-1.5 h-1.5 rounded-full bg-apple-blue-500 animate-pulse"></span>
-              <span class="text-[10px] font-bold text-apple-blue-600 dark:text-apple-blue-400 uppercase tracking-wider">{{ cardStatus(project.slug) }}</span>
+              <span class="w-1.5 h-1.5 rounded-full bg-apple-blue-500 dark:bg-signal-400 animate-pulse"></span>
+              <span class="text-[10px] font-bold text-apple-blue-600 dark:text-signal-400 uppercase tracking-wider">{{ cardStatus(project.slug) }}</span>
             </div>
           </div>
 
           <div class="grid h-full grid-cols-1 md:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)]">
             <NuxtLink
               :to="`/projects/${project.slug}`"
-              class="relative block min-h-[220px] overflow-hidden bg-gray-100 dark:bg-gray-800"
+              class="relative block min-h-[220px] overflow-hidden bg-gray-100 dark:bg-graphite-900"
               :aria-label="`Open ${project.title} product case study`"
             >
               <img
@@ -69,7 +69,7 @@
                 <span
                   v-for="tech in project.technologies.slice(0, 4)"
                   :key="tech"
-                  class="rounded-full bg-gray-100 px-2.5 py-1 text-xs font-medium text-gray-700 dark:bg-gray-800 dark:text-gray-300"
+                  class="rounded-full bg-gray-100 px-2.5 py-1 text-xs font-medium text-gray-700 dark:bg-graphite-900 dark:text-gray-300"
                 >
                   {{ tech }}
                 </span>
@@ -77,7 +77,7 @@
 
               <NuxtLink
                 :to="`/projects/${project.slug}`"
-                class="text-xl font-bold text-gray-900 transition-colors group-hover:text-apple-blue-600 dark:text-white dark:group-hover:text-apple-blue-400"
+                class="text-xl font-bold text-gray-900 transition-colors group-hover:text-apple-blue-600 dark:text-white dark:group-hover:text-signal-400"
               >
                 {{ project.title }}
               </NuxtLink>
@@ -90,7 +90,7 @@
                 <div
                   v-for="metric in project.caseStudy?.impactMetrics.slice(0, 3)"
                   :key="`${project.slug}-${metric.label}`"
-                  class="rounded-xl border border-gray-200 bg-gray-50 p-3 dark:border-gray-800 dark:bg-gray-950/50"
+                  class="rounded-xl border border-gray-200 bg-gray-50 p-3 dark:border-graphite-800 dark:bg-graphite-950/50"
                 >
                   <dt class="text-[11px] font-medium text-gray-500 dark:text-gray-400">
                     {{ metric.label }}
@@ -104,7 +104,7 @@
               <div class="mt-auto flex flex-wrap items-center gap-3 pt-6">
                 <NuxtLink
                   :to="`/projects/${project.slug}`"
-                  class="inline-flex items-center rounded-lg bg-apple-blue-600 px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-apple-blue-700"
+                  class="inline-flex items-center rounded-lg bg-apple-blue-600 dark:bg-signal-500 px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-apple-blue-700 dark:hover:bg-signal-400"
                 >
                   Read Product Case Study
                   <Icon name="heroicons:arrow-right" class="ml-2 h-4 w-4" aria-hidden="true" />

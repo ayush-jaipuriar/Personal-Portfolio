@@ -2,7 +2,7 @@
   <div
     v-if="progress > 0"
     aria-hidden="true"
-    class="fixed top-0 left-0 h-[3px] z-[60] bg-gradient-to-r from-apple-blue-600 to-purple-600 will-change-[width] transition-none"
+    class="fixed top-0 left-0 h-[3px] z-[60] bg-gradient-to-r from-slate-950 via-apple-blue-600 to-apple-blue-500 dark:from-signal-300 dark:via-signal-500 dark:to-signal-700 will-change-[width] transition-none"
     :style="{ width: `${progress}%` }"
   />
 </template>

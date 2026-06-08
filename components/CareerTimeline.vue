@@ -10,9 +10,9 @@
   -->
   <div class="relative">
     <!-- Vertical center line (desktop only) -->
-    <div class="hidden md:block absolute left-1/2 top-0 bottom-0 w-px bg-gray-200 dark:bg-gray-700 -translate-x-1/2"></div>
+    <div class="hidden md:block absolute left-1/2 top-0 bottom-0 w-px bg-gray-200 dark:bg-graphite-800 -translate-x-1/2"></div>
     <!-- Vertical left line (mobile only) -->
-    <div class="md:hidden absolute left-4 top-0 bottom-0 w-px bg-gray-200 dark:bg-gray-700"></div>
+    <div class="md:hidden absolute left-4 top-0 bottom-0 w-px bg-gray-200 dark:bg-graphite-800"></div>
 
     <div class="space-y-10 md:space-y-12">
       <div
@@ -28,7 +28,7 @@
             'w-4 h-4 rounded-full border-2',
             entry.current
               ? 'border-green-500 bg-green-500'
-              : 'border-apple-blue-500 bg-white dark:bg-gray-900',
+              : 'border-apple-blue-500 bg-white dark:bg-graphite-950',
           ]"
         >
           <span
@@ -52,7 +52,7 @@
           ]"
         >
           <div
-            class="rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 p-5 shadow-apple-sm hover:shadow-apple-md transition-shadow duration-300"
+            class="rounded-xl border border-gray-200 dark:border-graphite-700 bg-white dark:bg-graphite-900 p-5 shadow-apple-sm hover:shadow-apple-md transition-shadow duration-300"
           >
             <!-- Period badge -->
             <div class="flex items-center gap-2 mb-2">
@@ -61,7 +61,7 @@
                   'inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-semibold',
                   entry.current
                     ? 'bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400'
-                    : 'bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300',
+                    : 'bg-gray-100 dark:bg-graphite-800 text-gray-600 dark:text-gray-300',
                 ]"
               >
                 {{ entry.period }}
@@ -78,7 +78,7 @@
             <h3 class="text-lg font-bold text-gray-900 dark:text-white">
               {{ entry.role }}
             </h3>
-            <p class="text-sm text-apple-blue-600 dark:text-apple-blue-400 font-medium">
+            <p class="text-sm text-apple-blue-600 dark:text-signal-400 font-medium">
               {{ entry.company }}
             </p>
 
@@ -101,7 +101,7 @@
               <span
                 v-for="tech in entry.technologies"
                 :key="tech"
-                class="rounded-full bg-gray-100 dark:bg-gray-700 px-2 py-0.5 text-xs text-gray-600 dark:text-gray-300"
+                class="rounded-full bg-gray-100 dark:bg-graphite-800 px-2 py-0.5 text-xs text-gray-600 dark:text-gray-300"
               >
                 {{ tech }}
               </span>

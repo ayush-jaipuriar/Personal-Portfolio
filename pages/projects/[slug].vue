@@ -4,7 +4,7 @@
       <div class="mb-8">
         <NuxtLink
           to="/projects"
-          class="inline-flex items-center text-gray-600 dark:text-gray-400 hover:text-apple-blue-600 dark:hover:text-apple-blue-400 transition-colors"
+          class="inline-flex items-center text-gray-600 dark:text-gray-400 hover:text-apple-blue-600 dark:hover:text-signal-400 transition-colors"
         >
           <Icon name="heroicons:arrow-left" class="mr-2 h-5 w-5" aria-hidden="true" />
           Back to Projects
@@ -17,8 +17,8 @@
             :class="[
               'inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold',
               project.type === 'professional'
-                ? 'bg-apple-blue-100 dark:bg-apple-blue-900/30 text-apple-blue-700 dark:text-apple-blue-300'
-                : 'bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300',
+                ? 'bg-apple-blue-100 dark:bg-signal-900/30 text-apple-blue-700 dark:text-signal-300'
+                : 'bg-apple-blue-100 dark:bg-signal-900/30 text-apple-blue-700 dark:text-signal-300',
             ]"
           >
             {{ project.type === 'professional' ? 'Case Study' : 'Personal Project' }}
@@ -41,7 +41,7 @@
             :href="project.liveLink"
             target="_blank"
             rel="noopener noreferrer"
-            class="inline-flex items-center rounded-lg bg-apple-blue-600 px-4 py-2.5 text-sm font-medium text-white hover:bg-apple-blue-700 transition-colors"
+            class="inline-flex items-center rounded-lg bg-apple-blue-600 dark:bg-signal-500 px-4 py-2.5 text-sm font-medium text-white hover:bg-apple-blue-700 dark:hover:bg-signal-400 transition-colors"
           >
             <Icon name="heroicons:globe-alt" class="mr-2 h-5 w-5" aria-hidden="true" />
             Live Demo
@@ -51,7 +51,7 @@
             :href="project.githubLink"
             target="_blank"
             rel="noopener noreferrer"
-            class="inline-flex items-center rounded-lg border border-gray-300 dark:border-gray-700 px-4 py-2.5 text-sm font-medium text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
+            class="inline-flex items-center rounded-lg border border-gray-300 dark:border-graphite-700 px-4 py-2.5 text-sm font-medium text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-graphite-900 transition-colors"
           >
             <Icon name="mdi:github" class="mr-2 h-5 w-5" aria-hidden="true" />
             View Repository
@@ -62,7 +62,7 @@
           <span
             v-for="tech in project.technologies"
             :key="tech"
-            class="rounded-full bg-gray-100 dark:bg-gray-800 px-3 py-1 text-sm text-gray-700 dark:text-gray-300"
+            class="rounded-full bg-gray-100 dark:bg-graphite-900 px-3 py-1 text-sm text-gray-700 dark:text-gray-300"
           >
             {{ tech }}
           </span>
@@ -70,7 +70,7 @@
       </header>
 
       <!-- Executive Summary Panel -->
-      <div class="mb-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 p-6 rounded-2xl border border-gray-200 dark:border-gray-800 bg-gray-50/50 dark:bg-gray-900/30 backdrop-blur-sm">
+      <div class="mb-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 p-6 rounded-2xl border border-gray-200 dark:border-graphite-800 bg-gray-50/50 dark:bg-graphite-950/30 backdrop-blur-sm">
         <div class="flex flex-col">
           <span class="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">My Role</span>
           <span class="mt-1.5 text-base font-bold text-gray-900 dark:text-white leading-tight">
@@ -91,7 +91,7 @@
         </div>
         <div class="flex flex-col">
           <span class="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Primary Outcome</span>
-          <span class="mt-1.5 text-base font-bold text-apple-blue-600 dark:text-apple-blue-400 leading-tight">
+          <span class="mt-1.5 text-base font-bold text-apple-blue-600 dark:text-signal-400 leading-tight">
             {{ detail?.impactMetrics?.[0]?.value || 'N/A' }}
             <span class="block text-xs font-normal text-gray-500 dark:text-gray-400 mt-0.5">
               {{ detail?.impactMetrics?.[0]?.label || '' }}
@@ -113,13 +113,13 @@
         </div>
       </div>
 
-      <div class="mb-12 overflow-hidden rounded-2xl border border-gray-200 dark:border-gray-800">
+      <div class="mb-12 overflow-hidden rounded-2xl border border-gray-200 dark:border-graphite-800">
         <img :src="toAssetPath(project.image)" :alt="project.title" width="1200" height="675" class="w-full h-auto object-cover" />
       </div>
 
       <div class="space-y-12">
         <section>
-          <h2 class="text-2xl font-bold mb-3 pb-2 border-b border-gray-200 dark:border-gray-800 text-gray-900 dark:text-white">
+          <h2 class="text-2xl font-bold mb-3 pb-2 border-b border-gray-200 dark:border-graphite-800 text-gray-900 dark:text-white">
             The Challenge
           </h2>
           <p class="leading-relaxed text-gray-700 dark:text-gray-300">
@@ -134,10 +134,10 @@
           that don't have a diagram yet.
         -->
         <section v-if="detail.diagramUrl">
-          <h2 class="text-2xl font-bold mb-3 pb-2 border-b border-gray-200 dark:border-gray-800 text-gray-900 dark:text-white">
+          <h2 class="text-2xl font-bold mb-3 pb-2 border-b border-gray-200 dark:border-graphite-800 text-gray-900 dark:text-white">
             System Architecture
           </h2>
-          <div class="my-4 p-4 bg-gray-50 dark:bg-gray-900/40 border border-gray-200 dark:border-gray-700 rounded-lg overflow-x-auto">
+          <div class="my-4 p-4 bg-gray-50 dark:bg-graphite-950/40 border border-gray-200 dark:border-graphite-700 rounded-lg overflow-x-auto">
             <img
               :src="toAssetPath(detail.diagramUrl)"
               :alt="`${project.title} system architecture diagram`"
@@ -150,7 +150,7 @@
         </section>
 
         <section>
-          <h2 class="text-2xl font-bold mb-3 pb-2 border-b border-gray-200 dark:border-gray-800 text-gray-900 dark:text-white">
+          <h2 class="text-2xl font-bold mb-3 pb-2 border-b border-gray-200 dark:border-graphite-800 text-gray-900 dark:text-white">
             Architecture &amp; Approach
           </h2>
           <p class="leading-relaxed text-gray-700 dark:text-gray-300">
@@ -162,7 +162,7 @@
         </section>
 
         <section>
-          <h2 class="text-2xl font-bold mb-3 pb-2 border-b border-gray-200 dark:border-gray-800 text-gray-900 dark:text-white">
+          <h2 class="text-2xl font-bold mb-3 pb-2 border-b border-gray-200 dark:border-graphite-800 text-gray-900 dark:text-white">
             My Role &amp; Contributions
           </h2>
           <p class="leading-relaxed text-gray-700 dark:text-gray-300">
@@ -171,7 +171,7 @@
         </section>
 
         <section>
-          <h2 class="text-2xl font-bold mb-3 pb-2 border-b border-gray-200 dark:border-gray-800 text-gray-900 dark:text-white">
+          <h2 class="text-2xl font-bold mb-3 pb-2 border-b border-gray-200 dark:border-graphite-800 text-gray-900 dark:text-white">
             Key Technical Decisions
           </h2>
           <ul class="space-y-3 text-gray-700 dark:text-gray-300">
@@ -180,14 +180,14 @@
               :key="decision"
               class="flex items-start gap-3"
             >
-              <Icon name="heroicons:check-badge" class="mt-0.5 h-5 w-5 text-apple-blue-600 dark:text-apple-blue-400 flex-shrink-0" aria-hidden="true" />
+              <Icon name="heroicons:check-badge" class="mt-0.5 h-5 w-5 text-apple-blue-600 dark:text-signal-400 flex-shrink-0" aria-hidden="true" />
               <span>{{ decision }}</span>
             </li>
           </ul>
         </section>
 
         <section>
-          <h2 class="text-2xl font-bold mb-3 pb-2 border-b border-gray-200 dark:border-gray-800 text-gray-900 dark:text-white">
+          <h2 class="text-2xl font-bold mb-3 pb-2 border-b border-gray-200 dark:border-graphite-800 text-gray-900 dark:text-white">
             Results &amp; Impact
           </h2>
 
@@ -195,9 +195,9 @@
             <div
               v-for="metric in detail.impactMetrics"
               :key="`${metric.label}-${metric.value}`"
-              class="rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 p-4"
+              class="rounded-xl border border-gray-200 dark:border-graphite-800 bg-white dark:bg-graphite-950 p-4"
             >
-              <p class="text-2xl font-bold text-apple-blue-600 dark:text-apple-blue-400">
+              <p class="text-2xl font-bold text-apple-blue-600 dark:text-signal-400">
                 {{ metric.value }}
               </p>
               <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
@@ -218,7 +218,7 @@
         </section>
 
         <section>
-          <h2 class="text-2xl font-bold mb-3 pb-2 border-b border-gray-200 dark:border-gray-800 text-gray-900 dark:text-white">
+          <h2 class="text-2xl font-bold mb-3 pb-2 border-b border-gray-200 dark:border-graphite-800 text-gray-900 dark:text-white">
             Lessons Learned
           </h2>
           <p class="leading-relaxed text-gray-700 dark:text-gray-300">
@@ -228,7 +228,7 @@
 
         <!-- Related Technical Writing -->
         <section v-if="relatedArticles && relatedArticles.length > 0">
-          <h2 class="text-2xl font-bold mb-4 pb-2 border-b border-gray-200 dark:border-gray-800 text-gray-900 dark:text-white">
+          <h2 class="text-2xl font-bold mb-4 pb-2 border-b border-gray-200 dark:border-graphite-800 text-gray-900 dark:text-white">
             Related Technical Writing
           </h2>
           <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -236,19 +236,19 @@
               v-for="article in relatedArticles"
               :key="article._path"
               :to="article._path"
-              class="group block p-5 rounded-2xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 hover:border-apple-blue-500 dark:hover:border-apple-blue-500 hover:shadow-md transition-all duration-300"
+              class="group block p-5 rounded-2xl border border-gray-200 dark:border-graphite-800 bg-white dark:bg-graphite-950 hover:border-apple-blue-500 dark:hover:border-signal-500 hover:shadow-md transition-all duration-300"
             >
               <div class="flex flex-col h-full justify-between">
                 <div>
-                  <span class="text-xs font-semibold text-apple-blue-600 dark:text-apple-blue-400 uppercase tracking-wider">Article</span>
-                  <h3 class="mt-2 text-lg font-bold text-gray-900 dark:text-white group-hover:text-apple-blue-600 dark:group-hover:text-apple-blue-400 transition-colors">
+                  <span class="text-xs font-semibold text-apple-blue-600 dark:text-signal-400 uppercase tracking-wider">Article</span>
+                  <h3 class="mt-2 text-lg font-bold text-gray-900 dark:text-white group-hover:text-apple-blue-600 dark:group-hover:text-signal-400 transition-colors">
                     {{ article.title }}
                   </h3>
                   <p v-if="article.description" class="mt-2 text-sm text-gray-600 dark:text-gray-400 line-clamp-2 leading-relaxed">
                     {{ article.description }}
                   </p>
                 </div>
-                <div class="mt-4 flex items-center text-sm font-semibold text-apple-blue-600 dark:text-apple-blue-400 group-hover:underline">
+                <div class="mt-4 flex items-center text-sm font-semibold text-apple-blue-600 dark:text-signal-400 group-hover:underline">
                   Read Article
                   <Icon name="heroicons:arrow-right" class="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" aria-hidden="true" />
                 </div>
@@ -259,7 +259,7 @@
       </div>
 
       <!-- End of Case Study CTA -->
-      <div class="mt-16 rounded-2xl bg-gradient-to-br from-apple-blue-50 via-white to-purple-50 dark:from-gray-800 dark:via-gray-900 dark:to-gray-800 p-8 text-center border border-gray-200 dark:border-gray-700">
+      <div class="mt-16 rounded-2xl bg-gradient-to-br from-apple-blue-50 via-white to-apple-blue-50 dark:from-graphite-900 dark:via-graphite-950 dark:to-graphite-900 p-8 text-center border border-gray-200 dark:border-graphite-700">
         <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">
           Interested in similar engineering or AI agent work?
         </h3>
@@ -269,7 +269,7 @@
         <div class="flex flex-wrap justify-center gap-3">
           <NuxtLink
             to="/contact"
-            class="inline-flex items-center px-5 py-2.5 rounded-lg text-sm font-semibold text-white bg-apple-blue-600 hover:bg-apple-blue-700 transition-colors shadow-sm"
+            class="inline-flex items-center px-5 py-2.5 rounded-lg text-sm font-semibold text-white bg-apple-blue-600 dark:bg-signal-500 hover:bg-apple-blue-700 dark:hover:bg-signal-400 transition-colors shadow-sm"
           >
             Get In Touch
             <Icon name="heroicons:paper-airplane" class="ml-2 h-4 w-4" aria-hidden="true" />
@@ -277,7 +277,7 @@
           <a
             :href="resumeUrl"
             download
-            class="inline-flex items-center px-5 py-2.5 rounded-lg text-sm font-semibold text-gray-700 dark:text-gray-200 bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors shadow-sm"
+            class="inline-flex items-center px-5 py-2.5 rounded-lg text-sm font-semibold text-gray-700 dark:text-gray-200 bg-white dark:bg-graphite-800 border border-gray-300 dark:border-graphite-600 hover:bg-gray-50 dark:hover:bg-graphite-800 transition-colors shadow-sm"
           >
             Download Resume
             <Icon name="heroicons:document-arrow-down" class="ml-2 h-4 w-4" aria-hidden="true" />
@@ -285,12 +285,12 @@
         </div>
       </div>
 
-      <div class="mt-16 border-t border-gray-200 dark:border-gray-800 pt-8">
+      <div class="mt-16 border-t border-gray-200 dark:border-graphite-800 pt-8">
         <div class="flex flex-col sm:flex-row justify-between items-center gap-4">
           <NuxtLink
             v-if="adjacent.prev"
             :to="`/projects/${adjacent.prev.slug}`"
-            class="inline-flex items-center text-gray-600 dark:text-gray-400 hover:text-apple-blue-600 dark:hover:text-apple-blue-400 transition-colors"
+            class="inline-flex items-center text-gray-600 dark:text-gray-400 hover:text-apple-blue-600 dark:hover:text-signal-400 transition-colors"
           >
             <Icon name="heroicons:arrow-left" class="mr-2 h-5 w-5" aria-hidden="true" />
             {{ adjacent.prev.title }}
@@ -300,7 +300,7 @@
           <NuxtLink
             v-if="adjacent.next"
             :to="`/projects/${adjacent.next.slug}`"
-            class="inline-flex items-center text-gray-600 dark:text-gray-400 hover:text-apple-blue-600 dark:hover:text-apple-blue-400 transition-colors"
+            class="inline-flex items-center text-gray-600 dark:text-gray-400 hover:text-apple-blue-600 dark:hover:text-signal-400 transition-colors"
           >
             {{ adjacent.next.title }}
             <Icon name="heroicons:arrow-right" class="ml-2 h-5 w-5" aria-hidden="true" />
@@ -317,7 +317,7 @@
       </p>
       <NuxtLink
         to="/projects"
-        class="inline-flex items-center px-4 py-2 rounded-md text-base font-medium text-white bg-apple-blue-600 hover:bg-apple-blue-700 transition-colors"
+        class="inline-flex items-center px-4 py-2 rounded-md text-base font-medium text-white bg-apple-blue-600 dark:bg-signal-500 hover:bg-apple-blue-700 dark:hover:bg-signal-400 transition-colors"
       >
         View All Projects
       </NuxtLink>

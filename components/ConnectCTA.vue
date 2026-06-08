@@ -9,7 +9,7 @@
     above, signaling "this is the end, here's what to do next."
     This pattern is called a "terminal CTA" in marketing design.
   -->
-  <section class="py-20 bg-gradient-to-br from-apple-blue-50 via-white to-purple-50 dark:from-gray-800 dark:via-gray-900 dark:to-gray-800">
+  <section class="py-20 bg-gradient-to-br from-apple-blue-50 via-white to-apple-blue-50 dark:from-graphite-900 dark:via-graphite-950 dark:to-graphite-900">
     <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
       <!-- Heading -->
       <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
@@ -28,8 +28,8 @@
         <NuxtLink
           to="/contact"
           class="inline-flex items-center px-8 py-3.5 rounded-lg text-base font-medium
-                 text-white bg-apple-blue-600 hover:bg-apple-blue-700
-                 shadow-lg shadow-apple-blue-600/25 hover:shadow-apple-blue-600/40
+                 text-white bg-apple-blue-600 dark:bg-signal-500 hover:bg-apple-blue-700 dark:hover:bg-signal-400
+                 shadow-lg shadow-apple-blue-600/25 dark:shadow-signal-500/20 hover:shadow-apple-blue-600/40 dark:hover:shadow-signal-400/30
                  transition-all duration-200 btn-glow"
         >
           Get In Touch
@@ -42,9 +42,9 @@
           download
           class="inline-flex items-center px-8 py-3.5 rounded-lg text-base font-medium
                  text-gray-700 dark:text-gray-200
-                 bg-white dark:bg-gray-800
-                 border border-gray-300 dark:border-gray-600
-                 hover:bg-gray-50 dark:hover:bg-gray-700
+                 bg-white dark:bg-graphite-900
+                 border border-gray-300 dark:border-graphite-600
+                 hover:bg-gray-50 dark:hover:bg-graphite-800
                  shadow-sm hover:shadow-md
                  transition-all duration-200"
         >

@@ -1,10 +1,10 @@
 <template>
   <article
     ref="cardRef"
-    class="group overflow-hidden rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 hover:border-apple-blue-500/50 dark:hover:border-apple-blue-500/50 hover:shadow-apple-md transition-all duration-300"
+    class="group overflow-hidden rounded-xl border border-gray-200 dark:border-graphite-800 bg-white dark:bg-graphite-950 hover:border-apple-blue-500/50 dark:hover:border-signal-500/50 hover:shadow-apple-md transition-all duration-300"
   >
     <!-- Terminal Header Bar -->
-    <div class="flex items-center justify-between h-8 px-4 bg-gray-50/80 dark:bg-gray-950/80 border-b border-gray-200 dark:border-gray-800 text-xs font-mono select-none">
+    <div class="flex items-center justify-between h-8 px-4 bg-gray-50/80 dark:bg-graphite-950/80 border-b border-gray-200 dark:border-graphite-800 text-xs font-mono select-none">
       <div class="flex items-center gap-1.5">
         <span class="w-2.5 h-2.5 rounded-full bg-red-400/40 border border-red-500/20"></span>
         <span class="w-2.5 h-2.5 rounded-full bg-yellow-400/40 border border-yellow-500/20"></span>
@@ -14,16 +14,16 @@
         {{ cardFileName }}
       </div>
       <div class="flex items-center gap-1.5">
-        <span class="w-1.5 h-1.5 rounded-full bg-apple-blue-500 animate-pulse"></span>
-        <span class="text-[10px] font-bold text-apple-blue-600 dark:text-apple-blue-400 uppercase tracking-wider">{{ cardStatus }}</span>
+        <span class="w-1.5 h-1.5 rounded-full bg-apple-blue-500 dark:bg-signal-400 animate-pulse"></span>
+        <span class="text-[10px] font-bold text-apple-blue-600 dark:text-signal-400 uppercase tracking-wider">{{ cardStatus }}</span>
       </div>
     </div>
 
-    <div class="border-l-4 border-apple-blue-600 h-full">
+    <div class="border-l-4 border-apple-blue-600 dark:border-signal-500 h-full">
       <div class="grid grid-cols-1 lg:grid-cols-12 h-full">
         <NuxtLink
           :to="`/projects/${project.slug}`"
-          class="lg:col-span-5 block overflow-hidden bg-gray-100 dark:bg-gray-800"
+          class="lg:col-span-5 block overflow-hidden bg-gray-100 dark:bg-graphite-900"
           :aria-label="`Read case study: ${project.title}`"
         >
           <img
@@ -38,7 +38,7 @@
 
         <div class="lg:col-span-7 p-6 md:p-7 flex flex-col">
           <div class="flex items-center gap-2 mb-3">
-            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-apple-blue-100 dark:bg-apple-blue-900/30 text-apple-blue-700 dark:text-apple-blue-300">
+            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-apple-blue-100 dark:bg-signal-900/30 text-apple-blue-700 dark:text-signal-300">
               Case Study
             </span>
             <span v-if="project.company" class="text-sm text-gray-500 dark:text-gray-400">
@@ -48,7 +48,7 @@
 
           <NuxtLink
             :to="`/projects/${project.slug}`"
-            class="text-2xl font-bold text-gray-900 dark:text-white group-hover:text-apple-blue-600 dark:group-hover:text-apple-blue-400 transition-colors"
+            class="text-2xl font-bold text-gray-900 dark:text-white group-hover:text-apple-blue-600 dark:group-hover:text-signal-400 transition-colors"
           >
             {{ project.title }}
           </NuxtLink>
@@ -61,7 +61,7 @@
             <span
               v-for="tech in project.technologies.slice(0, 4)"
               :key="tech"
-              class="px-2.5 py-1 rounded-full text-xs font-medium bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300"
+              class="px-2.5 py-1 rounded-full text-xs font-medium bg-gray-100 dark:bg-graphite-900 text-gray-700 dark:text-gray-300"
             >
               {{ tech }}
             </span>
@@ -70,7 +70,7 @@
           <div class="mt-auto pt-6">
             <NuxtLink
               :to="`/projects/${project.slug}`"
-              class="inline-flex items-center text-sm font-semibold text-apple-blue-600 dark:text-apple-blue-400 group-hover:gap-2 transition-all"
+              class="inline-flex items-center text-sm font-semibold text-apple-blue-600 dark:text-signal-400 group-hover:gap-2 transition-all"
               @click="trackProjectClick"
             >
               Read Case Study
