@@ -1,7 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Ayush Jaipuriar favicon">
   <style>
     :root {
-      /* Default colors: Dark Mode (Graphite & Signal Green) */
+      /* Default colors: Dark Mode (Graphite and Signal Green) */
       --bg-color-1: #0b0d0c;
       --bg-color-2: #171d19;
       --ring-color-1: #31df82;
@@ -11,7 +11,7 @@
     }
     @media (prefers-color-scheme: light) {
       :root {
-        /* Light Mode colors: White/Slate & Vermilion */
+        /* Light Mode colors: White/Slate and Vermilion */
         --bg-color-1: #ffffff;
         --bg-color-2: #f1f5f9;
         --ring-color-1: #f15942;
