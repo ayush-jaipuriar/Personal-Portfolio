@@ -6,7 +6,10 @@
 
 - Added a new Nuxt Content blog post at `content/blog/4.designing-a-scalable-online-chess-platform.md`.
 - Created a matching local SVG visual at `public/images/blog/online-chess-platform-system-design.svg` featuring a detailed system architecture overview designed around the portfolio's custom signal-green and graphite dark palette.
-- Added a log entry in `DEVELOPMENT_LOG.md` recording the addition.
+- Redesigned `favicon.svg` with CSS media queries supporting `prefers-color-scheme` (renders as graphite/signal-green in dark mode, and white/vermilion in light mode).
+- Regenerated all static PNG favicons (`favicon-16x16.png`, `favicon-32x32.png`, `apple-touch-icon.png`, `android-chrome-192x192.png`, `android-chrome-512x512.png`) using the theme's brand color scheme.
+- Updated `site.webmanifest` theme color to signal-500 (`#18a058`).
+- Added a log entry in `DEVELOPMENT_LOG.md` recording the additions.
 
 ### Files touched
 
@@ -14,6 +17,12 @@
   - Wrote the full system design case study, including requirements, capacity estimations, WebSocket gateways, connection sharding, clocks, and failure modes.
 - `public/images/blog/online-chess-platform-system-design.svg`
   - Hand-crafted a high-fidelity system design card diagram using the theme's colors.
+- `public/favicon.svg`
+  - Updated to support light/dark theme colors dynamically using media queries.
+- `public/*.png`
+  - Regenerated standard PNG icons for mobile homescreens and static fallbacks to match the theme.
+- `public/site.webmanifest`
+  - Updated webapp theme color to match the signal green palette.
 - `DEVELOPMENT_LOG.md`
   - Appended this log entry.
 
@@ -21,9 +30,12 @@
 
 The user requested a new system design case study for a scalable online chess platform to be added to their blog portfolio. Creating a detailed markdown article and pairing it with a high-fidelity, theme-consistent SVG diagram provides a professional presentation on the portfolio and lets the dynamic Nuxt Content rendering layer incorporate it instantly.
 
+Additionally, the site's tab icons (favicons) and saved mobile web app icons were still using the old blue/purple color scheme. By implementing a dynamic SVG favicon that switches between signal-green/graphite in dark mode and vermilion/white in light mode, and regenerating all standard PNG sizes to match the brand colors, the site's iconography now aligns with the portfolio's editorial design system.
+
 ### Verification
 
 - Ran local verification check (e.g. `npm run generate`) to confirm successful static generation.
+- Verified that all sizes of PNG assets render correctly and are compiled by the builder.
 
 ## 2026-06-08
 
