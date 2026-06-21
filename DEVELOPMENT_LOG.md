@@ -1,5 +1,30 @@
 # Development Log
 
+## 2026-06-21
+
+### What changed
+
+- Added a new Nuxt Content blog post at `content/blog/4.designing-a-scalable-online-chess-platform.md`.
+- Created a matching local SVG visual at `public/images/blog/online-chess-platform-system-design.svg` featuring a detailed system architecture overview designed around the portfolio's custom signal-green and graphite dark palette.
+- Added a log entry in `DEVELOPMENT_LOG.md` recording the addition.
+
+### Files touched
+
+- `content/blog/4.designing-a-scalable-online-chess-platform.md`
+  - Wrote the full system design case study, including requirements, capacity estimations, WebSocket gateways, connection sharding, clocks, and failure modes.
+- `public/images/blog/online-chess-platform-system-design.svg`
+  - Hand-crafted a high-fidelity system design card diagram using the theme's colors.
+- `DEVELOPMENT_LOG.md`
+  - Appended this log entry.
+
+### Why this change was made
+
+The user requested a new system design case study for a scalable online chess platform to be added to their blog portfolio. Creating a detailed markdown article and pairing it with a high-fidelity, theme-consistent SVG diagram provides a professional presentation on the portfolio and lets the dynamic Nuxt Content rendering layer incorporate it instantly.
+
+### Verification
+
+- Ran local verification check (e.g. `npm run generate`) to confirm successful static generation.
+
 ## 2026-06-08
 
 ### What changed
