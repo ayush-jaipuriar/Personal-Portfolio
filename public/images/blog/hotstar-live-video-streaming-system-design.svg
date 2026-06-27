@@ -1,0 +1,174 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Background Gradient: Deep Graphite -->
+    <linearGradient id="bg" x1="80" y1="40" x2="1120" y2="590" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0B0D0C"/>
+      <stop offset="1" stop-color="#141816"/>
+    </linearGradient>
+    <!-- Standard Card Gradient -->
+    <linearGradient id="card" x1="0" y1="0" x2="0" y2="1">
+      <stop stop-color="#242C27"/>
+      <stop offset="1" stop-color="#181D1A"/>
+    </linearGradient>
+    <!-- Accent Highlight Card Gradient: Electric Blue / Cyan -->
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#00D2FF"/>
+      <stop offset="1" stop-color="#0066FF"/>
+    </linearGradient>
+    <!-- Secondary Highlight Card Gradient: Red/Orange for Live/Ingest -->
+    <linearGradient id="live-accent" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#FF416C"/>
+      <stop offset="1" stop-color="#FF4B2B"/>
+    </linearGradient>
+    <!-- Queue Gradient -->
+    <linearGradient id="stream" x1="0" y1="0" x2="1" y2="0">
+      <stop stop-color="#1E293B"/>
+      <stop offset="0.5" stop-color="#334155"/>
+      <stop offset="1" stop-color="#1E293B"/>
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#001833" flood-opacity="0.3"/>
+    </filter>
+  </defs>
+
+  <!-- Outer canvas -->
+  <rect width="1200" height="630" rx="36" fill="url(#bg)"/>
+  <rect x="36" y="36" width="1128" height="558" rx="28" stroke="#222C26" stroke-width="2"/>
+
+  <!-- Title & Subtitle -->
+  <text x="72" y="85" fill="#F6F7F4" font-family="'Inter', Arial, sans-serif" font-size="32" font-weight="700">
+    Designing Hotstar-Style Live Video Streaming
+  </text>
+  <text x="72" y="118" fill="#aeb8aa" font-family="'Inter', Arial, sans-serif" font-size="16">
+    High-scale live video ingestion, transcoding engine, cohort-level ad-insertion, and global CDN delivery.
+  </text>
+  <!-- Stats badge -->
+  <rect x="800" y="65" width="328" height="42" rx="12" fill="#181D1A" stroke="#222C26" stroke-width="1.5"/>
+  <text x="964" y="91" fill="#00D2FF" font-family="'Inter', Arial, sans-serif" font-size="14" font-weight="700" text-anchor="middle">
+    10M+ Concurrent | 10+ PB Egress | &lt;15s Latency
+  </text>
+
+  <!-- Row 1: INGEST PLANE -->
+  <g filter="url(#shadow)">
+    <!-- Live Capture (Stadium) -->
+    <rect x="72" y="160" width="220" height="85" rx="20" fill="url(#live-accent)" stroke="#FF6B8B" stroke-width="1.5"/>
+    <text x="182" y="195" fill="#FFFFFF" font-family="'Inter', Arial, sans-serif" font-size="18" font-weight="800" text-anchor="middle">Live Source</text>
+    <text x="182" y="215" fill="#FFE5EB" font-family="'Inter', Arial, sans-serif" font-size="12" font-weight="600" text-anchor="middle">Stadium Feed / Cameras</text>
+    <text x="182" y="230" fill="#FFE5EB" font-family="'Inter', Arial, sans-serif" font-size="11" font-weight="600" text-anchor="middle">1080p Mezzanine Feed</text>
+
+    <!-- Upload/Ingest Service -->
+    <rect x="342" y="160" width="220" height="85" rx="20" fill="url(#card)" stroke="#323D37" stroke-width="1.5"/>
+    <text x="452" y="195" fill="#F6F7F4" font-family="'Inter', Arial, sans-serif" font-size="18" font-weight="700" text-anchor="middle">Ingest Service</text>
+    <text x="452" y="215" fill="#aeb8aa" font-family="'Inter', Arial, sans-serif" font-size="12" text-anchor="middle">RTMP / SRT Protocol</text>
+    <text x="452" y="230" fill="#aeb8aa" font-family="'Inter', Arial, sans-serif" font-size="11" text-anchor="middle">TCP-based Contribution</text>
+
+    <!-- Raw Chunks Storage -->
+    <rect x="612" y="160" width="220" height="85" rx="20" fill="url(#card)" stroke="#323D37" stroke-width="1.5"/>
+    <text x="722" y="195" fill="#F6F7F4" font-family="'Inter', Arial, sans-serif" font-size="18" font-weight="700" text-anchor="middle">Raw Storage</text>
+    <text x="722" y="215" fill="#aeb8aa" font-family="'Inter', Arial, sans-serif" font-size="12" text-anchor="middle">Temp Segment Bucket</text>
+    <text x="722" y="230" fill="#aeb8aa" font-family="'Inter', Arial, sans-serif" font-size="11" text-anchor="middle">6-Second TS Segments</text>
+
+    <!-- Event Queue (Message Bus) -->
+    <rect x="882" y="160" width="246" height="85" rx="20" fill="url(#stream)" stroke="#475569" stroke-width="1.5"/>
+    <text x="1005" y="195" fill="#F8FAFC" font-family="'Inter', Arial, sans-serif" font-size="16" font-weight="700" text-anchor="middle">Segment Event Queue</text>
+    <text x="1005" y="215" fill="#94A3B8" font-family="'Inter', Arial, sans-serif" font-size="12" text-anchor="middle">Kafka / PubSub Events</text>
+    <text x="1005" y="230" fill="#64748B" font-family="'Inter', Arial, sans-serif" font-size="11" text-anchor="middle">Worker Decoupling &amp; Backpressure</text>
+  </g>
+
+  <!-- Row 2: PROCESSING & TRANSCODING -->
+  <g filter="url(#shadow)">
+    <!-- Transcoding Fleet (Electric Blue Accent) -->
+    <rect x="72" y="295" width="280" height="85" rx="20" fill="url(#accent)" stroke="#7FE3FF" stroke-width="2"/>
+    <text x="212" y="330" fill="#0B0D0C" font-family="'Inter', Arial, sans-serif" font-size="20" font-weight="800" text-anchor="middle">Transcoding Fleet</text>
+    <text x="212" y="350" fill="#031A36" font-family="'Inter', Arial, sans-serif" font-size="12" font-weight="600" text-anchor="middle">GPU/CPU Worker Clusters</text>
+    <text x="212" y="365" fill="#031A36" font-family="'Inter', Arial, sans-serif" font-size="11" font-weight="600" text-anchor="middle">ABR Ladder: 1080p, 720p, 480p, 360p</text>
+
+    <!-- Manifest Updater -->
+    <rect x="402" y="295" width="200" height="85" rx="20" fill="url(#card)" stroke="#323D37" stroke-width="1.5"/>
+    <text x="502" y="330" fill="#F6F7F4" font-family="'Inter', Arial, sans-serif" font-size="18" font-weight="700" text-anchor="middle">Manifest Updater</text>
+    <text x="502" y="350" fill="#aeb8aa" font-family="'Inter', Arial, sans-serif" font-size="12" text-anchor="middle">Atomic Sliding Window</text>
+    <text x="502" y="365" fill="#aeb8aa" font-family="'Inter', Arial, sans-serif" font-size="11" text-anchor="middle">Dynamic .m3u8 / .mpd</text>
+
+    <!-- Origin Object Storage -->
+    <rect x="652" y="295" width="210" height="85" rx="20" fill="url(#card)" stroke="#323D37" stroke-width="1.5"/>
+    <text x="757" y="330" fill="#F6F7F4" font-family="'Inter', Arial, sans-serif" font-size="18" font-weight="700" text-anchor="middle">Origin Storage</text>
+    <text x="757" y="350" fill="#aeb8aa" font-family="'Inter', Arial, sans-serif" font-size="12" text-anchor="middle">Cloud Bucket (S3/GCS)</text>
+    <text x="757" y="365" fill="#aeb8aa" font-family="'Inter', Arial, sans-serif" font-size="11" text-anchor="middle">Immutable segments cached</text>
+
+    <!-- Origin Shield / Cache -->
+    <rect x="912" y="295" width="216" height="85" rx="20" fill="url(#card)" stroke="#323D37" stroke-width="1.5"/>
+    <text x="1020" y="330" fill="#F6F7F4" font-family="'Inter', Arial, sans-serif" font-size="18" font-weight="700" text-anchor="middle">Origin Shield</text>
+    <text x="1020" y="350" fill="#aeb8aa" font-family="'Inter', Arial, sans-serif" font-size="12" text-anchor="middle">Regional Origin Cache</text>
+    <text x="1020" y="365" fill="#aeb8aa" font-family="'Inter', Arial, sans-serif" font-size="11" text-anchor="middle">Prevents Cache-Miss Storms</text>
+  </g>
+
+  <!-- Row 3: DELIVERY & PLAYBACK -->
+  <g filter="url(#shadow)">
+    <!-- Global CDN Edge Fleet -->
+    <rect x="72" y="430" width="550" height="85" rx="20" fill="url(#card)" stroke="#323D37" stroke-width="1.5"/>
+    <text x="347" y="465" fill="#F6F7F4" font-family="'Inter', Arial, sans-serif" font-size="18" font-weight="700" text-anchor="middle">Global Content Delivery Network (CDN Edge Fleet)</text>
+    <text x="347" y="485" fill="#aeb8aa" font-family="'Inter', Arial, sans-serif" font-size="12" text-anchor="middle">Caches Immutable Segments Aggressively | Short TTL for Manifests</text>
+    <text x="347" y="500" fill="#00D2FF" font-family="'Inter', Arial, sans-serif" font-size="11" font-weight="600" text-anchor="middle">Akamai / Fastly / Cloudflare Multi-CDN Setup</text>
+
+    <!-- Client Player -->
+    <rect x="672" y="430" width="456" height="85" rx="20" fill="url(#card)" stroke="#323D37" stroke-width="1.5"/>
+    <text x="900" y="465" fill="#F6F7F4" font-family="'Inter', Arial, sans-serif" font-size="18" font-weight="700" text-anchor="middle">Adaptive Bitrate (ABR) Player</text>
+    <text x="900" y="485" fill="#aeb8aa" font-family="'Inter', Arial, sans-serif" font-size="12" text-anchor="middle">Dynamic quality switching based on network capacity</text>
+    <text x="900" y="500" fill="#FF4B2B" font-family="'Inter', Arial, sans-serif" font-size="11" font-weight="600" text-anchor="middle">HLS / DASH Protocols (HTML5 Video Element)</text>
+  </g>
+
+  <!-- Row 4: SYSTEM CONTROL & ADS API -->
+  <g filter="url(#shadow)">
+    <!-- Playback & Auth API -->
+    <rect x="72" y="540" width="460" height="52" rx="16" fill="url(#card)" stroke="#323D37" stroke-width="1.5"/>
+    <text x="302" y="572" fill="#F6F7F4" font-family="'Inter', Arial, sans-serif" font-size="15" font-weight="700" text-anchor="middle">Playback API: Token Auth &amp; CDN Selection (Out of Byte-Path)</text>
+
+    <!-- Cohort Ad insertion -->
+    <rect x="582" y="540" width="546" height="52" rx="16" fill="url(#card)" stroke="#323D37" stroke-width="1.5"/>
+    <text x="855" y="572" fill="#F6F7F4" font-family="'Inter', Arial, sans-serif" font-size="15" font-weight="700" text-anchor="middle">Virtual Ads: Cohort personalization (No per-user rendering at scale)</text>
+  </g>
+
+  <!-- CONNECTOR PATHS / ARROWS -->
+  <!-- 1. Stadium to Ingest -->
+  <path d="M 292 202.5 L 334 202.5" stroke="#FF416C" stroke-width="2"/>
+  <polygon points="334,198.5 342,202.5 334,206.5" fill="#FF416C"/>
+
+  <!-- 2. Ingest to Raw storage -->
+  <path d="M 562 202.5 L 604 202.5" stroke="#aeb8aa" stroke-width="1.5"/>
+  <polygon points="604,199.5 612,202.5 604,205.5" fill="#aeb8aa"/>
+
+  <!-- 3. Raw storage to Queue -->
+  <path d="M 832 202.5 L 874 202.5" stroke="#aeb8aa" stroke-width="1.5"/>
+  <polygon points="874,199.5 882,202.5 874,205.5" fill="#aeb8aa"/>
+
+  <!-- 4. Queue down to Transcoding fleet (Curve) -->
+  <path d="M 1005 245 C 1005 275, 212 265, 212 287" stroke="#00D2FF" stroke-width="2" fill="none"/>
+  <polygon points="209,287 212,295 215,287" fill="#00D2FF"/>
+
+  <!-- 5. Transcoding to Manifest updater -->
+  <path d="M 352 337.5 L 394 337.5" stroke="#00D2FF" stroke-width="2"/>
+  <polygon points="394,334.5 402,337.5 394,340.5" fill="#00D2FF"/>
+
+  <!-- 6. Manifest updater to Origin storage -->
+  <path d="M 602 337.5 L 644 337.5" stroke="#aeb8aa" stroke-width="1.5"/>
+  <polygon points="644,334.5 652,337.5 644,340.5" fill="#aeb8aa"/>
+
+  <!-- 7. Origin storage to Shield -->
+  <path d="M 862 337.5 L 904 337.5" stroke="#aeb8aa" stroke-width="1.5"/>
+  <polygon points="904,334.5 912,337.5 904,340.5" fill="#aeb8aa"/>
+
+  <!-- 8. Origin shield down to CDN -->
+  <path d="M 1020 380 C 1020 410, 347 400, 347 422" stroke="#aeb8aa" stroke-width="1.5" fill="none"/>
+  <polygon points="344,422 347,430 350,422" fill="#aeb8aa"/>
+
+  <!-- 9. CDN to Player -->
+  <path d="M 622 472.5 L 664 472.5" stroke="#aeb8aa" stroke-width="1.5"/>
+  <polygon points="664,469.5 672,472.5 664,475.5" fill="#aeb8aa"/>
+
+  <!-- 10. Playback API connection to Player (Up-down) -->
+  <path d="M 302 540 L 302 525 L 880 525 L 880 519" stroke="#FF4B2B" stroke-width="1.5" stroke-dasharray="4 3" fill="none"/>
+  <polygon points="877,519 880,515 883,519" fill="#FF4B2B"/>
+  
+  <!-- 11. Ads Connection -->
+  <path d="M 855 540 L 855 525" stroke="#aeb8aa" stroke-width="1" stroke-dasharray="3 3" fill="none"/>
+</svg>
