@@ -24,6 +24,10 @@ export default defineNuxtConfig({
           default: 'github-light',
           dark: 'github-dark',
         }
+      },
+      markdown: {
+        remarkPlugins: ['remark-math'],
+        rehypePlugins: ['rehype-katex']
       }
     }],
     'nuxt-icon',
@@ -101,6 +105,11 @@ export default defineNuxtConfig({
         { 
           rel: 'stylesheet', 
           href: 'https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap' 
+        },
+        {
+          rel: 'stylesheet',
+          href: 'https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css',
+          crossorigin: 'anonymous'
         }
       ]
     },

@@ -26,6 +26,8 @@
     "vitest": "^4.1.8"
   },
   "dependencies": {
+    "rehype-katex": "^7.0.1",
+    "remark-math": "^6.0.0",
     "vue": "^3.3.4",
     "vue-router": "^4.2.5"
   }
