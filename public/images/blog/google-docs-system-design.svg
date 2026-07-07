@@ -1,0 +1,187 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Background Gradient: Deep Slate-Navy -->
+    <linearGradient id="bg" x1="80" y1="40" x2="1120" y2="590" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#090D16"/>
+      <stop offset="1" stop-color="#0F172A"/>
+    </linearGradient>
+    <!-- Standard Card Gradient -->
+    <linearGradient id="card" x1="0" y1="0" x2="0" y2="1">
+      <stop stop-color="#1E293B"/>
+      <stop offset="1" stop-color="#0F172A"/>
+    </linearGradient>
+    <!-- Accent Real-Time Card Gradient (Cyan to Emerald) -->
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#06B6D4"/>
+      <stop offset="1" stop-color="#10B981"/>
+    </linearGradient>
+    <!-- Highlight Gradient (Indigo to Purple) -->
+    <linearGradient id="highlight" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#6366F1"/>
+      <stop offset="1" stop-color="#A855F7"/>
+    </linearGradient>
+    <!-- Db Gradient -->
+    <linearGradient id="db" x1="0" y1="0" x2="0" y2="1">
+      <stop stop-color="#1E293B"/>
+      <stop offset="1" stop-color="#020617"/>
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#000000" flood-opacity="0.4"/>
+    </filter>
+    
+    <!-- Arrows -->
+    <marker id="arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#64748B" />
+    </marker>
+    <marker id="arrow-cyan" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#06B6D4" />
+    </marker>
+    <marker id="arrow-emerald" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#10B981" />
+    </marker>
+    <marker id="arrow-purple" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#A855F7" />
+    </marker>
+  </defs>
+
+  <!-- Outer canvas -->
+  <rect width="1200" height="630" rx="36" fill="url(#bg)"/>
+  <rect x="36" y="36" width="1128" height="558" rx="28" stroke="#1E293B" stroke-width="2"/>
+
+  <!-- Title & Subtitle -->
+  <text x="72" y="85" fill="#F8FAFC" font-family="system-ui, -apple-system, sans-serif" font-size="32" font-weight="800">
+    Designing Google Docs System Architecture
+  </text>
+  <text x="72" y="118" fill="#94A3B8" font-family="system-ui, -apple-system, sans-serif" font-size="16">
+    Real-time collaborative editing using Operational Transform (OT), bucketed snapshot compaction, and secure permissions.
+  </text>
+  
+  <!-- Stats badge -->
+  <rect x="800" y="65" width="328" height="42" rx="12" fill="#0F172A" stroke="#1E293B" stroke-width="1.5"/>
+  <text x="964" y="91" fill="#38BDF8" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="700" text-anchor="middle">
+    100M+ DAU | &lt;100ms Propagation | Exabytes
+  </text>
+
+  <!-- Level 1 Cards: Edge and Routing Plane -->
+  <g filter="url(#shadow)">
+    <!-- Client Apps -->
+    <rect x="72" y="160" width="170" height="88" rx="20" fill="url(#card)" stroke="#334155" stroke-width="1.5"/>
+    <text x="157" y="192" fill="#F8FAFC" font-family="system-ui, -apple-system, sans-serif" font-size="16" font-weight="700" text-anchor="middle">Client Apps</text>
+    <text x="157" y="212" fill="#94A3B8" font-family="system-ui, -apple-system, sans-serif" font-size="12" text-anchor="middle">Web &amp; Mobile Clients</text>
+    <text x="157" y="228" fill="#94A3B8" font-family="system-ui, -apple-system, sans-serif" font-size="11" text-anchor="middle">OT Engine / WebSockets</text>
+
+    <!-- API Gateway -->
+    <rect x="282" y="160" width="170" height="88" rx="20" fill="url(#card)" stroke="#334155" stroke-width="1.5"/>
+    <text x="367" y="192" fill="#F8FAFC" font-family="system-ui, -apple-system, sans-serif" font-size="16" font-weight="700" text-anchor="middle">API Gateway</text>
+    <text x="367" y="212" fill="#94A3B8" font-family="system-ui, -apple-system, sans-serif" font-size="12" text-anchor="middle">Routing, Auth, Limiting</text>
+    <text x="367" y="228" fill="#94A3B8" font-family="system-ui, -apple-system, sans-serif" font-size="11" text-anchor="middle">Reverse Proxy / REST</text>
+
+    <!-- Collaboration Service (Real-time highlight) -->
+    <rect x="492" y="160" width="210" height="88" rx="20" fill="url(#accent)" stroke="#34D399" stroke-width="1.5"/>
+    <text x="597" y="192" fill="#FFFFFF" font-family="system-ui, -apple-system, sans-serif" font-size="16" font-weight="800" text-anchor="middle">Collaboration Service</text>
+    <text x="597" y="212" fill="#ECFDF5" font-family="system-ui, -apple-system, sans-serif" font-size="12" text-anchor="middle">OT Transform Engine</text>
+    <text x="597" y="228" fill="#D1FAE5" font-family="system-ui, -apple-system, sans-serif" font-size="11" text-anchor="middle">Active Session Memory (WS)</text>
+
+    <!-- Document Service -->
+    <rect x="742" y="160" width="180" height="88" rx="20" fill="url(#card)" stroke="#334155" stroke-width="1.5"/>
+    <text x="832" y="192" fill="#F8FAFC" font-family="system-ui, -apple-system, sans-serif" font-size="16" font-weight="700" text-anchor="middle">Document Service</text>
+    <text x="832" y="212" fill="#94A3B8" font-family="system-ui, -apple-system, sans-serif" font-size="12" text-anchor="middle">Doc Metadata Lifecycle</text>
+    <text x="832" y="228" fill="#94A3B8" font-family="system-ui, -apple-system, sans-serif" font-size="11" text-anchor="middle">HTTP CRUD Operations</text>
+
+    <!-- Permission Manager -->
+    <rect x="962" y="160" width="166" height="88" rx="20" fill="url(#card)" stroke="#334155" stroke-width="1.5"/>
+    <text x="1045" y="192" fill="#F8FAFC" font-family="system-ui, -apple-system, sans-serif" font-size="16" font-weight="700" text-anchor="middle">Permission Manager</text>
+    <text x="1045" y="212" fill="#94A3B8" font-family="system-ui, -apple-system, sans-serif" font-size="12" text-anchor="middle">ACL / Link Token Checks</text>
+    <text x="1045" y="228" fill="#94A3B8" font-family="system-ui, -apple-system, sans-serif" font-size="11" text-anchor="middle">Fine-Grained Auth</text>
+  </g>
+
+  <!-- Level 2 Cards: Storage Plane -->
+  <g filter="url(#shadow)">
+    <!-- Operation Log Store -->
+    <rect x="72" y="330" width="220" height="90" rx="22" fill="url(#db)" stroke="#475569" stroke-width="1.5"/>
+    <text x="182" y="365" fill="#F8FAFC" font-family="system-ui, -apple-system, sans-serif" font-size="16" font-weight="700" text-anchor="middle">Operation Log Store</text>
+    <text x="182" y="385" fill="#CBD5E1" font-family="system-ui, -apple-system, sans-serif" font-size="12" text-anchor="middle">Append-Only Edit Log</text>
+    <text x="182" y="400" fill="#94A3B8" font-family="system-ui, -apple-system, sans-serif" font-size="11" text-anchor="middle">NoSQL / Cassandra / Shards</text>
+
+    <!-- Metadata DB -->
+    <rect x="322" y="330" width="220" height="90" rx="22" fill="url(#db)" stroke="#475569" stroke-width="1.5"/>
+    <text x="432" y="365" fill="#F8FAFC" font-family="system-ui, -apple-system, sans-serif" font-size="16" font-weight="700" text-anchor="middle">Metadata &amp; ACL Store</text>
+    <text x="432" y="385" fill="#CBD5E1" font-family="system-ui, -apple-system, sans-serif" font-size="12" text-anchor="middle">Doc Metadata, ACL Table</text>
+    <text x="432" y="400" fill="#94A3B8" font-family="system-ui, -apple-system, sans-serif" font-size="11" text-anchor="middle">Distributed SQL (Spanner)</text>
+
+    <!-- Snapshot Worker (Async Pipeline highlight) -->
+    <rect x="572" y="330" width="230" height="90" rx="22" fill="url(#highlight)" stroke="#C084FC" stroke-width="1.5"/>
+    <text x="687" y="365" fill="#FFFFFF" font-family="system-ui, -apple-system, sans-serif" font-size="16" font-weight="800" text-anchor="middle">Snapshot Worker</text>
+    <text x="687" y="385" fill="#F3E8FF" font-family="system-ui, -apple-system, sans-serif" font-size="12" text-anchor="middle">Bucketed Compaction Cron</text>
+    <text x="687" y="400" fill="#E9D5FF" font-family="system-ui, -apple-system, sans-serif" font-size="11" text-anchor="middle">Asynchronous S3 Snapshots</text>
+
+    <!-- Object Storage -->
+    <rect x="832" y="330" width="296" height="90" rx="22" fill="url(#db)" stroke="#475569" stroke-width="1.5"/>
+    <text x="980" y="365" fill="#F8FAFC" font-family="system-ui, -apple-system, sans-serif" font-size="16" font-weight="700" text-anchor="middle">Object Storage</text>
+    <text x="980" y="385" fill="#CBD5E1" font-family="system-ui, -apple-system, sans-serif" font-size="12" text-anchor="middle">Compressed Full Document States</text>
+    <text x="980" y="400" fill="#94A3B8" font-family="system-ui, -apple-system, sans-serif" font-size="11" text-anchor="middle">Amazon S3 / Google Cloud Storage</text>
+  </g>
+
+  <!-- Level 3 Cards: Auxiliary Services Plane -->
+  <g filter="url(#shadow)">
+    <!-- Cache -->
+    <rect x="72" y="480" width="240" height="68" rx="16" fill="#1E293B" stroke="#334155" stroke-width="1.5"/>
+    <text x="192" y="508" fill="#F8FAFC" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="700" text-anchor="middle">Redis Cache</text>
+    <text x="192" y="528" fill="#94A3B8" font-family="system-ui, -apple-system, sans-serif" font-size="11" text-anchor="middle">ACLs, Active Doc States, Presence</text>
+
+    <!-- Search Index -->
+    <rect x="332" y="480" width="240" height="68" rx="16" fill="#1E293B" stroke="#334155" stroke-width="1.5"/>
+    <text x="452" y="508" fill="#F8FAFC" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="700" text-anchor="middle">Search Engine</text>
+    <text x="452" y="528" fill="#94A3B8" font-family="system-ui, -apple-system, sans-serif" font-size="11" text-anchor="middle">Elasticsearch (Auth-Filtered)</text>
+
+    <!-- Event Bus -->
+    <rect x="592" y="480" width="240" height="68" rx="16" fill="#1E293B" stroke="#334155" stroke-width="1.5"/>
+    <text x="712" y="508" fill="#F8FAFC" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="700" text-anchor="middle">Event Bus</text>
+    <text x="712" y="528" fill="#94A3B8" font-family="system-ui, -apple-system, sans-serif" font-size="11" text-anchor="middle">Kafka / Event-Driven Triggers</text>
+
+    <!-- Notification Service -->
+    <rect x="852" y="480" width="276" height="68" rx="16" fill="#1E293B" stroke="#334155" stroke-width="1.5"/>
+    <text x="990" y="508" fill="#F8FAFC" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="700" text-anchor="middle">Notification Service</text>
+    <text x="990" y="528" fill="#94A3B8" font-family="system-ui, -apple-system, sans-serif" font-size="11" text-anchor="middle">Email, Push Notifications, Mentions</text>
+  </g>
+
+  <!-- Connectors & Paths -->
+  <!-- WebSocket Real-time edit path -->
+  <path d="M 157 248 C 157 300, 540 300, 540 248" fill="none" stroke="#06B6D4" stroke-width="2.5" marker-end="url(#arrow-cyan)"/>
+  <text x="330" y="290" fill="#06B6D4" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="700" text-anchor="middle">WebSocket (OT Stream)</text>
+
+  <!-- HTTP API path -->
+  <path d="M 242 204 H 282" fill="none" stroke="#64748B" stroke-width="2" marker-end="url(#arrow)"/>
+  <path d="M 452 204 H 492" fill="none" stroke="#64748B" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Collab to Operation Log Store -->
+  <path d="M 597 248 V 330" fill="none" stroke="#10B981" stroke-width="2" marker-end="url(#arrow-emerald)"/>
+  <text x="545" y="300" fill="#10B981" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="700">Write Op</text>
+
+  <!-- Doc Service to Metadata DB -->
+  <path d="M 832 248 V 330" fill="none" stroke="#64748B" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Permission Mgr link -->
+  <path d="M 910 204 H 962" fill="none" stroke="#64748B" stroke-width="2"/>
+  <path d="M 962 204 H 922" fill="none" stroke="#64748B" stroke-width="2"/>
+
+  <!-- Snapshot Worker Reads & Writes -->
+  <!-- Reads from Op Store -->
+  <path d="M 572 375 H 292" fill="none" stroke="#A855F7" stroke-width="2" marker-end="url(#arrow-purple)"/>
+  <text x="430" y="365" fill="#A855F7" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="700" text-anchor="middle">1. Read Recent Ops</text>
+
+  <!-- Writes to Object Store -->
+  <path d="M 802 375 H 832" fill="none" stroke="#A855F7" stroke-width="2" marker-end="url(#arrow-purple)"/>
+  <text x="817" y="365" fill="#A855F7" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="700" text-anchor="middle">2. Write Snapshot</text>
+
+  <!-- Cache connections -->
+  <path d="M 182 420 V 480" fill="none" stroke="#64748B" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- Event Bus and Notifications -->
+  <path d="M 712 420 V 480" fill="none" stroke="#64748B" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <path d="M 832 514 H 852" fill="none" stroke="#64748B" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="842" y="505" fill="#94A3B8" font-family="system-ui, -apple-system, sans-serif" font-size="10" text-anchor="middle">Trigger</text>
+  
+  <path d="M 592 514 H 572" fill="none" stroke="#64748B" stroke-width="1.5" marker-end="url(#arrow)"/>
+</g>
+</svg>
