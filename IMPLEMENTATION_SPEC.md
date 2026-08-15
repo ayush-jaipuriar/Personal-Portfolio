@@ -1951,6 +1951,7 @@ Items for after the main overhaul is deployed.
 - **Skills:** `data/skills.ts`
 - **Contact info:** `pages/contact.vue` + `pages/about.vue`
 - **Resume PDF:** Replace `public/resume/Ayush_Jaipuriar_Resume.pdf`
+  - Last updated: 2026-08-15 from `Ayush_Jaipuriar_Resume_0826.pdf`; existing download URLs remain unchanged.
 
 ---
 
